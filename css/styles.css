@@ -1,0 +1,145 @@
+.side-panel {
+    height: 100vh;
+    width: 10vw;
+    min-width: 150px;
+    display: table;
+    border: solid 1px black;
+    background-color: gray;
+}
+
+.button {
+    background-color: lightgray;
+    border: solid 1px black;
+    border-radius: 10px;
+    margin: 0px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+    user-select: none;
+}
+
+button {
+    user-select: none;
+}
+
+p {
+    user-select: none;
+}
+
+body {
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+canvas {
+    margin: 0px;
+    padding: 0px;
+    cursor: crosshair;
+}
+
+select {
+    width: 150px;
+}
+
+input[type="text"] {
+    width: 100px;
+}
+
+.center {
+    text-align: center;
+}
+
+dialog>div>button {
+    background-color: lightgray;
+    border: solid 1px black;
+    padding: 4px 24px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+dialog>div>button:hover {
+    background-color: darkgrey;
+}
+
+dialog>form>div>button {
+    background-color: lightgray;
+    border: solid 1px black;
+    padding: 4px 24px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+dialog>form>div>button:hover {
+    background-color: darkgrey;
+}
+
+label {
+    margin-right: 8px;
+}
+
+dialog {
+    padding: 8px;
+    border-radius: 16px;
+}
+
+.big-dialog {
+    max-width: 80vw;
+    max-height: 80vh;
+    overflow: hidden;
+}
+
+.big-dialog-div {
+    max-height: calc(80vh - 60px);
+    overflow-y: auto;
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(2px);
+}
+
+td {
+ border: 1px solid black;   
+}
+
+div>table {
+    margin: auto;
+    border-spacing: 0px;
+    border: 2px solid black;
+}
+
+td.header-row {
+    padding: 8px;
+    border: 0px;
+    border: 0px;
+    border-bottom: 4px solid black;
+    text-align: center;
+    font-size: x-large;
+    background-color: grey;
+}
+
+tr.table-row {
+    padding: 0px;
+}
+
+td.table-data {
+    min-width: 150px;
+    padding: 8px;
+    border: 0px;
+    border-bottom: 2px solid black;
+    text-align: center;
+}
+
+.radio-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-width: 300px;
+}
+
+
+.radio-label {
+    font-size: medium;
+}

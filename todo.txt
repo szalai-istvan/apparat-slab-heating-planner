@@ -1,0 +1,4 @@
+https://github.com/szalai-istvan/apparat-heating-planner
+
+- draw UI
+- create floor panel class
