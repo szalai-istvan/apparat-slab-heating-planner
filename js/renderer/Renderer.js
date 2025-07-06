@@ -28,8 +28,6 @@ class Renderer {
             this.buttons.push(obj);
         } else if (className === 'Tooltip') {
             this.tooltip = obj;
-        } else if (className === 'StructureElementsInRoom') {
-            this.beams.push(obj);
         } else {
             throw new Error(`Attempt to register unexpected render type: ${className}`);
         }

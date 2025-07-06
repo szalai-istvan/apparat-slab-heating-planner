@@ -62,7 +62,6 @@ function saveProject() {
 }
 
 function withSaveablePanels(room) {
-  room.structureElementsInRoom.panels.forEach((p) => (p.room = null));
   return room;
 }
 

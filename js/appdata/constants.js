@@ -55,3 +55,4 @@ const NUMBER_FORMAT_OBJECT = new Intl.NumberFormat("en-US");
 // FloorHeater constants
 const RED = 'red';
 const BLUE = 'blue';
+const TUBE_DISTANCE_IN_METER = 0.1;

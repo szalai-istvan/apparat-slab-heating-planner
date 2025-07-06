@@ -327,24 +327,6 @@ function fillSummaryTable(context) {
     setFormula(secondCell, IFERROR(VLOOKUP(firstCell.address, collectorsOptionsRange.searchTable, 2, 'FALSE'), 0));
     rowIndex++;
 
-    // CD30/60
-    row = summarySheet.getRow(rowIndex);
-    firstCell = row.getCell(firstColumn);
-    secondCell = row.getCell(secondColumn);
-    elementSummary = additionalElements.cd30_60 || 0;
-    firstCell.value = elementSummary.count;
-    setFormula(secondCell, `${getCellName({ row: rowIndex, column: firstColumn })}*${alap('B27')}`);
-    rowIndex++;
-
-    // UD30
-    row = summarySheet.getRow(rowIndex);
-    firstCell = row.getCell(firstColumn);
-    secondCell = row.getCell(secondColumn);
-    elementSummary = additionalElements.ud30 || 0;
-    firstCell.value = elementSummary.count;
-    setFormula(secondCell, `${getCellName({ row: rowIndex, column: firstColumn })}*${alap('B28')}`);
-    rowIndex++;
-
     // gerinc cső+héj 16x2
     row = summarySheet.getRow(rowIndex);
     firstCell = row.getCell(firstColumn);

@@ -13,8 +13,6 @@ class RoomManager {
                 selectionContext.tryToDeselect();
                 room.textCenterCoordinates = room.middlePoint;
                 tooltip.roomAddingFinished();
-
-                UD30Manager.createUD30BeamsForRoom(room);
             }
         }
     }
@@ -95,23 +93,4 @@ class RoomManager {
         return 2 * (RoomManager.getWidthInMeters(room) + RoomManager.getHeightInMeters(room));
     }
 
-    static tryToRegisterPanelGroup(room, panel) {
-        return StructureElementManager.tryToAddPanelGroup(room.structureElementsInRoom, panel);
-    }
-
-    static removePanelFromRoom(room, panel) {
-        StructureElementManager.removePanelGroup(room.structureElementsInRoom, panel);
-    }
-
-    static registerRotation(room, panel) {
-        return StructureElementManager.registerRotation(room.structureElementsInRoom, panel);
-    }
-
-    static recalculateBeams(room) {
-        StructureElementManager.recalculateBeams(room.structureElementsInRoom);
-    }
-
-    static getCd3060Amount(room) {
-        return StructureElementManager.getCd3060Amount(room.structureElementsInRoom);
-    }
 }

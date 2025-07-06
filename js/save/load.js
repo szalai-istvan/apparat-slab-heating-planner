@@ -33,10 +33,6 @@ function loadProject(text = undefined) {
     setTimeout(() => tooltip.roomAddingFinished(), 3_000);
   }
 
-  const seir = rooms.map((r) => r.structureElementsInRoom);
-  seir.forEach((s) => (s.constructor = { name: "StructureElementsInRoom" }));
-  seir.forEach((s) => renderer.register(s));
-
   let panels = setupAndGetPanels(projectState);
 
   panelContext.panels = panels;
@@ -59,13 +55,6 @@ function loadProject(text = undefined) {
 function setupAndGetPanels(projectState) {
   const panels = [];
   const rooms = projectState.rooms.rooms;
-  for (let room of rooms) {
-    const seir = room.structureElementsInRoom;
-    for (let panel of seir.panels) {
-      panel.room = room;
-      panels.push(panel);
-    }
-  }
   return panels;
 }
 

@@ -6,7 +6,6 @@ class Room {
     textSize;
     textCenterCoordinates;
     lineWeight;
-    structureElementsInRoom;
 
     constructor(name) {
         this.name = name || '';
@@ -15,7 +14,5 @@ class Room {
         const ratio = scaleContext.pixelsPerMetersRatio;
         this.textSize = ROOM_TEXT_SIZE_IN_METERS * ratio;
         this.lineWeight = ROOM_LINE_WEIGHT_IN_METERS * ratio;
-
-        this.structureElementsInRoom = new StructureElementsInRoom(this);
     }
 }

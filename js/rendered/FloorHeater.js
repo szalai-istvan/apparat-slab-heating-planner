@@ -1,7 +1,7 @@
 class FloorHeater {
     centerPosition;
     alignment;
-    colorOrder;
+    colors;
     selected;
     length;
     width;
@@ -13,7 +13,7 @@ class FloorHeater {
         this.selected = true;
         this.alignment = 0;
 
-        this.colorOrder = [RED, BLUE];
+        this.colors = [RED, BLUE];
 
         renderer.register(this);
     }
