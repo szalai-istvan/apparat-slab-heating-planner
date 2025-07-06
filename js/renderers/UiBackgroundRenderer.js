@@ -1,7 +1,9 @@
-class UiRenderer {
+let apparatLogo;
+
+class UiBackgroundRenderer {
     
-    static drawUi() {
-        fill(UI_BACKGROUND_COLOR);
+    static drawUiBackground() {
+        fill(UI_COLOR);
         noStroke();
         rect(0, 0, docSize.vw, TOP_RIBBON_HEIGHT);
         rect(0, TOP_RIBBON_HEIGHT, LEFT_RIBBON_WIDTH, docSize.vh - TOP_RIBBON_HEIGHT);

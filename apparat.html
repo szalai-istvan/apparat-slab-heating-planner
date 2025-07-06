@@ -8,8 +8,37 @@
 </head>
 
 <body id="body">
+    <!-- buttons -->
+    <div hidden>
+        <div class="side-panel">
+            <label for="imageInput" class="button">Fájlfeltöltés</label>
+            <input type="file" id="imageInput" accept="image/jpeg, image/png, application/pdf" hidden />
+        </div>
+    </div>
+    <div hidden>
+        <div class="side-panel">
+            <label for="jsonInput" class="button">Fájlfeltöltés</label>
+            <input type="file" id="jsonInput" accept="application/JSON" hidden />
+        </div>
+    </div>
 
     <!-- dialogs -->
+    <dialog id="errorDialog">
+        <p id="errorMessageParagraph" style="max-width: 450px;"></p>
+        <hr>
+        <div class="center"><button id="errorMessageOkButton">OK (Enter)</button></div>
+    </dialog>
+
+    <dialog id="fileUploadDialogConfirm">
+        <p>A tervrajzok törlése törölni fogja a meglévő skálázást,<br>a korábban felvett szobákat és paneleket. Folytatja?
+        </p>
+        <hr>
+        <div class="center">
+            <button id="fileUploadDialogConfirmButton">Igen (Enter)</button>
+            <button id="fileUploadDialogCancelButton">Nem</button>
+        </div>
+    </dialog>
+
     <dialog id="scalingDialogConfirm">
         <p>A rajz újraskálázása törölni fogja a korábban felvett szobákat és paneleket. Folytatja?</p>
         <hr>
@@ -19,12 +48,109 @@
         </div>
     </dialog>
 
+    <dialog id="scalingDialog">
+        <p>Adja meg a kijelölt szakasz hosszát, méter mértékegységben:</p>
+        <p><label for="scalingInput">Hossz:</label><input type="text" id="scalingInput"> m</p>
+        <hr>
+        <div class="center"><button id="scalingDialogCloseButton">OK (Enter)</button></div>
+    </dialog>
+
+    <dialog id="addRoomDialog">
+        <span><p><label for="addRoomInput">Helyiség neve:</label><input type="text" id="addRoomInput"></p></span>
+        <hr>
+        <span>
+            <p>Gyors kitöltés:</p>
+            <div class="radio-group" id="roomPrefillRadioSet"></div>
+        </span>
+        <hr>
+        <div class="center">
+            <button id="addRoomButton">Szoba hozzáadása (Enter)</button>
+            <button id="closeRoomDialogButton">Bezárás</button>
+        </div>
+    </dialog>
+
+    <dialog id="pdfUploadDialog">
+        <p id="pdfUploadDialogParagraph"></p>
+        <p><label>Oldalszám:</label><input type="text" id="pdfUploadDialogInput"></p>
+        <hr>
+        <div class="center"><button id="pdfUploadDialogCloseButton">OK (Enter)</button></div>
+    </dialog>
+
+    <dialog id="transportDialog">
+        <p>Amennyiben kér szállítást a rendeléshez, kérjük adja meg itt, km mértékegységben:</p>
+        <p><label for="transportInput">Hossz:</label><input type="text" id="transportInput"> km</p>
+        <hr>
+        <div class="center"><button id="transportDialogOkButton">Letöltése (Enter)</button><button
+                id="transportDialogCloseButton">Mégsem</button></div>
+    </dialog>
+
     <!-- scripts -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
 
-    <script src="js/scriptLoader.js"></script>
+    <script type="text/javascript" src="js/helpers/helpers.js"></script>
+    <script type="text/javascript" src="js/helpers/keystrokeRecorder.js"></script>
+    <script type="text/javascript" src="js/helpers/setupHelpers.js"></script>
+    <script type="text/javascript" src="js/helpers/errordialog.js"></script>
+    <script type="text/javascript" src="js/helpers/debug.js"></script>
+    <script type="text/javascript" src="js/helpers/htmlHelpers.js"></script>
+    <script type="text/javascript" src="js/helpers/p5helpers.js"></script>
+
+    <script type="text/javascript" src="js/appdata/tooltips.js"></script>
+    <script type="text/javascript" src="js/appdata/constants.js"></script>
+    <script type="text/javascript" src="js/appdata/translations.js"></script>
+    <script type="text/javascript" src="js/appdata/excelConstants.js"></script>
+
+    <script type="text/javascript" src="js/renderer/Renderer.js"></script>
+    <script type="text/javascript" src="js/contexts/ScreenContext.js"></script>
+    <script type="text/javascript" src="js/rendered/Blueprint.js"></script>
+    <script type="text/javascript" src="js/contexts/BlueprintContext.js"></script>
+    <script type="text/javascript" src="js/contexts/ScaleContext.js"></script>
+    <script type="text/javascript" src="js/rendered/ButtonWrapper.js"></script>
+    <script type="text/javascript" src="js/rendered/Room.js"></script>
+    <script type="text/javascript" src="js/contexts/RoomContext.js"></script>
+    <script type="text/javascript" src="js/contexts/SelectionContext.js"></script>
+    <script type="text/javascript" src="js/rendered/Tooltip.js"></script>
+    <script type="text/javascript" src="js/contexts/GridContext.js"></script>
+    <script type="text/javascript" src="js/rendered/FloorHeater.js"></script>
+    <script type="text/javascript" src="js/contexts/FloorHeaterContext.js"></script>
+
+    <script type="text/javascript" src="js/buttons/manageBlueprintButtons.js"></script>
+    <script type="text/javascript" src="js/buttons/scaleButton.js"></script>
+    <script type="text/javascript" src="js/buttons/addRoomsButton.js"></script>
+    <script type="text/javascript" src="js/buttons/deleteRoomsButton.js"></script>
+    <script type="text/javascript" src="js/buttons/addFloorHeaterButtons.js"></script>
+    <script type="text/javascript" src="js/buttons/downloadSummaryButton.js"></script>
+    <script type="text/javascript" src="js/buttons/buttons.js"></script>
+
+    <script type="text/javascript" src="js/quote/excelGenerator.js"></script>
+    <script type="text/javascript" src="js/quote/excelGeneratorUtil.js"></script>
+
+    <script type="text/javascript" src="js/p5/setup.js"></script>
+    <script type="text/javascript" src="js/p5/draw.js"></script>
+    <script type="text/javascript" src="js/p5/mousePressed.js"></script>
+    <script type="text/javascript" src="js/p5/mouseReleased.js"></script>
+    <script type="text/javascript" src="js/p5/mouseWheel.js"></script>
+
+    <script type="text/javascript" src="js/renderers/BlueprintRenderer.js"></script>
+    <script type="text/javascript" src="js/renderers/ButtonWrapperRenderer.js"></script>
+    <script type="text/javascript" src="js/renderers/RoomRenderer.js"></script>
+    <script type="text/javascript" src="js/renderers/ScaleContextRenderer.js"></script>
+    <script type="text/javascript" src="js/renderers/TooltipRenderer.js"></script>
+    <script type="text/javascript" src="js/renderers/DebugInfoRenderer.js"></script>
+    <script type="text/javascript" src="js/renderers/UiBackgroundRenderer.js"></script>
+    <script type="text/javascript" src="js/renderers/FloorHeaterRenderer.js"></script>
+
+    <script type="text/javascript" src="js/managers/BlueprintManager.js"></script>
+    <script type="text/javascript" src="js/managers/RoomManager.js"></script>
+    <script type="text/javascript" src="js/managers/FloorHeaterManager.js"></script>
+
+    <script type="text/javascript" src="js/selectors/RoomSelector.js"></script>
+    <script type="text/javascript" src="js/selectors/FloorHeaterSelector.js"></script>
+
+    <script type="text/javascript" src="js/save/save.js"></script>
+    <script type="text/javascript" src="js/save/load.js"></script>
 </body>
 
 </html>

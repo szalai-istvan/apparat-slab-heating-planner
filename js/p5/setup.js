@@ -1,33 +1,33 @@
+var docSize;
+var canvas;
+
 function setup() {
-    angleMode(DEGREES);
-
-    // disableContextMenu();
-    // disableEscapeButton();
-    // handleWindowResize();
-    // enableEnterForConfirm();
-    // handleDeleteButton();
-    // createRoomPrefillRadioButtons();
-
-    createAndSetupCanvas();
-    loadAssets();
-
-    // createButtons();
+    disableContextMenu();
+    disableEscapeButton();
+    handleWindowResize();
+    enableEnterForConfirm();
+    handleDeleteButton();
+    createRoomPrefillRadioButtons();
     
-    // tooltip.applicationStarted();
+    docSize = getDocumentDimensions();
+    canvas = createCanvas(docSize.vw, window.innerHeight);
+    canvas.parent("body");
+    screenContext.setCanvas(canvas);
+    apparatLogo = loadImage('img/APPARAT_transparent.PNG');
+    
+    angleMode(DEGREES);
+    createButtons();
+    
+    tooltip.applicationStarted();
 
     if (SAVE_TO_LOCAL_STORAGE_ENABLED) {
         loadProject();        
     }
 }
 
-function createAndSetupCanvas() {
-    docSize = getDocumentDimensions();
-    canvas = createCanvas(docSize.vw, window.innerHeight);
-    canvas.parent("body");
-//    screenContext.setCanvas(canvas);
-
-}
-
-function loadAssets() {
-    apparatLogo = loadImage('img/APPARAT_transparent.PNG');
+function getDocumentDimensions() {
+    return {
+        vw: Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0),
+        vh: Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+    };
 }
