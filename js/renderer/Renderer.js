@@ -4,6 +4,7 @@ class Renderer {
     rooms = [];
     beams = [];
     buttons = [];
+    menus = [];
 
     scaleContext = null;
     tooltip = null;
@@ -28,6 +29,8 @@ class Renderer {
             this.buttons.push(obj);
         } else if (className === 'Tooltip') {
             this.tooltip = obj;
+        } else if (className === 'MenuLine') {
+            this.menus.push(obj);
         } else {
             throw new Error(`Attempt to register unexpected render type: ${className}`);
         }
@@ -38,15 +41,16 @@ class Renderer {
         this.rooms.forEach(room => RoomRenderer.draw(room));
         ScaleContextRenderer.draw(this.scaleContext);
         this.buttons.forEach(button => ButtonWrapperRenderer.draw(button));
-
+        
         if (debugEnabled) {
             DebugInfoRenderer.drawAxis();
         }
     }
-
+    
     renderAbsolutePositionObjects() {
         runBetweenPushAndPop(UiBackgroundRenderer.drawUiBackground);
         TooltipRenderer.draw(this.tooltip);
+        this.menus.forEach(menu => menu.draw());
 
         if (debugEnabled) {
             DebugInfoRenderer.drawCursorDebugInfo();
