@@ -53,8 +53,7 @@ function createButtons() {
     });
     leftRibbonButtonSizes.push(TALL_SMALL_BUTTON_SIZE);
 
-    addLeftRibbonDelimeter(sidePanelButtonPosition(leftRibbonButtonSizes).y);
-
+    
     clearBlueprintsButton = new ButtonWrapper({
         text: 'Alaprajzok eltávolítása',
         size: TALL_SMALL_BUTTON_SIZE,
@@ -63,7 +62,32 @@ function createButtons() {
         shouldBeRendered: () => blueprintContext.blueprintDataIsPresent()
     });
     leftRibbonButtonSizes.push(TALL_SMALL_BUTTON_SIZE);
+    addLeftRibbonDelimeter(sidePanelButtonPosition(leftRibbonButtonSizes).y);
 
+    floorHeaterWidthMenu = new MenuLine({
+        position: sidePanelButtonPosition(leftRibbonButtonSizes),
+        size: TALL_SMALL_BUTTON_SIZE,
+        text: 'Szélesség',
+        buttons: range(0.8, 1.2, 0.4, ' m')
+    });
+    leftRibbonButtonSizes.push(TALL_SMALL_BUTTON_SIZE);
+
+    floorHeaterLengthMenu = new MenuLine({
+        position: sidePanelButtonPosition(leftRibbonButtonSizes),
+        size: TALL_SMALL_BUTTON_SIZE,
+        text: 'Hosszúság',
+        buttons: range(1, 5.5, 0.5, ' m')
+    });
+    leftRibbonButtonSizes.push(TALL_SMALL_BUTTON_SIZE);
+
+    addFloorHeaterButton = new ButtonWrapper({
+        text: 'Hozzáadás',
+        size: SMALL_BUTTON_SIZE,
+        position: sidePanelButtonPosition(leftRibbonButtonSizes),
+        onClick: () => {},
+        shouldBeRendered: () => true
+    });
+    leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
     addLeftRibbonDelimeter(sidePanelButtonPosition(leftRibbonButtonSizes).y);
 
     deleteRoomButton = new ButtonWrapper({

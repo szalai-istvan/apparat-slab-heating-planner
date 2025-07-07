@@ -1,14 +1,14 @@
 // UI constants
 const BACKGROUND_COLOR = 255;
 const REGULAR_BUTTON_SIZE = { x: 100, y: 40 };
-const SMALL_BUTTON_SIZE = { x: 80, y: 30 };
+const SMALL_BUTTON_SIZE = { x: 100, y: 30 };
 const HALF_WIDTH_BUTTON_SIZE = { x: 40, y: 30 };
-const TALL_SMALL_BUTTON_SIZE = { x: 80, y: 45 };
+const TALL_SMALL_BUTTON_SIZE = { x: 100, y: 45 };
 const BUTTON_GAP_X = 10;
 const BUTTON_GAP_Y = 5;
 const DELIMITER_POSITIONS = [];
 const TOP_RIBBON_HEIGHT = 60;
-const LEFT_RIBBON_WIDTH = 100;
+const LEFT_RIBBON_WIDTH = 120;
 const UI_COLOR = 'lightgrey';
 
 // Room constants

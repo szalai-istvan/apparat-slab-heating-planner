@@ -14,7 +14,7 @@ function topRibbonButtonPosition(topRibbonButtonSizes) {
     .reduce(sumFunction, 0);
   const sumGap = (topRibbonButtonSizes.length + 1) * BUTTON_GAP_X;
   return {
-    x: 100 + sumButtonWidth + sumGap,
+    x: LEFT_RIBBON_WIDTH + sumButtonWidth + sumGap,
     y: 10,
   };
 }
@@ -88,4 +88,19 @@ function displayHelpData() {
 
 function calculateCorrector(lim, coord) {
   return (Math.abs(lim - coord) + lim - coord) / (2 * screenContext.zoom);
+}
+
+function range(min, max, delta, suffix = undefined) {
+  const result = [];
+  let value = min;
+  while (value <= max) {
+    result.push(value);
+    value += delta;
+    value = roundNumber(value, 1);
+  }
+
+  if (suffix) {
+    return result.map(a => a + suffix);
+  }
+  return result;
 }
