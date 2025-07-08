@@ -2,15 +2,17 @@ class FloorHeater {
     centerPosition;
     alignment;
     colors;
-    selected;
     length;
     width;
+    isSelected;
+    isSelectedForDrag;
 
     constructor(length, width) {
         this.length = length;
         this.width = width;
 
-        this.selected = true;
+        this.isSelected = true;
+        this.isSelectedForDrag = true;
         this.alignment = 0;
 
         this.colors = [RED, BLUE];

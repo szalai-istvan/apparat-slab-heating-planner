@@ -3,7 +3,7 @@ class FloorHeaterRenderer {
         const ratio = scaleContext.pixelsPerMetersRatio;
         const color1 = floorHeater.colors[0];
         const color2 = floorHeater.colors[1];
-        const centerPosition = floorHeater.centerPosition;
+        const centerPosition = floorHeater.isSelectedForDrag ? screenContext.getMousePositionAbsolute() : floorHeater.centerPosition;
         const alignment = floorHeater.alignment;
         const selected = floorHeater.selected;
         const width = floorHeater.width * ratio;

@@ -41,6 +41,7 @@ class Renderer {
         this.rooms.forEach(room => RoomRenderer.draw(room));
         ScaleContextRenderer.draw(this.scaleContext);
         this.buttons.forEach(button => ButtonWrapperRenderer.draw(button));
+        this.floorHeaters.forEach(fh => FloorHeaterRenderer.draw(fh));
         
         if (debugEnabled) {
             DebugInfoRenderer.drawAxis();
@@ -50,7 +51,7 @@ class Renderer {
     renderAbsolutePositionObjects() {
         runBetweenPushAndPop(UiBackgroundRenderer.drawUiBackground);
         TooltipRenderer.draw(this.tooltip);
-        this.menus.forEach(menu => menu.draw());
+        this.menus.forEach(menu => MenuRenderer.draw(menu));
 
         if (debugEnabled) {
             DebugInfoRenderer.drawCursorDebugInfo();

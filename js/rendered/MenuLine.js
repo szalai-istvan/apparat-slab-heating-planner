@@ -6,11 +6,14 @@ class MenuLine {
     value;
     menuItemsShown = false;
     hideTimeOutId;
+    valueSet = {};
+    shouldBeRendered;
 
-    constructor({position, size, text, buttons}) {
+    constructor({position, size, text, buttons, labelerFunc, shouldBeRendered}) {
         this.position = position;
         this.size = size;
         this.text = text + ' >';
+        this.shouldBeRendered = shouldBeRendered;
 
         this.baseButton = createButton(this.text);
         const baseButton = this.baseButton;
@@ -19,10 +22,14 @@ class MenuLine {
         baseButton.mouseClicked(() => this.baseButtonClick());
 
         let i = 0;
+        const labeler = labelerFunc ? labelerFunc : a => a;
         for (let button of buttons) {
-            const menuItem = createButton(button);
+            const label = labeler(button);
+            const menuItem = createButton(label);
+            this.valueSet[label] = button;
+
             menuItem.size(SMALL_BUTTON_SIZE.x, SMALL_BUTTON_SIZE.y);
-            menuItem.mouseClicked(() => this.selectMenuItem(button));
+            menuItem.mouseClicked(() => this.selectMenuItem(label));
             menuItem.position(position.x + size.x, position.y + SMALL_BUTTON_SIZE.y * i++);
             menuItem.style('border-radius', '0');
             menuItem.style('border', '1px solid black');
@@ -34,20 +41,15 @@ class MenuLine {
         renderer.register(this);
     }
 
-    draw() {
-        // TODO hide if outside of boundary
-        // TODO display with condition
-    }
-
     selectMenuItem(text) {
         for (let menuItem of this.menuItems) {
             menuItem.style('background', null);
         }
         const selected = this.menuItems.filter(button => button.elt.innerHTML === text)[0];
         selected.style('background', 'darkgrey');
-        this.value = selected.elt.innerHTML;
-        setTimeout(() => this.hideMenuItems(), 500);
-        this.baseButton.elt.innerHTML = this.text + '<br/>' + '(' + this.value + ')';
+        this.value = this.valueSet[selected.elt.innerHTML];
+        setTimeout(() => this.hideMenuItems(), 300);
+        this.baseButton.elt.innerHTML = this.text + '<br/>' + '(' + text + ')';
     }
 
     showMenuItems() {

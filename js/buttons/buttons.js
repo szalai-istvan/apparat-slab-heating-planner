@@ -68,7 +68,9 @@ function createButtons() {
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
         size: TALL_SMALL_BUTTON_SIZE,
         text: 'Szélesség',
-        buttons: range(0.8, 1.2, 0.4, ' m')
+        buttons: range(0.8, 1.2, 0.4),
+        labelerFunc: a => (a + ' m').replace('.', ','),
+        shouldBeRendered: () => roomContext.thereAreRooms()
     });
     leftRibbonButtonSizes.push(TALL_SMALL_BUTTON_SIZE);
 
@@ -76,7 +78,9 @@ function createButtons() {
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
         size: TALL_SMALL_BUTTON_SIZE,
         text: 'Hosszúság',
-        buttons: range(1, 5.5, 0.5, ' m')
+        buttons: range(1, 5.5, 0.5),
+        labelerFunc: a => (a + ' m').replace('.', ','),
+        shouldBeRendered: () => roomContext.thereAreRooms()
     });
     leftRibbonButtonSizes.push(TALL_SMALL_BUTTON_SIZE);
 
@@ -84,8 +88,8 @@ function createButtons() {
         text: 'Hozzáadás',
         size: SMALL_BUTTON_SIZE,
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        onClick: () => {},
-        shouldBeRendered: () => true
+        onClick: () => floorHeaterContext.createFloorHeater(),
+        shouldBeRendered: () => roomContext.thereAreRooms()
     });
     leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
     addLeftRibbonDelimeter(sidePanelButtonPosition(leftRibbonButtonSizes).y);

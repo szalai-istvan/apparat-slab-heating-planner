@@ -4,7 +4,7 @@ class SelectionContext {
     contexts = [];
 
     constructor() {
-        this.contexts = [roomContext];
+        this.contexts = [roomContext, floorHeaterContext];
     }
 
     searchSelectableObject() {
@@ -27,6 +27,8 @@ class SelectionContext {
         const className = getClassName(obj);
         if (className === 'Room') {
             this.lastSelectingContext = roomContext;
+        } else if (className === 'FloorHeater') {
+            this.lastSelectingContext = floorHeaterContext;
         } else {
             throw new Error(`Unexpected class of selected object: ${className}`);
         }
