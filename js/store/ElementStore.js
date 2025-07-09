@@ -47,7 +47,6 @@ class ElementStore {
     } else if (className === CLASS_BLUEPRINT) {
       this.blueprints = this.blueprints.filter((x) => x !== obj);
     } else if (className === CLASS_FLOOR_HEATER) {
-      // TODO class nevek kicserélése konstansokra
       this.floorHeaters = this.floorHeaters.filter((x) => x !== obj);
     } else {
       throw new Error(

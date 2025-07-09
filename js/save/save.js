@@ -1,8 +1,8 @@
 function downloadProjectState() {
   const text = getProjectState();
-  var element = document.createElement("a");
+  var element = document.createElement('a');
   element.setAttribute(
-    "href",
+    'href',
     "data:text/plain;charset=utf-8," + encodeURIComponent(text)
   );
   element.setAttribute(
@@ -20,6 +20,7 @@ function downloadProjectState() {
 
 function getProjectState() {
   const rooms = elementStore.rooms.filter((room) => RoomManager.roomIsConfigured(room));
+  const floorHeaters = elementStore.floorHeaters.filter(fh => !fh.isSelectedForDrag);  
 
   let projectState = {
     blueprints: {
@@ -40,7 +41,7 @@ function getProjectState() {
       seed: gridContext.seed,
     },
     floorHeaters: {
-      floorHeaters: elementStore.floorHeaters
+      floorHeaters: floorHeaters
     }
   };
 
@@ -54,6 +55,11 @@ function getProjectStateSize() {
 function saveProject() {
   const stateStr = getProjectState();
   localStorage.setItem(LOCAL_STORAGE_DATA_KEY, stateStr);
+}
+
+function evictLocalStorageAndReload() {
+  localStorage.removeItem(LOCAL_STORAGE_DATA_KEY);
+  location.reload();
 }
 
 if (SAVE_TO_LOCAL_STORAGE_ENABLED) {

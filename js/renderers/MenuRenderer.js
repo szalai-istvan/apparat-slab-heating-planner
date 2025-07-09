@@ -5,8 +5,8 @@ class MenuRenderer {
             menuLine.baseButton.show();
         } else {
             menuLine.baseButton.hide();
+            menuLine.menuItems.forEach(b => b.hide());
         }
         // TODO hide if outside of boundary
-        // TODO display with condition
     }
 }
