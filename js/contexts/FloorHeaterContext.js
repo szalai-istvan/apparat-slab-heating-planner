@@ -57,6 +57,7 @@ class FloorHeaterContext {
     }
 
     clear() {
+        elementStore.floorHeaters = [];
         // TODO
     }
 
