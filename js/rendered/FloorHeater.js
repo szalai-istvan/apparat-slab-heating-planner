@@ -17,6 +17,6 @@ class FloorHeater {
 
         this.colors = [RED, BLUE];
 
-        renderer.register(this);
+        elementStore.register(this);
     }
 }

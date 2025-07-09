@@ -1,7 +1,6 @@
 class FloorHeaterContext {
     cachedSelection = null;
     selectedFloorHeater = null;
-    floorHeaters = [];
 
     createFloorHeater() {
         const width = floorHeaterWidthMenu.value;
@@ -18,7 +17,6 @@ class FloorHeaterContext {
         }
 
         const floorHeater = new FloorHeater(length, width);
-        this.floorHeaters.push(floorHeater);
         selectionContext.selectObject(floorHeater);
     }
 
@@ -59,7 +57,10 @@ class FloorHeaterContext {
     }
 
     clear() {
-        console.log('floorHEatingContext.clear()');
+        // TODO
+    }
+
+    removeSelected() {
         // TODO
     }
 }

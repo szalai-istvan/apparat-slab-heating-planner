@@ -1,31 +1,29 @@
 class BlueprintContext {
-    blueprints = [];
 
     constructor() { }
 
     createBlueprint(data) {
         const sizeData = blueprintContext.getSizeData();
         if (!sizeData) {
-            this.blueprints.push(new Blueprint(data, undefined));
+            elementStore.register(new Blueprint(data, undefined));
             screenContext.sumDrag = {x: 0, y: 0};
         } else {
             let topLeftCoordinates = {
                 x: sizeData.x + sizeData.w,
                 y: sizeData.y
             };
-            this.blueprints.push(new Blueprint(data, topLeftCoordinates));
+            elementStore.register(new Blueprint(data, topLeftCoordinates));
             screenContext.sumDrag = {x: -topLeftCoordinates.x, y: 0};
         }
     }
 
     clearBlueprints() {
-        this.blueprints.forEach(blueprint => BlueprintManager.remove(blueprint));
-        this.blueprints = [];
+        elementStore.blueprints = [];
         scaleContext.clear();
     }
 
     blueprintDataIsPresent() {
-        const blueprints = this.blueprints;
+        const blueprints = elementStore.blueprints;
 
         if (blueprints.length === 0) {
             return false;
@@ -35,15 +33,15 @@ class BlueprintContext {
     }
 
     getSizeData() {
-        if (!this.blueprints.length) {
+        if (!elementStore.blueprints.length) {
             return undefined;
         }
 
-        if (!this.blueprints.map(bp => bp.topLeftPosition).filter(x => x).length) {
+        if (!elementStore.blueprints.map(bp => bp.topLeftPosition).filter(x => x).length) {
             return;
         }
 
-        const sizeDatas = this.blueprints.map(bp => BlueprintManager.getSizeData(bp));
+        const sizeDatas = elementStore.blueprints.map(bp => BlueprintManager.getSizeData(bp));
         return { 
             x: - sizeDatas[0].w / 2, 
             y: - sizeDatas[0].h / 2, 

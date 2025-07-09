@@ -1,7 +1,6 @@
 class RoomContext {
     cachedSelection = null;
     selectedRoom = null;
-    rooms = [];
 
     constructor() {}
 
@@ -13,7 +12,7 @@ class RoomContext {
             return false;
         }
         const room = new Room(name);
-        this.rooms.push(room);
+        elementStore.register(room);
 
         tooltip.roomAddingStarted();
         selectionContext.selectObject(room);
@@ -45,11 +44,10 @@ class RoomContext {
     removeSelected() {
         const room = this.selectedRoom;
         if (room) {
-            RoomSelector.remove(room);
-            this.rooms = this.rooms.filter(r => r !== room);
+            elementStore.remove(room);
             this.selectedRoom = undefined;
         }
-        if (this.rooms.length === 0) {
+        if (elementStore.rooms.length === 0) {
             tooltip.scalingFinished();
             gridContext.removeSeed();
         }
@@ -60,7 +58,7 @@ class RoomContext {
             return this.cachedSelection;
         }
 
-        const selection = this.rooms.filter(r => RoomManager.mouseCursorIsInsideName(r));
+        const selection = elementStore.rooms.filter(r => RoomManager.mouseCursorIsInsideName(r));
         const room = selection[0];
         if (room) {
             if (room !== this.selectedRoom) {
@@ -77,8 +75,7 @@ class RoomContext {
     }
 
     clear() {
-        this.rooms.forEach(room => RoomSelector.remove(room));
-        this.rooms = [];
+        elementStore.rooms = [];
         selectionContext.tryToDeselect();
         floorHeaterContext.clear();
     }
@@ -88,7 +85,7 @@ class RoomContext {
         if (selectedRoom && !RoomManager.roomIsConfigured(selectedRoom)) {
             if (this.pointIsValid()) {
                 RoomManager.addPoint(selectedRoom);
-                if (this.rooms.length === 1 && selectedRoom.points.length === 1) {
+                if (elementStore.rooms.length === 1 && selectedRoom.points.length === 1) {
                     gridContext.setSeed(screenContext.getMousePositionAbsolute());
                 }
             } else {
@@ -110,11 +107,11 @@ class RoomContext {
     }
 
     thereAreRooms() {
-        return this.rooms.length > 0 && RoomManager.roomIsConfigured(this.rooms[0]);
+        return elementStore.rooms.length > 0 && RoomManager.roomIsConfigured(elementStore.rooms[0]);
     }
 
     getRoomContainingPoint(point) {
-        const room = this.rooms.filter(r => RoomManager.pointIsInsideRoom(r, point))[0];
+        const room = elementStore.rooms.filter(r => RoomManager.pointIsInsideRoom(r, point))[0];
         if (room) {
             return room.name;
         }
@@ -122,31 +119,31 @@ class RoomContext {
     }
 
     getRoomNames() {
-        return this.rooms.map(r => r.name);
+        return elementStore.rooms.map(r => r.name);
     }
 
     roomNameAlreadyExists(name) {
-        return this.rooms.map(room => room.name.toLowerCase()).includes(name.toLowerCase());
+        return elementStore.rooms.map(room => room.name.toLowerCase()).includes(name.toLowerCase());
     }
 
     pointIsValid() {
-        if (this.rooms.length < 2) {
+        if (elementStore.rooms.length < 2) {
             return true;
         }
 
-        const pointIsNotInAnyRooms = this.rooms.filter(r => RoomManager.pointIsInsideRoom(r)).length === 0;
+        const pointIsNotInAnyRooms = elementStore.rooms.filter(r => RoomManager.pointIsInsideRoom(r)).length === 0;
         if (!pointIsNotInAnyRooms) {
             return false;
         }
         return true;
     }
 
-     registerRelocatedFloorHeatingAndReturnContainingRoom(floorHeater) {
+    registerRelocatedFloorHeatingAndReturnContainingRoom(floorHeater) {
         const boundaryPoints = FloorHeaterManager.getBoundaryPoints(floorHeater);
         const p1 = boundaryPoints.p1;
         const p2 = boundaryPoints.p2;
 
-        const room = this.rooms.filter(r => RoomManager.pointIsInsideRoom(r, p1) && RoomManager.pointIsInsideRoom(r, p2))[0];
+        const room = elementStore.rooms.filter(r => RoomManager.pointIsInsideRoom(r, p1) && RoomManager.pointIsInsideRoom(r, p2))[0];
         if (!room) {
             displayMessage('A padlófűtő elem része vagy egésze szobán kívül van!<br/>Helyezze el máshová!');    
             return undefined;

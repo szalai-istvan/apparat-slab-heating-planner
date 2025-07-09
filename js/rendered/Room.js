@@ -9,7 +9,6 @@ class Room {
 
     constructor(name) {
         this.name = name || '';
-        renderer.register(this);
 
         const ratio = scaleContext.pixelsPerMetersRatio;
         this.textSize = ROOM_TEXT_SIZE_IN_METERS * ratio;

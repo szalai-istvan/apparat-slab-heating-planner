@@ -26,8 +26,4 @@ class BlueprintManager {
 
         return { x: blueprint.topLeftPosition.x, y: blueprint.topLeftPosition.y, w: data.width, h: data.height };
     }
-
-    static remove(blueprint) {
-        renderer.remove(blueprint);
-    }
 }

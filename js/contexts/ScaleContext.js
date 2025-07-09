@@ -6,7 +6,7 @@ class ScaleContext {
     pixelsPerMetersRatio = null;
 
     constructor() {
-        renderer.register(this);
+        elementStore.register(this);
     }
 
     

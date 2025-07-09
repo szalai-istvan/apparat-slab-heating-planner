@@ -1,6 +1,3 @@
-const MODALS = [messageDialog, fileUploadDialogConfirm, scalingDialogConfirm, scalingDialog, addRoomDialog, pdfUploadDialog, transportDialog];
-const ENTERABLE_BUTTONS = [messageOkButton, fileUploadDialogConfirmButton, scalingDialogConfirmButton, scalingDialogCloseButton, addRoomButton, pdfUploadDialogCloseButton, transportDialogOkButton];
-
 function disableContextMenu() {
   for (let element of document.getElementsByTagName("body")) {
     element.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -39,8 +36,7 @@ function handleWindowResize() {
       canvas.height = height;
       resizeCanvas(windowWidth, windowHeight);
 
-      const helpButtonPos = bottomPosition(TALL_SMALL_BUTTON_SIZE);
-      helpButton.button.position(helpButtonPos.x, helpButtonPos.y);
+      repositionHelpButton();
     }
   });
 }
@@ -57,7 +53,5 @@ function enableEnterForConfirm() {
 }
 
 function noModalsAreOpened() {
-  return (
-    MODALS.filter((modal) => modal.getAttribute("open") !== null).length === 0
-  );
+  return MODALS.filter((modal) => modal.getAttribute("open") !== null).length === 0;
 }

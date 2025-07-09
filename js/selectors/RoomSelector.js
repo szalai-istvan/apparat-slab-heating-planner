@@ -11,8 +11,4 @@ class RoomSelector {
         }
         return true;
     }
-
-    static remove(room) {
-        renderer.remove(room);
-    }
 }

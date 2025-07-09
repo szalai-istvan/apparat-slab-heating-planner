@@ -1,3 +1,6 @@
+let pdf;
+let fileName = '';
+
 var fileUploadButton;
 var clearBlueprintsButton;
 
@@ -12,8 +15,7 @@ const pdfUploadDialogParagraph = document.getElementById('pdfUploadDialogParagra
 const pdfUploadDialogInput = document.getElementById('pdfUploadDialogInput');
 const pdfUploadDialogCloseButton = document.getElementById('pdfUploadDialogCloseButton');
 
-imageInput.addEventListener('change', handleFileSelect);
-let fileName = '';
+imageInput.addEventListener(CHANGE, handleFileSelect);
 
 function upload() {
   imageInput.click();
@@ -70,7 +72,6 @@ function handleFileSelect(event) {
   }
 }
 
-var pdf;
 async function readPdfFile(reader) {
   const pdfData = new Uint8Array(reader.result);
   pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;

@@ -1,4 +1,4 @@
-const TOOLTIP_TEXT = {
+const TOOLTIP_TEXT = { // TODO új tooltip-ek
     WELCOME: "Üdvözli Önt Rajzolátor, az APPARAT Kft.\nárajánlat előkészítő szoftvere.",
     DRAWING_UPLOAD: "Az Alaprajz feltöltése gomb segítségével töltsön fel egy vagy több\ntervrajzot a kezdéshez. Választhat jpg, png vagy pdf fájlt.",
     DRAWING_NAV: "A tervrajzon való navigációhoz húzza az egeret a bal egérgomb nyomvatartásával.\nA zoomoláshoz használja az egérgörgőt.",

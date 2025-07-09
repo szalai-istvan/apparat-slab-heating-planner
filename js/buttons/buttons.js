@@ -1,5 +1,3 @@
-var helpButton;
-
 function createButtons() {
     const topRibbonButtonSizes = [];
 
@@ -79,6 +77,7 @@ function createButtons() {
     });
     leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
     addLeftRibbonDelimeter(sidePanelButtonPosition(leftRibbonButtonSizes).y);
+    // TODO panel forgatás, flip, duplikáció, csőtörlés
 
     deleteRoomButton = new ButtonWrapper({
         text: 'Helyiség törlése',

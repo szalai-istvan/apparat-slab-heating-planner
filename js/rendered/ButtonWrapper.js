@@ -10,6 +10,6 @@ class ButtonWrapper {
         this.button.position(position.x, position.y);
         this.button.mouseClicked(onClick);
 
-        renderer.register(this);
+        elementStore.register(this);
     }
 }

@@ -28,7 +28,7 @@ function loadProject(text = undefined) {
   const rooms = projectState.rooms.rooms;
   roomContext.rooms = rooms;
   rooms.forEach((room) => (room.constructor = { name: "Room" }));
-  rooms.forEach((room) => renderer.register(room));
+  rooms.forEach((room) => elementStore.register(room));
   if (roomContext.rooms.length) {
     setTimeout(() => tooltip.roomAddingFinished(), 3_000);
   }
@@ -37,7 +37,7 @@ function loadProject(text = undefined) {
 
   floorHeaterContext.floorHeaters = floorHeaters;
   panels.forEach((panel) => (panel.constructor = { name: "Panel" }));
-  panels.forEach((panel) => renderer.register(panel));
+  panels.forEach((panel) => elementStore.register(panel));
   if (panelContext.panels.length) {
     setTimeout(() => tooltip.panelAdded(), 3_000);
   }

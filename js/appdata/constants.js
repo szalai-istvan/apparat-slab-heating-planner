@@ -57,8 +57,22 @@ const RED = 'red';
 const BLUE = 'blue';
 const TUBE_DISTANCE_IN_METER = 0.1;
 
-// RenderedElementStore constants
+// ElementStore constants
 const CLASS_FLOOR_HEATER = 'FloorHeater';
+const CLASS_BLUEPRINT = 'Blueprint';
+const CLASS_ROOM = 'Room';
+const CLASS_SCALE_CONTEXT = 'ScaleContext';
+const CLASS_BUTTON_WRAPPER = 'ButtonWrapper';
+const CLASS_TOOLTIP = 'Tooltip';
+const CLASS_MENU_LINE = 'MenuLine';
+
+// components
+const MODALS = [messageDialog, fileUploadDialogConfirm, scalingDialogConfirm, scalingDialog, addRoomDialog, pdfUploadDialog, transportDialog];
+const ENTERABLE_BUTTONS = [messageOkButton, fileUploadDialogConfirmButton, scalingDialogConfirmButton, scalingDialogCloseButton, addRoomButton, pdfUploadDialogCloseButton, transportDialogOkButton];
 
 // strings and misc constants
 const CLICK = 'click';
+const DISABLED = 'disabled';
+const KEYUP = 'keyup';
+const CHANGE = 'change';
+const BACKGROUND = 'background';

@@ -32,39 +32,42 @@ class MenuLine {
             this.valueSet[label] = button;
 
             menuItem.size(optionSize.x, optionSize.y);
-            menuItem.mouseClicked(() => this.selectMenuItem(label));
             menuItem.position(position.x + size.x, position.y + optionSize.y * i);
             menuItem.style('border-radius', '0');
             menuItem.style('border', '1px solid black');
             menuItem.elt.classList.add('hovered');
-
-            buttonsClickFunctions[i] && menuItem.mouseClicked(buttonsClickFunctions[i]);
+            if (buttonsClickFunctions[i]) {
+                const func = buttonsClickFunctions[i];
+                menuItem.mouseClicked(() => {func(); setTimeout(() => this.hideMenuItems(), 300);});
+            } else {
+                menuItem.mouseClicked(() => this.selectMenuItem(label));
+            }
             i++;
 
             this.menuItems.push(menuItem);
         }
 
         this.hideMenuItems();
-        renderer.register(this);
+        elementStore.register(this);
     }
 
     selectMenuItem(text) {
+        setTimeout(() => this.hideMenuItems(), 300);
         for (let menuItem of this.menuItems) {
-            menuItem.style('background', null);
+            menuItem.style(BACKGROUND, null);
         }
 
         const selected = this.menuItems.filter(button => button.elt.innerHTML === text)[0];        
         if (this.selectionMenuMode) {
-            selected.style('background', 'darkgrey');
+            selected.style(BACKGROUND, 'darkgrey');
         }
 
         this.value = this.valueSet[selected.elt.innerHTML];
-        setTimeout(() => this.hideMenuItems(), 300);
         this.baseButton.elt.innerHTML = this.text + '<br/>' + '(' + text + ')';
     }
 
     showMenuItems() {
-        renderer.menus.forEach(menu => menu.hideMenuItems());
+        elementStore.menus.forEach(menu => menu.hideMenuItems());
         this.menuItemsShown = true;
         for (let button of this.menuItems) {
             button.show();

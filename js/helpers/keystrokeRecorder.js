@@ -8,4 +8,4 @@ function recordKey(s) {
     }
 }
 
-addEventListener('keyup', recordKey);
+addEventListener(KEYUP, recordKey);

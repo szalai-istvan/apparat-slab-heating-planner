@@ -21,9 +21,9 @@ function checkRadioButtons() {
     for (let radioButton of roomPrefillButtons) {
         const inputElement = radioButton.childNodes[0];
         if (roomNames.includes(inputElement.value)) {
-            inputElement.setAttribute('disabled', true);
+            inputElement.setAttribute(DISABLED, true);
         } else {
-            inputElement.removeAttribute('disabled');
+            inputElement.removeAttribute(DISABLED);
         }
         inputElement.checked = false;
     }
