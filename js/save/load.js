@@ -33,18 +33,14 @@ function loadProject(text = undefined) {
     setTimeout(() => tooltip.roomAddingFinished(), 3_000);
   }
 
-  let panels = setupAndGetPanels(projectState);
+  let floorHeaters = setupAndGetFloorHeaters(projectState);
 
-  panelContext.panels = panels;
+  floorHeaterContext.floorHeaters = floorHeaters;
   panels.forEach((panel) => (panel.constructor = { name: "Panel" }));
   panels.forEach((panel) => renderer.register(panel));
   if (panelContext.panels.length) {
     setTimeout(() => tooltip.panelAdded(), 3_000);
   }
-
-  seir.forEach((s) => StructureElementManager.recalculateBeams(s));
-  seir.forEach((s) => StructureElementManager.setAlignment(s, s.alignment));
-  selectionContext.lastSelectingContext = panelContext;
 
   screenContext.sumDrag = projectState.screen.sumDrag;
   screenContext.zoom = projectState.screen.zoom;

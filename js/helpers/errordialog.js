@@ -1,14 +1,18 @@
-const errorDialog = document.getElementById('errorDialog');
-const errorMessageParagraph = document.getElementById('errorMessageParagraph');
-const errorMessageOkButton = document.getElementById('errorMessageOkButton');
+const messageDialog = document.getElementById('messageDialog');
+const messageParagraph = document.getElementById('messageParagraph');
+const messageOkButton = document.getElementById('messageOkButton');
 
 function displayMessage(text) {
-    errorMessageParagraph.innerHTML = text;
-    errorDialog.showModal();
+    messageParagraph.innerHTML = text;
+    messageDialog.showModal();
     screenContext.toggleControls();
 }
 
-errorMessageOkButton.addEventListener('click', () => {
-    errorDialog.close();
+messageOkButton.addEventListener(CLICK, () => {
+    messageDialog.close();
     screenContext.toggleControls();
 });
+
+function displayHelpData() {
+  displayMessage("Segítség kérése:<br/>e-mail: sjb@apparat.hu");
+}

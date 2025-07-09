@@ -11,6 +11,7 @@ class FloorHeaterRenderer {
         const lengthFrom = - length / 2;
         const lengthTo = length / 2;
         const tubeDistance = TUBE_DISTANCE_IN_METER * ratio;
+        const diameter = tubeDistance;
 
         push();
 
@@ -18,8 +19,12 @@ class FloorHeaterRenderer {
         rotate(alignment * 90);
 
         let tube = - width / 2;
+        let angles = [90, 270];
         while (tube <= width / 2) {
             line(lengthFrom, tube, lengthTo, tube);
+            arc(lengthTo, tube + tubeDistance / 2, diameter, diameter, angles[0], angles[1]);
+
+            angles = [angles[1], angles[0]];
             tube += tubeDistance;
         }
 

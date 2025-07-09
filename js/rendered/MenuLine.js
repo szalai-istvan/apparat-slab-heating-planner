@@ -8,12 +8,14 @@ class MenuLine {
     hideTimeOutId;
     valueSet = {};
     shouldBeRendered;
+    selectionMenuMode;
 
-    constructor({position, size, text, buttons, labelerFunc, shouldBeRendered}) {
+    constructor({position, size, optionSize, text, buttons, labelerFunc, shouldBeRendered, buttonsClickFunctions, selectionMenuMode}) {
         this.position = position;
         this.size = size;
         this.text = text + ' >';
         this.shouldBeRendered = shouldBeRendered;
+        this.selectionMenuMode = selectionMenuMode ?? true;
 
         this.baseButton = createButton(this.text);
         const baseButton = this.baseButton;
@@ -23,17 +25,22 @@ class MenuLine {
 
         let i = 0;
         const labeler = labelerFunc ? labelerFunc : a => a;
+        buttonsClickFunctions = buttonsClickFunctions || [];
         for (let button of buttons) {
             const label = labeler(button);
             const menuItem = createButton(label);
             this.valueSet[label] = button;
 
-            menuItem.size(SMALL_BUTTON_SIZE.x, SMALL_BUTTON_SIZE.y);
+            menuItem.size(optionSize.x, optionSize.y);
             menuItem.mouseClicked(() => this.selectMenuItem(label));
-            menuItem.position(position.x + size.x, position.y + SMALL_BUTTON_SIZE.y * i++);
+            menuItem.position(position.x + size.x, position.y + optionSize.y * i);
             menuItem.style('border-radius', '0');
             menuItem.style('border', '1px solid black');
             menuItem.elt.classList.add('hovered');
+
+            buttonsClickFunctions[i] && menuItem.mouseClicked(buttonsClickFunctions[i]);
+            i++;
+
             this.menuItems.push(menuItem);
         }
 
@@ -45,8 +52,12 @@ class MenuLine {
         for (let menuItem of this.menuItems) {
             menuItem.style('background', null);
         }
-        const selected = this.menuItems.filter(button => button.elt.innerHTML === text)[0];
-        selected.style('background', 'darkgrey');
+
+        const selected = this.menuItems.filter(button => button.elt.innerHTML === text)[0];        
+        if (this.selectionMenuMode) {
+            selected.style('background', 'darkgrey');
+        }
+
         this.value = this.valueSet[selected.elt.innerHTML];
         setTimeout(() => this.hideMenuItems(), 300);
         this.baseButton.elt.innerHTML = this.text + '<br/>' + '(' + text + ')';

@@ -1,9 +1,9 @@
 function getProjectState() {
-  const rooms = roomContext.rooms
-    .filter((room) => RoomManager.roomIsConfigured(room))
-    .map(withSaveablePanels);
+  const rooms = roomContext.rooms.filter((room) =>
+    RoomManager.roomIsConfigured(room)
+  );
 
-    let projectState = {
+  let projectState = {
     blueprints: {
       data: blueprintContext.blueprints.map((bp) =>
         bp.data.canvas.toDataURL("image/png")
@@ -21,19 +21,16 @@ function getProjectState() {
       zoom: screenContext.zoom,
     },
     grid: {
-      seed: gridContext.seed
+      seed: gridContext.seed,
     },
+    floorHeaters: floorHeaterContext.floorHeaters,
   };
-  projectState = JSON.stringify(projectState);
-  roomContext.setupRoomsInPanels();
-  return projectState;
+
+  return JSON.stringify(projectState);
 }
 
 function getProjectStateSize() {
-  return (
-    roundNumber(getProjectState().length / 1024 / 1024, 2) +
-    " MB"
-  );
+  return roundNumber(getProjectState().length / 1024 / 1024, 2) + " MB";
 }
 
 function downloadProjectState() {
@@ -59,10 +56,6 @@ function downloadProjectState() {
 function saveProject() {
   const stateStr = getProjectState();
   localStorage.setItem(LOCAL_STORAGE_DATA_KEY, stateStr);
-}
-
-function withSaveablePanels(room) {
-  return room;
 }
 
 if (SAVE_TO_LOCAL_STORAGE_ENABLED) {

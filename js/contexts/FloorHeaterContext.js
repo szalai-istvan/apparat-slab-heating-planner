@@ -12,7 +12,7 @@ class FloorHeaterContext {
             return;
         }
 
-        if (!height) {
+        if (!length) {
             displayMessage('A baloldali menü segítségével válassza ki a kívánt hosszt!');
             return;
         }
@@ -42,15 +42,24 @@ class FloorHeaterContext {
         }
     }
 
+    tryToDeselect() {
+        if (!this.selectedFloorHeater) {
+            return true;
+        }
+
+        const successfulDeselect = FloorHeaterSelector.tryToDeselect(this.selectedFloorHeater);
+        if (successfulDeselect) {
+            this.selectedFloorHeater = null;
+        }
+        return successfulDeselect;
+    }
+
     checkForSelection() {
         // TODO
     }
 
     clear() {
-        // TODO
-    }
-
-    tryToDeselect() {
+        console.log('floorHEatingContext.clear()');
         // TODO
     }
 }

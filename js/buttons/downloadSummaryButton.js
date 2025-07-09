@@ -11,7 +11,7 @@ function openTransportDialog() {
     screenContext.toggleControls();
 }
 
-transportDialogOkButton.addEventListener('click', () => {
+transportDialogOkButton.addEventListener(CLICK, () => {
     const km = Number(transportInput.value.replace(",", "."));
     if (km < 0) {
         displayMessage('Negatív távolság megadása nem lehetséges.');
@@ -26,7 +26,7 @@ transportDialogOkButton.addEventListener('click', () => {
     startExcelExport(km);
 });
 
-transportDialogCloseButton.addEventListener('click', () => {
+transportDialogCloseButton.addEventListener(CLICK, () => {
     transportDialog.close();
     screenContext.toggleControls();
 });

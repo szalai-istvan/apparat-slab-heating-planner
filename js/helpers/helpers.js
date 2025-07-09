@@ -82,25 +82,6 @@ function roundNumber(number, decimals) {
   return Math.round(number * x) / x;
 }
 
-function displayHelpData() {
-  displayMessage("Segítség kérése:<br/>e-mail: sjb@apparat.hu");
-}
-
 function calculateCorrector(lim, coord) {
   return (Math.abs(lim - coord) + lim - coord) / (2 * screenContext.zoom);
-}
-
-function range(min, max, delta, suffix = undefined) {
-  const result = [];
-  let value = min;
-  while (value <= max) {
-    result.push(value);
-    value += delta;
-    value = roundNumber(value, 1);
-  }
-
-  if (suffix) {
-    return result.map(a => a + suffix);
-  }
-  return result;
 }

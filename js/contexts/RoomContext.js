@@ -140,6 +140,26 @@ class RoomContext {
         }
         return true;
     }
+
+     registerRelocatedFloorHeatingAndReturnContainingRoom(floorHeater) {
+        const boundaryPoints = FloorHeaterManager.getBoundaryPoints(floorHeater);
+        const p1 = boundaryPoints.p1;
+        const p2 = boundaryPoints.p2;
+
+        const room = this.rooms.filter(r => RoomManager.pointIsInsideRoom(r, p1) && RoomManager.pointIsInsideRoom(r, p2))[0];
+        if (!room) {
+            displayMessage('A padlófűtő elem része vagy egésze szobán kívül van!<br/>Helyezze el máshová!');    
+            return undefined;
+        }
+
+        /*const successfulRegister = RoomManager.tryToRegisterPanelGroup(room, panel);
+        if (!successfulRegister) {
+            displayMessage('Egy adott szobában nem helyezhet el különböző irányban álló paneleket!');
+            return undefined;
+        } TODO Ez kell vajon? */ 
+
+        return room;
+    }
 }
 
 const roomContext = new RoomContext();

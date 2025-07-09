@@ -1,5 +1,5 @@
-const MODALS = [errorDialog, fileUploadDialogConfirm, scalingDialogConfirm, scalingDialog, addRoomDialog, pdfUploadDialog, transportDialog];
-const ENTERABLE_BUTTONS = [errorMessageOkButton, fileUploadDialogConfirmButton, scalingDialogConfirmButton, scalingDialogCloseButton, addRoomButton, pdfUploadDialogCloseButton, transportDialogOkButton];
+const MODALS = [messageDialog, fileUploadDialogConfirm, scalingDialogConfirm, scalingDialog, addRoomDialog, pdfUploadDialog, transportDialog];
+const ENTERABLE_BUTTONS = [messageOkButton, fileUploadDialogConfirmButton, scalingDialogConfirmButton, scalingDialogCloseButton, addRoomButton, pdfUploadDialogCloseButton, transportDialogOkButton];
 
 function disableContextMenu() {
   for (let element of document.getElementsByTagName("body")) {

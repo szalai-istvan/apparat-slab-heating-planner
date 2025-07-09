@@ -15,19 +15,19 @@ function showScalingDialog() {
     setTimeout(() => scalingInput.focus(), 200);
 }
 
-scalingDialogCloseButton.addEventListener('click', (event) => {
+scalingDialogCloseButton.addEventListener(CLICK, (event) => {
     const scalingValue = scalingInput.value.replace(",", ".");
     scaleContext.processScalingValue(scalingValue);
 });
 
-scalingDialogConfirmButton.addEventListener('click', () => {
+scalingDialogConfirmButton.addEventListener(CLICK, () => {
     scalingDialogConfirm.close();
     screenContext.toggleControls();
     scaleContext.clear();
     scaleContext.startScaling();
 });
 
-scalingDialogCancelButton.addEventListener('click', () => {
+scalingDialogCancelButton.addEventListener(CLICK, () => {
     scalingDialogConfirm.close();
     screenContext.toggleControls();
 });

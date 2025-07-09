@@ -26,16 +26,15 @@ function clearBlueprints() {
   } else {
     blueprintContext.clearBlueprints();
   }
-
 }
 
-fileUploadDialogConfirmButton.addEventListener('click', () => {
+fileUploadDialogConfirmButton.addEventListener(CLICK, () => {
   fileUploadDialogConfirm.close();
   screenContext.toggleControls();
   blueprintContext.clearBlueprints();
 });
 
-fileUploadDialogCancelButton.addEventListener('click', () => {
+fileUploadDialogCancelButton.addEventListener(CLICK, () => {
   fileUploadDialogConfirm.close();
   screenContext.toggleControls();
 });
@@ -89,7 +88,7 @@ function displayPageSelector(numberOfPages) {
   screenContext.toggleControls();
 }
 
-pdfUploadDialogCloseButton.addEventListener('click', async () => {
+pdfUploadDialogCloseButton.addEventListener(CLICK, async () => {
   let pageNumber = Number(pdfUploadDialogInput.value);
   if (!(pageNumber > 0) || pageNumber > pdf._pdfInfo.numPages) {
     displayMessage(`Érvénytelen oldalszám: ${pdfUploadDialogInput.value}. Az első oldal lesz megjelenítve.`);

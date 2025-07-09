@@ -56,3 +56,9 @@ const NUMBER_FORMAT_OBJECT = new Intl.NumberFormat("en-US");
 const RED = 'red';
 const BLUE = 'blue';
 const TUBE_DISTANCE_IN_METER = 0.1;
+
+// RenderedElementStore constants
+const CLASS_FLOOR_HEATER = 'FloorHeater';
+
+// strings and misc constants
+const CLICK = 'click';

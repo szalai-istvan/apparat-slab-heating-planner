@@ -9,7 +9,7 @@ class Renderer {
     scaleContext = null;
     tooltip = null;
 
-    constructor() { }
+    constructor() {}
 
     register(obj) {
         const className = getClassName(obj);

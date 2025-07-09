@@ -35,31 +35,15 @@ function createButtons() {
 
     const leftRibbonButtonSizes = [];
 
-    new ButtonWrapper({
-        text: 'Projekt mentése',
-        size: TALL_SMALL_BUTTON_SIZE,
+    new MenuLine({
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        onClick: () => downloadProjectState(),
+        size: TALL_SMALL_BUTTON_SIZE,
+        optionSize: TALL_SMALL_BUTTON_SIZE,
+        text: 'Projekt',
+        buttons: [ 'Új projekt', 'Projekt mentése', 'Projekt betöltése'],
+        buttonsClickFunctions: [() => clearBlueprints(), () => downloadProjectState(), () => uploadProject()],
+        selectionMenuMode: false,
         shouldBeRendered: () => true
-    });
-    leftRibbonButtonSizes.push(TALL_SMALL_BUTTON_SIZE);
-
-    new ButtonWrapper({
-        text: 'Projekt betöltése',
-        size: TALL_SMALL_BUTTON_SIZE,
-        position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        onClick: () => uploadProject(),
-        shouldBeRendered: () => true
-    });
-    leftRibbonButtonSizes.push(TALL_SMALL_BUTTON_SIZE);
-
-    
-    clearBlueprintsButton = new ButtonWrapper({
-        text: 'Alaprajzok eltávolítása',
-        size: TALL_SMALL_BUTTON_SIZE,
-        position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        onClick: () => clearBlueprints(),
-        shouldBeRendered: () => blueprintContext.blueprintDataIsPresent()
     });
     leftRibbonButtonSizes.push(TALL_SMALL_BUTTON_SIZE);
     addLeftRibbonDelimeter(sidePanelButtonPosition(leftRibbonButtonSizes).y);
@@ -67,8 +51,9 @@ function createButtons() {
     floorHeaterWidthMenu = new MenuLine({
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
         size: TALL_SMALL_BUTTON_SIZE,
+        optionSize: SMALL_BUTTON_SIZE,
         text: 'Szélesség',
-        buttons: range(0.8, 1.2, 0.4),
+        buttons: FLOOR_HEATER_TYPES.width,
         labelerFunc: a => (a + ' m').replace('.', ','),
         shouldBeRendered: () => roomContext.thereAreRooms()
     });
@@ -77,8 +62,9 @@ function createButtons() {
     floorHeaterLengthMenu = new MenuLine({
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
         size: TALL_SMALL_BUTTON_SIZE,
+        optionSize: SMALL_BUTTON_SIZE,
         text: 'Hosszúság',
-        buttons: range(1, 5.5, 0.5),
+        buttons: FLOOR_HEATER_TYPES.length,
         labelerFunc: a => (a + ' m').replace('.', ','),
         shouldBeRendered: () => roomContext.thereAreRooms()
     });
@@ -121,5 +107,4 @@ function createButtons() {
         onClick: () => displayHelpData(),
         shouldBeRendered: () => true
     });
-
 }
