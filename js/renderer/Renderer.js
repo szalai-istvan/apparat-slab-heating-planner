@@ -2,7 +2,7 @@ class Renderer {
     constructor() {}
 
     renderTranslatedObjects() {
-        elementStore.bluePrints.forEach(bluePrint => BlueprintRenderer.draw(bluePrint));
+        elementStore.blueprints.forEach(bluePrint => BlueprintRenderer.draw(bluePrint));
         elementStore.rooms.forEach(room => RoomRenderer.draw(room));
         ScaleContextRenderer.draw(elementStore.scaleContext);
         elementStore.buttons.forEach(button => ButtonWrapperRenderer.draw(button));

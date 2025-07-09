@@ -1,7 +1,7 @@
 var jsonInput = document.getElementById("jsonInput");
 
-function loadProjectState() {
-  return JSON.parse(localStorage.getItem(LOCAL_STORAGE_DATA_KEY));
+function uploadProject() {
+  jsonInput.click();
 }
 
 function loadProject(text = undefined) {
@@ -15,7 +15,7 @@ function loadProject(text = undefined) {
 
   const topLeftCoordinates = projectState.blueprints.topLeft;
   for (let i = 0; i < topLeftCoordinates.length; i++) {
-    blueprintContext.blueprints[i].topLeftPosition = topLeftCoordinates[i];
+    elementStore.blueprints[i].topLeftPosition = topLeftCoordinates[i];
   }
 
   scaleContext.pixelsPerMetersRatio = projectState.scale.pixelsPerMeterRatio;
@@ -26,19 +26,16 @@ function loadProject(text = undefined) {
   }
 
   const rooms = projectState.rooms.rooms;
-  roomContext.rooms = rooms;
-  rooms.forEach((room) => (room.constructor = { name: "Room" }));
+  rooms.forEach((room) => (room.constructor = { name: CLASS_ROOM }));
   rooms.forEach((room) => elementStore.register(room));
-  if (roomContext.rooms.length) {
+  if (elementStore.rooms.length) {
     setTimeout(() => tooltip.roomAddingFinished(), 3_000);
   }
 
-  let floorHeaters = setupAndGetFloorHeaters(projectState);
-
-  floorHeaterContext.floorHeaters = floorHeaters;
-  panels.forEach((panel) => (panel.constructor = { name: "Panel" }));
-  panels.forEach((panel) => elementStore.register(panel));
-  if (panelContext.panels.length) {
+  const floorHeaters = projectState.floorHeaters.floorHeaters || [];
+  floorHeaters.forEach((floorHeaters) => (floorHeaters.constructor = { name: CLASS_FLOOR_HEATER }));
+  floorHeaters.forEach((floorHeaters) => elementStore.register(floorHeaters));
+  if (elementStore.floorHeaters.length) {
     setTimeout(() => tooltip.panelAdded(), 3_000);
   }
 
@@ -48,14 +45,8 @@ function loadProject(text = undefined) {
   gridContext.setSeed(projectState.grid.seed);
 }
 
-function setupAndGetPanels(projectState) {
-  const panels = [];
-  const rooms = projectState.rooms.rooms;
-  return panels;
-}
-
-function uploadProject() {
-  jsonInput.click();
+function loadProjectState() {
+  return JSON.parse(localStorage.getItem(LOCAL_STORAGE_DATA_KEY));
 }
 
 function handleJsonSelect(event) {

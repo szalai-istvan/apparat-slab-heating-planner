@@ -1,5 +1,5 @@
 class ElementStore {
-  bluePrints = [];
+  blueprints = [];
   rooms = [];
   floorHeaters = [];
 
@@ -20,7 +20,7 @@ class ElementStore {
     if (className === CLASS_FLOOR_HEATER) {
       this.floorHeaters.push(obj);
     } else if (className === CLASS_BLUEPRINT) {
-      this.bluePrints.push(obj);
+      this.blueprints.push(obj);
     } else if (className === CLASS_ROOM) {
       this.rooms.push(obj);
     } else if (className === CLASS_SCALE_CONTEXT) {
@@ -45,7 +45,7 @@ class ElementStore {
     if (className === CLASS_ROOM) {
       this.rooms = this.rooms.filter((x) => x !== obj);
     } else if (className === CLASS_BLUEPRINT) {
-      this.bluePrints = this.bluePrints.filter((x) => x !== obj);
+      this.blueprints = this.blueprints.filter((x) => x !== obj);
     } else if (className === CLASS_FLOOR_HEATER) {
       // TODO class nevek kicserélése konstansokra
       this.floorHeaters = this.floorHeaters.filter((x) => x !== obj);

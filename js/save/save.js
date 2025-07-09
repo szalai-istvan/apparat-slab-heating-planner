@@ -1,38 +1,3 @@
-function getProjectState() {
-  const rooms = roomContext.rooms.filter((room) =>
-    RoomManager.roomIsConfigured(room)
-  );
-
-  let projectState = {
-    blueprints: {
-      data: blueprintContext.blueprints.map((bp) =>
-        bp.data.canvas.toDataURL("image/png")
-      ),
-      topLeft: blueprintContext.blueprints.map((bp) => bp.topLeftPosition),
-    },
-    scale: {
-      pixelsPerMeterRatio: scaleContext.pixelsPerMetersRatio,
-    },
-    rooms: {
-      rooms: rooms,
-    },
-    screen: {
-      sumDrag: screenContext.sumDrag,
-      zoom: screenContext.zoom,
-    },
-    grid: {
-      seed: gridContext.seed,
-    },
-    floorHeaters: floorHeaterContext.floorHeaters,
-  };
-
-  return JSON.stringify(projectState);
-}
-
-function getProjectStateSize() {
-  return roundNumber(getProjectState().length / 1024 / 1024, 2) + " MB";
-}
-
 function downloadProjectState() {
   const text = getProjectState();
   var element = document.createElement("a");
@@ -51,6 +16,39 @@ function downloadProjectState() {
   element.click();
 
   document.body.removeChild(element);
+}
+
+function getProjectState() {
+  const rooms = elementStore.rooms.filter((room) => RoomManager.roomIsConfigured(room));
+
+  let projectState = {
+    blueprints: {
+      data: elementStore.blueprints.map((bp) => bp.data.canvas.toDataURL("image/png")),
+      topLeft: elementStore.blueprints.map((bp) => bp.topLeftPosition),
+    },
+    scale: {
+      pixelsPerMeterRatio: scaleContext.pixelsPerMetersRatio,
+    },
+    rooms: {
+      rooms: rooms,
+    },
+    screen: {
+      sumDrag: screenContext.sumDrag,
+      zoom: screenContext.zoom,
+    },
+    grid: {
+      seed: gridContext.seed,
+    },
+    floorHeaters: {
+      floorHeaters: elementStore.floorHeaters
+    }
+  };
+
+  return JSON.stringify(projectState);
+}
+
+function getProjectStateSize() {
+  return roundNumber(getProjectState().length / 1024 / 1024, 2) + " MB";
 }
 
 function saveProject() {
