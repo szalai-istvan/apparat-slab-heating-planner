@@ -46,6 +46,10 @@ function createButtons() {
     leftRibbonButtonSizes.push(TALL_SMALL_BUTTON_SIZE);
     addLeftRibbonDelimeter(sidePanelButtonPosition(leftRibbonButtonSizes).y);
 
+    leftRibbonButtonSizes.push({x: 0, y: UI_TEXT_SIZE/2});
+    addSidePanelText('Padlófűtés elemek', sidePanelButtonPosition(leftRibbonButtonSizes).y);
+    leftRibbonButtonSizes.push({x: 0, y: UI_TEXT_SIZE/2});
+
     floorHeaterWidthMenu = new MenuLine({
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
         size: TALL_SMALL_BUTTON_SIZE,
@@ -75,6 +79,21 @@ function createButtons() {
         onClick: () => floorHeaterContext.createFloorHeater(),
         shouldBeRendered: () => roomContext.thereAreRooms()
     });
+    leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
+    addLeftRibbonDelimeter(sidePanelButtonPosition(leftRibbonButtonSizes).y);
+
+    leftRibbonButtonSizes.push({x: 0, y: UI_TEXT_SIZE/2});
+    addSidePanelText('Födémáttörések', sidePanelButtonPosition(leftRibbonButtonSizes).y);
+    leftRibbonButtonSizes.push({x: 0, y: UI_TEXT_SIZE/2});
+
+    addFloorHeaterButton = new ButtonWrapper({
+        text: 'Hozzáadás',
+        size: SMALL_BUTTON_SIZE,
+        position: sidePanelButtonPosition(leftRibbonButtonSizes),
+        onClick: () => {},
+        shouldBeRendered: () => roomContext.thereAreRooms()
+    });
+
     leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
     addLeftRibbonDelimeter(sidePanelButtonPosition(leftRibbonButtonSizes).y);
 

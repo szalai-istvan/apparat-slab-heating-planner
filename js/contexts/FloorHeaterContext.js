@@ -1,6 +1,7 @@
 class FloorHeaterContext {
     cachedSelection = null;
     selectedFloorHeater = null;
+    alignment = 1;
 
     createFloorHeater() {
         const width = floorHeaterWidthMenu.value;
@@ -16,7 +17,7 @@ class FloorHeaterContext {
             return;
         }
 
-        const floorHeater = new FloorHeater(length, width);
+        const floorHeater = new FloorHeater(length, width, this.alignment);
         selectionContext.selectObject(floorHeater);
     }
 
@@ -47,6 +48,7 @@ class FloorHeaterContext {
 
         const successfulDeselect = FloorHeaterSelector.tryToDeselect(this.selectedFloorHeater);
         if (successfulDeselect) {
+            this.alignment = this.selectedFloorHeater.alignment;
             this.selectedFloorHeater = null;
         }
         return successfulDeselect;

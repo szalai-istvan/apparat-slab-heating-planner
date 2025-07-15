@@ -15,6 +15,14 @@ class UiBackgroundRenderer {
             line(del.p1.x, del.p1.y, del.p2.x, del.p2.y);
         }
 
+        textAlign(CENTER, CENTER);
+        textSize(UI_TEXT_SIZE);
+        noStroke();
+        fill(DEFAULT_TEXT_COLOR);
+        for (let uiText of UI_TEXTS) {
+            text(uiText.text, uiText.position.x, uiText.position.y);
+        }
+
         image(apparatLogo, docSize.vw - 293, 5, 287, 49.5);
     }
 }

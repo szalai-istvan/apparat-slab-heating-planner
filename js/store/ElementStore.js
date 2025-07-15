@@ -2,6 +2,7 @@ class ElementStore {
   blueprints = [];
   rooms = [];
   floorHeaters = [];
+  boxes = [];
 
   buttons = [];
   menus = [];
@@ -19,6 +20,8 @@ class ElementStore {
 
     if (className === CLASS_FLOOR_HEATER) {
       this.floorHeaters.push(obj);
+    } else if (className === CLASS_BOX) {
+      this.boxes.push(obj);
     } else if (className === CLASS_BLUEPRINT) {
       this.blueprints.push(obj);
     } else if (className === CLASS_ROOM) {
@@ -48,6 +51,8 @@ class ElementStore {
       this.blueprints = this.blueprints.filter((x) => x !== obj);
     } else if (className === CLASS_FLOOR_HEATER) {
       this.floorHeaters = this.floorHeaters.filter((x) => x !== obj);
+    } else if (className === CLASS_BOX) {
+      this.boxes = this.boxes.filter((x) => x !== obj);
     } else {
       throw new Error(
         `Deleting render object of type ${className} is unspecified.`

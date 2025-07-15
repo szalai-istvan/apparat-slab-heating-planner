@@ -49,6 +49,10 @@ function addLeftRibbonDelimeter(y) {
   });
 }
 
+function addSidePanelText(text, y) {
+  UI_TEXTS.push({text: text, position: {x: LEFT_RIBBON_WIDTH/2, y: y}});
+}
+
 function pointIsInside(point, middlePoint, areaWidth, areaHeight) {
   const x = point.x;
   const y = point.y;
