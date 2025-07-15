@@ -13,7 +13,7 @@ class FloorHeaterSelector {
 
     static tryToDeselect(floorHeater) {
         if (floorHeater.isSelectedForDrag) {
-            floorHeater.centerPosition = screenContext.getMousePositionAbsolute();
+            floorHeater.centerPosition = gridContext.closestGridPointToCursor();
         }
 
         const destinationRoom = roomContext.registerRelocatedFloorHeatingAndReturnContainingRoom(floorHeater);

@@ -80,6 +80,14 @@ class RoomContext {
         floorHeaterContext.clear();
     }
 
+    selectedRoomIsConfiguredOrNoRoomIsSelected() {
+        if (!this.selectedRoom) {
+            return true;
+        }
+
+        return RoomManager.roomIsConfigured(this.selectedRoom);
+    }
+
     addPoint() {
         const selectedRoom = this.selectedRoom;
         if (selectedRoom && !RoomManager.roomIsConfigured(selectedRoom)) {
@@ -92,18 +100,6 @@ class RoomContext {
                 displayMessage('A pont felvétele átfedést okozna a szobák között. Válasszon másik pontot.');
             }    
         }
-    }
-
-    selectedRoomIsConfiguredOrNoRoomIsSelected() {
-        if (!this.selectedRoom) {
-            return true;
-        }
-
-        return RoomManager.roomIsConfigured(this.selectedRoom);
-    }
-
-    displayDeleteButton() {
-        return this.selectedRoom && RoomManager.roomIsConfigured(this.selectedRoom);
     }
 
     thereAreRooms() {

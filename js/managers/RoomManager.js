@@ -2,7 +2,7 @@ class RoomManager {
 
     static addPoint(room) {
         const points = room.points;
-        const mousePosition = screenContext.getMousePositionAbsolute();
+        const mousePosition = gridContext.closestGridPointToCursor();
 
         if (points.length >= 2) {
             return;

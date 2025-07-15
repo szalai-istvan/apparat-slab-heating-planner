@@ -78,13 +78,22 @@ function createButtons() {
     leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
     addLeftRibbonDelimeter(sidePanelButtonPosition(leftRibbonButtonSizes).y);
 
+    deleteButton = new ButtonWrapper({
+        text: 'Törlés',
+        size: SMALL_BUTTON_SIZE,
+        position: sidePanelButtonPosition(leftRibbonButtonSizes),
+        onClick: () => selectionContext.removeSelected(),
+        shouldBeRendered: () => selectionContext.selectedObject
+    });
+    leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
+
     const rotatePosition = sidePanelButtonPosition(leftRibbonButtonSizes);
     rotateLeftButton = new ButtonWrapper({
         text: '↶',
         size: HALF_WIDTH_BUTTON_SIZE,
         position: rotatePosition,
-        onClick: () => {},
-        shouldBeRendered: () => true
+        onClick: () => FloorHeaterManager.rotateSelected(-1),
+        shouldBeRendered: () => floorHeaterContext.selectedFloorHeater
     });
     
     rotatePosition.x += HALF_WIDTH_BUTTON_SIZE.x;
@@ -92,26 +101,17 @@ function createButtons() {
         text: '↷',
         size: HALF_WIDTH_BUTTON_SIZE,
         position: rotatePosition,
-        onClick: () => {},
-        shouldBeRendered: () => true
+        onClick: () => FloorHeaterManager.rotateSelected(1),
+        shouldBeRendered: () => floorHeaterContext.selectedFloorHeater
     });
     leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);
-
-    deleteButton = new ButtonWrapper({
-        text: 'Törlés',
-        size: SMALL_BUTTON_SIZE,
-        position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        onClick: () => {},
-        shouldBeRendered: () => true
-    });
-    leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
 
     flipButton = new ButtonWrapper({
         text: 'Tükrözés',
         size: SMALL_BUTTON_SIZE,
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        onClick: () => {},
-        shouldBeRendered: () => true
+        onClick: () => FloorHeaterManager.flipSelected(),
+        shouldBeRendered: () => floorHeaterContext.selectedFloorHeater
     });
     leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
 

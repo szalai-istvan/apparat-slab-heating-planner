@@ -14,4 +14,47 @@ class FloorHeaterManager {
             };
         }
     }
+
+    static mouseCursorIsInsideRect(floorHeater) {
+        if (!floorHeater.centerPosition) {
+            return false;
+        }
+
+        if (floorHeater.alignment % 2 === 1) {
+            return pointIsInside(
+                screenContext.getMousePositionAbsolute(),
+                floorHeater.centerPosition, 
+                floorHeater.rectHeight,
+                floorHeater.rectWidth
+            );
+        }
+        return pointIsInside(
+            screenContext.getMousePositionAbsolute(),
+            floorHeater.centerPosition, 
+            floorHeater.rectWidth,
+            floorHeater.rectHeight
+        );
+
+    }
+
+    static rotateSelected(direction) {
+        const floorHeater = floorHeaterContext.selectedFloorHeater;
+        if (!floorHeater) {
+            return;
+        }
+
+        floorHeater.alignment = (floorHeater.alignment + Math.sign(direction)) % 4;
+        while (floorHeater.alignment < 0) {
+            floorHeater.alignment += 4;
+        }
+    }
+
+    static flipSelected() {
+        const floorHeater = floorHeaterContext.selectedFloorHeater;
+        if (!floorHeater) {
+            return;
+        }
+
+        floorHeater.colors = [floorHeater.colors[1], floorHeater.colors[0]];
+    }
 }

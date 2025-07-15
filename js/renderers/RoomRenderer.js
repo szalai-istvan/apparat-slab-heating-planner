@@ -21,6 +21,12 @@ class RoomRenderer {
             line(p1.x, p1.y, p2.x, p2.y);
         }
 
+        const p1 = points[0];
+        const p2 = points[2];
+        noStroke();
+        fill('#FFFFFFA0');
+        rect(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y), Math.abs(p2.x - p1.x), Math.abs(p2.y - p1.y));
+
         pop();
         const textCenterCoordinates = room.isSelected ? screenContext.getMousePositionAbsolute() : room.textCenterCoordinates;
         if (RoomManager.roomIsConfigured(room)) {
@@ -41,7 +47,7 @@ class RoomRenderer {
             return [];
         }
 
-        const p1 = points.length >= 2 ? points[1] : screenContext.getMousePositionAbsolute();
+        const p1 = points.length >= 2 ? points[1] : gridContext.closestGridPointToCursor();
 
         const pointsToDraw = [];
         pointsToDraw.push({x: p0.x, y: p0.y});

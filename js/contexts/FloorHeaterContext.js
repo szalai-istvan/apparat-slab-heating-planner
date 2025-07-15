@@ -53,16 +53,35 @@ class FloorHeaterContext {
     }
 
     checkForSelection() {
-        // TODO
+        if (this.cachedSelection) {
+            return this.cachedSelection;
+        }
+
+        const selection = elementStore.floorHeaters.filter(f => FloorHeaterManager.mouseCursorIsInsideRect(f));
+        const floorHeater = selection[0];
+        if (floorHeater) {
+            if (floorHeater !== this.selectedFloorHeater) {
+                // TODO TOOLTIP
+            }
+            this.cachedSelection = floorHeater;
+            return floorHeater;
+        }
+
+        // TODO TOOLTIP
+        return undefined;
     }
 
     clear() {
         elementStore.floorHeaters = [];
-        // TODO
+        // TODO tooltip
     }
 
     removeSelected() {
-        // TODO
+        const floorHeater = this.selectedFloorHeater;
+        if (floorHeater) {
+            elementStore.remove(floorHeater);
+            this.selectedFloorHeater = undefined;
+        }
     }
 }
 

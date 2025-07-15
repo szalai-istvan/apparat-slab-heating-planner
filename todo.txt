@@ -1,24 +1,19 @@
 https://github.com/szalai-istvan/apparat-heating-planner
 
 - downloadsummary gomb
-- csőrajzolás lehetősége
-- egy floorheaternél lehessen törölni a csöveket
 - dobozok rajzolásának lehetősége
-- csőszerkesztés
-- csővezeték hossza max 20 m
-- ↶↷ padlófűtők forgatása
 - új tooltipek
-- padlófűtő mozgatáskor ne másszon be a UI alá
-- padlófűtő flip duplikáció cső hozzáadása és elvétele
-- floorheatercontext
+- ne másszon be a UI alá
 - menurenderer hide if outside boundary
 - grid compliance bevezetése
-    - szobá
-    - padlófűtők
     - dobozok
     - csövek
 - blueprintrenderelés refaktor (CENTER CENTER) mode
-- rectMode refaktor
+
+- csőrajzolás lehetősége
+- csőszerkesztés
+- csővezeték hossza max 20 m
+- egy floorheaternél lehessen törölni a csöveket
 
 rajzoláskor meg kell adja a játékos, hogy hol lesz a födémátvezetés helye, oda annyi dobozt kell rajzoljln amennyit, egy doboz 8 cm széles, 35 cm hosszú
 a bekötő vezetékeket kézzel lehessen alrébb rakni, hogy a csatolt minta szerint falak alá ne essenek, lehetőleg folyosón menjenek.

@@ -57,11 +57,6 @@ function saveProject() {
   localStorage.setItem(LOCAL_STORAGE_DATA_KEY, stateStr);
 }
 
-function evictLocalStorageAndReload() {
-  localStorage.removeItem(LOCAL_STORAGE_DATA_KEY);
-  location.reload();
-}
-
 if (SAVE_TO_LOCAL_STORAGE_ENABLED) {
   setInterval(saveProject, 10_000);
 }

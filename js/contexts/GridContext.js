@@ -48,6 +48,10 @@ class GridContext {
             y: y
         };
     }
+
+    closestGridPointToCursor() {
+        return this.closestGridPoint(screenContext.getMousePositionAbsolute());
+    }
 }
 
 const gridContext = new GridContext();

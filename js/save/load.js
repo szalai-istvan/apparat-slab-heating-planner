@@ -43,6 +43,7 @@ function loadProject(text = undefined) {
   screenContext.zoom = projectState.screen.zoom;
 
   gridContext.setSeed(projectState.grid.seed);
+  selectionContext.lastSelectingContext = roomContext;
 }
 
 function loadProjectState() {
