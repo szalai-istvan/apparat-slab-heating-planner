@@ -17,6 +17,7 @@ class Renderer {
         runBetweenPushAndPop(UiBackgroundRenderer.drawUiBackground);
         TooltipRenderer.draw(elementStore.tooltip);
         elementStore.menus.forEach(menu => MenuRenderer.draw(menu));
+        elementStore.optionsBars.forEach(opt => OptionsBarRenderer.draw(opt));
 
         if (debugEnabled) {
             DebugInfoRenderer.drawCursorDebugInfo();

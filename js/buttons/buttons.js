@@ -38,7 +38,7 @@ function createButtons() {
         size: TALL_SMALL_BUTTON_SIZE,
         optionSize: TALL_SMALL_BUTTON_SIZE,
         text: 'Projekt',
-        buttons: [ 'Új projekt', 'Projekt mentése', 'Projekt betöltése'],
+        buttons: ['Új projekt', 'Projekt mentése', 'Projekt betöltése'],
         buttonsClickFunctions: [() => clearBlueprints(), () => downloadProjectState(), () => uploadProject()],
         selectionMenuMode: false,
         shouldBeRendered: () => true
@@ -46,51 +46,69 @@ function createButtons() {
     leftRibbonButtonSizes.push(TALL_SMALL_BUTTON_SIZE);
     addLeftRibbonDelimeter(sidePanelButtonPosition(leftRibbonButtonSizes).y);
 
-    leftRibbonButtonSizes.push({x: 0, y: UI_TEXT_SIZE/2});
+    leftRibbonButtonSizes.push({ x: 0, y: UI_TEXT_SIZE / 2 });
     addSidePanelText('Födémfűtés elemek', sidePanelButtonPosition(leftRibbonButtonSizes).y);
-    leftRibbonButtonSizes.push({x: 0, y: UI_TEXT_SIZE/2});
+    leftRibbonButtonSizes.push({ x: 0, y: UI_TEXT_SIZE / 2 });
 
-    slabHeaterWidthMenu = new MenuLine({
-        position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        size: TALL_SMALL_BUTTON_SIZE,
-        optionSize: SMALL_BUTTON_SIZE,
-        text: 'Szélesség',
-        buttons: SLAB_HEATER_TYPES.width,
-        labelerFunc: a => (a + ' m').replace('.', ','),
-        shouldBeRendered: () => roomContext.thereAreRooms()
+    slabHeaterWidthOptionsBar = new OptionsBar({
+        topLeftPosition: sidePanelButtonPosition(leftRibbonButtonSizes),
+        buttonSize: HALF_WIDTH_BUTTON_SIZE,
+        gap: { x: 0, y: BUTTON_GAP_Y / 2 },
+        columns: [{ buttons: [SLAB_HEATER_TYPES.width[0]] }, { buttons: [SLAB_HEATER_TYPES.width[1]] }
+    ],
+        valueResolver: optionsBar => optionsBar.selected[0] ? Number(optionsBar.selected[0]) : undefined,
+        // shouldBeRendered: () => roomContext.thereAreRooms(),
+        title: 'Szélesség (m)',
+        perColumnSelection: false,
+        shouldBeRendered: () => true
     });
-    leftRibbonButtonSizes.push(TALL_SMALL_BUTTON_SIZE);
+    leftRibbonButtonSizes.push({ x: 0, y: HALF_WIDTH_BUTTON_SIZE.y / 3 });
+    leftRibbonButtonSizes.push({ x: 0, y: HALF_WIDTH_BUTTON_SIZE.y / 2 });
 
-    slabHeaterLengthMenu = new MenuLine({
-        position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        size: TALL_SMALL_BUTTON_SIZE,
-        optionSize: SMALL_BUTTON_SIZE,
-        text: 'Hosszúság',
-        buttons: SLAB_HEATER_TYPES.length,
-        labelerFunc: a => (a + ' m').replace('.', ','),
-        shouldBeRendered: () => roomContext.thereAreRooms()
+    slabHeaterLengthOptionsBar = new OptionsBar({
+        topLeftPosition: sidePanelButtonPosition(leftRibbonButtonSizes),
+        buttonSize: HALF_WIDTH_BUTTON_SIZE,
+        gap: { x: 0, y: BUTTON_GAP_Y / 2 },
+        columns: [{ header: 'm', buttons: SLAB_HEATER_TYPES.length.m }, { header: 'cm', buttons: SLAB_HEATER_TYPES.length.cm }],
+        valueResolver: optionsBar => {
+            const s0 = optionsBar.selected[0];
+            const s1 = optionsBar.selected[1];
+            if (s0 && s1) {
+                return Number(s0) + 0.01 * Number(s1);
+            }
+            return undefined;
+        },
+        // shouldBeRendered: () => roomContext.thereAreRooms(),
+        shouldBeRendered: () => true,
+        title: 'Hosszúság'
     });
-    leftRibbonButtonSizes.push(TALL_SMALL_BUTTON_SIZE);
+    leftRibbonButtonSizes.push({ x: 0, y: HALF_WIDTH_BUTTON_SIZE.y / 3 });
+    leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);
+    leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);
+    leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);
+    leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);
+    leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);
+    leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);
 
     addSlabHeaterButton = new ButtonWrapper({
         text: 'Hozzáadás',
         size: SMALL_BUTTON_SIZE,
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
         onClick: () => slabHeaterContext.createSlabHeater(),
-        shouldBeRendered: () => roomContext.thereAreRooms()
+        shouldBeRendered: () => slabHeaterLengthOptionsBar.allValuesAreSet() && slabHeaterWidthOptionsBar.allValuesAreSet()
     });
     leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
     addLeftRibbonDelimeter(sidePanelButtonPosition(leftRibbonButtonSizes).y);
 
-    leftRibbonButtonSizes.push({x: 0, y: UI_TEXT_SIZE/2});
+    leftRibbonButtonSizes.push({ x: 0, y: UI_TEXT_SIZE / 2 });
     addSidePanelText('Födémáttörések', sidePanelButtonPosition(leftRibbonButtonSizes).y);
-    leftRibbonButtonSizes.push({x: 0, y: UI_TEXT_SIZE/2});
+    leftRibbonButtonSizes.push({ x: 0, y: UI_TEXT_SIZE / 2 });
 
     addSlabHeaterButton = new ButtonWrapper({
         text: 'Hozzáadás',
         size: SMALL_BUTTON_SIZE,
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        onClick: () => {},
+        onClick: () => { },
         shouldBeRendered: () => roomContext.thereAreRooms()
     });
 
@@ -114,7 +132,7 @@ function createButtons() {
         onClick: () => SlabHeaterManager.rotateSelected(-1),
         shouldBeRendered: () => slabHeaterContext.selectedSlabHeater
     });
-    
+
     rotatePosition.x += HALF_WIDTH_BUTTON_SIZE.x;
     rotateRightButton = new ButtonWrapper({
         text: '↷',

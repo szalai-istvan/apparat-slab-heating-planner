@@ -73,6 +73,7 @@ const CLASS_BUTTON_WRAPPER = 'ButtonWrapper';
 const CLASS_TOOLTIP = 'Tooltip';
 const CLASS_MENU_LINE = 'MenuLine';
 const CLASS_BOX = 'Box';
+const CLASS_OPTIONS_BAR = 'OptionsBar';
 
 // components
 const MODALS = [messageDialog, fileUploadDialogConfirm, scalingDialogConfirm, scalingDialog, addRoomDialog, pdfUploadDialog, transportDialog];
@@ -84,3 +85,6 @@ const DISABLED = 'disabled';
 const KEYUP = 'keyup';
 const CHANGE = 'change';
 const BACKGROUND = 'background';
+
+// OptionsBar constants
+const OPTIONS_BAR_TEXT_SIZE = 14;
