@@ -47,7 +47,7 @@ function createButtons() {
     addLeftRibbonDelimeter(sidePanelButtonPosition(leftRibbonButtonSizes).y);
 
     leftRibbonButtonSizes.push({x: 0, y: UI_TEXT_SIZE/2});
-    addSidePanelText('Padlófűtés elemek', sidePanelButtonPosition(leftRibbonButtonSizes).y);
+    addSidePanelText('Födémfűtés elemek', sidePanelButtonPosition(leftRibbonButtonSizes).y);
     leftRibbonButtonSizes.push({x: 0, y: UI_TEXT_SIZE/2});
 
     floorHeaterWidthMenu = new MenuLine({
