@@ -32,10 +32,10 @@ function loadProject(text = undefined) {
     setTimeout(() => tooltip.roomAddingFinished(), 3_000);
   }
 
-  const floorHeaters = projectState.floorHeaters.floorHeaters || [];
-  floorHeaters.forEach((floorHeaters) => (floorHeaters.constructor = { name: CLASS_FLOOR_HEATER }));
-  floorHeaters.forEach((floorHeaters) => elementStore.register(floorHeaters));
-  if (elementStore.floorHeaters.length) {
+  const slabHeaters = projectState.slabHeaters.slabHeaters || [];
+  slabHeaters.forEach((slabHeaters) => (slabHeaters.constructor = { name: CLASS_SLAB_HEATER }));
+  slabHeaters.forEach((slabHeaters) => elementStore.register(slabHeaters));
+  if (elementStore.slabHeaters.length) {
     setTimeout(() => tooltip.panelAdded(), 3_000);
   }
 

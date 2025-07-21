@@ -50,33 +50,33 @@ function createButtons() {
     addSidePanelText('Födémfűtés elemek', sidePanelButtonPosition(leftRibbonButtonSizes).y);
     leftRibbonButtonSizes.push({x: 0, y: UI_TEXT_SIZE/2});
 
-    floorHeaterWidthMenu = new MenuLine({
+    slabHeaterWidthMenu = new MenuLine({
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
         size: TALL_SMALL_BUTTON_SIZE,
         optionSize: SMALL_BUTTON_SIZE,
         text: 'Szélesség',
-        buttons: FLOOR_HEATER_TYPES.width,
+        buttons: SLAB_HEATER_TYPES.width,
         labelerFunc: a => (a + ' m').replace('.', ','),
         shouldBeRendered: () => roomContext.thereAreRooms()
     });
     leftRibbonButtonSizes.push(TALL_SMALL_BUTTON_SIZE);
 
-    floorHeaterLengthMenu = new MenuLine({
+    slabHeaterLengthMenu = new MenuLine({
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
         size: TALL_SMALL_BUTTON_SIZE,
         optionSize: SMALL_BUTTON_SIZE,
         text: 'Hosszúság',
-        buttons: FLOOR_HEATER_TYPES.length,
+        buttons: SLAB_HEATER_TYPES.length,
         labelerFunc: a => (a + ' m').replace('.', ','),
         shouldBeRendered: () => roomContext.thereAreRooms()
     });
     leftRibbonButtonSizes.push(TALL_SMALL_BUTTON_SIZE);
 
-    addFloorHeaterButton = new ButtonWrapper({
+    addSlabHeaterButton = new ButtonWrapper({
         text: 'Hozzáadás',
         size: SMALL_BUTTON_SIZE,
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        onClick: () => floorHeaterContext.createFloorHeater(),
+        onClick: () => slabHeaterContext.createSlabHeater(),
         shouldBeRendered: () => roomContext.thereAreRooms()
     });
     leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
@@ -86,7 +86,7 @@ function createButtons() {
     addSidePanelText('Födémáttörések', sidePanelButtonPosition(leftRibbonButtonSizes).y);
     leftRibbonButtonSizes.push({x: 0, y: UI_TEXT_SIZE/2});
 
-    addFloorHeaterButton = new ButtonWrapper({
+    addSlabHeaterButton = new ButtonWrapper({
         text: 'Hozzáadás',
         size: SMALL_BUTTON_SIZE,
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
@@ -111,8 +111,8 @@ function createButtons() {
         text: '↶',
         size: HALF_WIDTH_BUTTON_SIZE,
         position: rotatePosition,
-        onClick: () => FloorHeaterManager.rotateSelected(-1),
-        shouldBeRendered: () => floorHeaterContext.selectedFloorHeater
+        onClick: () => SlabHeaterManager.rotateSelected(-1),
+        shouldBeRendered: () => slabHeaterContext.selectedSlabHeater
     });
     
     rotatePosition.x += HALF_WIDTH_BUTTON_SIZE.x;
@@ -120,8 +120,8 @@ function createButtons() {
         text: '↷',
         size: HALF_WIDTH_BUTTON_SIZE,
         position: rotatePosition,
-        onClick: () => FloorHeaterManager.rotateSelected(1),
-        shouldBeRendered: () => floorHeaterContext.selectedFloorHeater
+        onClick: () => SlabHeaterManager.rotateSelected(1),
+        shouldBeRendered: () => slabHeaterContext.selectedSlabHeater
     });
     leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);
 
@@ -129,8 +129,8 @@ function createButtons() {
         text: 'Tükrözés',
         size: SMALL_BUTTON_SIZE,
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        onClick: () => FloorHeaterManager.flipSelected(),
-        shouldBeRendered: () => floorHeaterContext.selectedFloorHeater
+        onClick: () => SlabHeaterManager.flipSelected(),
+        shouldBeRendered: () => slabHeaterContext.selectedSlabHeater
     });
     leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
 

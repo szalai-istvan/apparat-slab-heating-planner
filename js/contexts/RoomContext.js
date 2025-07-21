@@ -77,7 +77,7 @@ class RoomContext {
     clear() {
         elementStore.rooms = [];
         selectionContext.tryToDeselect();
-        floorHeaterContext.clear();
+        slabHeaterContext.clear();
     }
 
     selectedRoomIsConfiguredOrNoRoomIsSelected() {
@@ -134,8 +134,8 @@ class RoomContext {
         return true;
     }
 
-    registerRelocatedFloorHeatingAndReturnContainingRoom(floorHeater) {
-        const boundaryPoints = FloorHeaterManager.getBoundaryPoints(floorHeater);
+    registerRelocatedSlabHeatingAndReturnContainingRoom(slabHeater) {
+        const boundaryPoints = SlabHeaterManager.getBoundaryPoints(slabHeater);
         const p1 = boundaryPoints.p1;
         const p2 = boundaryPoints.p2;
 

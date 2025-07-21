@@ -1,29 +1,29 @@
-class FloorHeaterSelector {
+class SlabHeaterSelector {
 
-    static select(floorHeater) {
-        floorHeater.isSelected = true;
+    static select(slabHeater) {
+        slabHeater.isSelected = true;
     }
 
-    static selectForDrag(floorHeater) {
-        floorHeater.isSelected = true;
-        floorHeater.isSelectedForDrag = true;
+    static selectForDrag(slabHeater) {
+        slabHeater.isSelected = true;
+        slabHeater.isSelectedForDrag = true;
         // panel.room && RoomManager.removePanelFromRoom(panel.room, panel);
         // panel.room = undefined; TODO Ez valószínűleg kelleni fog
     }
 
-    static tryToDeselect(floorHeater) {
-        if (floorHeater.isSelectedForDrag) {
-            floorHeater.centerPosition = gridContext.closestGridPointToCursor();
+    static tryToDeselect(slabHeater) {
+        if (slabHeater.isSelectedForDrag) {
+            slabHeater.centerPosition = gridContext.closestGridPointToCursor();
         }
 
-        const destinationRoom = roomContext.registerRelocatedFloorHeatingAndReturnContainingRoom(floorHeater);
+        const destinationRoom = roomContext.registerRelocatedSlabHeatingAndReturnContainingRoom(slabHeater);
         if (!destinationRoom) {
             return false;
         }
         //panel.room = destinationRoom;
 
-        floorHeater.isSelected = false;
-        floorHeater.isSelectedForDrag = false;
+        slabHeater.isSelected = false;
+        slabHeater.isSelectedForDrag = false;
 
         return true;
     }

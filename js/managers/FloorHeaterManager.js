@@ -1,60 +1,60 @@
-class FloorHeaterManager {
-    static getBoundaryPoints(floorHeater) {
-        const horizontalAlignment = floorHeater.alignment % 2 === 0;
+class SlabHeaterManager {
+    static getBoundaryPoints(slabHeater) {
+        const horizontalAlignment = slabHeater.alignment % 2 === 0;
 
         if (horizontalAlignment) {
             return {
-                p1: {x: floorHeater.centerPosition.x - floorHeater.length / 2, y: floorHeater.centerPosition.y - floorHeater.width / 2},
-                p2: {x: floorHeater.centerPosition.x + floorHeater.length / 2, y: floorHeater.centerPosition.y + floorHeater.width / 2}
+                p1: {x: slabHeater.centerPosition.x - slabHeater.length / 2, y: slabHeater.centerPosition.y - slabHeater.width / 2},
+                p2: {x: slabHeater.centerPosition.x + slabHeater.length / 2, y: slabHeater.centerPosition.y + slabHeater.width / 2}
             };
         } else {
             return {
-                p1: {x: floorHeater.centerPosition.x - floorHeater.width / 2, y: floorHeater.centerPosition.y - floorHeater.length / 2},
-                p2: {x: floorHeater.centerPosition.x + floorHeater.width / 2, y: floorHeater.centerPosition.y + floorHeater.length / 2}
+                p1: {x: slabHeater.centerPosition.x - slabHeater.width / 2, y: slabHeater.centerPosition.y - slabHeater.length / 2},
+                p2: {x: slabHeater.centerPosition.x + slabHeater.width / 2, y: slabHeater.centerPosition.y + slabHeater.length / 2}
             };
         }
     }
 
-    static mouseCursorIsInsideRect(floorHeater) {
-        if (!floorHeater.centerPosition) {
+    static mouseCursorIsInsideRect(slabHeater) {
+        if (!slabHeater.centerPosition) {
             return false;
         }
 
-        if (floorHeater.alignment % 2 === 1) {
+        if (slabHeater.alignment % 2 === 1) {
             return pointIsInside(
                 screenContext.getMousePositionAbsolute(),
-                floorHeater.centerPosition, 
-                floorHeater.rectHeight,
-                floorHeater.rectWidth
+                slabHeater.centerPosition, 
+                slabHeater.rectHeight,
+                slabHeater.rectWidth
             );
         }
         return pointIsInside(
             screenContext.getMousePositionAbsolute(),
-            floorHeater.centerPosition, 
-            floorHeater.rectWidth,
-            floorHeater.rectHeight
+            slabHeater.centerPosition, 
+            slabHeater.rectWidth,
+            slabHeater.rectHeight
         );
 
     }
 
     static rotateSelected(direction) {
-        const floorHeater = floorHeaterContext.selectedFloorHeater;
-        if (!floorHeater) {
+        const slabHeater = slabHeaterContext.selectedSlabHeater;
+        if (!slabHeater) {
             return;
         }
 
-        floorHeater.alignment = (floorHeater.alignment + Math.sign(direction)) % 4;
-        while (floorHeater.alignment < 0) {
-            floorHeater.alignment += 4;
+        slabHeater.alignment = (slabHeater.alignment + Math.sign(direction)) % 4;
+        while (slabHeater.alignment < 0) {
+            slabHeater.alignment += 4;
         }
     }
 
     static flipSelected() {
-        const floorHeater = floorHeaterContext.selectedFloorHeater;
-        if (!floorHeater) {
+        const slabHeater = slabHeaterContext.selectedSlabHeater;
+        if (!slabHeater) {
             return;
         }
 
-        floorHeater.colors = [floorHeater.colors[1], floorHeater.colors[0]];
+        slabHeater.colors = [slabHeater.colors[1], slabHeater.colors[0]];
     }
 }

@@ -1,4 +1,4 @@
-var floorHeaterLengthMenu;
-var floorHeaterWidthMenu;
+var slabHeaterLengthMenu;
+var slabHeaterWidthMenu;
 
-var addFloorHeaterButton;
+var addSlabHeaterButton;

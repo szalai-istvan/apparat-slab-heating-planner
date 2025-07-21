@@ -1,4 +1,4 @@
-class FloorHeater {
+class SlabHeater {
     centerPosition;
     alignment;
     colors;
@@ -22,10 +22,10 @@ class FloorHeater {
         this.alignment = alignment ?? 1;
 
         this.colors = [RED, BLUE];
-        this.lineWeight = FLOOR_HEATER_LINE_WEIGHT_IN_METER * scaleContext.pixelsPerMetersRatio;
-        this.textSize = FLOOR_HEATER_TEXT_SIZE_IN_METER * scaleContext.pixelsPerMetersRatio;
+        this.lineWeight = SLAB_HEATER_LINE_WEIGHT_IN_METER * scaleContext.pixelsPerMetersRatio;
+        this.textSize = SLAB_HEATER_TEXT_SIZE_IN_METER * scaleContext.pixelsPerMetersRatio;
 
-        this.padding = FLOOR_HEATER_TYPE_RECT_PADDING_IN_METER * scaleContext.pixelsPerMetersRatio;
+        this.padding = SLAB_HEATER_TYPE_RECT_PADDING_IN_METER * scaleContext.pixelsPerMetersRatio;
         this.type = width.toString().replace('.', ',') + ' m x ' + length.toString().replace('.', ',') + ' m';
 
         textSize(this.textSize);

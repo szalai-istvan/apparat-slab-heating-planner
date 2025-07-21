@@ -6,7 +6,7 @@ class Renderer {
         elementStore.rooms.forEach(room => RoomRenderer.draw(room));
         ScaleContextRenderer.draw(elementStore.scaleContext);
         elementStore.buttons.forEach(button => ButtonWrapperRenderer.draw(button));
-        elementStore.floorHeaters.forEach(fh => FloorHeaterRenderer.draw(fh));
+        elementStore.slabHeaters.forEach(fh => SlabHeaterRenderer.draw(fh));
         
         if (debugEnabled) {
             DebugInfoRenderer.drawAxis();

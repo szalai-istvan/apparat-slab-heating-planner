@@ -20,7 +20,7 @@ function downloadProjectState() {
 
 function getProjectState() {
   const rooms = elementStore.rooms.filter((room) => RoomManager.roomIsConfigured(room));
-  const floorHeaters = elementStore.floorHeaters.filter(fh => !fh.isSelectedForDrag);  
+  const slabHeaters = elementStore.slabHeaters.filter(fh => !fh.isSelectedForDrag);  
 
   let projectState = {
     blueprints: {
@@ -40,8 +40,8 @@ function getProjectState() {
     grid: {
       seed: gridContext.seed,
     },
-    floorHeaters: {
-      floorHeaters: floorHeaters
+    slabHeaters: {
+      slabHeaters: slabHeaters
     }
   };
 

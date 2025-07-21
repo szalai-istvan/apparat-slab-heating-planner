@@ -54,18 +54,18 @@ const GRID_RESOLUTION_METER = 0.05;
 // helper constants
 const NUMBER_FORMAT_OBJECT = new Intl.NumberFormat('en-US');
 
-// FloorHeater constants
+// SlabHeater constants
 const RED = 'red';
 const BLUE = 'blue';
 const TUBE_DISTANCE_IN_METER = 0.1;
-const FLOOR_HEATER_LINE_WEIGHT_IN_METER = 0.02;
-const FLOOR_HEATER_TEXT_SIZE_IN_METER = 0.15;
-const FLOOR_HEATER_TYPE_RECT_PADDING_IN_METER = 0.1;
-const FLOOR_HEATER_TEXT_POP_FACTOR = 0.05;
-const FLOOR_HEATER_CORRECTION_OFFSET = 10;
+const SLAB_HEATER_LINE_WEIGHT_IN_METER = 0.02;
+const SLAB_HEATER_TEXT_SIZE_IN_METER = 0.15;
+const SLAB_HEATER_TYPE_RECT_PADDING_IN_METER = 0.1;
+const SLAB_HEATER_TEXT_POP_FACTOR = 0.05;
+const SLAB_HEATER_CORRECTION_OFFSET = 10;
 
 // ElementStore constants
-const CLASS_FLOOR_HEATER = 'FloorHeater';
+const CLASS_SLAB_HEATER = 'SlabHeater';
 const CLASS_BLUEPRINT = 'Blueprint';
 const CLASS_ROOM = 'Room';
 const CLASS_SCALE_CONTEXT = 'ScaleContext';

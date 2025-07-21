@@ -1,21 +1,21 @@
-class FloorHeaterRenderer {
-    static draw(floorHeater) {
+class SlabHeaterRenderer {
+    static draw(slabHeater) {
         const ratio = scaleContext.pixelsPerMetersRatio;
-        const color1 = floorHeater.colors[0];
-        const color2 = floorHeater.colors[1];
-        const width = floorHeater.width * ratio;
-        const length = floorHeater.length * ratio;
-        const alignment = floorHeater.alignment;
-        const centerPosition = floorHeater.isSelectedForDrag ? FloorHeaterRenderer.getCenterPosition(floorHeater, width, length) : floorHeater.centerPosition;
+        const color1 = slabHeater.colors[0];
+        const color2 = slabHeater.colors[1];
+        const width = slabHeater.width * ratio;
+        const length = slabHeater.length * ratio;
+        const alignment = slabHeater.alignment;
+        const centerPosition = slabHeater.isSelectedForDrag ? SlabHeaterRenderer.getCenterPosition(slabHeater, width, length) : slabHeater.centerPosition;
         const lengthFrom = - length / 2;
         const lengthTo = length / 2;
         const tubeDistance = TUBE_DISTANCE_IN_METER * ratio;
         const diameter = tubeDistance;
-        const lineWeight = floorHeater.lineWeight;
-        const type = floorHeater.type;
-        const textSizePixels = floorHeater.textSize;
-        const rectWidth = floorHeater.rectWidth;
-        const rectHeight = floorHeater.rectHeight;
+        const lineWeight = slabHeater.lineWeight;
+        const type = slabHeater.type;
+        const textSizePixels = slabHeater.textSize;
+        const rectWidth = slabHeater.rectWidth;
+        const rectHeight = slabHeater.rectHeight;
 
         push();
 
@@ -45,17 +45,17 @@ class FloorHeaterRenderer {
 
         textAlign(CENTER, CENTER);
 
-        const p = FLOOR_HEATER_TEXT_POP_FACTOR;
-        const pointIsInsideText = FloorHeaterManager.mouseCursorIsInsideRect(floorHeater);
-        const notDragging = !floorHeater.isSelectedForDrag;
+        const p = SLAB_HEATER_TEXT_POP_FACTOR;
+        const pointIsInsideText = SlabHeaterManager.mouseCursorIsInsideRect(slabHeater);
+        const notDragging = !slabHeater.isSelectedForDrag;
 
-        textSize(textSizePixels * (1 + p * floorHeater.isSelected + p * (pointIsInsideText * notDragging)));
+        textSize(textSizePixels * (1 + p * slabHeater.isSelected + p * (pointIsInsideText * notDragging)));
         stroke('black');
         fill('white');
         rectMode(CENTER);
         rect(0, 0, rectWidth, rectHeight);
 
-        if (floorHeater.isSelected || (pointIsInsideText && notDragging)) {
+        if (slabHeater.isSelected || (pointIsInsideText && notDragging)) {
             fill('red');
         } else {
             fill(DEFAULT_TEXT_COLOR);
@@ -84,8 +84,8 @@ class FloorHeaterRenderer {
 
         const mousePosition = screenContext.getMousePosition();
         const mousePositionAbsolute = screenContext.getMousePositionAbsolute();
-        const xCorrection = calculateCorrector(LEFT_RIBBON_WIDTH + (FLOOR_HEATER_CORRECTION_OFFSET + x_/2) * screenContext.zoom, mousePosition.x);
-        const yCorrection = calculateCorrector(TOP_RIBBON_HEIGHT + (FLOOR_HEATER_CORRECTION_OFFSET + y_/2) * screenContext.zoom, mousePosition.y);
+        const xCorrection = calculateCorrector(LEFT_RIBBON_WIDTH + (SLAB_HEATER_CORRECTION_OFFSET + x_/2) * screenContext.zoom, mousePosition.x);
+        const yCorrection = calculateCorrector(TOP_RIBBON_HEIGHT + (SLAB_HEATER_CORRECTION_OFFSET + y_/2) * screenContext.zoom, mousePosition.y);
         return gridContext.closestGridPoint({
             x: mousePositionAbsolute.x + (xCorrection || 0),
             y: mousePositionAbsolute.y + (yCorrection || 0)

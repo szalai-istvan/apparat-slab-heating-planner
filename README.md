@@ -1,1 +1,1 @@
-# apparat-floor-heating-planner
+# apparat-slab-heating-planner

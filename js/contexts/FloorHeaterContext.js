@@ -1,11 +1,11 @@
-class FloorHeaterContext {
+class SlabHeaterContext {
     cachedSelection = null;
-    selectedFloorHeater = null;
+    selectedSlabHeater = null;
     alignment = 1;
 
-    createFloorHeater() {
-        const width = floorHeaterWidthMenu.value;
-        const length = floorHeaterLengthMenu.value;
+    createSlabHeater() {
+        const width = slabHeaterWidthMenu.value;
+        const length = slabHeaterLengthMenu.value;
 
         if (!width) {
             displayMessage('A baloldali menü segítségével válassza ki a kívánt szélességet!');
@@ -17,39 +17,39 @@ class FloorHeaterContext {
             return;
         }
 
-        const floorHeater = new FloorHeater(length, width, this.alignment);
-        selectionContext.selectObject(floorHeater);
+        const slabHeater = new SlabHeater(length, width, this.alignment);
+        selectionContext.selectObject(slabHeater);
     }
 
     clearSelectionCache() {
         this.cachedSelection = null;
     }
 
-    select(floorHeater = undefined) {
-        floorHeater = floorHeater || this.checkForSelection();
-        if (!floorHeater) return;
+    select(slabHeater = undefined) {
+        slabHeater = slabHeater || this.checkForSelection();
+        if (!slabHeater) return;
 
-        if (floorHeater === this.selectedFloorHeater) {
-            FloorHeaterSelector.selectForDrag(floorHeater);
+        if (slabHeater === this.selectedSlabHeater) {
+            SlabHeaterSelector.selectForDrag(slabHeater);
             return;
         }
 
         const successfulDeselect = this.tryToDeselect();
         if (successfulDeselect) {
-            FloorHeaterSelector.select(floorHeater);
-            this.selectedFloorHeater = floorHeater;
+            SlabHeaterSelector.select(slabHeater);
+            this.selectedSlabHeater = slabHeater;
         }
     }
 
     tryToDeselect() {
-        if (!this.selectedFloorHeater) {
+        if (!this.selectedSlabHeater) {
             return true;
         }
 
-        const successfulDeselect = FloorHeaterSelector.tryToDeselect(this.selectedFloorHeater);
+        const successfulDeselect = SlabHeaterSelector.tryToDeselect(this.selectedSlabHeater);
         if (successfulDeselect) {
-            this.alignment = this.selectedFloorHeater.alignment;
-            this.selectedFloorHeater = null;
+            this.alignment = this.selectedSlabHeater.alignment;
+            this.selectedSlabHeater = null;
         }
         return successfulDeselect;
     }
@@ -59,14 +59,14 @@ class FloorHeaterContext {
             return this.cachedSelection;
         }
 
-        const selection = elementStore.floorHeaters.filter(f => FloorHeaterManager.mouseCursorIsInsideRect(f));
-        const floorHeater = selection[0];
-        if (floorHeater) {
-            if (floorHeater !== this.selectedFloorHeater) {
+        const selection = elementStore.slabHeaters.filter(f => SlabHeaterManager.mouseCursorIsInsideRect(f));
+        const slabHeater = selection[0];
+        if (slabHeater) {
+            if (slabHeater !== this.selectedSlabHeater) {
                 // TODO TOOLTIP
             }
-            this.cachedSelection = floorHeater;
-            return floorHeater;
+            this.cachedSelection = slabHeater;
+            return slabHeater;
         }
 
         // TODO TOOLTIP
@@ -74,17 +74,17 @@ class FloorHeaterContext {
     }
 
     clear() {
-        elementStore.floorHeaters = [];
+        elementStore.slabHeaters = [];
         // TODO tooltip
     }
 
     removeSelected() {
-        const floorHeater = this.selectedFloorHeater;
-        if (floorHeater) {
-            elementStore.remove(floorHeater);
-            this.selectedFloorHeater = undefined;
+        const slabHeater = this.selectedSlabHeater;
+        if (slabHeater) {
+            elementStore.remove(slabHeater);
+            this.selectedSlabHeater = undefined;
         }
     }
 }
 
-const floorHeaterContext = new FloorHeaterContext();
+const slabHeaterContext = new SlabHeaterContext();

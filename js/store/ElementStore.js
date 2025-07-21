@@ -1,7 +1,7 @@
 class ElementStore {
   blueprints = [];
   rooms = [];
-  floorHeaters = [];
+  slabHeaters = [];
   boxes = [];
 
   buttons = [];
@@ -18,8 +18,8 @@ class ElementStore {
       return;
     }
 
-    if (className === CLASS_FLOOR_HEATER) {
-      this.floorHeaters.push(obj);
+    if (className === CLASS_SLAB_HEATER) {
+      this.slabHeaters.push(obj);
     } else if (className === CLASS_BOX) {
       this.boxes.push(obj);
     } else if (className === CLASS_BLUEPRINT) {
@@ -49,8 +49,8 @@ class ElementStore {
       this.rooms = this.rooms.filter((x) => x !== obj);
     } else if (className === CLASS_BLUEPRINT) {
       this.blueprints = this.blueprints.filter((x) => x !== obj);
-    } else if (className === CLASS_FLOOR_HEATER) {
-      this.floorHeaters = this.floorHeaters.filter((x) => x !== obj);
+    } else if (className === CLASS_SLAB_HEATER) {
+      this.slabHeaters = this.slabHeaters.filter((x) => x !== obj);
     } else if (className === CLASS_BOX) {
       this.boxes = this.boxes.filter((x) => x !== obj);
     } else {
