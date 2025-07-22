@@ -15,6 +15,7 @@ class SlabHeaterRenderer {
         const textSizePixels = slabHeater.textSize;
         const rectWidth = slabHeater.rectWidth;
         const rectHeight = slabHeater.rectHeight;
+        const isSelected = slabHeater.group.anySelected();
 
         push();
 
@@ -24,11 +25,11 @@ class SlabHeaterRenderer {
         strokeWeight(lineWeight);
         noFill();
 
-        let tube = - width / 2 + tubeDistance / 2;
+        let tube = - width / 2 + tubeDistance/2;
         let angles = [270, 90];
         let arcX = lengthTo;
         stroke(color);
-        while (tube < width / 2 - tubeDistance / 2) {
+        while (tube < width / 2 - tubeDistance/2) {
             line(lengthFrom, tube, 0, tube);
             line(0, tube, lengthTo, tube);
             arc(arcX, tube + tubeDistance / 2, diameter, diameter, angles[0], angles[1]);
@@ -42,17 +43,17 @@ class SlabHeaterRenderer {
         textAlign(CENTER, CENTER);
 
         const p = SLAB_HEATER_TEXT_POP_FACTOR;
-        const pointIsInsideText = SlabHeaterManager.mouseCursorIsInsideRect(slabHeater);
+        const pointIsInsideRect = slabHeater.group.pointIsInsideRect();
         const notDragging = !slabHeater.isSelectedForDrag;
 
-        textSize(textSizePixels * (1 + p * slabHeater.isSelected + p * (pointIsInsideText * notDragging)));
+        textSize(textSizePixels * (1 + p * isSelected + p * (pointIsInsideRect * notDragging)));
         stroke(BLACK);
         fill('white');
         rectMode(CENTER);
         rect(0, 0, rectWidth, rectHeight);
 
-        if (slabHeater.isSelected || (pointIsInsideText && notDragging)) {
-            fill('red');
+        if (isSelected || (pointIsInsideRect && notDragging)) {
+            fill(SELECTED_TEXT_COLOR);
         } else {
             fill(DEFAULT_TEXT_COLOR);
         }

@@ -2,6 +2,7 @@ class ElementStore {
     blueprints = [];
     rooms = [];
     slabHeaters = [];
+    slabHeaterGroups = [];
     boxes = [];
 
     buttons = [];
@@ -37,6 +38,8 @@ class ElementStore {
             this.menus.push(obj);
         } else if (className === CLASS_OPTIONS_BAR) {
             this.optionsBars.push(obj);
+        } else if (className === CLASS_SLAB_HEATER_GROUP) {
+            this.slabHeaterGroups.push(obj);
         } else {
             throw new Error(`Attempt to register unexpected render type: ${className}`);
         }
@@ -56,6 +59,8 @@ class ElementStore {
             this.slabHeaters = this.slabHeaters.filter((x) => x !== obj);
         } else if (className === CLASS_BOX) {
             this.boxes = this.boxes.filter((x) => x !== obj);
+        } else if (className === CLASS_SLAB_HEATER_GROUP) {
+            this.slabHeaterGroups = this.slabHeaterGroups.filter((x) => x !== obj);
         } else {
             throw new Error(
                 `Deleting render object of type ${className} is unspecified.`

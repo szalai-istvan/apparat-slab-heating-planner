@@ -56,6 +56,7 @@ const NUMBER_FORMAT_OBJECT = new Intl.NumberFormat('en-US');
 
 // ElementStore constants
 const CLASS_SLAB_HEATER = 'SlabHeater';
+const CLASS_SLAB_HEATER_GROUP = 'SlabHeaterGroup';
 const CLASS_BLUEPRINT = 'Blueprint';
 const CLASS_ROOM = 'Room';
 const CLASS_SCALE_CONTEXT = 'ScaleContext';
