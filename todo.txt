@@ -17,6 +17,7 @@ https://github.com/szalai-istvan/apparat-heating-planner
 - új tooltipek
 - Panelok ne lehessenek túl közel
 - grid felbontás 10 cm legyen
+- fűtőelem lehelyezésekor validáció!
 - Ha van választott panel, akkor a gombokkal lehessen típust változtatni!!!!
 
 optional:
