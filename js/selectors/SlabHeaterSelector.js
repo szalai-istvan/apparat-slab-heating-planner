@@ -7,8 +7,6 @@ class SlabHeaterSelector {
     static selectForDrag(slabHeater) {
         slabHeater.isSelected = true;
         slabHeater.isSelectedForDrag = true;
-        // panel.room && RoomManager.removePanelFromRoom(panel.room, panel);
-        // panel.room = undefined; TODO Ez valószínűleg kelleni fog
     }
 
     static tryToDeselect(slabHeater) {
@@ -20,8 +18,8 @@ class SlabHeaterSelector {
         if (!destinationRoom) {
             return false;
         }
-        //panel.room = destinationRoom;
 
+        slabHeater.color = destinationRoom.slabHeaterColor;
         slabHeater.isSelected = false;
         slabHeater.isSelectedForDrag = false;
 

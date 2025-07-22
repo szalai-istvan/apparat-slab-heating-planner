@@ -6,12 +6,12 @@ class DebugInfoRenderer {
         textSize(12);
         for (let i = -10_000; i < 10_000; i+=50) {
             strokeWeight(1);
-            stroke('black');
+            stroke(BLACK);
             line(i, -5, i, 5);
             line(-5, i, 5, i);
             if (i !== 0) {
                 noStroke();
-                fill('black');
+                fill(BLACK);
                 textAlign(CENTER, CENTER);
                 text(i, i, 15);
                 textAlign(LEFT, CENTER);
@@ -20,7 +20,7 @@ class DebugInfoRenderer {
         }
     
         stroke(1);
-        stroke('black');
+        stroke(BLACK);
         line(0, 10_000, 0, -10_000);
         line(-10_000, 0, 10_000, 0);
     }

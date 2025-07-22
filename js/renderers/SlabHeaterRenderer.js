@@ -46,7 +46,7 @@ class SlabHeaterRenderer {
         const notDragging = !slabHeater.isSelectedForDrag;
 
         textSize(textSizePixels * (1 + p * slabHeater.isSelected + p * (pointIsInsideText * notDragging)));
-        stroke('black');
+        stroke(BLACK);
         fill('white');
         rectMode(CENTER);
         rect(0, 0, rectWidth, rectHeight);

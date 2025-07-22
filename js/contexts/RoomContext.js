@@ -46,6 +46,7 @@ class RoomContext {
         if (room) {
             elementStore.remove(room);
             this.selectedRoom = undefined;
+            giveBackSlabHeaterColor(room.slabHeaterColor);
         }
         if (elementStore.rooms.length === 0) {
             tooltip.scalingFinished();

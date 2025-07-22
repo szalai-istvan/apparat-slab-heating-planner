@@ -54,16 +54,6 @@ const GRID_RESOLUTION_METER = 0.05;
 // helper constants
 const NUMBER_FORMAT_OBJECT = new Intl.NumberFormat('en-US');
 
-// SlabHeater constants
-const RED = 'red';
-const BLUE = 'blue';
-const TUBE_DISTANCE_IN_METER = 0.1;
-const SLAB_HEATER_LINE_WEIGHT_IN_METER = 0.02;
-const SLAB_HEATER_TEXT_SIZE_IN_METER = 0.15;
-const SLAB_HEATER_TYPE_RECT_PADDING_IN_METER = 0.1;
-const SLAB_HEATER_TEXT_POP_FACTOR = 0.05;
-const SLAB_HEATER_CORRECTION_OFFSET = 10;
-
 // ElementStore constants
 const CLASS_SLAB_HEATER = 'SlabHeater';
 const CLASS_BLUEPRINT = 'Blueprint';
@@ -88,3 +78,8 @@ const BACKGROUND = 'background';
 
 // OptionsBar constants
 const OPTIONS_BAR_TEXT_SIZE = 14;
+
+// colors
+const RED = 'red';
+const BLUE = 'blue';
+const BLACK = 'black';
