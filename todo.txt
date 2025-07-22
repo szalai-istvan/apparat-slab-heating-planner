@@ -19,6 +19,8 @@ https://github.com/szalai-istvan/apparat-heating-planner
 - grid felbontás 10 cm legyen
 - fűtőelem lehelyezésekor validáció!
 - Ha van választott panel, akkor a gombokkal lehessen típust változtatni!!!!
+- save-load esetében az available slab heater color-okat is frissíteni kell
+- dobozokat és csöveket is menteni kell
 
 optional:
 - menurenderer hide if outside boundary
