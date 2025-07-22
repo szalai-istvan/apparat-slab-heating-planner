@@ -1,8 +1,7 @@
 class SlabHeaterRenderer {
     static draw(slabHeater) {
         const ratio = scaleContext.pixelsPerMetersRatio;
-        const color1 = slabHeater.colors[0];
-        const color2 = slabHeater.colors[1];
+        const color = slabHeater.color;
         const width = slabHeater.width * ratio;
         const length = slabHeater.length * ratio;
         const alignment = slabHeater.alignment;
@@ -25,15 +24,12 @@ class SlabHeaterRenderer {
         strokeWeight(lineWeight);
         noFill();
 
-        let tube = - width / 2;
+        let tube = - width / 2 + tubeDistance / 2;
         let angles = [270, 90];
         let arcX = lengthTo;
-        stroke(color1);
-        while (tube < width / 2) {
+        stroke(color);
+        while (tube < width / 2 - tubeDistance / 2) {
             line(lengthFrom, tube, 0, tube);
-            if (roundNumber(tube, 0) > 0) {
-                stroke(color2);
-            }
             line(0, tube, lengthTo, tube);
             arc(arcX, tube + tubeDistance / 2, diameter, diameter, angles[0], angles[1]);
 

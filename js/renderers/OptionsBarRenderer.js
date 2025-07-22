@@ -1,6 +1,9 @@
 class OptionsBarRenderer {
 
     static draw(optionsBar) {
+        if (!optionsBar.shouldBeRendered()) {
+            return;
+        }
         push();
 
         textSize(OPTIONS_BAR_TEXT_SIZE);

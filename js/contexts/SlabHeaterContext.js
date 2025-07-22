@@ -4,8 +4,8 @@ class SlabHeaterContext {
     alignment = 1;
 
     createSlabHeater() {
-        const width = slabHeaterWidthMenu.value;
-        const length = slabHeaterLengthMenu.value;
+        const width = slabHeaterWidthOptionsBar.getValue();
+        const length = slabHeaterLengthOptionsBar.getValue();
 
         if (!width) {
             displayMessage('A baloldali menü segítségével válassza ki a kívánt szélességet!');
@@ -38,6 +38,11 @@ class SlabHeaterContext {
         if (successfulDeselect) {
             SlabHeaterSelector.select(slabHeater);
             this.selectedSlabHeater = slabHeater;
+            slabHeaterWidthOptionsBar.setValue(0, slabHeater.width.toString());
+            const meter = Math.floor(slabHeater.length).toString();
+            const cm = (Math.floor((slabHeater.length - meter) * 100)).toString();
+            slabHeaterLengthOptionsBar.setValue(0, meter);
+            slabHeaterLengthOptionsBar.setValue(1, cm);
         }
     }
 

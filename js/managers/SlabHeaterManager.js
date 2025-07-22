@@ -48,13 +48,4 @@ class SlabHeaterManager {
             slabHeater.alignment += 4;
         }
     }
-
-    static flipSelected() {
-        const slabHeater = slabHeaterContext.selectedSlabHeater;
-        if (!slabHeater) {
-            return;
-        }
-
-        slabHeater.colors = [slabHeater.colors[1], slabHeater.colors[0]];
-    }
 }

@@ -83,6 +83,17 @@ class ScreenContext {
         };
     }
 
+    absolutePointToScreenCoordinates(point) {
+        const currentDragValue = this.getCurrentDragValue();
+        const sumDrag = this.sumDrag;
+        const canvasSize = this.getCanvasSize();
+
+        return {
+            x: point.x * this.zoom + canvasSize.x / 2 + sumDrag.x * this.zoom + currentDragValue.x, 
+            y: point.y * this.zoom + canvasSize.y / 2 + sumDrag.y * this.zoom + currentDragValue.y
+        };
+    }
+
     toggleControls() {
         this.controlsAreEnabled = noModalsAreOpened();
     }

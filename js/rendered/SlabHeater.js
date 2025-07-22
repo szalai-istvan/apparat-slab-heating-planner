@@ -1,7 +1,7 @@
 class SlabHeater {
     centerPosition;
     alignment;
-    colors;
+    color;
     length;
     width;
     isSelected;
@@ -21,7 +21,7 @@ class SlabHeater {
         this.isSelectedForDrag = true;
         this.alignment = alignment ?? 1;
 
-        this.colors = [RED, BLUE];
+        this.color = RED;
         this.lineWeight = SLAB_HEATER_LINE_WEIGHT_IN_METER * scaleContext.pixelsPerMetersRatio;
         this.textSize = SLAB_HEATER_TEXT_SIZE_IN_METER * scaleContext.pixelsPerMetersRatio;
 

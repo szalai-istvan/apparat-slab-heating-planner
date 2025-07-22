@@ -18,16 +18,6 @@ rajzoláskor meg kell adja a játékos, hogy hol lesz a födémátvezetés helye
 a bekötő vezetékeket kézzel lehessen alrébb rakni, hogy a csatolt minta szerint falak alá ne essenek, lehetőleg folyosón menjenek.
 a kimenet: ekszell, csatolva
 
-- hossz 25 centinként nőjön 1...5,5 m
-- 10 centivel kisebb a panel
-- Szélesség menü nem kell, legyen 2 gomb
-- Legördülő helyett két oszlop
-    m   cm
-    1   20
-    2   40
-    3   60
-    4   80
-    5
 - +/- gombok amik másolják a panelt
 - csőtáv 5 centi, legjobb egy AUTOROUTE lenne
 - Panelkák mindig nézzenek a legközelebbi gyüjtő felé

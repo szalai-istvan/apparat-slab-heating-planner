@@ -57,10 +57,9 @@ function createButtons() {
         columns: [{ buttons: [SLAB_HEATER_TYPES.width[0]] }, { buttons: [SLAB_HEATER_TYPES.width[1]] }
     ],
         valueResolver: optionsBar => optionsBar.selected[0] ? Number(optionsBar.selected[0]) : undefined,
-        // shouldBeRendered: () => roomContext.thereAreRooms(),
         title: 'Szélesség (m)',
         perColumnSelection: false,
-        shouldBeRendered: () => true
+        shouldBeRendered: () => roomContext.thereAreRooms()
     });
     leftRibbonButtonSizes.push({ x: 0, y: HALF_WIDTH_BUTTON_SIZE.y / 3 });
     leftRibbonButtonSizes.push({ x: 0, y: HALF_WIDTH_BUTTON_SIZE.y / 2 });
@@ -78,8 +77,7 @@ function createButtons() {
             }
             return undefined;
         },
-        // shouldBeRendered: () => roomContext.thereAreRooms(),
-        shouldBeRendered: () => true,
+        shouldBeRendered: () => roomContext.thereAreRooms(),
         title: 'Hosszúság'
     });
     leftRibbonButtonSizes.push({ x: 0, y: HALF_WIDTH_BUTTON_SIZE.y / 3 });
@@ -142,15 +140,6 @@ function createButtons() {
         shouldBeRendered: () => slabHeaterContext.selectedSlabHeater
     });
     leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);
-
-    flipButton = new ButtonWrapper({
-        text: 'Tükrözés',
-        size: SMALL_BUTTON_SIZE,
-        position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        onClick: () => SlabHeaterManager.flipSelected(),
-        shouldBeRendered: () => slabHeaterContext.selectedSlabHeater
-    });
-    leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
 
     addLeftRibbonDelimeter(sidePanelButtonPosition(leftRibbonButtonSizes).y);
     const downloadButtonPos = sidePanelButtonPosition(leftRibbonButtonSizes);
