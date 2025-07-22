@@ -1,4 +1,5 @@
 class SlabHeater {
+    id;
     centerPosition;
     alignment;
     color;
@@ -12,13 +13,15 @@ class SlabHeater {
     type;
     rectWidth;
     rectHeight;
+    group;
 
     constructor(length, width, alignment = undefined) {
+        this.id = Math.random().toString().substring(2);
         this.length = length;
         this.width = width;
 
-        this.isSelected = true;
-        this.isSelectedForDrag = true;
+        this.isSelected = false;
+        this.isSelectedForDrag = false;
         this.alignment = alignment ?? 1;
 
         this.color = BLACK;

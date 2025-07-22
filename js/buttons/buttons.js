@@ -92,7 +92,7 @@ function createButtons() {
         text: 'Hozzáadás',
         size: SMALL_BUTTON_SIZE,
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        onClick: () => slabHeaterContext.createSlabHeater(),
+        onClick: () => slabHeaterContext.createSlabHeater(false),
         shouldBeRendered: () => slabHeaterLengthOptionsBar.allValuesAreSet() && slabHeaterWidthOptionsBar.allValuesAreSet()
     });
     leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
@@ -137,6 +137,25 @@ function createButtons() {
         size: HALF_WIDTH_BUTTON_SIZE,
         position: rotatePosition,
         onClick: () => SlabHeaterManager.rotateSelected(1),
+        shouldBeRendered: () => slabHeaterContext.selectedSlabHeater
+    });
+    leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);
+
+    const groupManagerPosition = sidePanelButtonPosition(leftRibbonButtonSizes);
+    rotateLeftButton = new ButtonWrapper({
+        text: '-',
+        size: HALF_WIDTH_BUTTON_SIZE,
+        position: groupManagerPosition,
+        onClick: () => SlabHeaterGroupManager.removeLastFromSelectedGroup(),
+        shouldBeRendered: () => slabHeaterContext.selectedSlabHeater
+    });
+
+    groupManagerPosition.x += HALF_WIDTH_BUTTON_SIZE.x;
+    rotateRightButton = new ButtonWrapper({
+        text: '+',
+        size: HALF_WIDTH_BUTTON_SIZE,
+        position: groupManagerPosition,
+        onClick: () => SlabHeaterGroupManager.addSlabHeaterToSelectedGroup(),
         shouldBeRendered: () => slabHeaterContext.selectedSlabHeater
     });
     leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);

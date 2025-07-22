@@ -35,6 +35,8 @@ function loadProject(text = undefined) {
     const slabHeaters = projectState.slabHeaters.slabHeaters || [];
     slabHeaters.forEach((slabHeaters) => (slabHeaters.constructor = { name: CLASS_SLAB_HEATER }));
     slabHeaters.forEach((slabHeaters) => elementStore.register(slabHeaters));
+    reconstructSlabHeaterGroup(slabHeaters);
+
     if (elementStore.slabHeaters.length) {
         setTimeout(() => tooltip.panelAdded(), 3_000);
     }

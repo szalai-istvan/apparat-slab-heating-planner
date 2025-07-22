@@ -3,7 +3,7 @@ class SlabHeaterContext {
     selectedSlabHeater = null;
     alignment = 1;
 
-    createSlabHeater() {
+    createSlabHeater(addToGroup) {
         const width = slabHeaterWidthOptionsBar.getValue();
         const length = slabHeaterLengthOptionsBar.getValue();
 
@@ -18,7 +18,18 @@ class SlabHeaterContext {
         }
 
         const slabHeater = new SlabHeater(length, width, this.alignment);
-        selectionContext.selectObject(slabHeater);
+
+        if (this.selectedSlabHeater && addToGroup) {
+            this.selectedSlabHeater.group.add(slabHeater);
+        } else {
+            slabHeater.group = new SlabHeaterGroup(slabHeater);
+
+            selectionContext.selectObject(slabHeater);
+            slabHeater.isSelected = true;
+            slabHeater.isSelectedForDrag = true;
+        }
+
+        return slabHeater;
     }
 
     clearSelectionCache() {
@@ -40,7 +51,7 @@ class SlabHeaterContext {
             this.selectedSlabHeater = slabHeater;
             slabHeaterWidthOptionsBar.setValue(0, slabHeater.width.toString());
             const meter = Math.floor(slabHeater.length).toString();
-            const cm = (Math.floor((slabHeater.length - meter) * 100)).toString();
+            const cm = (Math.floor(roundNumber(slabHeater.length - Math.floor(slabHeater.length), 2) * 100)).toString();
             slabHeaterLengthOptionsBar.setValue(0, meter);
             slabHeaterLengthOptionsBar.setValue(1, cm);
         }
@@ -88,6 +99,12 @@ class SlabHeaterContext {
         if (slabHeater) {
             elementStore.remove(slabHeater);
             this.selectedSlabHeater = undefined;
+        }
+    }
+
+    remove(slabHeater) {
+        if (slabHeater) {
+            elementStore.remove(slabHeater);
         }
     }
 }

@@ -21,6 +21,7 @@ https://github.com/szalai-istvan/apparat-heating-planner
 - Ha van választott panel, akkor a gombokkal lehessen típust változtatni!!!!
 - save-load esetében az available slab heater color-okat is frissíteni kell
 - dobozokat és csöveket is menteni kell
+- Fűtők mentésekor cyclic reference megoldani
 
 optional:
 - menurenderer hide if outside boundary
