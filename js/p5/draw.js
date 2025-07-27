@@ -1,5 +1,5 @@
 function draw() {
-    elementStore.slabHeaterGroups.forEach(shg => shg.clearCache());
+    elementStore.slabHeaterGroups.forEach(shg => SlabHeaterGroupManager.clearCache(shg));
     selectionContext.clearSelectionCache();
 
     background(BACKGROUND_COLOR);

@@ -1,16 +1,18 @@
 class SlabHeaterManager {
     static getBoundaryPoints(slabHeater) {
-        const horizontalAlignment = slabHeater.alignment % 2 === 0;
+        const horizontalAlignment = slabHeater.group.alignment % 2 === 0;
+        const length = slabHeater.group.length;
+        const width = slabHeater.group.width;
 
         if (horizontalAlignment) {
             return {
-                p1: {x: slabHeater.centerPosition.x - slabHeater.length / 2, y: slabHeater.centerPosition.y - slabHeater.width / 2},
-                p2: {x: slabHeater.centerPosition.x + slabHeater.length / 2, y: slabHeater.centerPosition.y + slabHeater.width / 2}
+                p1: {x: slabHeater.centerPosition.x - length / 2, y: slabHeater.centerPosition.y - width / 2},
+                p2: {x: slabHeater.centerPosition.x + length / 2, y: slabHeater.centerPosition.y + width / 2}
             };
         } else {
             return {
-                p1: {x: slabHeater.centerPosition.x - slabHeater.width / 2, y: slabHeater.centerPosition.y - slabHeater.length / 2},
-                p2: {x: slabHeater.centerPosition.x + slabHeater.width / 2, y: slabHeater.centerPosition.y + slabHeater.length / 2}
+                p1: {x: slabHeater.centerPosition.x - width / 2, y: slabHeater.centerPosition.y - length / 2},
+                p2: {x: slabHeater.centerPosition.x + width / 2, y: slabHeater.centerPosition.y + length / 2}
             };
         }
     }
@@ -20,7 +22,7 @@ class SlabHeaterManager {
             return false;
         }
 
-        if (slabHeater.alignment % 2 === 1) {
+        if (slabHeater.group.alignment % 2 === 1) {
             return pointIsInside(
                 screenContext.getMousePositionAbsolute(),
                 slabHeater.centerPosition, 
@@ -43,9 +45,9 @@ class SlabHeaterManager {
             return;
         }
 
-        slabHeater.alignment = (slabHeater.alignment + Math.sign(direction)) % 4;
-        while (slabHeater.alignment < 0) {
-            slabHeater.alignment += 4;
+        slabHeater.group.alignment = (slabHeater.group.alignment + Math.sign(direction)) % 4;
+        while (slabHeater.group.alignment < 0) {
+            slabHeater.group.alignment += 4;
         }
     }
 }

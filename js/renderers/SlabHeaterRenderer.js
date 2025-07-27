@@ -1,21 +1,21 @@
 class SlabHeaterRenderer {
     static draw(slabHeater) {
         const ratio = scaleContext.pixelsPerMetersRatio;
-        const color = slabHeater.color;
-        const width = slabHeater.width * ratio;
-        const length = slabHeater.length * ratio;
-        const alignment = slabHeater.alignment;
+        const color = slabHeater.group.color;
+        const width = slabHeater.group.width * ratio;
+        const length = slabHeater.group.length * ratio;
+        const alignment = slabHeater.group.alignment;
         const centerPosition = slabHeater.isSelectedForDrag ? SlabHeaterRenderer.getCenterPosition(slabHeater, width, length) : slabHeater.centerPosition;
         const lengthFrom = - length / 2;
         const lengthTo = length / 2;
         const tubeDistance = TUBE_DISTANCE_IN_METER * ratio;
         const diameter = tubeDistance;
         const lineWeight = slabHeater.lineWeight;
-        const type = slabHeater.type;
+        const type = slabHeater.group.type;
         const textSizePixels = slabHeater.textSize;
         const rectWidth = slabHeater.rectWidth;
         const rectHeight = slabHeater.rectHeight;
-        const isSelected = slabHeater.group.anySelected();
+        const isSelected = SlabHeaterGroupManager.anySelected(slabHeater.group);
 
         push();
 
@@ -43,7 +43,7 @@ class SlabHeaterRenderer {
         textAlign(CENTER, CENTER);
 
         const p = SLAB_HEATER_TEXT_POP_FACTOR;
-        const pointIsInsideRect = slabHeater.group.pointIsInsideRect();
+        const pointIsInsideRect = SlabHeaterGroupManager.pointIsInsideRect(slabHeater.group);
         const notDragging = !slabHeater.isSelectedForDrag;
 
         textSize(textSizePixels * (1 + p * isSelected + p * (pointIsInsideRect * notDragging)));

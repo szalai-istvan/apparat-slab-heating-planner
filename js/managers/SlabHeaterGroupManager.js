@@ -1,5 +1,5 @@
 class SlabHeaterGroupManager {
-    
+
     static addSlabHeaterToSelectedGroup() {
         const selectedGroup = slabHeaterContext?.selectedSlabHeater?.group;
         if (!selectedGroup) {
@@ -16,19 +16,70 @@ class SlabHeaterGroupManager {
         if (!selectedGroup) {
             return;
         }
-
-        selectedGroup.remove();
+        SlabHeaterGroupManager.remove(selectedGroup);
     }
 
     static nextPosition(group) {
         const lastSlabHeater = group.slabHeaters[group.slabHeaters.length - 1];
         const lastCenter = lastSlabHeater.centerPosition;
-        const width = lastSlabHeater.width;
-        const horizontal = (lastSlabHeater.alignment % 2) === 1;
+        const width = lastSlabHeater.group.width;
+        const horizontal = (lastSlabHeater.group.alignment % 2) === 1;
 
         return {
             x: lastCenter.x + horizontal * width * scaleContext.pixelsPerMetersRatio,
             y: lastCenter.y + (1 - horizontal) * width * scaleContext.pixelsPerMetersRatio
         };
+    }
+
+    static add(slabHeaterGroup, slabHeater) {
+        if (!slabHeater) {
+            return;
+        }
+
+        const sameId = slabHeaterGroup.slabHeaters.filter(sh => sh.id === slabHeater.id);
+        if (!sameId[0]) {
+            slabHeaterGroup.slabHeaters.push(slabHeater);
+            slabHeater.group = slabHeaterGroup;
+        }
+    }
+
+    static remove(slabHeaterGroup, slabHeater = undefined) {
+        slabHeater = slabHeater || slabHeaterGroup.slabHeaters[slabHeaterGroup.slabHeaters.length - 1];
+        if (!slabHeater) {
+            return;
+        }
+
+        slabHeaterGroup.slabHeaters = slabHeaterGroup.slabHeaters.filter(sh => sh !== slabHeater);
+        if (getClassName(slabHeater) === CLASS_SLAB_HEATER) {
+            slabHeater.group = undefined;
+            slabHeaterContext.remove(slabHeater);
+        }
+    }
+
+    static clear(slabHeaterGroup) {
+        slabHeaterGroup.slabHeaters.forEach(sh => SlabHeaterGroupManager.remove(slabHeaterGroup, sh));
+    }
+
+    static pointIsInsideRect(slabHeaterGroup) {
+        if (slabHeaterGroup.pointIsInsideCache === null) {
+            const selectable = slabHeaterGroup.slabHeaters.filter(sh => SlabHeaterManager.mouseCursorIsInsideRect(sh));
+            slabHeaterGroup.pointIsInsideCache = selectable.length > 0;
+        }
+
+        return slabHeaterGroup.pointIsInsideCache;
+    }
+
+    static anySelected(slabHeaterGroup) {
+        if (slabHeaterGroup.anySelectedCache === null) {
+            const selected = slabHeaterGroup.slabHeaters.filter(sh => sh.isSelected);
+            slabHeaterGroup.anySelectedCache = selected.length > 0;
+        }
+
+        return slabHeaterGroup.anySelectedCache;
+    }
+
+    static clearCache(slabHeaterGroup) {
+        slabHeaterGroup.pointIsInsideCache = null;
+        slabHeaterGroup.anySelectedCache = null;
     }
 }

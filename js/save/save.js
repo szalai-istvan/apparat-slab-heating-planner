@@ -21,6 +21,7 @@ function downloadProjectState() {
 function getProjectState() {
     const rooms = elementStore.rooms.filter((room) => RoomManager.roomIsConfigured(room));
     const slabHeaters = elementStore.slabHeaters.filter(fh => !fh.isSelectedForDrag);
+    slabHeaters.forEach(sh => sh.isSelected = false);
 
     let stateStr;
     let projectState = {};
@@ -66,7 +67,11 @@ function saveProject() {
 
 function destructureSlabHeaterGroup(slabHeater) {
     const group = slabHeater.group;
-    slabHeater.group = group.slabHeaters.map(sh => sh.id);
+    if (typeof(group.slabHeaters[0]) === 'string') {
+        return slabHeater;
+    }
+
+    group.slabHeaters = group.slabHeaters.map(sh => sh.id);
     return slabHeater;
 }
 
@@ -75,24 +80,30 @@ function reconstructSlabHeaterGroup(slabHeaters) {
 
     for (let slabHeater of slabHeaters) {
         const group = slabHeater.group;
-        if (getClassName(group) !== 'Array') {
+        const groupSlabHeaters = group.slabHeaters;
+        if (typeof(groupSlabHeaters[0]) !== 'string') {
+            SlabHeaterGroupManager.add(group, slabHeater);
             continue;
         }
 
-        const groupId = group.reduce((a, b) => a + b, '');
+        const groupId = groupSlabHeaters.reduce((a, b) => a + b, '');
         if (slabHeaterGroups[groupId]) {
-            slabHeater.group = slabHeaterGroups[groupId];
+            SlabHeaterGroupManager.add(group, slabHeater);
             continue;
         }
 
-        const slabHeaterGroup = new SlabHeaterGroup();
-        for (let id of group) {
+        const slabHeaterGroup = group;
+        SlabHeaterGroupManager.clear(slabHeaterGroup);
+        for (let id of groupSlabHeaters) {
             const slabHeaterToAdd = slabHeaters.filter(sh => sh.id === id)[0];
-            slabHeaterToAdd && slabHeaterGroup.add(slabHeaterToAdd);
+            if (slabHeaterToAdd) {
+                SlabHeaterGroupManager.add(slabHeaterGroup, slabHeaterToAdd);
+            }
         }
         slabHeaterGroups[groupId] = slabHeaterGroup;
-        slabHeater.group = slabHeaterGroup;
     }
+
+    return slabHeaterGroups;
 }
 
 if (SAVE_TO_LOCAL_STORAGE_ENABLED) {

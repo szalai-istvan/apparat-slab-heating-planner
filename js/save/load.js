@@ -33,9 +33,16 @@ function loadProject(text = undefined) {
     }
 
     const slabHeaters = projectState.slabHeaters.slabHeaters || [];
-    slabHeaters.forEach((slabHeaters) => (slabHeaters.constructor = { name: CLASS_SLAB_HEATER }));
-    slabHeaters.forEach((slabHeaters) => elementStore.register(slabHeaters));
-    reconstructSlabHeaterGroup(slabHeaters);
+    slabHeaters.forEach((slabHeater) => (slabHeater.constructor = { name: CLASS_SLAB_HEATER }));
+    slabHeaters.forEach((slabHeater) => elementStore.register(slabHeater));
+    
+    const slabHeaterGroups = reconstructSlabHeaterGroup(slabHeaters);
+    for (let groupId in slabHeaterGroups) {
+        const group = slabHeaterGroups[groupId];
+        group.anySelectedCache = false;
+        group.constructor = {name: CLASS_SLAB_HEATER_GROUP};
+        elementStore.register(slabHeaterGroups[groupId]);
+    }
 
     if (elementStore.slabHeaters.length) {
         setTimeout(() => tooltip.panelAdded(), 3_000);

@@ -19,7 +19,7 @@ class SlabHeaterSelector {
             return false;
         }
 
-        slabHeater.color = destinationRoom.slabHeaterColor;
+        slabHeater.group.color = destinationRoom.slabHeaterColor;
         slabHeater.isSelected = false;
         slabHeater.isSelectedForDrag = false;
 

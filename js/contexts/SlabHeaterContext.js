@@ -20,9 +20,16 @@ class SlabHeaterContext {
         const slabHeater = new SlabHeater(length, width, this.alignment);
 
         if (this.selectedSlabHeater && addToGroup) {
-            this.selectedSlabHeater.group.add(slabHeater);
+            SlabHeaterGroupManager.add(this.selectedSlabHeater.group, slabHeater);
         } else {
-            slabHeater.group = new SlabHeaterGroup(slabHeater);
+            const group = new SlabHeaterGroup(slabHeater);
+            slabHeater.group = group;
+            
+            group.type = width.toString().replace('.', ',') + ' m x ' + length.toString().replace('.', ',') + ' m';
+            group.color = BLACK;
+            group.length = length;
+            group.width = width;
+            group.alignment = this.alignment ?? 1;
 
             selectionContext.selectObject(slabHeater);
             slabHeater.isSelected = true;
@@ -49,9 +56,9 @@ class SlabHeaterContext {
         if (successfulDeselect) {
             SlabHeaterSelector.select(slabHeater);
             this.selectedSlabHeater = slabHeater;
-            slabHeaterWidthOptionsBar.setValue(0, slabHeater.width.toString());
-            const meter = Math.floor(slabHeater.length).toString();
-            const cm = (Math.floor(roundNumber(slabHeater.length - Math.floor(slabHeater.length), 2) * 100)).toString();
+            slabHeaterWidthOptionsBar.setValue(0, slabHeater.group.width.toString());
+            const meter = Math.floor(slabHeater.group.length).toString();
+            const cm = (Math.floor(roundNumber(slabHeater.group.length - Math.floor(slabHeater.group.length), 2) * 100)).toString();
             slabHeaterLengthOptionsBar.setValue(0, meter);
             slabHeaterLengthOptionsBar.setValue(1, cm);
         }
@@ -64,7 +71,7 @@ class SlabHeaterContext {
 
         const successfulDeselect = SlabHeaterSelector.tryToDeselect(this.selectedSlabHeater);
         if (successfulDeselect) {
-            this.alignment = this.selectedSlabHeater.alignment;
+            this.alignment = this.selectedSlabHeater.group.alignment;
             this.selectedSlabHeater = null;
         }
         return successfulDeselect;
