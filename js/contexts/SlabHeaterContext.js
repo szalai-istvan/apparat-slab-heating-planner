@@ -17,23 +17,17 @@ class SlabHeaterContext {
             return;
         }
 
-        const slabHeater = new SlabHeater(length, width, this.alignment);
+        const slabHeater = new SlabHeater();
 
         if (this.selectedSlabHeater && addToGroup) {
             SlabHeaterGroupManager.add(this.selectedSlabHeater.group, slabHeater);
         } else {
-            const group = new SlabHeaterGroup(slabHeater);
-            slabHeater.group = group;
-            
-            group.type = width.toString().replace('.', ',') + ' m x ' + length.toString().replace('.', ',') + ' m';
-            group.color = BLACK;
-            group.length = length;
-            group.width = width;
-            group.alignment = this.alignment ?? 1;
+            const alignment = this.alignment;
+            const group = new SlabHeaterGroup({slabHeater, length, width, alignment});
 
             selectionContext.selectObject(slabHeater);
-            slabHeater.isSelected = true;
-            slabHeater.isSelectedForDrag = true;
+            group.isSelected = true;
+            group.isSelectedForDrag = true;
         }
 
         return slabHeater;

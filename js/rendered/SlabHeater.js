@@ -1,8 +1,6 @@
 class SlabHeater {
     id;
     centerPosition;
-    isSelected;
-    isSelectedForDrag;
     lineWeight;
     textSize;
     padding;
@@ -10,11 +8,8 @@ class SlabHeater {
     rectHeight;
     group;
     
-    constructor(length, width, alignment = undefined) {
+    constructor() {
         this.id = Math.random().toString().substring(2);
-
-        this.isSelected = false;
-        this.isSelectedForDrag = false;
 
         this.lineWeight = SLAB_HEATER_LINE_WEIGHT_IN_METER * scaleContext.pixelsPerMetersRatio;
         this.textSize = SLAB_HEATER_TEXT_SIZE_IN_METER * scaleContext.pixelsPerMetersRatio;

@@ -69,14 +69,7 @@ function createButtons() {
         buttonSize: HALF_WIDTH_BUTTON_SIZE,
         gap: { x: 0, y: BUTTON_GAP_Y / 2 },
         columns: [{ header: 'm', buttons: SLAB_HEATER_TYPES.length.m }, { header: 'cm', buttons: SLAB_HEATER_TYPES.length.cm }],
-        valueResolver: optionsBar => {
-            const s0 = optionsBar.selected[0];
-            const s1 = optionsBar.selected[1];
-            if (s0 && s1) {
-                return Number(s0) + 0.01 * Number(s1);
-            }
-            return undefined;
-        },
+        valueResolver: optionsBar => resolveSlabHeaterLengthOptionBarValue(optionsBar),
         shouldBeRendered: () => roomContext.thereAreRooms(),
         title: 'Hosszúság'
     });

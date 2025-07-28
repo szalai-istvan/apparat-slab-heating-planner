@@ -5,7 +5,8 @@ class SlabHeaterRenderer {
         const width = slabHeater.group.width * ratio;
         const length = slabHeater.group.length * ratio;
         const alignment = slabHeater.group.alignment;
-        const centerPosition = slabHeater.isSelectedForDrag ? SlabHeaterRenderer.getCenterPosition(slabHeater, width, length) : slabHeater.centerPosition;
+        //const centerPosition = slabHeater.group.isSelectedForDrag ? getCenterPositionWithCorrection(slabHeater, width, length) : slabHeater.centerPosition;
+        const centerPosition = slabHeater.centerPosition;
         const lengthFrom = - length / 2;
         const lengthTo = length / 2;
         const tubeDistance = TUBE_DISTANCE_IN_METER * ratio;
@@ -15,7 +16,7 @@ class SlabHeaterRenderer {
         const textSizePixels = slabHeater.textSize;
         const rectWidth = slabHeater.rectWidth;
         const rectHeight = slabHeater.rectHeight;
-        const isSelected = SlabHeaterGroupManager.anySelected(slabHeater.group);
+        const isSelected = slabHeater.group.isSelected;
 
         push();
 
@@ -44,7 +45,7 @@ class SlabHeaterRenderer {
 
         const p = SLAB_HEATER_TEXT_POP_FACTOR;
         const pointIsInsideRect = SlabHeaterGroupManager.pointIsInsideRect(slabHeater.group);
-        const notDragging = !slabHeater.isSelectedForDrag;
+        const notDragging = !slabHeater.group.isSelectedForDrag;
 
         textSize(textSizePixels * (1 + p * isSelected + p * (pointIsInsideRect * notDragging)));
         stroke(BLACK);
@@ -65,27 +66,5 @@ class SlabHeaterRenderer {
         text(type, 0, 0);
 
         pop();
-    }
-
-    static getCenterPosition(fh, w, h) {
-        let x_;
-        let y_;
-
-        if (fh.alignment % 2 === 1) {
-            x_ = w;
-            y_ = h;
-        } else {
-            x_ = h;
-            y_ = w;
-        }
-
-        const mousePosition = screenContext.getMousePosition();
-        const mousePositionAbsolute = screenContext.getMousePositionAbsolute();
-        const xCorrection = calculateCorrector(LEFT_RIBBON_WIDTH + (SLAB_HEATER_CORRECTION_OFFSET + x_/2) * screenContext.zoom, mousePosition.x);
-        const yCorrection = calculateCorrector(TOP_RIBBON_HEIGHT + (SLAB_HEATER_CORRECTION_OFFSET + y_/2) * screenContext.zoom, mousePosition.y);
-        return gridContext.closestGridPoint({
-            x: mousePositionAbsolute.x + (xCorrection || 0),
-            y: mousePositionAbsolute.y + (yCorrection || 0)
-        });
     }
 }

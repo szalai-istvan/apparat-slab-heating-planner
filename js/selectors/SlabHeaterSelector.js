@@ -1,16 +1,16 @@
 class SlabHeaterSelector {
 
     static select(slabHeater) {
-        slabHeater.isSelected = true;
+        slabHeater.group.isSelected = true;
     }
 
     static selectForDrag(slabHeater) {
-        slabHeater.isSelected = true;
-        slabHeater.isSelectedForDrag = true;
+        slabHeater.group.isSelected = true;
+        slabHeater.group.isSelectedForDrag = true;
     }
 
     static tryToDeselect(slabHeater) {
-        if (slabHeater.isSelectedForDrag) {
+        if (slabHeater.group.isSelectedForDrag) {
             slabHeater.centerPosition = gridContext.closestGridPointToCursor();
         }
 
@@ -20,8 +20,8 @@ class SlabHeaterSelector {
         }
 
         slabHeater.group.color = destinationRoom.slabHeaterColor;
-        slabHeater.isSelected = false;
-        slabHeater.isSelectedForDrag = false;
+        slabHeater.group.isSelected = false;
+        slabHeater.group.isSelectedForDrag = false;
 
         return true;
     }

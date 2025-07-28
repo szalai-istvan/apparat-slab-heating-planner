@@ -20,8 +20,8 @@ function downloadProjectState() {
 
 function getProjectState() {
     const rooms = elementStore.rooms.filter((room) => RoomManager.roomIsConfigured(room));
-    const slabHeaters = elementStore.slabHeaters.filter(fh => !fh.isSelectedForDrag);
-    slabHeaters.forEach(sh => sh.isSelected = false);
+    const slabHeaters = elementStore.slabHeaters.filter(sh => !sh.group.isSelectedForDrag);
+    slabHeaters.forEach(sh => sh.group.isSelected = false);
 
     let stateStr;
     let projectState = {};

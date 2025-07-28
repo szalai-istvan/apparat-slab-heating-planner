@@ -39,7 +39,6 @@ function loadProject(text = undefined) {
     const slabHeaterGroups = reconstructSlabHeaterGroup(slabHeaters);
     for (let groupId in slabHeaterGroups) {
         const group = slabHeaterGroups[groupId];
-        group.anySelectedCache = false;
         group.constructor = {name: CLASS_SLAB_HEATER_GROUP};
         elementStore.register(slabHeaterGroups[groupId]);
     }

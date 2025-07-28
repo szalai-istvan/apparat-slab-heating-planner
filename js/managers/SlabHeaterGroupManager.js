@@ -69,17 +69,7 @@ class SlabHeaterGroupManager {
         return slabHeaterGroup.pointIsInsideCache;
     }
 
-    static anySelected(slabHeaterGroup) {
-        if (slabHeaterGroup.anySelectedCache === null) {
-            const selected = slabHeaterGroup.slabHeaters.filter(sh => sh.isSelected);
-            slabHeaterGroup.anySelectedCache = selected.length > 0;
-        }
-
-        return slabHeaterGroup.anySelectedCache;
-    }
-
     static clearCache(slabHeaterGroup) {
         slabHeaterGroup.pointIsInsideCache = null;
-        slabHeaterGroup.anySelectedCache = null;
     }
 }
