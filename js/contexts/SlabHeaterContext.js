@@ -98,14 +98,16 @@ class SlabHeaterContext {
     removeSelected() {
         const slabHeater = this.selectedSlabHeater;
         if (slabHeater) {
-            elementStore.remove(slabHeater);
+            this.remove(slabHeater);
             this.selectedSlabHeater = undefined;
         }
     }
 
     remove(slabHeater) {
         if (slabHeater) {
-            elementStore.remove(slabHeater);
+            const group = slabHeater.group;
+            elementStore.remove(group);
+            group.slabHeaters.forEach(sh => elementStore.remove(sh));
         }
     }
 }

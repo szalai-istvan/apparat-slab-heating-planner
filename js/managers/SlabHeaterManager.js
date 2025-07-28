@@ -41,13 +41,16 @@ class SlabHeaterManager {
 
     static rotateSelected(direction) {
         const slabHeater = slabHeaterContext.selectedSlabHeater;
+        const group = slabHeater.group;
+
         if (!slabHeater) {
             return;
         }
 
-        slabHeater.group.alignment = (slabHeater.group.alignment + Math.sign(direction)) % 4;
-        while (slabHeater.group.alignment < 0) {
-            slabHeater.group.alignment += 4;
+        group.alignment = (group.alignment + Math.sign(direction)) % 4;
+        while (group.alignment < 0) {
+            group.alignment += 4;
         }
+        SlabHeaterGroupManager.updatePosition(group);
     }
 }

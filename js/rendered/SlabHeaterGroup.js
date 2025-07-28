@@ -9,6 +9,7 @@ class SlabHeaterGroup {
 
     slabHeaters = [];
     pointIsInsideCache = null;
+    pipeDriver;
 
     constructor({slabHeater, length, width, alignment}) {
         if (slabHeater) {
@@ -25,5 +26,7 @@ class SlabHeaterGroup {
         this.length = length;
         this.width = width;
         this.alignment = alignment ?? 1;
+
+        this.pipeDriver = new PipeDriver(SlabHeaterGroupManager.calculatePipeDriverFirstPoint(this));
     }
 }
