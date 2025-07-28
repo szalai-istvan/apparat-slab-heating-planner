@@ -30,7 +30,6 @@ const PREFILL_ROOM_NAMES = [
   'Dolgozószoba',
   'Gyerekszoba 2',
   'Gardrób',
-
   'Konyha',
   'Fürdőszoba',
   'Előszoba'
@@ -65,6 +64,7 @@ const CLASS_TOOLTIP = 'Tooltip';
 const CLASS_MENU_LINE = 'MenuLine';
 const CLASS_BOX = 'Box';
 const CLASS_OPTIONS_BAR = 'OptionsBar';
+const CLASS_PIPE_DRIVER = 'PipeDriver';
 
 // components
 const MODALS = [messageDialog, fileUploadDialogConfirm, scalingDialogConfirm, scalingDialog, addRoomDialog, pdfUploadDialog, transportDialog];

@@ -3,6 +3,7 @@ class ElementStore {
     rooms = [];
     slabHeaters = [];
     slabHeaterGroups = [];
+    pipeDrivers = [];
     boxes = [];
 
     buttons = [];
@@ -40,6 +41,8 @@ class ElementStore {
             this.optionsBars.push(obj);
         } else if (className === CLASS_SLAB_HEATER_GROUP) {
             this.slabHeaterGroups.push(obj);
+        } else if (className === CLASS_PIPE_DRIVER) {
+            this.pipeDrivers.push(obj);
         } else {
             throw new Error(`Attempt to register unexpected render type: ${className}`);
         }

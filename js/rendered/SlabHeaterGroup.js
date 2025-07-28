@@ -16,7 +16,6 @@ class SlabHeaterGroup {
             this.slabHeaters.push(slabHeater);
             slabHeater.group = this;
         }
-        elementStore.register(this);
 
         this.isSelected = false;
         this.isSelectedForDrag = false;
@@ -28,5 +27,8 @@ class SlabHeaterGroup {
         this.alignment = alignment ?? 1;
 
         this.pipeDriver = new PipeDriver(SlabHeaterGroupManager.calculatePipeDriverFirstPoint(this));
+
+        elementStore.register(this);
+        elementStore.register(this.pipeDriver);
     }
 }

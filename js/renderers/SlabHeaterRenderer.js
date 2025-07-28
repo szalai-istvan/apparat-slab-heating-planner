@@ -17,6 +17,10 @@ class SlabHeaterRenderer {
         const rectHeight = slabHeater.rectHeight;
         const isSelected = slabHeater.group.isSelected;
 
+        if (!centerPosition) {
+            return;
+        }
+        
         push();
 
         translate(centerPosition.x, centerPosition.y);
@@ -25,11 +29,13 @@ class SlabHeaterRenderer {
         strokeWeight(lineWeight);
         noFill();
 
-        let tube = - width / 2 + tubeDistance/2;
+        let tube = roundNumber(- width / 2 + tubeDistance/2, 2);
         let angles = [270, 90];
         let arcX = lengthTo;
         stroke(color);
-        while (tube < width / 2 - tubeDistance/2) {
+        const limit = roundNumber(width / 2 - tubeDistance/2, 2);
+
+        while (tube < limit) {
             line(lengthFrom, tube, 0, tube);
             line(0, tube, lengthTo, tube);
             arc(arcX, tube + tubeDistance / 2, diameter, diameter, angles[0], angles[1]);

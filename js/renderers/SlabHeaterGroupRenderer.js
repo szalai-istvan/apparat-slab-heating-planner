@@ -1,4 +1,5 @@
 class SlabHeaterGroupRenderer {
+
     static draw(slabHeaterGroup) {
         const slabHeaters = slabHeaterGroup.slabHeaters;
         if (slabHeaterGroup.isSelectedForDrag) {
@@ -10,5 +11,10 @@ class SlabHeaterGroupRenderer {
 
             SlabHeaterRenderer.draw(slabHeater);
         }
+
+        const pipeDriver = slabHeaterGroup.pipeDriver;
+        const firstPoint = SlabHeaterGroupManager.calculatePipeDriverFirstPoint(slabHeaterGroup);
+        PipeDriverManager.updateFirstPoint(pipeDriver, firstPoint);
+        PipeDriverRenderer.draw(pipeDriver);
     }
 }

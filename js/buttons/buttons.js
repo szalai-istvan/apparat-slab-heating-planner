@@ -110,7 +110,7 @@ function createButtons() {
         text: 'Törlés',
         size: SMALL_BUTTON_SIZE,
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        onClick: () => selectionContext.removeSelected(),
+        onClick: () => slabHeaterContext.removeEntirySelectedGroup(),
         shouldBeRendered: () => selectionContext.selectedObject
     });
     leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);

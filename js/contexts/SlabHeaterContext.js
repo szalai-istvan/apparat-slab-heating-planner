@@ -105,6 +105,13 @@ class SlabHeaterContext {
 
     remove(slabHeater) {
         if (slabHeater) {
+            elementStore.remove(slabHeater);
+        }
+    }
+
+    removeEntirySelectedGroup() {
+        const slabHeater = this.selectedSlabHeater;
+        if (slabHeater) {
             const group = slabHeater.group;
             elementStore.remove(group);
             group.slabHeaters.forEach(sh => elementStore.remove(sh));

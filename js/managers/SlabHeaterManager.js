@@ -22,6 +22,10 @@ class SlabHeaterManager {
             return false;
         }
 
+        if (!slabHeater.group) {
+            return false;
+        }
+
         if (slabHeater.group.alignment % 2 === 1) {
             return pointIsInside(
                 screenContext.getMousePositionAbsolute(),

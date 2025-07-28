@@ -10,10 +10,6 @@ class SlabHeaterSelector {
     }
 
     static tryToDeselect(slabHeater) {
-        if (slabHeater.group.isSelectedForDrag) {
-            slabHeater.centerPosition = gridContext.closestGridPointToCursor();
-        }
-
         const destinationRoom = roomContext.registerRelocatedSlabHeatingAndReturnContainingRoom(slabHeater);
         if (!destinationRoom) {
             return false;
