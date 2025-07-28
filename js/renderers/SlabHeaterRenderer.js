@@ -5,7 +5,6 @@ class SlabHeaterRenderer {
         const width = slabHeater.group.width * ratio;
         const length = slabHeater.group.length * ratio;
         const alignment = slabHeater.group.alignment;
-        //const centerPosition = slabHeater.group.isSelectedForDrag ? getCenterPositionWithCorrection(slabHeater, width, length) : slabHeater.centerPosition;
         const centerPosition = slabHeater.centerPosition;
         const lengthFrom = - length / 2;
         const lengthTo = length / 2;

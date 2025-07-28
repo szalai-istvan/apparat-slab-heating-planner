@@ -17,13 +17,14 @@ function giveBackSlabHeaterColor(color) {
 function getCenterPositionWithCorrection(slabHeater, width, length) {
     let x_;
     let y_;
+    const ratio = scaleContext.pixelsPerMetersRatio;
 
-    if (slabHeater.alignment % 2 === 1) {
-        x_ = width;
-        y_ = length;
+    if (slabHeater.group.alignment % 2 === 1) {
+        x_ = width * ratio;
+        y_ = (length + TUBE_DISTANCE_IN_METER) * ratio;
     } else {
-        x_ = length;
-        y_ = width;
+        x_ = (length + TUBE_DISTANCE_IN_METER) * ratio;
+        y_ = width * ratio;
     }
 
     const mousePosition = screenContext.getMousePosition();

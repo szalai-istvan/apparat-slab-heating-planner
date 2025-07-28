@@ -43,6 +43,7 @@ function addSidePanelText(text, y) {
     UI_TEXTS.push({ text: text, position: { x: LEFT_RIBBON_WIDTH / 2, y: y } });
 }
 
-//function calculateCorrector(lim, coord) {
-//    return (Math.abs(lim - coord) + lim - coord) / (2 * screenContext.zoom);
-//}
+function calculateCorrector(lim, coord) {
+    const dif = lim - coord;
+    return (Math.abs(dif) + dif) / (2 * screenContext.zoom);
+}
