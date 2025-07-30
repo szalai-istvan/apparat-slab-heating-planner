@@ -51,7 +51,3 @@ function enableEnterForConfirm() {
         button && button.click();
     });
 }
-
-function noModalsAreOpened() {
-    return MODALS.filter((modal) => modal.getAttribute("open") !== null).length === 0;
-}

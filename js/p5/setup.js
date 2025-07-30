@@ -12,14 +12,13 @@ function setup() {
     docSize = getDocumentDimensions();
     canvas = createCanvas(docSize.vw, window.innerHeight);
     canvas.parent("body");
-    screenContext.setCanvas(canvas);
+
+    screenCanvas = canvas;
     apparatLogo = loadImage('img/APPARAT_transparent.PNG');
     
     angleMode(DEGREES);
     createButtons();
     
-    tooltip.applicationStarted();
-
     if (SAVE_TO_LOCAL_STORAGE_ENABLED) {
         loadProject();        
     }

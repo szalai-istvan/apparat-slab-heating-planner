@@ -90,85 +90,112 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
 
     <script type="text/javascript" src="js/appdata/constants.js"></script>
-    <script type="text/javascript" src="js/appdata/excelConstants.js"></script>
-    <script type="text/javascript" src="js/appdata/slabHeaterConstants.js"></script>
     <script type="text/javascript" src="js/appdata/tooltips.js"></script>
-    <script type="text/javascript" src="js/appdata/translations.js"></script>
-    <script type="text/javascript" src="js/appdata/pipeDriverConstants.js"></script>
 
-    <script type="text/javascript" src="js/helpers/helpers.js"></script>
-    <script type="text/javascript" src="js/helpers/uiHelpers.js"></script>
-    <script type="text/javascript" src="js/helpers/keystrokeRecorder.js"></script>
-    <script type="text/javascript" src="js/helpers/setupHelpers.js"></script>
-    <script type="text/javascript" src="js/helpers/errordialog.js"></script>
-    <script type="text/javascript" src="js/helpers/debug.js"></script>
-    <script type="text/javascript" src="js/helpers/htmlHelpers.js"></script>
-    <script type="text/javascript" src="js/helpers/p5helpers.js"></script>
-    <script type="text/javascript" src="js/helpers/slabHeaterHelpers.js"></script>
-        
-    <script type="text/javascript" src="js/store/ElementStore.js"></script>
-    <script type="text/javascript" src="js/renderer/Renderer.js"></script>
-    <script type="text/javascript" src="js/contexts/ScreenContext.js"></script>
-    <script type="text/javascript" src="js/rendered/Blueprint.js"></script>
-    <script type="text/javascript" src="js/contexts/BlueprintContext.js"></script>
-    <script type="text/javascript" src="js/contexts/ScaleContext.js"></script>
-    <script type="text/javascript" src="js/rendered/Room.js"></script>
-    <script type="text/javascript" src="js/contexts/RoomContext.js"></script>
-    <script type="text/javascript" src="js/contexts/GridContext.js"></script>
-    <script type="text/javascript" src="js/rendered/SlabHeater.js"></script>
-    <script type="text/javascript" src="js/rendered/SlabHeaterGroup.js"></script>
-    <script type="text/javascript" src="js/contexts/SlabHeaterContext.js"></script>
-    <script type="text/javascript" src="js/contexts/SelectionContext.js"></script>
-    <script type="text/javascript" src="js/rendered/PipeDriver.js"></script>
-    
-    <script type="text/javascript" src="js/rendered/uiElements/Tooltip.js"></script>
-    <script type="text/javascript" src="js/rendered/uiElements/MenuLine.js"></script>
-    <script type="text/javascript" src="js/rendered/uiElements/ButtonWrapper.js"></script>
-    <script type="text/javascript" src="js/rendered/uiElements/OptionsBar.js"></script>
-
-    <script type="text/javascript" src="js/buttons/manageBlueprintButtons.js"></script>
-    <script type="text/javascript" src="js/buttons/scaleButton.js"></script>
     <script type="text/javascript" src="js/buttons/addRoomsButton.js"></script>
-    <script type="text/javascript" src="js/buttons/componentManageButtons.js"></script>
     <script type="text/javascript" src="js/buttons/addSlabHeaterMenu.js"></script>
+    <script type="text/javascript" src="js/buttons/buttons.js"></script>
+    <script type="text/javascript" src="js/buttons/componentManageButtons.js"></script>
     <script type="text/javascript" src="js/buttons/downloadSummaryButton.js"></script>
     <script type="text/javascript" src="js/buttons/helpButton.js"></script>
-    <script type="text/javascript" src="js/buttons/buttons.js"></script>
+    <script type="text/javascript" src="js/buttons/manageBlueprintButtons.js"></script>
+    <script type="text/javascript" src="js/buttons/scaleButton.js"></script>
+
+    <script type="text/javascript" src="js/contexts/ScreenContext.js"></script>
+    <script type="text/javascript" src="js/contexts/SelectionContext.js"></script>
+    <script type="text/javascript" src="js/contexts/SlabHeaterContext.js"></script>
+
+    <script type="text/javascript" src="js/helpers/helpers.js"></script>
+    <script type="text/javascript" src="js/helpers/keystrokeRecorder.js"></script>
+    <script type="text/javascript" src="js/helpers/setupHelpers.js"></script>
+    <script type="text/javascript" src="js/helpers/slabHeaterHelpers.js"></script>
+    <script type="text/javascript" src="js/helpers/uiHelpers.js"></script>
+    <script type="text/javascript" src="js/helpers/classes/checkClass.js"></script>
+    <script type="text/javascript" src="js/helpers/classes/getClassName.js"></script>
+    <script type="text/javascript" src="js/helpers/debug/debug.js"></script>
+    <script type="text/javascript" src="js/helpers/errordialog/errordialog.js"></script>
+    <script type="text/javascript" src="js/helpers/html/createRadioButton.js"></script>
+    <script type="text/javascript" src="js/helpers/math/formatNumber.js"></script>
+    <script type="text/javascript" src="js/helpers/math/misc.js"></script>
+    <script type="text/javascript" src="js/helpers/math/randomChoice.js"></script>
+    <script type="text/javascript" src="js/helpers/math/roundNumber.js"></script>
+
+    <script type="text/javascript" src="js/managers/BlueprintManager.js"></script>
+    <script type="text/javascript" src="js/managers/PipeDriverManager.js"></script>
+    <script type="text/javascript" src="js/managers/RoomManager.js"></script>
+    <script type="text/javascript" src="js/managers/SlabHeaterGroupManager.js"></script>
+    <script type="text/javascript" src="js/managers/SlabHeaterManager.js"></script>
+
+    <script type="text/javascript" src="js/operations/blueprint/calc/blueprintDataIsPresent.js"></script>
+    <script type="text/javascript" src="js/operations/blueprint/create/createBlueprint.js"></script>
+    <script type="text/javascript" src="js/operations/blueprint/delete/clearBlueprints.js"></script>
+    <script type="text/javascript" src="js/operations/blueprint/render/drawBlueprint.js"></script>
+    <script type="text/javascript" src="js/operations/grid/calc/getClosestGridPointToPoint.js"></script>
+    <script type="text/javascript" src="js/operations/grid/create/setGridSeed.js"></script>
+    <script type="text/javascript" src="js/operations/grid/delete/removeGridSeed.js"></script>
+    <script type="text/javascript" src="js/operations/grid/update/updateGridResolution.js"></script>
+    <script type="text/javascript" src="js/operations/point/create/createPoint.js"></script>
+    <script type="text/javascript" src="js/operations/room/calc/configuredRoomsExist.js"></script>
+    <script type="text/javascript" src="js/operations/room/calc/getRoomContainingPoint.js"></script>
+    <script type="text/javascript" src="js/operations/room/calc/getRoomNames.js"></script>
+    <script type="text/javascript" src="js/operations/room/calc/pointIsInsideRoom.js"></script>
+    <script type="text/javascript" src="js/operations/room/calc/registerRelocatedSlabHeaterGroup.js"></script>
+    <script type="text/javascript" src="js/operations/room/calc/roomIsConfigured.js"></script>
+    <script type="text/javascript" src="js/operations/room/calc/selectedRoomIsConfiguredOrNoRoomIsSelected.js"></script>
+    <script type="text/javascript" src="js/operations/room/create/addPointToRoom.js"></script>
+    <script type="text/javascript" src="js/operations/room/create/createRoom.js"></script>
+    <script type="text/javascript" src="js/operations/room/delete/clearRooms.js"></script>
+    <script type="text/javascript" src="js/operations/room/delete/deleteSelectedRoom.js"></script>
+    <script type="text/javascript" src="js/operations/room/select/clearRoomSelectionCache.js"></script>
+    <script type="text/javascript" src="js/operations/room/select/deselectRoom.js"></script>
+    <script type="text/javascript" src="js/operations/room/select/selectRoom.js"></script>
+    <script type="text/javascript" src="js/operations/scale/calc/processScalingValue.js"></script>
+    <script type="text/javascript" src="js/operations/scale/create/addScalingReferencePoint.js"></script>
+    <script type="text/javascript" src="js/operations/scale/create/startScaling.js"></script>
+    <script type="text/javascript" src="js/operations/scale/delete/clearScaling.js"></script>
+    <script type="text/javascript" src="js/operations/scale/render/drawScaler.js"></script>
+
+    <script type="text/javascript" src="js/point/Point.js"></script>
 
     <script type="text/javascript" src="js/quote/excelGenerator.js"></script>
     <script type="text/javascript" src="js/quote/excelGeneratorUtil.js"></script>
 
-    <script type="text/javascript" src="js/p5/setup.js"></script>
+    <script type="text/javascript" src="js/rendered/Blueprint.js"></script>
+    <script type="text/javascript" src="js/rendered/Box.js"></script>
+    <script type="text/javascript" src="js/rendered/PipeDriver.js"></script>
+    <script type="text/javascript" src="js/rendered/Room.js"></script>
+    <script type="text/javascript" src="js/rendered/SlabHeater.js"></script>
+    <script type="text/javascript" src="js/rendered/SlabHeaterGroup.js"></script>
+    <script type="text/javascript" src="js/rendered/uiElements/ButtonWrapper.js"></script>
+    <script type="text/javascript" src="js/rendered/uiElements/MenuLine.js"></script>
+    <script type="text/javascript" src="js/rendered/uiElements/OptionsBar.js"></script>
+    <script type="text/javascript" src="js/rendered/uiElements/Tooltip.js"></script>
+
+    <script type="text/javascript" src="js/renderer/Renderer.js"></script>
+
+    <script type="text/javascript" src="js/renderers/ButtonWrapperRenderer.js"></script>
+    <script type="text/javascript" src="js/renderers/DebugInfoRenderer.js"></script>
+    <script type="text/javascript" src="js/renderers/MenuRenderer.js"></script>
+    <script type="text/javascript" src="js/renderers/OptionsBarRenderer.js"></script>
+    <script type="text/javascript" src="js/renderers/PipeDriverRenderer.js"></script>
+    <script type="text/javascript" src="js/renderers/RoomRenderer.js"></script>
+    <script type="text/javascript" src="js/renderers/SlabHeaterGroupRenderer.js"></script>
+    <script type="text/javascript" src="js/renderers/SlabHeaterRenderer.js"></script>
+    <script type="text/javascript" src="js/renderers/TooltipRenderer.js"></script>
+    <script type="text/javascript" src="js/renderers/UiBackgroundRenderer.js"></script>
+
+    <script type="text/javascript" src="js/save/load.js"></script>
+    <script type="text/javascript" src="js/save/save.js"></script>
+
+    <script type="text/javascript" src="js/selectors/SlabHeaterSelector.js"></script>
+
+    <script type="text/javascript" src="js/store/ElementStore.js"></script>
+
     <script type="text/javascript" src="js/p5/draw.js"></script>
     <script type="text/javascript" src="js/p5/mousePressed.js"></script>
     <script type="text/javascript" src="js/p5/mouseReleased.js"></script>
     <script type="text/javascript" src="js/p5/mouseWheel.js"></script>
-
-    <script type="text/javascript" src="js/renderers/BlueprintRenderer.js"></script>
-    <script type="text/javascript" src="js/renderers/ButtonWrapperRenderer.js"></script>
-    <script type="text/javascript" src="js/renderers/RoomRenderer.js"></script>
-    <script type="text/javascript" src="js/renderers/ScaleContextRenderer.js"></script>
-    <script type="text/javascript" src="js/renderers/TooltipRenderer.js"></script>
-    <script type="text/javascript" src="js/renderers/DebugInfoRenderer.js"></script>
-    <script type="text/javascript" src="js/renderers/UiBackgroundRenderer.js"></script>
-    <script type="text/javascript" src="js/renderers/SlabHeaterRenderer.js"></script>
-    <script type="text/javascript" src="js/renderers/MenuRenderer.js"></script>
-    <script type="text/javascript" src="js/renderers/OptionsBarRenderer.js"></script>
-    <script type="text/javascript" src="js/renderers/SlabHeaterGroupRenderer.js"></script>
-    <script type="text/javascript" src="js/renderers/PipeDriverRenderer.js"></script>
-
-    <script type="text/javascript" src="js/managers/BlueprintManager.js"></script>
-    <script type="text/javascript" src="js/managers/RoomManager.js"></script>
-    <script type="text/javascript" src="js/managers/SlabHeaterManager.js"></script>
-    <script type="text/javascript" src="js/managers/SlabHeaterGroupManager.js"></script>
-    <script type="text/javascript" src="js/managers/PipeDriverManager.js"></script>
-
-    <script type="text/javascript" src="js/selectors/RoomSelector.js"></script>
-    <script type="text/javascript" src="js/selectors/SlabHeaterSelector.js"></script>
-
-
-    <script type="text/javascript" src="js/save/save.js"></script>
-    <script type="text/javascript" src="js/save/load.js"></script>
+    <script type="text/javascript" src="js/p5/setup.js"></script>
 </body>
 
 </html>

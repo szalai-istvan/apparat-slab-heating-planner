@@ -12,9 +12,9 @@ class Renderer {
             DebugInfoRenderer.drawAxis();
         }
     }
-    
+
     renderAbsolutePositionObjects() {
-        runBetweenPushAndPop(UiBackgroundRenderer.drawUiBackground);
+        UiBackgroundRenderer.drawUiBackground();
         TooltipRenderer.draw(elementStore.tooltip);
         elementStore.menus.forEach(menu => MenuRenderer.draw(menu));
         elementStore.optionsBars.forEach(opt => OptionsBarRenderer.draw(opt));

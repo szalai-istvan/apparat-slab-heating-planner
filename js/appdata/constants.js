@@ -50,10 +50,7 @@ const LOCAL_STORAGE_DATA_KEY = 'rajzolator-project-save';
 // grid settings
 const GRID_RESOLUTION_METER = 0.05;
 
-// helper constants
-const NUMBER_FORMAT_OBJECT = new Intl.NumberFormat('en-US');
-
-// ElementStore constants
+// class name constants
 const CLASS_SLAB_HEATER = 'SlabHeater';
 const CLASS_SLAB_HEATER_GROUP = 'SlabHeaterGroup';
 const CLASS_BLUEPRINT = 'Blueprint';
@@ -65,6 +62,9 @@ const CLASS_MENU_LINE = 'MenuLine';
 const CLASS_BOX = 'Box';
 const CLASS_OPTIONS_BAR = 'OptionsBar';
 const CLASS_PIPE_DRIVER = 'PipeDriver';
+const CLASS_NUMBER = 'number';
+const CLASS_STRING = 'string';
+const CLASS_POINT = 'Point';
 
 // components
 const MODALS = [messageDialog, fileUploadDialogConfirm, scalingDialogConfirm, scalingDialog, addRoomDialog, pdfUploadDialog, transportDialog];
@@ -76,11 +76,47 @@ const DISABLED = 'disabled';
 const KEYUP = 'keyup';
 const CHANGE = 'change';
 const BACKGROUND = 'background';
+const RED = 'red';
+const BLUE = 'blue';
+const BLACK = 'black';
 
 // OptionsBar constants
 const OPTIONS_BAR_TEXT_SIZE = 14;
 
-// colors
-const RED = 'red';
-const BLUE = 'blue';
-const BLACK = 'black';
+// screen constants
+const MINIMUM_ZOOM = 0.01;
+const MAXIMUM_ZOOM = 1_000;
+const ZOOM_STEP = 1.05;
+
+// PipeDriver constants
+const PIPE_DRIVER_DEFAULT_FILL_COLOR = 'white';
+const PIPE_DRIVER_SELECTABLE_FILL_COLOR = 'lightgray';
+const PIPE_DRIVER_SELECTED_COLOR = 'gray';
+const PIPE_DRIVER_OUTLINE_COLOR = 'black';
+const PIPE_DRIVER_DIAMETER_IN_METERS = 0.1;
+const PIPE_DRIVER_THICKNESS_IN_METERS = 0.01;
+
+const PIPE_DRIVER_PIPE_THICKNESS_IN_METERS = 0.01;
+const PIPE_DRIVER_PIPE_COLOR = 'black';
+
+const PIPE_DRIVER_ADDITIONAL_OFFSET_METERS = 0.15;
+
+// SlabHeater constants
+const TUBE_DISTANCE_IN_METER = 0.1;
+const SLAB_HEATER_LINE_WEIGHT_IN_METER = 0.02;
+const SLAB_HEATER_TEXT_SIZE_IN_METER = 0.15;
+const SLAB_HEATER_TYPE_RECT_PADDING_IN_METER = 0.1;
+const SLAB_HEATER_TEXT_POP_FACTOR = 0.05;
+const SLAB_HEATER_CORRECTION_OFFSET = 10;
+const SLAB_HEATER_TYPES = {
+    width: ['0.8', '1'],
+    length: {
+        m: ['1', '2', '3', '4', '5'],
+        cm: ['0', '20', '40', '60', '80']
+    }
+};
+const SLAB_HEATER_COLORS = ['black', 'darkgrey', 'blue', 'red', 'green', 'orange', 'pink', 'teal', 'darkred'];
+let SLAB_HEATER_COLORS_AVAILABLE = [...SLAB_HEATER_COLORS];
+
+// translations
+const TRANSLATIONS = {};

@@ -17,10 +17,6 @@ class BlueprintManager {
         return blueprint.topLeftPosition;
     }
 
-    static dataIsPresent(blueprint) {
-        return Boolean(blueprint.data);
-    }
-
     static getSizeData(blueprint) {
         const data = blueprint.data;
 

@@ -4,13 +4,15 @@ function draw() {
 
     background(BACKGROUND_COLOR);
 
-    runBetweenPushAndPop(renderTranslatedObjects);
+    renderTranslatedObjects();
 
     selectionContext.checkForSelection();
     renderer.renderAbsolutePositionObjects();
 }
 
 function renderTranslatedObjects() {
+    push();
     screenContext.translate();
     renderer.renderTranslatedObjects();
+    pop();
 }

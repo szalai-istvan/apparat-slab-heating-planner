@@ -116,6 +116,7 @@ class SlabHeaterContext {
             elementStore.remove(group);
             group.slabHeaters.forEach(sh => elementStore.remove(sh));
         }
+        this.selectedSlabHeater = undefined;
     }
 }
 

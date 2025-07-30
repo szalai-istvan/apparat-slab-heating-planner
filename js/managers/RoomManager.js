@@ -1,45 +1,12 @@
 class RoomManager {
 
-    static addPoint(room) {
-        const points = room.points;
-        const mousePosition = gridContext.closestGridPointToCursor();
 
-        if (points.length >= 2) {
-            return;
-        } else {
-            points.push(mousePosition);
-            if (points.length >= 2) {
-                room.middlePoint = RoomManager.getMiddlePoint(room);
-                selectionContext.tryToDeselect();
-                room.textCenterCoordinates = room.middlePoint;
-                tooltip.roomAddingFinished();
-            }
-        }
-    }
 
     static roomIsConfigured(room) {
         return room.points.length === 2;
     }
 
     
-    static pointIsInsideRoom(room, point = undefined) {
-        point = point || screenContext.getMousePositionAbsolute();
-        const x = point.x;
-        const y = point.y;
-        
-        if (room.points.length === 0) {
-            return false;
-        }
-
-        const minX = room.points.map(p => p.x).reduce(minimumFunction);
-        const maxX = room.points.map(p => p.x).reduce(maximumFunction);
-
-        const minY = room.points.map(p => p.y).reduce(minimumFunction);
-        const maxY = room.points.map(p => p.y).reduce(maximumFunction);
-
-        return x > minX && x < maxX && y > minY && y < maxY;
-    }
-
     static mouseCursorIsInsideName(room) {
         if (room.points.length < 2) {
             return false;

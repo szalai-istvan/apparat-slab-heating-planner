@@ -16,7 +16,12 @@ class SlabHeaterGroupManager {
         if (!selectedGroup) {
             return;
         }
-        SlabHeaterGroupManager.remove(selectedGroup);
+
+        if (selectedGroup.slabHeaters.length < 2) {
+            slabHeaterContext.removeEntirySelectedGroup();
+        } else {
+            SlabHeaterGroupManager.removeFromGroup(selectedGroup);
+        }
     }
 
     static nextPosition(group) {
@@ -43,7 +48,7 @@ class SlabHeaterGroupManager {
         }
     }
 
-    static remove(slabHeaterGroup, slabHeater = undefined) {
+    static removeFromGroup(slabHeaterGroup, slabHeater = undefined) {
         slabHeater = slabHeater || slabHeaterGroup.slabHeaters[slabHeaterGroup.slabHeaters.length - 1];
         if (!slabHeater) {
             return;
@@ -57,7 +62,7 @@ class SlabHeaterGroupManager {
     }
 
     static clear(slabHeaterGroup) {
-        slabHeaterGroup.slabHeaters.forEach(sh => SlabHeaterGroupManager.remove(slabHeaterGroup, sh));
+        slabHeaterGroup.slabHeaters.forEach(sh => SlabHeaterGroupManager.removeFromGroup(slabHeaterGroup, sh));
     }
 
     static pointIsInsideRect(slabHeaterGroup) {

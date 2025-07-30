@@ -3,6 +3,7 @@ let apparatLogo;
 class UiBackgroundRenderer {
     
     static drawUiBackground() {
+        push();
         fill(UI_COLOR);
         noStroke();
         rect(0, 0, docSize.vw, TOP_RIBBON_HEIGHT);
@@ -24,5 +25,6 @@ class UiBackgroundRenderer {
         }
 
         image(apparatLogo, docSize.vw - 293, 5, 287, 49.5);
+        pop();
     }
 }
