@@ -6,8 +6,12 @@ let scalingSecondPoint = null;
  * 
  * @returns {undefined}
  */
-function addScalingReferencePoint() { // formerly: scaleContext.addReferencePoint()
-    const point = screenContext.getMousePositionAbsolute();
+function addScalingReferencePoint() {
+    if (!scalingInProgress) {
+        return;
+    }
+
+    const point = getMousePositionAbsolute();
     if (!scalingFirstPoint) {
         scalingFirstPoint = point;
     } else if (!scalingSecondPoint) {

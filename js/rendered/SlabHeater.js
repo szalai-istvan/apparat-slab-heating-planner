@@ -11,10 +11,10 @@ class SlabHeater {
     constructor() {
         this.id = Math.random().toString().substring(2);
 
-        this.lineWeight = SLAB_HEATER_LINE_WEIGHT_IN_METER * scaleContext.pixelsPerMetersRatio;
-        this.textSize = SLAB_HEATER_TEXT_SIZE_IN_METER * scaleContext.pixelsPerMetersRatio;
+        this.lineWeight = SLAB_HEATER_LINE_WEIGHT_IN_METER * pixelsPerMetersRatio;
+        this.textSize = SLAB_HEATER_TEXT_SIZE_IN_METER * pixelsPerMetersRatio;
 
-        this.padding = SLAB_HEATER_TYPE_RECT_PADDING_IN_METER * scaleContext.pixelsPerMetersRatio;
+        this.padding = SLAB_HEATER_TYPE_RECT_PADDING_IN_METER * pixelsPerMetersRatio;
 
         textSize(this.textSize);
         this.rectWidth = textWidth(this.type) + this.padding;

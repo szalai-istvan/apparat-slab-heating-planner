@@ -3,7 +3,7 @@
  * 
  * @returns {undefined}
  */
-function deleteSelectedRoom() {
+function removeSelectedRoom() {
     const room = selectedRoom;
     if (room) {
         elementStore.remove(room);
@@ -12,6 +12,6 @@ function deleteSelectedRoom() {
     }
 
     if (elementStore.rooms.length === 0) {
-        gridContext.removeSeed();
+        removeGridSeed();
     }
 }

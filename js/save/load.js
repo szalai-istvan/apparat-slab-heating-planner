@@ -5,56 +5,45 @@ function uploadProject() {
 }
 
 function loadProject(text = undefined) {
-    const projectState = text ? JSON.parse(text) : loadProjectState();
+    const projectState = text ? JSON.parse(text) : loadProjectStateFromLocalStorage();
     if (!projectState) {
         return;
     }
 
-    blueprintContext.clearBlueprints();
-    (projectState.blueprints.data || []).forEach((bp) => blueprintContext.createBlueprint(loadImage(bp)));
+    clearBlueprints();
+    (projectState.blueprints.data || []).forEach((bp) => createBlueprint(loadImage(bp)));
 
     const topLeftCoordinates = projectState.blueprints.topLeft;
     for (let i = 0; i < topLeftCoordinates.length; i++) {
         elementStore.blueprints[i].topLeftPosition = topLeftCoordinates[i];
     }
 
-    scaleContext.pixelsPerMetersRatio = projectState.scale.pixelsPerMeterRatio;
-    gridContext.refreshGridResolution();
-
-    if (scaleContext.pixelsPerMetersRatio) {
-        setTimeout(() => tooltip.scalingFinished(), 3_000);
-    }
+    pixelsPerMetersRatio = projectState.scale.pixelsPerMeterRatio;
+    updateGridResolution();
 
     const rooms = projectState.rooms.rooms;
     rooms.forEach((room) => (room.constructor = { name: CLASS_ROOM }));
     rooms.forEach((room) => elementStore.register(room));
-    if (elementStore.rooms.length) {
-        setTimeout(() => tooltip.roomAddingFinished(), 3_000);
+
+    const slabHeaterGroups = projectState.slabHeaterGroups.slabHeaterGroups || [];
+    restoreGroupReferences(slabHeaterGroups);
+
+    for (let slabHeaterGroup of slabHeaterGroups) {
+        slabHeaterGroup.constructor = {name: CLASS_SLAB_HEATER_GROUP};
+        elementStore.register(slabHeaterGroup);
+
+        const slabHeaters = slabHeaterGroup.slabHeaters;
+        slabHeaters.forEach((slabHeater) => (slabHeater.constructor = { name: CLASS_SLAB_HEATER }));
+        slabHeaters.forEach((slabHeater) => elementStore.register(slabHeater));
     }
 
-    const slabHeaters = projectState.slabHeaters.slabHeaters || [];
-    slabHeaters.forEach((slabHeater) => (slabHeater.constructor = { name: CLASS_SLAB_HEATER }));
-    slabHeaters.forEach((slabHeater) => elementStore.register(slabHeater));
-    
-    const slabHeaterGroups = reconstructSlabHeaterGroup(slabHeaters);
-    for (let groupId in slabHeaterGroups) {
-        const group = slabHeaterGroups[groupId];
-        group.constructor = {name: CLASS_SLAB_HEATER_GROUP};
-        elementStore.register(slabHeaterGroups[groupId]);
-    }
+    screenSumDrag = projectState.screen.sumDrag;
+    screenZoom = projectState.screen.zoom;
 
-    if (elementStore.slabHeaters.length) {
-        setTimeout(() => tooltip.panelAdded(), 3_000);
-    }
-
-    screenContext.sumDrag = projectState.screen.sumDrag;
-    screenContext.zoom = projectState.screen.zoom;
-
-    gridContext.setSeed(projectState.grid.seed);
-    selectionContext.lastSelectingContext = roomContext;
+    setGridSeed(projectState.grid.seed);
 }
 
-function loadProjectState() {
+function loadProjectStateFromLocalStorage() {
     return JSON.parse(localStorage.getItem(LOCAL_STORAGE_DATA_KEY));
 }
 

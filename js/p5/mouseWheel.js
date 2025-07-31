@@ -1,11 +1,11 @@
 function mouseWheel(event) {
-    if (!screenContext.controlsEnabled()) {
+    if (!controlsAreEnabled) {
         return;
     }
     
     if (event.delta > 0) {
-        screenContext.zoomOut();
+        zoomOut();
     } else {
-        screenContext.zoomIn();
+        zoomIn();
     }
 }

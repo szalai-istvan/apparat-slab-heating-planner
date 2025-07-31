@@ -11,6 +11,6 @@ function startScaling() {
         clearScaling();
     } else {
         scalingDialogConfirm.showModal();
-        screenContext.toggleControls();
+        toggleScreenControls();
     }
 }

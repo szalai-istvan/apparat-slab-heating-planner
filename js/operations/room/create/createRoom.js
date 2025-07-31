@@ -17,7 +17,7 @@ function createRoom(name) {
     const room = new Room(name);
     elementStore.register(room);
 
-    selectionContext.selectObject(room);
+    selectObject(room);
     return true;
 }
 

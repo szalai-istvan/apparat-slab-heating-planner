@@ -17,7 +17,7 @@ function giveBackSlabHeaterColor(color) {
 function getCenterPositionWithCorrection(slabHeater, width, length) {
     let x_;
     let y_;
-    const ratio = scaleContext.pixelsPerMetersRatio;
+    const ratio = pixelsPerMetersRatio;
 
     if (slabHeater.group.alignment % 2 === 1) {
         x_ = width * ratio;
@@ -28,9 +28,9 @@ function getCenterPositionWithCorrection(slabHeater, width, length) {
     }
 
     const mousePosition = screenContext.getMousePosition();
-    const mousePositionAbsolute = screenContext.getMousePositionAbsolute();
-    const xCorrection = calculateCorrector(LEFT_RIBBON_WIDTH + (SLAB_HEATER_CORRECTION_OFFSET + x_ / 2) * screenContext.zoom, mousePosition.x);
-    const yCorrection = calculateCorrector(TOP_RIBBON_HEIGHT + (SLAB_HEATER_CORRECTION_OFFSET + y_ / 2) * screenContext.zoom, mousePosition.y);
+    const mousePositionAbsolute = getMousePositionAbsolute();
+    const xCorrection = calculateCorrector(LEFT_RIBBON_WIDTH + (SLAB_HEATER_CORRECTION_OFFSET + x_ / 2) * screenZoom, mousePosition.x);
+    const yCorrection = calculateCorrector(TOP_RIBBON_HEIGHT + (SLAB_HEATER_CORRECTION_OFFSET + y_ / 2) * screenZoom, mousePosition.y);
     return gridContext.closestGridPoint({
         x: mousePositionAbsolute.x + (xCorrection || 0),
         y: mousePositionAbsolute.y + (yCorrection || 0)
@@ -39,7 +39,7 @@ function getCenterPositionWithCorrection(slabHeater, width, length) {
 
 function offsetCenterPosition({ originalCenter, width, alignment, index }) {
     const verticalOffset = alignment % 2 === 0;
-    const offsetValue = width * scaleContext.pixelsPerMetersRatio * index;
+    const offsetValue = width * pixelsPerMetersRatio * index;
 
     if (verticalOffset) {
         return {

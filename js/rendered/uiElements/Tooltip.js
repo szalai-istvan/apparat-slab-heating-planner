@@ -6,7 +6,6 @@ class Tooltip {
 
     constructor(position) {
         this.position = position;
-        elementStore.register(this);
     }
 
     displayTooltip(key) {

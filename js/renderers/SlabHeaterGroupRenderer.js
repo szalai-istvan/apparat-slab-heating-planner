@@ -1,4 +1,4 @@
-class SlabHeaterGroupRenderer {
+class SlabHeaterGroupRenderer____ {
 
     static draw(slabHeaterGroup) {
         const slabHeaters = slabHeaterGroup.slabHeaters;

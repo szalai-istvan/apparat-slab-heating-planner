@@ -3,7 +3,7 @@
  * 
  * @returns {undefined}
  */
-function addPointToSelectedRoom() { // formerly: roomContext.addPoint()
+function addPointToSelectedRoom() {
     if (!selectedRoom) {
         return;
     }
@@ -17,10 +17,10 @@ function addPointToSelectedRoom() { // formerly: roomContext.addPoint()
         return;
     }
 
-    addPointToRoom(selectedRoom);
-    if (elementStore.rooms.length === 1 && selectedRoom.points.length === 1) {
-        gridContext.setSeed(screenContext.getMousePositionAbsolute());
+    if (elementStore.rooms.length === 1 && selectedRoom.points.length === 0) {
+        setGridSeed(getMousePositionAbsolute());
     }
+    addPointToRoom(selectedRoom);
 
 }
 
@@ -34,7 +34,7 @@ function pointCanBeAddedToSelectedRoom() { // formerly: roomContext.pointIsValid
 
 function addPointToRoom(room) {
     const points = room.points;
-    const mousePosition = gridContext.closestGridPointToCursor();
+    const mousePosition = getClosestGridPointToCursor();
 
     if (points.length >= 2) {
         return;
@@ -42,7 +42,7 @@ function addPointToRoom(room) {
 
     points.push(mousePosition);
     if (points.length >= 2) {
-        room.middlePoint = getRoomsMiddlePoint(room);
+        room.middlePoint = getRoomMiddlePoint(room);
         deselectRoom();
         room.textCenterCoordinates = room.middlePoint;
     }

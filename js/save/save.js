@@ -1,6 +1,7 @@
 function downloadProjectState() {
     const text = getProjectState();
     var element = document.createElement('a');
+    
     element.setAttribute(
         'href',
         "data:text/plain;charset=utf-8," + encodeURIComponent(text)
@@ -18,9 +19,14 @@ function downloadProjectState() {
     document.body.removeChild(element);
 }
 
+function saveProjectToLocalStorage() {
+    const stateStr = getProjectState();
+    localStorage.setItem(LOCAL_STORAGE_DATA_KEY, stateStr);
+}
+
 function getProjectState() {
-    const rooms = elementStore.rooms.filter((room) => RoomManager.roomIsConfigured(room));
-    const slabHeaters = elementStore.slabHeaters.filter(sh => !sh.group.isSelected);
+    const rooms = elementStore.rooms.filter(room => roomIsConfigured(room));
+    const slabHeaterGroups = elementStore.slabHeaterGroups.filter(shg => !shg.isSelected);
 
     let stateStr;
     let projectState = {};
@@ -31,25 +37,25 @@ function getProjectState() {
                 topLeft: elementStore.blueprints.map((bp) => bp.topLeftPosition),
             },
             scale: {
-                pixelsPerMeterRatio: scaleContext.pixelsPerMetersRatio,
+                pixelsPerMeterRatio: pixelsPerMetersRatio,
             },
             rooms: {
                 rooms: rooms,
             },
             screen: {
-                sumDrag: screenContext.sumDrag,
-                zoom: screenContext.zoom,
+                sumDrag: screenSumDrag,
+                zoom: screenZoom,
             },
             grid: {
-                seed: gridContext.seed,
+                seed: gridSeed,
             },
-            slabHeaters: {
-                slabHeaters: slabHeaters.map(destructureSlabHeaterGroup)
+            slabHeaterGroups: {
+                slabHeaterGroups: slabHeaterGroups.map(removeCyclicReferences)
             }
         };
     } finally {
         stateStr = JSON.stringify(projectState);
-        reconstructSlabHeaterGroup(slabHeaters);
+        restoreGroupReferences(slabHeaterGroups);
     }
 
     return stateStr;
@@ -59,52 +65,17 @@ function getProjectStateSize() {
     return roundNumber(getProjectState().length / 1024 / 1024, 2) + " MB";
 }
 
-function saveProject() {
-    const stateStr = getProjectState();
-    localStorage.setItem(LOCAL_STORAGE_DATA_KEY, stateStr);
+function removeCyclicReferences(slabHeaterGroup) {
+    slabHeaterGroup.slabHeaters.forEach(sh => sh.group = null);
+    return slabHeaterGroup;
 }
 
-function destructureSlabHeaterGroup(slabHeater) {
-    const group = slabHeater.group;
-    if (typeof(group.slabHeaters[0]) === 'string') {
-        return slabHeater;
+function restoreGroupReferences(slabHeaterGroups) {
+    for (let slabHeaterGroup of slabHeaterGroups) {
+        slabHeaterGroup.slabHeaters.forEach(sh => sh.group = slabHeaterGroup);
     }
-
-    group.slabHeaters = group.slabHeaters.map(sh => sh.id);
-    return slabHeater;
-}
-
-function reconstructSlabHeaterGroup(slabHeaters) {
-    const slabHeaterGroups = {};
-
-    for (let slabHeater of slabHeaters) {
-        const group = slabHeater.group;
-        const groupSlabHeaters = group.slabHeaters;
-        if (typeof(groupSlabHeaters[0]) !== 'string') {
-            SlabHeaterGroupManager.add(group, slabHeater);
-            continue;
-        }
-
-        const groupId = groupSlabHeaters.reduce((a, b) => a + b, '');
-        if (slabHeaterGroups[groupId]) {
-            SlabHeaterGroupManager.add(group, slabHeater);
-            continue;
-        }
-
-        const slabHeaterGroup = group;
-        SlabHeaterGroupManager.clear(slabHeaterGroup);
-        for (let id of groupSlabHeaters) {
-            const slabHeaterToAdd = slabHeaters.filter(sh => sh.id === id)[0];
-            if (slabHeaterToAdd) {
-                SlabHeaterGroupManager.add(slabHeaterGroup, slabHeaterToAdd);
-            }
-        }
-        slabHeaterGroups[groupId] = slabHeaterGroup;
-    }
-
-    return slabHeaterGroups;
 }
 
 if (SAVE_TO_LOCAL_STORAGE_ENABLED) {
-    setInterval(saveProject, 10_000);
+    setInterval(saveProjectToLocalStorage, 10_000);
 }

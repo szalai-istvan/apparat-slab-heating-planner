@@ -8,7 +8,7 @@ const transportDialogCloseButton = document.getElementById('transportDialogClose
 function openTransportDialog() {
     transportInput.value = '';
     transportDialog.showModal();
-    screenContext.toggleControls();
+    toggleScreenControls();
 }
 
 transportDialogOkButton.addEventListener(CLICK, () => {
@@ -22,11 +22,11 @@ transportDialogOkButton.addEventListener(CLICK, () => {
     }
 
     transportDialog.close();
-    screenContext.toggleControls();
+    toggleScreenControls();
     startExcelExport(km);
 });
 
 transportDialogCloseButton.addEventListener(CLICK, () => {
     transportDialog.close();
-    screenContext.toggleControls();
+    toggleScreenControls();
 });

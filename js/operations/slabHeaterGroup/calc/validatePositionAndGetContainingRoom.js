@@ -1,10 +1,10 @@
 /**
- * A paraméterül kapott födémfűtés csoport regisztrálását végzi el, és visszaadja a tartalmazó szobát.
+ * A paraméterül kapott födémfűtés csoport validálását végzi el, és visszaadja a tartalmazó szobát.
  * 
  * @param {*} slabHeaterGroup födémfűtés csoport
  * @returns {Room} a tartalmazó szoba
  */
-function registerRelocatedSlabHeaterGroup(slabHeaterGroup) { // TODO
+function validatePositionAndGetContainingRoom(slabHeaterGroup) { // TODO
     // const boundaryPoints = getSlabHeaterBoundaryPoints(slabHeater); // TODO
     // const p1 = boundaryPoints.p1;
     // const p2 = boundaryPoints.p2;

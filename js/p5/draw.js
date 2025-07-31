@@ -1,18 +1,14 @@
 function draw() {
     elementStore.slabHeaterGroups.forEach(shg => SlabHeaterGroupManager.clearCache(shg));
-    selectionContext.clearSelectionCache();
+    clearSelectionCache();
 
     background(BACKGROUND_COLOR);
 
-    renderTranslatedObjects();
-
-    selectionContext.checkForSelection();
-    renderer.renderAbsolutePositionObjects();
-}
-
-function renderTranslatedObjects() {
     push();
-    screenContext.translate();
-    renderer.renderTranslatedObjects();
+    translateScreen();
+    renderTranslatedObjects();
     pop();
+
+    //selectionContext.checkForSelection();
+    renderAbsolutePositionObjects();
 }

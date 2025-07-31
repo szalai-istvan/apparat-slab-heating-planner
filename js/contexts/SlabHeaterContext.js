@@ -1,41 +1,6 @@
 class SlabHeaterContext {
     cachedSelection = null;
     selectedSlabHeater = null;
-    alignment = 1;
-
-    createSlabHeater(addToGroup) {
-        const width = slabHeaterWidthOptionsBar.getValue();
-        const length = slabHeaterLengthOptionsBar.getValue();
-
-        if (!width) {
-            displayMessage('A baloldali menü segítségével válassza ki a kívánt szélességet!');
-            return;
-        }
-
-        if (!length) {
-            displayMessage('A baloldali menü segítségével válassza ki a kívánt hosszt!');
-            return;
-        }
-
-        const slabHeater = new SlabHeater();
-
-        if (this.selectedSlabHeater && addToGroup) {
-            SlabHeaterGroupManager.add(this.selectedSlabHeater.group, slabHeater);
-        } else {
-            const alignment = this.alignment;
-            const group = new SlabHeaterGroup({slabHeater, length, width, alignment});
-
-            selectionContext.selectObject(slabHeater);
-            group.isSelected = true;
-            group.isSelectedForDrag = true;
-        }
-
-        return slabHeater;
-    }
-
-    clearSelectionCache() {
-        this.cachedSelection = null;
-    }
 
     select(slabHeater = undefined) {
         slabHeater = slabHeater || this.checkForSelection();
@@ -119,5 +84,3 @@ class SlabHeaterContext {
         this.selectedSlabHeater = undefined;
     }
 }
-
-const slabHeaterContext = new SlabHeaterContext();

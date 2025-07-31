@@ -1,4 +1,4 @@
-class SlabHeaterGroupManager {
+class SlabHeaterGroupManager____ {
 
     static addSlabHeaterToSelectedGroup() {
         const selectedGroup = slabHeaterContext?.selectedSlabHeater?.group;
@@ -31,8 +31,8 @@ class SlabHeaterGroupManager {
         const horizontal = (lastSlabHeater.group.alignment % 2) === 1;
 
         return {
-            x: lastCenter.x + horizontal * width * scaleContext.pixelsPerMetersRatio,
-            y: lastCenter.y + (1 - horizontal) * width * scaleContext.pixelsPerMetersRatio
+            x: lastCenter.x + horizontal * width * pixelsPerMetersRatio,
+            y: lastCenter.y + (1 - horizontal) * width * pixelsPerMetersRatio
         };
     }
 
@@ -94,36 +94,7 @@ class SlabHeaterGroupManager {
     }
 
     static calculatePipeDriverFirstPoint(slabHeaterGroup) {
-        const ratio = scaleContext.pixelsPerMetersRatio;
-        const slabHeaters = slabHeaterGroup.slabHeaters;
-        const firstSlabHeater = slabHeaters[0];
-        const firstCenterPoint = firstSlabHeater.centerPosition;
 
-        if (!firstSlabHeater) {
-            return undefined;
-        }
-
-        if (!firstCenterPoint) {
-            return undefined;
-        }
-
-        const width = slabHeaterGroup.width * ratio;
-        const length = slabHeaterGroup.length * ratio;
-        const additionalOffset = PIPE_DRIVER_ADDITIONAL_OFFSET_METERS * ratio;
-        const widthOffset = (slabHeaters.length - 1) * width / 2;
-        const lengthOffset = length / 2 + additionalOffset;
-
-        if (slabHeaterGroup.alignment % 2 === 0) {
-            return {
-                x: firstCenterPoint.x + lengthOffset,
-                y: firstCenterPoint.y + widthOffset
-            };
-        } else {
-            return {
-                x: firstCenterPoint.x + widthOffset,
-                y: firstCenterPoint.y + lengthOffset
-            }
-        }
 
     }
 }

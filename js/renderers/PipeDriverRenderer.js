@@ -1,7 +1,7 @@
-class PipeDriverRenderer {
+class PipeDriverRenderer____ {
 
     static draw(pipeDriver) {
-        const ratio = scaleContext.pixelsPerMetersRatio;
+        const ratio = pixelsPerMetersRatio;
 
         const lineThickness = PIPE_DRIVER_PIPE_THICKNESS_IN_METERS * ratio;
         const diameter = PIPE_DRIVER_DIAMETER_IN_METERS * ratio;

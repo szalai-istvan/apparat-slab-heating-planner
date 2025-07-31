@@ -6,18 +6,43 @@ const addRoomInput = document.getElementById('addRoomInput');
 const addRoomButton = document.getElementById('addRoomButton');
 const closeRoomDialogButton = document.getElementById('closeRoomDialogButton');
 
-function showAddRoomDialog() {
-    if (roomContext.selectedRoomIsConfiguredOrNoRoomIsSelected()) {
-        addRoomInput.value = '';
-        addRoomInput.focus();
-        addRoomDialog.showModal();
-        checkRadioButtons();
-        screenContext.toggleControls();
+/**
+ * Létrehozza a szobanév gyorskitöltő radio gombokat.
+ * 
+ * @returns {undefined}
+ */
+function createRoomPrefillRadioButtons() {
+    const div = document.getElementById('roomPrefillRadioSet');
+    for (let option of PREFILL_ROOM_NAMES) {
+        const onchange = () => addRoomInput.value = option;
+        const radioButton = createRadioButton('roomPrefill', option, onchange);
+        div.appendChild(radioButton);
+        roomPrefillButtons.push(radioButton);
     }
 }
 
+/**
+ * Megjeleníti a szoba hozzáadásra szolgáló dialogot.
+ * 
+ * @returns {undefined}
+ */
+function showAddRoomDialog() {
+    if (selectedRoomIsConfiguredOrNoRoomIsSelected()) {
+        addRoomInput.value = '';
+        addRoomInput.focus();
+        addRoomDialog.showModal();
+        toggleScreenControls();
+        checkRadioButtons();
+    }
+}
+
+/**
+ * Ellenőrzi a gyorskitöltő radio gombokat, és a foglaltakat deaktiválja
+ * 
+ * @returns {undefined}
+ */
 function checkRadioButtons() {
-    const roomNames = roomContext.getRoomNames();
+    const roomNames = getRoomNames();
     for (let radioButton of roomPrefillButtons) {
         const inputElement = radioButton.childNodes[0];
         if (roomNames.includes(inputElement.value)) {
@@ -29,29 +54,19 @@ function checkRadioButtons() {
     }
 }
 
-function createRoomPrefillRadioButtons() {
-    const div = document.getElementById('roomPrefillRadioSet');
-    for (let option of PREFILL_ROOM_NAMES) {
-        const onchange = () => addRoomInput.value = option;
-        const radioButton = createRadioButton('roomPrefill', option, onchange);
-        div.appendChild(radioButton);
-        roomPrefillButtons.push(radioButton);
-    }
-}
-
 closeRoomDialogButton.addEventListener(CLICK, () => {
     addRoomDialog.close();
-    screenContext.toggleControls();
+    toggleScreenControls();
 });
 
 addRoomButton.addEventListener(CLICK, () => {
     const roomName = addRoomInput.value;
-    if (addRoomInput.value) {
+    if (roomName) {
         addRoomInput.value = '';
-        const addingSuccessful = roomContext.tryToCreateRoom(roomName);
+        const addingSuccessful = createRoom(roomName);
         if (addingSuccessful) {
             addRoomDialog.close();
-            screenContext.toggleControls();
+            toggleScreenControls();
         }
     } else {
         displayMessage('Név nélkül nem vehető fel szoba!');

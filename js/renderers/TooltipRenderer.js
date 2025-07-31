@@ -1,5 +1,5 @@
 let displayTooltips = true;
-class TooltipRenderer {
+class TooltipRenderer____ {
 
     static toggleTooltipDisplay() {
         displayTooltips = !displayTooltips;

@@ -14,8 +14,8 @@ function createButtons() {
         text: 'Méretarány felvétele',
         size: REGULAR_BUTTON_SIZE,
         position: topRibbonButtonPosition(topRibbonButtonSizes),
-        onClick: () => scaleContext.startScaling(),
-        shouldBeRendered: () => blueprintContext.blueprintDataIsPresent()
+        onClick: () => startScaling(),
+        shouldBeRendered: () => blueprintDataIsPresent()
     });
     topRibbonButtonSizes.push(REGULAR_BUTTON_SIZE);
 
@@ -24,7 +24,7 @@ function createButtons() {
         size: REGULAR_BUTTON_SIZE,
         position: topRibbonButtonPosition(topRibbonButtonSizes),
         onClick: () => showAddRoomDialog(),
-        shouldBeRendered: () => scaleContext.ratioIsSet()
+        shouldBeRendered: () => pixelsPerMetersRatio
     });
     topRibbonButtonSizes.push(REGULAR_BUTTON_SIZE);
 
@@ -54,12 +54,11 @@ function createButtons() {
         topLeftPosition: sidePanelButtonPosition(leftRibbonButtonSizes),
         buttonSize: HALF_WIDTH_BUTTON_SIZE,
         gap: { x: 0, y: BUTTON_GAP_Y / 2 },
-        columns: [{ buttons: [SLAB_HEATER_TYPES.width[0]] }, { buttons: [SLAB_HEATER_TYPES.width[1]] }
-    ],
+        columns: [{ buttons: [SLAB_HEATER_TYPES.width[0]] }, { buttons: [SLAB_HEATER_TYPES.width[1]] }],
         valueResolver: optionsBar => optionsBar.selected[0] ? Number(optionsBar.selected[0]) : undefined,
         title: 'Szélesség (m)',
         perColumnSelection: false,
-        shouldBeRendered: () => roomContext.thereAreRooms()
+        shouldBeRendered: () => configuredRoomsExist()
     });
     leftRibbonButtonSizes.push({ x: 0, y: HALF_WIDTH_BUTTON_SIZE.y / 3 });
     leftRibbonButtonSizes.push({ x: 0, y: HALF_WIDTH_BUTTON_SIZE.y / 2 });
@@ -70,7 +69,7 @@ function createButtons() {
         gap: { x: 0, y: BUTTON_GAP_Y / 2 },
         columns: [{ header: 'm', buttons: SLAB_HEATER_TYPES.length.m }, { header: 'cm', buttons: SLAB_HEATER_TYPES.length.cm }],
         valueResolver: optionsBar => resolveSlabHeaterLengthOptionBarValue(optionsBar),
-        shouldBeRendered: () => roomContext.thereAreRooms(),
+        shouldBeRendered: () => configuredRoomsExist(),
         title: 'Hosszúság'
     });
     leftRibbonButtonSizes.push({ x: 0, y: HALF_WIDTH_BUTTON_SIZE.y / 3 });
@@ -85,7 +84,7 @@ function createButtons() {
         text: 'Hozzáadás',
         size: SMALL_BUTTON_SIZE,
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        onClick: () => slabHeaterContext.createSlabHeater(false),
+        onClick: () => createSlabHeaterGroup(),
         shouldBeRendered: () => slabHeaterLengthOptionsBar.allValuesAreSet() && slabHeaterWidthOptionsBar.allValuesAreSet()
     });
     leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
@@ -99,8 +98,8 @@ function createButtons() {
         text: 'Hozzáadás',
         size: SMALL_BUTTON_SIZE,
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        onClick: () => { },
-        shouldBeRendered: () => roomContext.thereAreRooms()
+        onClick: () => "TODO",
+        shouldBeRendered: () => configuredRoomsExist()
     });
 
     leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
@@ -110,8 +109,8 @@ function createButtons() {
         text: 'Törlés',
         size: SMALL_BUTTON_SIZE,
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        onClick: () => slabHeaterContext.removeEntirySelectedGroup(),
-        shouldBeRendered: () => selectionContext.selectedObject
+        onClick: () => removeSelectedObject(),
+        shouldBeRendered: () => selectedObject
     });
     leftRibbonButtonSizes.push(SMALL_BUTTON_SIZE);
 
@@ -121,7 +120,7 @@ function createButtons() {
         size: HALF_WIDTH_BUTTON_SIZE,
         position: rotatePosition,
         onClick: () => SlabHeaterManager.rotateSelected(-1),
-        shouldBeRendered: () => slabHeaterContext.selectedSlabHeater
+        shouldBeRendered: () => selectedSlabHeaterGroup
     });
 
     rotatePosition.x += HALF_WIDTH_BUTTON_SIZE.x;
@@ -130,7 +129,7 @@ function createButtons() {
         size: HALF_WIDTH_BUTTON_SIZE,
         position: rotatePosition,
         onClick: () => SlabHeaterManager.rotateSelected(1),
-        shouldBeRendered: () => slabHeaterContext.selectedSlabHeater
+        shouldBeRendered: () => selectedSlabHeaterGroup
     });
     leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);
 
@@ -140,7 +139,7 @@ function createButtons() {
         size: HALF_WIDTH_BUTTON_SIZE,
         position: groupManagerPosition,
         onClick: () => SlabHeaterGroupManager.removeLastFromSelectedGroup(),
-        shouldBeRendered: () => slabHeaterContext.selectedSlabHeater
+        shouldBeRendered: () => selectedSlabHeaterGroup
     });
 
     groupManagerPosition.x += HALF_WIDTH_BUTTON_SIZE.x;
@@ -149,7 +148,7 @@ function createButtons() {
         size: HALF_WIDTH_BUTTON_SIZE,
         position: groupManagerPosition,
         onClick: () => SlabHeaterGroupManager.addSlabHeaterToSelectedGroup(),
-        shouldBeRendered: () => slabHeaterContext.selectedSlabHeater
+        shouldBeRendered: () => selectedSlabHeaterGroup
     });
     leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);
 

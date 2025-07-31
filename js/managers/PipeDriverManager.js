@@ -1,4 +1,4 @@
-class PipeDriverManager {
+class PipeDriverManager____ {
     static updateFirstPoint(pipeDriver, firstPoint) {
         const points = pipeDriver.points;
         if (!firstPoint) {

@@ -11,7 +11,7 @@ class SlabHeaterGroup {
     pointIsInsideCache = null;
     pipeDriver;
 
-    constructor({slabHeater, length, width, alignment}) {
+    constructor({ slabHeater, length, width, alignment }) {
         if (slabHeater) {
             this.slabHeaters.push(slabHeater);
             slabHeater.group = this;
@@ -26,7 +26,8 @@ class SlabHeaterGroup {
         this.width = width;
         this.alignment = alignment ?? 1;
 
-        this.pipeDriver = new PipeDriver(SlabHeaterGroupManager.calculatePipeDriverFirstPoint(this));
+        console.log(this);
+        this.pipeDriver = new PipeDriver(calculatePipeDriverFirstPoint(this));
 
         elementStore.register(this);
         elementStore.register(this.pipeDriver);

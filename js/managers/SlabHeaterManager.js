@@ -1,4 +1,4 @@
-class SlabHeaterManager {
+class SlabHeaterManager____ {
     static getBoundaryPoints(slabHeater) {
         const horizontalAlignment = slabHeater.group.alignment % 2 === 0;
         const length = slabHeater.group.length;
@@ -28,14 +28,14 @@ class SlabHeaterManager {
 
         if (slabHeater.group.alignment % 2 === 1) {
             return pointIsInside(
-                screenContext.getMousePositionAbsolute(),
+                getMousePositionAbsolute(),
                 slabHeater.centerPosition, 
                 slabHeater.rectHeight,
                 slabHeater.rectWidth
             );
         }
         return pointIsInside(
-            screenContext.getMousePositionAbsolute(),
+            getMousePositionAbsolute(),
             slabHeater.centerPosition, 
             slabHeater.rectWidth,
             slabHeater.rectHeight

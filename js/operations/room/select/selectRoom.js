@@ -15,21 +15,22 @@ function selectRoom(room = undefined) {
         return;
     }
 
-    deselectRoom();
+    deselectObject();
     room.isSelected = true;
     selectedRoom = room;
     return room;
 }
 
-function checkForSelectableRoom() { // formerly: roomContext.checkForSelection
+function checkForSelectableRoom() {
     if (cachedSelectedRoom) {
         return cachedSelectedRoom;
     }
 
-    const selection = elementStore.rooms.filter(r => RoomManager.mouseCursorIsInsideName(r));
+    const selection = elementStore.rooms.filter(r => mouseCursorIsInsideRoomName(r));
     const room = selection[0];
     if (room) {
         selectedRoom = room;
         return room;
     }
+    return undefined;
 }

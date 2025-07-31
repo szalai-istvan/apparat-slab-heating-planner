@@ -5,12 +5,12 @@ const messageOkButton = document.getElementById("messageOkButton");
 function displayMessage(text) {
     messageParagraph.innerHTML = text;
     messageDialog.showModal();
-    screenContext.toggleControls();
+    toggleScreenControls();
 }
 
 messageOkButton.addEventListener(CLICK, () => {
     messageDialog.close();
-    screenContext.toggleControls();
+    toggleScreenControls();
 });
 
 function displayHelpData() {

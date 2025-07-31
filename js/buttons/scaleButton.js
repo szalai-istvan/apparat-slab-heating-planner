@@ -11,23 +11,23 @@ const scalingDialogCancelButton = document.getElementById('scalingDialogCancelBu
 function showScalingDialog() {
     scalingInput.value = '';
     scalingDialog.showModal();
-    screenContext.toggleControls();
+    toggleScreenControls();
     setTimeout(() => scalingInput.focus(), 200);
 }
 
 scalingDialogCloseButton.addEventListener(CLICK, (event) => {
     const scalingValue = scalingInput.value.replace(",", ".");
-    scaleContext.processScalingValue(scalingValue);
+    processScalingValue(scalingValue);
 });
 
 scalingDialogConfirmButton.addEventListener(CLICK, () => {
     scalingDialogConfirm.close();
-    screenContext.toggleControls();
+    toggleScreenControls();
     scaleContext.clear();
-    scaleContext.startScaling();
+    startScaling();
 });
 
 scalingDialogCancelButton.addEventListener(CLICK, () => {
     scalingDialogConfirm.close();
-    screenContext.toggleControls();
+    toggleScreenControls();
 });

@@ -24,7 +24,7 @@ function upload() {
 function clearBlueprints() {
 	if (scaleContext.ratioIsSet()) {
 		fileUploadDialogConfirm.showModal();
-		screenContext.toggleControls();
+		toggleScreenControls();
 	} else {
 		blueprintContext.clearBlueprints();
 	}
@@ -32,13 +32,13 @@ function clearBlueprints() {
 
 fileUploadDialogConfirmButton.addEventListener(CLICK, () => {
 	fileUploadDialogConfirm.close();
-	screenContext.toggleControls();
+	toggleScreenControls();
 	blueprintContext.clearBlueprints();
 });
 
 fileUploadDialogCancelButton.addEventListener(CLICK, () => {
 	fileUploadDialogConfirm.close();
-	screenContext.toggleControls();
+	toggleScreenControls();
 });
 
 function handleFileSelect(event) {
@@ -57,8 +57,8 @@ function handleFileSelect(event) {
 		reader.onload = function (event) {
 			const img = new Image();
 			img.src = event.target.result;
-			blueprintContext.createBlueprint(loadImage(img.src));
-			scaleContext.clear();
+			createBlueprint(loadImage(img.src));
+			clearScaling();
 		};
 		reader.readAsDataURL(file);
 	} else if (fileType === PDF_CONTENT_TYPE) {
@@ -86,7 +86,7 @@ async function readPdfFile(reader) {
 function displayPageSelector(numberOfPages) {
 	pdfUploadDialogParagraph.innerHTML = `Adja meg, hogy hanyadik oldalt szeretné beolvasni (maximum: ${numberOfPages}):`;
 	pdfUploadDialog.showModal();
-	screenContext.toggleControls();
+	toggleScreenControls();
 }
 
 pdfUploadDialogCloseButton.addEventListener(CLICK, async () => {
@@ -99,7 +99,7 @@ pdfUploadDialogCloseButton.addEventListener(CLICK, async () => {
 	pdfUploadDialogInput.value = '';
 	parsePdfPage(pageNumber);
 	pdfUploadDialog.close();
-	screenContext.toggleControls();
+	toggleScreenControls();
 });
 
 async function parsePdfPage(pageNumber) {

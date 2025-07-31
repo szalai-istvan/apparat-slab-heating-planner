@@ -20,7 +20,7 @@ function processScalingValue(scalingValue) {
         updateGridResolution();
 
         scalingDialog.close();
-        screenContext.toggleControls();
+        toggleScreenControls();
     } else {
         displayMessage('Érvénytelen méretarány. Csak pozitív szám adható meg!');
     }

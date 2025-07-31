@@ -14,11 +14,10 @@ function getMousePosition() {
  */
 function getMousePositionAbsolute() {
     const currentDragValue = getCurrentDragValue();
-    const sumDrag = this.sumDrag;
-    const canvasSize = this.getCanvasSize();
+    const sumDrag = screenSumDrag;
+    const canvasSize = getCanvasSize();
 
-    return {
-        x: (mouseX - currentDragValue.x - sumDrag.x * this.zoom - canvasSize.x / 2) / this.zoom,
-        y: (mouseY - currentDragValue.y - sumDrag.y * this.zoom - canvasSize.y / 2) / this.zoom
-    };
+    const x = (mouseX - currentDragValue.x - sumDrag.x * screenZoom - canvasSize.x / 2) / screenZoom;
+    const y = (mouseY - currentDragValue.y - sumDrag.y * screenZoom - canvasSize.y / 2) / screenZoom;
+    return createPoint(x, y);
 }

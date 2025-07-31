@@ -1,17 +1,23 @@
 function mousePressed() {
-    if (!screenContext.controlsEnabled()) {
+    if (!controlsAreEnabled) {
         return;
     }
 
     if (mouseButton === 'right') {
-        if (scaleContext.scalingInProgress) {
-            scaleContext.addReferencePoint();
-        }
-        roomContext.addPoint();
-        selectionContext.tryToDeselect();
-
+        rightMouseButtonPressedFunc();
     } else if (mouseButton === 'left') {
-        screenContext.startDragging();
-        selectionContext.searchSelectableObject();
+        leftMouseButtonPressedFunc()
     }
+}
+
+function leftMouseButtonPressedFunc() {
+    startDragging();
+    searchSelectableObject();
+}
+
+function rightMouseButtonPressedFunc() {
+    addScalingReferencePoint();
+    addPointToSelectedRoom();
+
+    deselectObject();
 }

@@ -10,10 +10,11 @@ function checkClass(obj, expectedClass, undefinedAllowed = false) {
         if (!undefinedAllowed) {
             throw new Error('Failed classCheck! Undefined function parameter!');
         }
+        return;
     }
 
     const className = getClassName(obj);
     if (className !== expectedClass) {
-        throw new Error($`Unexpected function parameter type: ${className}. Function only accepts ${expectedClass}`);
+        throw new Error(`Unexpected function parameter type: ${className}. Function only accepts ${expectedClass}`);
     }
 }

@@ -3,12 +3,12 @@ let screenDragStartPosition;
 let screenZoom = 1;
 
 function startDragging() {
-    screenDragStartPosition = this.getMousePosition();
+    screenDragStartPosition = getMousePosition();
     screenDraggingInProgress = true;
 }
 
 function stopDragging() {
-    this.updateSumDrag();
+    updateScreenSumDrag();
     screenDraggingInProgress = false;
 }
 

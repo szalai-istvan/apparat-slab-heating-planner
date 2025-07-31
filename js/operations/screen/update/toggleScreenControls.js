@@ -5,7 +5,7 @@ let controlsAreEnabled = true;
  * 
  * @returns {undefined}
  */
-function toggleScreenControls() { // formerly screenContext.toggleControls()
+function toggleScreenControls() { // formerly toggleScreenControls()
     controlsAreEnabled = noModalsAreOpened();
 }
 

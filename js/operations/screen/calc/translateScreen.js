@@ -11,7 +11,7 @@ function translateScreen() { // formerly screenContext.translate()
         scale(screenZoom);
         translate(sumDrag.x, sumDrag.y);
 
-        if (draggingInProgress) {
+        if (screenDraggingInProgress) {
             const currentDragValue = getCurrentDragValue();
             translate(
                 currentDragValue.x / screenZoom, 

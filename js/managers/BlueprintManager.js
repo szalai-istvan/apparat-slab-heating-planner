@@ -1,22 +1,5 @@
-class BlueprintManager {
+class BlueprintManager____ {
         
-    static getTopLeftCoordinates(blueprint) {
-        const data = blueprint.data;
-
-        if (!blueprint.topLeftPosition) {
-            if (data.width > 1 && data.height > 1) {
-                blueprint.topLeftPosition = {
-                    x: - 0.5 * data.width,
-                    y: - 0.5 * data.height
-                };    
-            } else {
-                return undefined;
-            }
-        }
-
-        return blueprint.topLeftPosition;
-    }
-
     static getSizeData(blueprint) {
         const data = blueprint.data;
 

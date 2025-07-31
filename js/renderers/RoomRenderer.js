@@ -1,10 +1,10 @@
-class RoomRenderer {
+class RoomRenderer____ {
 
     static draw(room) {
         if (getClassName(room) !== 'Room') {
             throw new Error('RoomRenderer can only render Rooms!');
         }
-        const points = RoomRenderer.getPointsToDraw(room);
+        const points = getPointsToDrawRoom(room);
         const length = points.length;
 
         if (length < 2) {
@@ -28,7 +28,7 @@ class RoomRenderer {
         rect(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y), Math.abs(p2.x - p1.x), Math.abs(p2.y - p1.y));
 
         pop();
-        const textCenterCoordinates = room.isSelected ? screenContext.getMousePositionAbsolute() : room.textCenterCoordinates;
+        const textCenterCoordinates = room.isSelected ? getMousePositionAbsolute() : room.textCenterCoordinates;
         if (RoomManager.roomIsConfigured(room)) {
             push();
             RoomRenderer.updateSettingsToText(room);
@@ -37,66 +37,5 @@ class RoomRenderer {
         }
 
         RoomRenderer.drawRoomSize(room, points);
-    }
-
-    static getPointsToDraw(room) {
-        const points = room.points;
-        
-        const p0 = points[0];
-        if (!p0) {
-            return [];
-        }
-
-        const p1 = points.length >= 2 ? points[1] : gridContext.closestGridPointToCursor();
-
-        const pointsToDraw = [];
-        pointsToDraw.push({x: p0.x, y: p0.y});
-        pointsToDraw.push({x: p0.x, y: p1.y});
-        pointsToDraw.push({x: p1.x, y: p1.y});
-        pointsToDraw.push({x: p1.x, y: p0.y});
-
-        return pointsToDraw;
-    }
-
-    static updateSettingsToDraw(room) {
-        if (room.isSelected) {
-            stroke(SELECTED_TEXT_COLOR);
-            strokeWeight(room.lineWeight * 2);
-        } else {
-            stroke(ROOM_DEFAULT_TEXT_COLOR);
-            strokeWeight(room.lineWeight);
-        }
-    }
-
-    static updateSettingsToText(room) {
-        textAlign(CENTER, CENTER);
-        if (RoomManager.mouseCursorIsInsideName(room)) {
-            fill(SELECTED_TEXT_COLOR);
-            textSize(room.textSize * ROOM_TEXT_POP_FACTOR);
-        } else {
-            fill(ROOM_DEFAULT_TEXT_COLOR);
-            textSize(room.textSize);
-        }
-    }
-
-    static drawRoomSize(room, points) {
-        const topY = points.map(p => p.y).reduce(minimumFunction);
-        const rightX = points.map(p => p.x).reduce(maximumFunction);
-        const middlePoint = RoomManager.getMiddlePoint(room);
-
-        const width = `${roundNumber(RoomManager.getWidthInMeters(room, points), 1)} m`;
-        const height = `${roundNumber(RoomManager.getHeightInMeters(room, points), 1)} m`;
-
-        textSize(room.textSize);
-        if (room.isSelected) {
-            fill(SELECTED_TEXT_COLOR);
-        } else {
-            fill(ROOM_DEFAULT_TEXT_COLOR);
-        }
-
-        textAlign(CENTER, BOTTOM);
-        text(width, middlePoint.x, topY - 5);
-        textAlign(LEFT, CENTER);
-        text(height, rightX + 5, middlePoint.y);
     }
 }

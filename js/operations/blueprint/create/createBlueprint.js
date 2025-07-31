@@ -8,7 +8,7 @@ function createBlueprint(data) {
     const sizeData = getBlueprintSizeData();
     if (!sizeData) {
         elementStore.register(new Blueprint(data, undefined));
-        screenContext.sumDrag = { x: 0, y: 0 };
+        screenSumDrag = { x: 0, y: 0 };
     } else {
         let topLeftCoordinates = {
             x: sizeData.x + sizeData.w,

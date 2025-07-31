@@ -6,5 +6,5 @@
 function clearRooms() { // formerly: roomContext.clear()
     elementStore.rooms = [];
     deselectRoom();
-    clearSlabHeaters(); // TODO
+    clearSlabHeaterGroups();
 }

@@ -8,9 +8,7 @@ let screenSumDrag = null;
 function updateScreenSumDrag() { // formerly screenContext.updateSumDrag()
     if (screenDraggingInProgress) {
         const currentDragValue = getCurrentDragValue();
-        screenSumDrag.x += (currentDragValue.x / this.zoom);
-        screenSumDrag.y += (currentDragValue.y / this.zoom);
+        screenSumDrag.x += (currentDragValue.x / screenZoom);
+        screenSumDrag.y += (currentDragValue.y / screenZoom);
     }
 }
-
-setTimeout(() => screenSumDrag = createPoint(0, 0), 200); // TODO setup function-ba berakni

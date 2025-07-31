@@ -6,7 +6,7 @@ let gridResolutionPixel = null;
  * @returns {undefined}
  */
 function updateGridResolution() { // formerly gridContext.refreshGridResolution()
-    const ratio = scaleContext.pixelsPerMetersRatio;
+    const ratio = pixelsPerMetersRatio;
     if (!ratio) {
         gridResolutionPixel = undefined;
     }

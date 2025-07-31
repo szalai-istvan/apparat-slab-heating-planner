@@ -34,8 +34,22 @@ for jsFile in jsFiles:
 
 rows.append('')
 [rows.append(r) for r in p5Rows]
-output = '\n'.join(rows)
-while '\n\n\n' in output:
-    output = output.replace('\n\n\n', '\n\n')
+rows = [r + '\n' for r in rows]
 
-print(output)
+indexLines = []
+stop = '<!-- scripts -->'
+with open('apparat.html') as apparat:
+    for line in apparat:
+        indexLines.append(line)
+        if stop in line:
+            break
+
+for row in rows:
+    indexLines.append(row)
+
+indexLines.append('</body>\n')
+indexLines.append('\n')
+indexLines.append('</html>\n')
+
+with open('apparat.html', 'w') as apparat:
+    apparat.write(''.join(indexLines))

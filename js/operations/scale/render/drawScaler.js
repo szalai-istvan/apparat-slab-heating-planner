@@ -1,3 +1,8 @@
+/**
+ * Felrajzolja a képernyőre a méretarány beállító eszközt
+ * 
+ * @returns {undefined}
+ */
 function drawScaler() {
     if (!scalingInProgress) {
         return;
@@ -8,7 +13,7 @@ function drawScaler() {
         return;
     }
 
-    const secondPoint = scalingSecondPoint || screenContext.getMousePositionAbsolute();
+    const secondPoint = scalingSecondPoint || getMousePositionAbsolute();
 
     push();
 

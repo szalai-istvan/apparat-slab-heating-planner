@@ -1,6 +1,6 @@
-class SlabHeaterRenderer {
+class SlabHeaterRenderer____ {
     static draw(slabHeater) {
-        const ratio = scaleContext.pixelsPerMetersRatio;
+        const ratio = pixelsPerMetersRatio;
         const color = slabHeater.group.color;
         const width = slabHeater.group.width * ratio;
         const length = slabHeater.group.length * ratio;

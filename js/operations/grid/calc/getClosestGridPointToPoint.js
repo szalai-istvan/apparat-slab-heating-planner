@@ -11,12 +11,17 @@ function getClosestGridPoint(point) {
         return point;
     }
 
-    const x = gridSeed.x + Math.round((p.x - gridSeed.x) / gridResolutionPixel) * gridResolutionPixel;
-    const y = gridSeed.y + Math.round((p.y - gridSeed.y) / gridResolutionPixel) * gridResolutionPixel;
+    const x = gridSeed.x + Math.round((point.x - gridSeed.x) / gridResolutionPixel) * gridResolutionPixel;
+    const y = gridSeed.y + Math.round((point.y - gridSeed.y) / gridResolutionPixel) * gridResolutionPixel;
 
     return createPoint(x, y);
 }
 
-function closestGridPointToCursor() {
-    return this.closestGridPoint(screenContext.getMousePositionAbsolute());
+/**
+ * Visszaadja a kurzorhoz legközelebbi grid pontot
+ * 
+ * @returns {Point} A legközelebbi grid pont
+ */
+function getClosestGridPointToCursor() {
+    return getClosestGridPoint(getMousePositionAbsolute());
 }

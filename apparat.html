@@ -84,11 +84,12 @@
                 id="transportDialogCloseButton">Mégsem</button></div>
     </dialog>
 
-    <!-- scripts -->
+    <!-- imported scripts -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
 
+    <!-- scripts -->
     <script type="text/javascript" src="js/appdata/constants.js"></script>
     <script type="text/javascript" src="js/appdata/tooltips.js"></script>
 
@@ -101,8 +102,6 @@
     <script type="text/javascript" src="js/buttons/manageBlueprintButtons.js"></script>
     <script type="text/javascript" src="js/buttons/scaleButton.js"></script>
 
-    <script type="text/javascript" src="js/contexts/ScreenContext.js"></script>
-    <script type="text/javascript" src="js/contexts/SelectionContext.js"></script>
     <script type="text/javascript" src="js/contexts/SlabHeaterContext.js"></script>
 
     <script type="text/javascript" src="js/helpers/helpers.js"></script>
@@ -113,6 +112,7 @@
     <script type="text/javascript" src="js/helpers/classes/checkClass.js"></script>
     <script type="text/javascript" src="js/helpers/classes/getClassName.js"></script>
     <script type="text/javascript" src="js/helpers/debug/debug.js"></script>
+    <script type="text/javascript" src="js/helpers/debug/drawDebugInfo.js"></script>
     <script type="text/javascript" src="js/helpers/errordialog/errordialog.js"></script>
     <script type="text/javascript" src="js/helpers/html/createRadioButton.js"></script>
     <script type="text/javascript" src="js/helpers/math/formatNumber.js"></script>
@@ -136,16 +136,19 @@
     <script type="text/javascript" src="js/operations/grid/update/updateGridResolution.js"></script>
     <script type="text/javascript" src="js/operations/point/create/createPoint.js"></script>
     <script type="text/javascript" src="js/operations/room/calc/configuredRoomsExist.js"></script>
+    <script type="text/javascript" src="js/operations/room/calc/getPointsToDraw.js"></script>
     <script type="text/javascript" src="js/operations/room/calc/getRoomContainingPoint.js"></script>
+    <script type="text/javascript" src="js/operations/room/calc/getRoomMiddlePoint.js"></script>
     <script type="text/javascript" src="js/operations/room/calc/getRoomNames.js"></script>
     <script type="text/javascript" src="js/operations/room/calc/pointIsInsideRoom.js"></script>
-    <script type="text/javascript" src="js/operations/room/calc/registerRelocatedSlabHeaterGroup.js"></script>
     <script type="text/javascript" src="js/operations/room/calc/roomIsConfigured.js"></script>
     <script type="text/javascript" src="js/operations/room/calc/selectedRoomIsConfiguredOrNoRoomIsSelected.js"></script>
-    <script type="text/javascript" src="js/operations/room/create/addPointToRoom.js"></script>
+    <script type="text/javascript" src="js/operations/room/calc/x.js"></script>
+    <script type="text/javascript" src="js/operations/room/create/addPointToSelectedRoom.js"></script>
     <script type="text/javascript" src="js/operations/room/create/createRoom.js"></script>
     <script type="text/javascript" src="js/operations/room/delete/clearRooms.js"></script>
     <script type="text/javascript" src="js/operations/room/delete/deleteSelectedRoom.js"></script>
+    <script type="text/javascript" src="js/operations/room/render/drawRoom.js"></script>
     <script type="text/javascript" src="js/operations/room/select/clearRoomSelectionCache.js"></script>
     <script type="text/javascript" src="js/operations/room/select/deselectRoom.js"></script>
     <script type="text/javascript" src="js/operations/room/select/selectRoom.js"></script>
@@ -154,8 +157,31 @@
     <script type="text/javascript" src="js/operations/scale/create/startScaling.js"></script>
     <script type="text/javascript" src="js/operations/scale/delete/clearScaling.js"></script>
     <script type="text/javascript" src="js/operations/scale/render/drawScaler.js"></script>
+    <script type="text/javascript" src="js/operations/screen/calc/adjustScreenForExport.js"></script>
+    <script type="text/javascript" src="js/operations/screen/calc/getCanvasSize.js"></script>
+    <script type="text/javascript" src="js/operations/screen/calc/getCurrentDragValue.js"></script>
+    <script type="text/javascript" src="js/operations/screen/calc/getMousePosition.js"></script>
+    <script type="text/javascript" src="js/operations/screen/calc/translateScreen.js"></script>
+    <script type="text/javascript" src="js/operations/screen/update/dragAndZoom.js"></script>
+    <script type="text/javascript" src="js/operations/screen/update/toggleScreenControls.js"></script>
+    <script type="text/javascript" src="js/operations/screen/update/updateScreenSumDrag.js"></script>
+    <script type="text/javascript" src="js/operations/selection/checkForSelection.js"></script>
+    <script type="text/javascript" src="js/operations/selection/clearSelection.js"></script>
+    <script type="text/javascript" src="js/operations/selection/clearSelectionCache.js"></script>
+    <script type="text/javascript" src="js/operations/selection/deselectObject.js"></script>
+    <script type="text/javascript" src="js/operations/selection/removeSelectedObject.js"></script>
+    <script type="text/javascript" src="js/operations/selection/searchForSelectableObject.js"></script>
+    <script type="text/javascript" src="js/operations/selection/selectObject.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeater/create/createSlabHeater.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeaterGroup/calc/calculatePipeDriverFirstPoint.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeaterGroup/calc/validatePositionAndGetContainingRoom.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeaterGroup/create/createSlabHeaterGroup.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeaterGroup/delete/clearSlabHeaterGroups.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeaterGroup/select/clearSlabHeaterGroupSelectionCache.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeaterGroup/select/deselectSlabHeaterGroup.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeaterGroup/select/selectSlabHeaterGroup.js"></script>
+    <script type="text/javascript" src="js/operations/tooltip/render/drawTooltips.js"></script>
 
-    <script type="text/javascript" src="js/point/Point.js"></script>
 
     <script type="text/javascript" src="js/quote/excelGenerator.js"></script>
     <script type="text/javascript" src="js/quote/excelGeneratorUtil.js"></script>
@@ -169,14 +195,16 @@
     <script type="text/javascript" src="js/rendered/uiElements/ButtonWrapper.js"></script>
     <script type="text/javascript" src="js/rendered/uiElements/MenuLine.js"></script>
     <script type="text/javascript" src="js/rendered/uiElements/OptionsBar.js"></script>
+    <script type="text/javascript" src="js/rendered/uiElements/Point.js"></script>
     <script type="text/javascript" src="js/rendered/uiElements/Tooltip.js"></script>
+    <script type="text/javascript" src="js/rendered/uiElements/draw/drawButtonWrapper.js"></script>
+    <script type="text/javascript" src="js/rendered/uiElements/draw/drawMenuLine.js"></script>
+    <script type="text/javascript" src="js/rendered/uiElements/draw/drawOptionsBar.js"></script>
+    <script type="text/javascript" src="js/rendered/uiElements/draw/drawUiBackground.js"></script>
 
-    <script type="text/javascript" src="js/renderer/Renderer.js"></script>
+    <script type="text/javascript" src="js/renderer/renderAbsolutePositionObjects.js"></script>
+    <script type="text/javascript" src="js/renderer/renderTranslatedObjects.js"></script>
 
-    <script type="text/javascript" src="js/renderers/ButtonWrapperRenderer.js"></script>
-    <script type="text/javascript" src="js/renderers/DebugInfoRenderer.js"></script>
-    <script type="text/javascript" src="js/renderers/MenuRenderer.js"></script>
-    <script type="text/javascript" src="js/renderers/OptionsBarRenderer.js"></script>
     <script type="text/javascript" src="js/renderers/PipeDriverRenderer.js"></script>
     <script type="text/javascript" src="js/renderers/RoomRenderer.js"></script>
     <script type="text/javascript" src="js/renderers/SlabHeaterGroupRenderer.js"></script>
@@ -186,8 +214,6 @@
 
     <script type="text/javascript" src="js/save/load.js"></script>
     <script type="text/javascript" src="js/save/save.js"></script>
-
-    <script type="text/javascript" src="js/selectors/SlabHeaterSelector.js"></script>
 
     <script type="text/javascript" src="js/store/ElementStore.js"></script>
 

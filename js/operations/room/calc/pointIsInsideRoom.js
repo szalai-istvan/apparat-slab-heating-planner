@@ -26,5 +26,5 @@ function pointIsInsideRoom(room, point) { // formerly RoomManager.pointIsInsideR
 }
 
 function mousePointerIsInsideRoom(room) {
-    return pointIsInsideRoom(room, screenContext.getMousePositionAbsolute());
+    return pointIsInsideRoom(room, getMousePositionAbsolute());
 }
