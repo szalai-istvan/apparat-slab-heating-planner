@@ -4,6 +4,8 @@
  * @param {SlabHeaterGroup} SlabHeaterGroup a csoport paraméter
  */
 function calculatePipeDriverFirstPoint(slabHeaterGroup) {
+    checkClass(slabHeaterGroup, CLASS_SLAB_HEATER_GROUP);
+
     const ratio = pixelsPerMetersRatio;
     const slabHeaters = slabHeaterGroup.slabHeaters;
     const firstSlabHeater = slabHeaters[0];

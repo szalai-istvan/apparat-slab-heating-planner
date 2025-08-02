@@ -1,0 +1,79 @@
+/**
+ * Felrajzolja a rajzlapra a paraméterül kapott födémfűtőt
+ * 
+ * @param {SlabHeater} slabHeater födémfűtő
+ * @returns {undefined}
+ */
+function drawSlabHeater(slabHeater) {
+    const ratio = pixelsPerMetersRatio;
+    const color = slabHeater.group.color;
+    const width = slabHeater.group.width * ratio;
+    const length = slabHeater.group.length * ratio;
+    const tubeDistance = TUBE_DISTANCE_IN_METER * ratio;
+    const alignment = slabHeater.group.alignment;
+    const centerPosition = slabHeater.centerPosition;
+    const diameter = tubeDistance;
+    const lineWeight = slabHeater.lineWeight;
+    const type = slabHeater.group.type;
+    const textSizePixels = slabHeater.textSize;
+    const rectWidth = slabHeater.rectWidth;
+    const rectHeight = slabHeater.rectHeight;
+    const isSelected = slabHeater.group.isSelected;
+    const lengthFrom = - length / 2;
+    const lengthTo = length / 2;
+    const p = SLAB_HEATER_TEXT_POP_FACTOR;
+    const pointIsInsideRect = mouseCursorIsInsideMembersTextbox(slabHeater.group);
+    const notDragging = !slabHeater.group.isSelectedForDrag;
+    
+    if (!centerPosition) {
+        return;
+    }
+
+    push();
+
+    translate(centerPosition.x, centerPosition.y);
+    rotate(alignment * 90);
+
+    strokeWeight(lineWeight);
+    noFill();
+
+    let tube = roundNumber(- width / 2 + tubeDistance / 2, 2);
+    let angles = [270, 90];
+    let arcX = lengthTo;
+    stroke(color);
+    const limit = roundNumber(width / 2 - tubeDistance / 2, 2);
+
+    while (tube < limit) {
+        line(lengthFrom, tube, 0, tube);
+        line(0, tube, lengthTo, tube);
+        arc(arcX, tube + tubeDistance / 2, diameter, diameter, angles[0], angles[1]);
+
+        angles = [angles[1], angles[0]];
+        arcX *= -1;
+        tube += tubeDistance;
+    }
+    line(lengthFrom, tube, lengthTo, tube);
+
+    textAlign(CENTER, CENTER);
+
+
+    textSize(textSizePixels * (1 + p * isSelected + p * (pointIsInsideRect * notDragging)));
+    stroke(BLACK);
+    fill('white');
+    rectMode(CENTER);
+    rect(0, 0, rectWidth, rectHeight);
+
+    if (isSelected || (pointIsInsideRect && notDragging)) {
+        fill(SELECTED_TEXT_COLOR);
+    } else {
+        fill(DEFAULT_TEXT_COLOR);
+    }
+    noStroke();
+
+    if (alignment > 1) {
+        rotate(180);
+    }
+    text(type, 0, 0);
+
+    pop();
+}

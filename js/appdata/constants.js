@@ -44,7 +44,7 @@ const IMAGE_CONTENT_TYPES = ['image/jpeg', 'image/png'];
 const PDF_CONTENT_TYPE = 'application/pdf';
 
 // Debug setting, auto-saving to local storage
-const SAVE_TO_LOCAL_STORAGE_ENABLED = false;
+const SAVE_TO_LOCAL_STORAGE_ENABLED = true;
 const LOCAL_STORAGE_DATA_KEY = 'rajzolator-project-save';
 
 // grid settings

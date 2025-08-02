@@ -12,16 +12,19 @@ function selectRoom(room = undefined) {
 
     room = room || checkForSelectableRoom();
     if (!room) {
-        return;
+        return undefined;
     }
 
-    deselectObject();
-    room.isSelected = true;
-    selectedRoom = room;
-    return room;
+    if (deselectObject()) {
+        room.isSelected = true;
+        selectedRoom = room;
+        return room;
+    }
+    return undefined;
 }
 
 function checkForSelectableRoom() {
+
     if (cachedSelectedRoom) {
         return cachedSelectedRoom;
     }
@@ -29,7 +32,6 @@ function checkForSelectableRoom() {
     const selection = elementStore.rooms.filter(r => mouseCursorIsInsideRoomName(r));
     const room = selection[0];
     if (room) {
-        selectedRoom = room;
         return room;
     }
     return undefined;

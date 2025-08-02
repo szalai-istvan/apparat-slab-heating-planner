@@ -8,7 +8,7 @@ function renderTranslatedObjects() {
     elementStore.rooms.forEach(room => drawRoom(room));
     drawScaler();
     elementStore.buttons.forEach(button => drawButtonWrapper(button));
-    elementStore.slabHeaterGroups.forEach(shg => SlabHeaterGroupRenderer.draw(shg));
+    elementStore.slabHeaterGroups.forEach(shg => drawSlabHeaterGroup(shg));
 
     if (debugEnabled) {
         DebugInfoRenderer.drawAxis();

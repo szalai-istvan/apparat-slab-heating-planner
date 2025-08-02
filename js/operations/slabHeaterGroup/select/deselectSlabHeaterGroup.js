@@ -6,7 +6,13 @@
 function deselectSlabHeaterGroup() {
     const slabHeaterGroup = selectedSlabHeaterGroup;
 
-    const destinationRoom = validatePositionAndGetContainingRoom(slabHeaterGroup);
+    if (!slabHeaterGroup) {
+        return true;
+    }
+
+    const destinationRoom = validateSlabHeaterGroupPositionAndGetContainingRoom(slabHeaterGroup);
+    checkClass(destinationRoom, CLASS_ROOM, true);
+
     if (!destinationRoom) {
         return false;
     }

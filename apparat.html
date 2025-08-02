@@ -166,20 +166,28 @@
     <script type="text/javascript" src="js/operations/screen/update/toggleScreenControls.js"></script>
     <script type="text/javascript" src="js/operations/screen/update/updateScreenSumDrag.js"></script>
     <script type="text/javascript" src="js/operations/selection/checkForSelection.js"></script>
-    <script type="text/javascript" src="js/operations/selection/clearSelection.js"></script>
     <script type="text/javascript" src="js/operations/selection/clearSelectionCache.js"></script>
     <script type="text/javascript" src="js/operations/selection/deselectObject.js"></script>
     <script type="text/javascript" src="js/operations/selection/removeSelectedObject.js"></script>
     <script type="text/javascript" src="js/operations/selection/searchForSelectableObject.js"></script>
     <script type="text/javascript" src="js/operations/selection/selectObject.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeater/calc/calculateSlabHeaterBoundaryPoints.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeater/calc/calculateSlabHeaterCenterPositionWithCorrection.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeater/calc/mouseCursorIsInsideSlabHeatersTextbox.js"></script>
     <script type="text/javascript" src="js/operations/slabHeater/create/createSlabHeater.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeater/render/drawSlabHeater.js"></script>
     <script type="text/javascript" src="js/operations/slabHeaterGroup/calc/calculatePipeDriverFirstPoint.js"></script>
-    <script type="text/javascript" src="js/operations/slabHeaterGroup/calc/validatePositionAndGetContainingRoom.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeaterGroup/calc/mouseCursorIsInsideMembersTextbox.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeaterGroup/calc/validateSlabHeaterGroupPositionAndGetContainingRoom.js"></script>
     <script type="text/javascript" src="js/operations/slabHeaterGroup/create/createSlabHeaterGroup.js"></script>
     <script type="text/javascript" src="js/operations/slabHeaterGroup/delete/clearSlabHeaterGroups.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeaterGroup/delete/removeSelectedSlabHeaterGroup.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeaterGroup/render/drawSlabHeaterGroup.js"></script>
     <script type="text/javascript" src="js/operations/slabHeaterGroup/select/clearSlabHeaterGroupSelectionCache.js"></script>
     <script type="text/javascript" src="js/operations/slabHeaterGroup/select/deselectSlabHeaterGroup.js"></script>
     <script type="text/javascript" src="js/operations/slabHeaterGroup/select/selectSlabHeaterGroup.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeaterGroup/update/rotateSelectedSlabHeaterGroup.js"></script>
+    <script type="text/javascript" src="js/operations/slabHeaterGroup/update/updateSlabHeaterGroupMemberPosition.js"></script>
     <script type="text/javascript" src="js/operations/tooltip/render/drawTooltips.js"></script>
 
 
@@ -207,7 +215,6 @@
 
     <script type="text/javascript" src="js/renderers/PipeDriverRenderer.js"></script>
     <script type="text/javascript" src="js/renderers/RoomRenderer.js"></script>
-    <script type="text/javascript" src="js/renderers/SlabHeaterGroupRenderer.js"></script>
     <script type="text/javascript" src="js/renderers/SlabHeaterRenderer.js"></script>
     <script type="text/javascript" src="js/renderers/TooltipRenderer.js"></script>
     <script type="text/javascript" src="js/renderers/UiBackgroundRenderer.js"></script>

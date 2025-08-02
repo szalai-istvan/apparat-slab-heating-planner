@@ -21,19 +21,12 @@ function upload() {
 	imageInput.click();
 }
 
-function clearBlueprints() {
-	if (scaleContext.ratioIsSet()) {
-		fileUploadDialogConfirm.showModal();
-		toggleScreenControls();
-	} else {
-		blueprintContext.clearBlueprints();
-	}
-}
-
 fileUploadDialogConfirmButton.addEventListener(CLICK, () => {
 	fileUploadDialogConfirm.close();
 	toggleScreenControls();
-	blueprintContext.clearBlueprints();
+
+	pixelsPerMetersRatio = null;
+	clearBlueprints();
 });
 
 fileUploadDialogCancelButton.addEventListener(CLICK, () => {

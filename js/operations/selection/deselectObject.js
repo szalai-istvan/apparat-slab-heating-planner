@@ -5,10 +5,16 @@
  */
 function deselectObject() {
     const selected = selectedObject;
+    if (selected === null || selected === undefined) {
+        return true;
+    }
+
     const className = getClassName(selected);
     let successfulDeselect;
     if (className === CLASS_ROOM) {
         successfulDeselect = deselectRoom();
+    } else if (className === CLASS_SLAB_HEATER_GROUP) {
+        successfulDeselect = deselectSlabHeaterGroup();
     }
 
     if (successfulDeselect) {

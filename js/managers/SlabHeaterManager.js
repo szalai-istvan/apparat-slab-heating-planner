@@ -17,32 +17,6 @@ class SlabHeaterManager____ {
         }
     }
 
-    static mouseCursorIsInsideRect(slabHeater) {
-        if (!slabHeater.centerPosition) {
-            return false;
-        }
-
-        if (!slabHeater.group) {
-            return false;
-        }
-
-        if (slabHeater.group.alignment % 2 === 1) {
-            return pointIsInside(
-                getMousePositionAbsolute(),
-                slabHeater.centerPosition, 
-                slabHeater.rectHeight,
-                slabHeater.rectWidth
-            );
-        }
-        return pointIsInside(
-            getMousePositionAbsolute(),
-            slabHeater.centerPosition, 
-            slabHeater.rectWidth,
-            slabHeater.rectHeight
-        );
-
-    }
-
     static rotateSelected(direction) {
         const slabHeater = slabHeaterContext.selectedSlabHeater;
         const group = slabHeater.group;

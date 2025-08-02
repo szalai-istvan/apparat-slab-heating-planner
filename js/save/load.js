@@ -40,7 +40,10 @@ function loadProject(text = undefined) {
     screenSumDrag = projectState.screen.sumDrag;
     screenZoom = projectState.screen.zoom;
 
-    setGridSeed(projectState.grid.seed);
+    if (projectState.grid.seed) {
+        projectState.grid.seed.constructor = {name: CLASS_POINT};
+        setGridSeed(projectState.grid.seed);
+    }
 }
 
 function loadProjectStateFromLocalStorage() {

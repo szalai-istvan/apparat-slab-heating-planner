@@ -20,4 +20,5 @@ function createSlabHeaterGroup() {
     const slabHeater = new SlabHeater();
     const group = new SlabHeaterGroup({ slabHeater, width, length, alignment });
     selectObject(group);
+    group.isSelectedForDrag = true;
 }

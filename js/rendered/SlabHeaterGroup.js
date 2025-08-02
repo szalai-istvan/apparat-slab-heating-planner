@@ -8,7 +8,7 @@ class SlabHeaterGroup {
     isSelectedForDrag;
 
     slabHeaters = [];
-    pointIsInsideCache = null;
+    cursorIsInsideCache = null;
     pipeDriver;
 
     constructor({ slabHeater, length, width, alignment }) {
@@ -26,7 +26,6 @@ class SlabHeaterGroup {
         this.width = width;
         this.alignment = alignment ?? 1;
 
-        console.log(this);
         this.pipeDriver = new PipeDriver(calculatePipeDriverFirstPoint(this));
 
         elementStore.register(this);

@@ -119,7 +119,7 @@ function createButtons() {
         text: '↶',
         size: HALF_WIDTH_BUTTON_SIZE,
         position: rotatePosition,
-        onClick: () => SlabHeaterManager.rotateSelected(-1),
+        onClick: () => rotateSelectedSlabHeaterGroup(-1),
         shouldBeRendered: () => selectedSlabHeaterGroup
     });
 
@@ -128,7 +128,7 @@ function createButtons() {
         text: '↷',
         size: HALF_WIDTH_BUTTON_SIZE,
         position: rotatePosition,
-        onClick: () => SlabHeaterManager.rotateSelected(1),
+        onClick: () => rotateSelectedSlabHeaterGroup(1),
         shouldBeRendered: () => selectedSlabHeaterGroup
     });
     leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);

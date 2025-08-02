@@ -4,6 +4,11 @@
  * @returns {undefined}
  */
 function clearBlueprints() {
-    elementStore.blueprints = [];
-    scaleContext.clear();
+	if (pixelsPerMetersRatio) {
+		fileUploadDialogConfirm.showModal();
+		toggleScreenControls();
+	} else {
+		elementStore.blueprints = [];
+		clearScaling();
+	}
 }

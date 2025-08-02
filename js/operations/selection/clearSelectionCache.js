@@ -6,4 +6,5 @@
 function clearSelectionCache() {
     cachedSelectedRoom = null;
     cachedSelectedSlabHeaterGroup = null;
+    elementStore.slabHeaterGroups.forEach(shg => clearSlabHeaterGroupSelectionCache(shg));
 }

@@ -9,4 +9,10 @@ function searchSelectableObject() {
         selectedObject = selectedRoom;
         return selectedRoom;
     }
+
+    const selectedSlabHeaterGroup = selectSlabHeaterGroup();
+    if (selectedSlabHeaterGroup) {
+        selectedObject = selectedSlabHeaterGroup;
+        return selectedSlabHeaterGroup;
+    }
 }

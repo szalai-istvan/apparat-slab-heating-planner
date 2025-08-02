@@ -5,7 +5,7 @@
  * @param {Point} point 
  * @returns {boolean} a pont szobában léte
  */
-function pointIsInsideRoom(room, point) { // formerly RoomManager.pointIsInsideRoom
+function pointIsInsideRoom(room, point) {
     checkClass(room, CLASS_ROOM);
     checkClass(point, CLASS_POINT);
 

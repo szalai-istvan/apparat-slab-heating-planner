@@ -4,5 +4,6 @@
  * @returns {undefined}
  */
 function clearSlabHeaterGroups() {
-
+    elementStore.slabHeaterGroups = [];
+    selectedSlabHeaterGroup = null;
 }

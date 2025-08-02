@@ -3,6 +3,14 @@ function mousePressed() {
         return;
     }
 
+    if (mouseY < TOP_RIBBON_HEIGHT) {
+        return;
+    }
+
+    if (mouseX < LEFT_RIBBON_WIDTH) {
+        return;
+    }
+
     if (mouseButton === 'right') {
         rightMouseButtonPressedFunc();
     } else if (mouseButton === 'left') {
