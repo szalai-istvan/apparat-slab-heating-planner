@@ -6,6 +6,8 @@ class SlabHeaterGroup {
     alignment;
     isSelected;
     isSelectedForDrag;
+    clickedMemberIndex;
+    room;
 
     slabHeaters = [];
     cursorIsInsideCache = null;
@@ -20,11 +22,11 @@ class SlabHeaterGroup {
         this.isSelected = false;
         this.isSelectedForDrag = false;
 
-        this.type = width.toString().replace('.', ',') + ' m x ' + length.toString().replace('.', ',') + ' m';
         this.color = BLACK;
         this.length = length;
         this.width = width;
         this.alignment = alignment ?? 1;
+        updateSlabHeaterGroupType(this);
 
         this.pipeDriver = new PipeDriver(calculatePipeDriverFirstPoint(this));
 

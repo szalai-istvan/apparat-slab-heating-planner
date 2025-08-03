@@ -14,7 +14,7 @@ function updateSlabHeaterGroupMemberPosition(slabHeaterGroup) {
             originalCenter: firstCenterPosition,
             width: slabHeaterGroup.width,
             alignment: slabHeaterGroup.alignment,
-            index: index
+            index: index - slabHeaterGroup.clickedMemberIndex
         });
     }
 }

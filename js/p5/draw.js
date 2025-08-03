@@ -1,4 +1,5 @@
 function draw() {
+    setCursorType();
     clearSelectionCache();
 
     background(BACKGROUND_COLOR);

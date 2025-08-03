@@ -20,8 +20,10 @@ function downloadProjectState() {
 }
 
 function saveProjectToLocalStorage() {
+    console.log('>>> Saving project to local storage');
     const stateStr = getProjectState();
     localStorage.setItem(LOCAL_STORAGE_DATA_KEY, stateStr);
+    console.log('<<< Saving project to local storage');
 }
 
 function getProjectState() {

@@ -115,6 +115,7 @@ const SLAB_HEATER_TYPES = {
         cm: ['0', '20', '40', '60', '80']
     }
 };
+const SLAB_HEATER_STOP_DRAWING_THRESHOLD_IN_METERS = 0.05;
 const SLAB_HEATER_COLORS = ['black', 'darkgrey', 'blue', 'red', 'green', 'orange', 'pink', 'teal', 'darkred'];
 let SLAB_HEATER_COLORS_AVAILABLE = [...SLAB_HEATER_COLORS];
 

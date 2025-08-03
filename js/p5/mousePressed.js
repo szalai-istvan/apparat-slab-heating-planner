@@ -3,11 +3,7 @@ function mousePressed() {
         return;
     }
 
-    if (mouseY < TOP_RIBBON_HEIGHT) {
-        return;
-    }
-
-    if (mouseX < LEFT_RIBBON_WIDTH) {
+    if (mouseCursorIsInsideUi()) {
         return;
     }
 

@@ -5,9 +5,6 @@
  * @returns {undefined}
  */
 function drawOptionsBar(optionsBar) {
-    if (!optionsBar.shouldBeRendered()) {
-        return;
-    }
     push();
 
     textSize(OPTIONS_BAR_TEXT_SIZE);

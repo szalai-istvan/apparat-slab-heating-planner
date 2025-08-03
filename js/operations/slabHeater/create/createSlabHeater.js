@@ -1,4 +1,4 @@
-let alignment = 1;
+let cachedSlabHeaterGroupAlignment = 1;
 
 /**
  * Létrehoz és visszaad egy födémfűtő panel objektumot
@@ -7,6 +7,10 @@ let alignment = 1;
  * @returns {SlabHeater} a létrehozott födémfűtő
  */
 function createSlabHeater(addToGroup) {
-    const slabHeater = new SlabHeater();
+    const slabHeater = new SlabHeater();    
+    if (addToGroup) {
+        attachToSelectedSlabHeaterGroup(slabHeater);
+    }
+
     return slabHeater;
 }

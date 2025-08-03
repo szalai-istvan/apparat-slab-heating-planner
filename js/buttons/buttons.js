@@ -56,6 +56,7 @@ function createButtons() {
         gap: { x: 0, y: BUTTON_GAP_Y / 2 },
         columns: [{ buttons: [SLAB_HEATER_TYPES.width[0]] }, { buttons: [SLAB_HEATER_TYPES.width[1]] }],
         valueResolver: optionsBar => optionsBar.selected[0] ? Number(optionsBar.selected[0]) : undefined,
+        onchange: () => updateSelectedSlabHeaterGroupDimensions(),
         title: 'Szélesség (m)',
         perColumnSelection: false,
         shouldBeRendered: () => configuredRoomsExist()
@@ -69,6 +70,7 @@ function createButtons() {
         gap: { x: 0, y: BUTTON_GAP_Y / 2 },
         columns: [{ header: 'm', buttons: SLAB_HEATER_TYPES.length.m }, { header: 'cm', buttons: SLAB_HEATER_TYPES.length.cm }],
         valueResolver: optionsBar => resolveSlabHeaterLengthOptionBarValue(optionsBar),
+        onchange: () => updateSelectedSlabHeaterGroupDimensions(),
         shouldBeRendered: () => configuredRoomsExist(),
         title: 'Hosszúság'
     });
@@ -138,7 +140,7 @@ function createButtons() {
         text: '-',
         size: HALF_WIDTH_BUTTON_SIZE,
         position: groupManagerPosition,
-        onClick: () => SlabHeaterGroupManager.removeLastFromSelectedGroup(),
+        onClick: () => removeLastSlabHeaterFromSelectedGroup(),
         shouldBeRendered: () => selectedSlabHeaterGroup
     });
 
@@ -147,7 +149,7 @@ function createButtons() {
         text: '+',
         size: HALF_WIDTH_BUTTON_SIZE,
         position: groupManagerPosition,
-        onClick: () => SlabHeaterGroupManager.addSlabHeaterToSelectedGroup(),
+        onClick: () => addSlabHeaterToSelectedGroup(),
         shouldBeRendered: () => selectedSlabHeaterGroup
     });
     leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);
@@ -159,7 +161,7 @@ function createButtons() {
         size: TALL_SMALL_BUTTON_SIZE,
         position: downloadButtonPos,
         onClick: () => openTransportDialog(),
-        shouldBeRendered: () => true
+        shouldBeRendered: () => fullyConfiguredSlabHeaterGroupsExist()
     });
     leftRibbonButtonSizes.push(TALL_SMALL_BUTTON_SIZE);
 

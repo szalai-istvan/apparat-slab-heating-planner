@@ -7,4 +7,5 @@
 function clearSlabHeaterGroupSelectionCache(slabHeaterGroup) {
     checkClass(slabHeaterGroup, CLASS_SLAB_HEATER_GROUP);
     slabHeaterGroup.cursorIsInsideCache = null;
+    slabHeaterGroup.slabHeaters.forEach(sh => sh.cursorIsInsideCache = null);
 }

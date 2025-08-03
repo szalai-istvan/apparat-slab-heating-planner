@@ -16,7 +16,7 @@ function processScalingValue(scalingValue) {
         const referenceLength = scalingValueNumber;
         scalingInProgress = false;
         const referencePointDistance = calculateDistance(firstPoint, secondPoint);
-        pixelsPerMetersRatio = referencePointDistance / referenceLength;
+        pixelsPerMetersRatio = roundNumber(referencePointDistance / referenceLength, 2);
         updateGridResolution();
 
         scalingDialog.close();

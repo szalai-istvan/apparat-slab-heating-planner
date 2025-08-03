@@ -7,6 +7,7 @@ class SlabHeater {
     rectWidth;
     rectHeight;
     group;
+    cursorIsInsideCache;
     
     constructor() {
         this.id = Math.random().toString().substring(2);

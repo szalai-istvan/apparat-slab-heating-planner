@@ -47,3 +47,15 @@ function calculateCorrector(lim, coord) {
     const dif = lim - coord;
     return (Math.abs(dif) + dif) / (2 * screenZoom);
 }
+
+function mouseCursorIsInsideUi() {
+    return mouseY < TOP_RIBBON_HEIGHT || mouseX < LEFT_RIBBON_WIDTH;
+}
+
+function setCursorType() {
+    if (mouseCursorIsInsideUi()) {
+        cursor(ARROW);
+    } else {
+        cursor(CROSS);
+    }
+}

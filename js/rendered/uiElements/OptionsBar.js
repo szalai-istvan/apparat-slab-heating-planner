@@ -6,13 +6,17 @@ class OptionsBar {
     title;
     titlePosition;
     perColumnSelection;
+    onchange;
 
     shouldBeRendered;
 
-    constructor({ topLeftPosition, buttonSize, gap, columns, valueResolver, shouldBeRendered, title, perColumnSelection }) {
+    constructor({ topLeftPosition, buttonSize, gap, columns, valueResolver, shouldBeRendered, title, perColumnSelection, onchange }) {
         this.shouldBeRendered = shouldBeRendered;
         this.valueResolver = valueResolver;
         this.title = title;
+        if (onchange) {
+            this.onchange = onchange;
+        }
 
         const thereAreHeaders = columns.filter(c => c.header).filter(a => a)[0];
         this.titlePosition = getTitlePosition(topLeftPosition, buttonSize, gap, columns.length, thereAreHeaders);
@@ -46,7 +50,7 @@ class OptionsBar {
         elementStore.register(this);
     }
 
-    setValue(columnIndex, text) {
+    setValue(columnIndex, text, runOnchange = true) {
         const column = this.getColumnsForSetValue(columnIndex);
         for (let button of column) {
             button.button.style(BACKGROUND, null);
@@ -61,6 +65,8 @@ class OptionsBar {
         if (selectedButton) {
             selectedButton.button.style(BACKGROUND, 'darkgrey');
         }
+
+        this.onchange && runOnchange && this.onchange();
     }
 
     getValue() {

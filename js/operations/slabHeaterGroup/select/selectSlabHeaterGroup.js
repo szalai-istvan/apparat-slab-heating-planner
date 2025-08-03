@@ -18,12 +18,14 @@ function selectSlabHeaterGroup(slabHeaterGroup = undefined) {
     if (slabHeaterGroup === selectedSlabHeaterGroup) {
         slabHeaterGroup.isSelected = true;
         slabHeaterGroup.isSelectedForDrag = true;
+        setSelectedIndex(slabHeaterGroup);
         return slabHeaterGroup;
     }
 
     if (deselectObject()) {
         slabHeaterGroup.isSelected = true;
         selectedSlabHeaterGroup = slabHeaterGroup;
+        setOptionBarValues(slabHeaterGroup);
         return slabHeaterGroup;
     }
     return undefined;
@@ -45,4 +47,21 @@ function checkForSelectableSlabHeaterGroup() {
         return slabHeaterGroup;
     }
     return undefined;
+}
+
+function setOptionBarValues(slabHeaterGroup) {
+    const optionBarW = slabHeaterWidthOptionsBar;
+    const optionBarL = slabHeaterLengthOptionsBar;
+
+    optionBarW.setValue(0, slabHeaterGroup.width.toString(), false);
+    const meter = Math.floor(slabHeaterGroup.length).toString();
+    const cm = (Math.floor(roundNumber(slabHeaterGroup.length - Math.floor(slabHeaterGroup.length), 2) * 100)).toString();
+    optionBarL.setValue(0, meter, false);
+    optionBarL.setValue(1, cm, false);
+}
+
+function setSelectedIndex(slabHeaterGroup) {
+    const clickedSlabHeater = slabHeaterGroup.slabHeaters.filter(sh => mouseCursorIsInsideSlabHeatersTextbox(sh))[0];
+    const index = slabHeaterGroup.slabHeaters.indexOf(clickedSlabHeater);
+    slabHeaterGroup.clickedMemberIndex = index;
 }

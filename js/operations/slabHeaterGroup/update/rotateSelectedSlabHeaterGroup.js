@@ -16,6 +16,8 @@ function rotateSelectedSlabHeaterGroup(direction) {
     while (group.alignment < 0) {
         group.alignment += 4;
     }
+    cachedSlabHeaterGroupAlignment = selectedSlabHeaterGroup.alignment;
+
     updateSlabHeaterGroupMemberPosition(group);
     const newPositionIsValid = group.isSelectedForDrag || validateSlabHeaterGroupPositionAndGetContainingRoom(group);
     if (!newPositionIsValid) {

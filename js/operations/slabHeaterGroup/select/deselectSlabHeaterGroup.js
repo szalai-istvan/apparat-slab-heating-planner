@@ -22,6 +22,7 @@ function deselectSlabHeaterGroup() {
     
     slabHeaterGroup.isSelected = false;
     slabHeaterGroup.isSelectedForDrag = false;
+    slabHeaterGroup.room = destinationRoom;
     
     selectedSlabHeaterGroup = null;
     cachedSelectedSlabHeaterGroup = null;

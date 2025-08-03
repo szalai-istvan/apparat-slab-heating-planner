@@ -9,7 +9,7 @@ function drawSlabHeater(slabHeater) {
     const color = slabHeater.group.color;
     const width = slabHeater.group.width * ratio;
     const length = slabHeater.group.length * ratio;
-    const tubeDistance = TUBE_DISTANCE_IN_METER * ratio;
+    const tubeDistance = roundNumber(TUBE_DISTANCE_IN_METER * ratio, 2);
     const alignment = slabHeater.group.alignment;
     const centerPosition = slabHeater.centerPosition;
     const diameter = tubeDistance;
@@ -24,7 +24,8 @@ function drawSlabHeater(slabHeater) {
     const p = SLAB_HEATER_TEXT_POP_FACTOR;
     const pointIsInsideRect = mouseCursorIsInsideMembersTextbox(slabHeater.group);
     const notDragging = !slabHeater.group.isSelectedForDrag;
-    
+    const stopThreshold = SLAB_HEATER_STOP_DRAWING_THRESHOLD_IN_METERS * ratio;
+
     if (!centerPosition) {
         return;
     }
@@ -41,16 +42,16 @@ function drawSlabHeater(slabHeater) {
     let angles = [270, 90];
     let arcX = lengthTo;
     stroke(color);
-    const limit = roundNumber(width / 2 - tubeDistance / 2, 2);
+    const limit = roundNumber(-1 * tube, 2);
 
-    while (tube < limit) {
-        line(lengthFrom, tube, 0, tube);
-        line(0, tube, lengthTo, tube);
+    let i = 0;
+    while (Math.abs(tube - limit) > stopThreshold) {
+        line(lengthFrom, tube, lengthTo, tube);
         arc(arcX, tube + tubeDistance / 2, diameter, diameter, angles[0], angles[1]);
 
         angles = [angles[1], angles[0]];
         arcX *= -1;
-        tube += tubeDistance;
+        tube = roundNumber(tube + tubeDistance, 2);
     }
     line(lengthFrom, tube, lengthTo, tube);
 

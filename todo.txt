@@ -1,37 +1,24 @@
 https://github.com/szalai-istvan/apparat-heating-planner
 
 - dobozok rajzolásának lehetősége (egy doboz 8 cm széles, 35 cm hosszú)
-- csőrajzolás lehetősége
-    - csőszerkesztés
-    - csőtáv 5 centi
-    - csővezeték hossza max 20 m
-    - egy floorheaternél lehessen törölni a csöveket
-    - csoportos csőrajzolás
-- grid bevezetése
-    - dobozok
-    - csövek
-- Panel label alatt fölfelé kerekítve fél méter hozzáadással legyen ott a csőhossz
-    - (l + 0.5) felfelé kerekítve félméterenkénti felbontássa
-- downloadsummary gomb
+- Lehessen csővezetőt rajzolni a födémfűtő csoporttól a dobozokig
+- Legyen validálva, hogy ugyanannyi doboz van a csoportban, mint a födémfűtő csoportban
+    - Esetleg ki lehetne zölddel jelölni a választhatóakat
+- Csővezető muszáj hogy dobozban végződjön
+    - Csővezetőhöz cső nyomvonal rajzoló algoritmus készítése
+    - Csőtáv 5 cm
+    - Egy cső max hossza 20 m
+- A csövekre és dobozokra is legyen érvényes a grid
+- Födémfűtő label alatt legyen leírva fölfelé kerekítve fél méter hozzáadással a csőhossz
+    - (L + 0.5) felfelé kerekítve félméterenkénti felbontássa
+- Excel szerkesztés
 - új tooltipek
-- Panelok ne lehessenek túl közel
-- grid felbontás 10 cm legyen
-- fűtőelem lehelyezésekor validáció!
-- Ha van választott panel, akkor a gombokkal lehessen típust változtatni!!!!
 - save-load esetében az available slab heater color-okat is frissíteni kell
 - dobozokat és csöveket is menteni kell
-- Fűtők mentésekor cyclic reference megoldani
 
 optional:
-- menurenderer hide if outside boundary
 - Panelkák mindig nézzenek a legközelebbi gyüjtő felé
 - Szobák ne téglalap hanem körberajzolhatóak legyenek
     - Szoba hozzáadása gombon radio button hogyha körbe rajzolni akarod
 - AUTOROUTE
-
-NOTES:
-- heater-group-okat kell létrehozni, azokat is managelni
-    - mindegyik validálva
-- a csoportokhoz kell majd hozzárendelni a csőnyomvonal kezdő node-ot
-- Dobozokhoz is legyen rendelve
-- Rajzolni kéne majd egy cső nyomvonalat majd írni és finomítgatni a csőgenerátor algoritmust
+- Szoba overlap validációt megcsinálni JÓRA.
