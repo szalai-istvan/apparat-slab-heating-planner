@@ -15,6 +15,11 @@ function drawDebugInfo() {
 }
 
 function drawAxis() {
+    if (!debugEnabled) {
+        return;
+    }
+
+    push();
     textSize(12);
     for (let i = -10_000; i < 10_000; i += 50) {
         strokeWeight(1);
@@ -35,10 +40,19 @@ function drawAxis() {
     stroke(BLACK);
     line(0, 10_000, 0, -10_000);
     line(-10_000, 0, 10_000, 0);
+    pop();
+
 }
 
 function drawCursorDebugInfo() {
+    if (!debugEnabled) {
+        return;
+    }
+
+    push();
     const mouse = getMousePositionAbsolute();
     textAlign(LEFT, TOP);
+    textSize(12);
     text(`x: ${roundNumber(mouse.x, 1)}\ny: ${roundNumber(mouse.y, 1)}\nzoom: ${roundNumber(screenZoom, 1)}\nfps: ${roundNumber(frameRate(), 1)}`, mouseX + 20, mouseY + 20);
+    pop();
 }

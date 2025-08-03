@@ -25,7 +25,7 @@ function deselectSlabHeaterGroup() {
     slabHeaterGroup.room = destinationRoom;
     
     selectedSlabHeaterGroup = null;
-    cachedSelectedSlabHeaterGroup = null;
+    cachedSelectableSlabHeaterGroup = null;
     
     return true;
 }

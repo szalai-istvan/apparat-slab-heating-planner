@@ -1,5 +1,5 @@
 let selectedRoom = null;
-let cachedSelectedRoom = null;
+let cachedSelectableRoom = null;
 
 /**
  * Megkeresi a kiválasztható szobát és visszaadja
@@ -24,14 +24,14 @@ function selectRoom(room = undefined) {
 }
 
 function checkForSelectableRoom() {
-
-    if (cachedSelectedRoom) {
-        return cachedSelectedRoom;
+    if (cachedSelectableRoom) {
+        return cachedSelectableRoom;
     }
 
     const selection = elementStore.rooms.filter(r => mouseCursorIsInsideRoomName(r));
     const room = selection[0];
     if (room) {
+        cachedSelectableRoom = room;
         return room;
     }
     return undefined;

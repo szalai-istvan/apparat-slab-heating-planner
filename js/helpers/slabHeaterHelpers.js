@@ -14,18 +14,12 @@ function giveBackSlabHeaterColor(color) {
     SLAB_HEATER_COLORS_AVAILABLE.push(color);
 }
 
-function offsetCenterPosition({ originalCenter, width, alignment, index }) {
+function offsetSlabHeaterCenterPosition({ originalCenter, width, alignment, index }) {
     const verticalOffset = alignment % 2 === 0;
     const offsetValue = width * pixelsPerMetersRatio * index;
 
     if (verticalOffset) {
-        return {
-            x: originalCenter.x,
-            y: originalCenter.y + offsetValue
-        };
+        return createPoint(originalCenter.x, originalCenter.y + offsetValue);
     }
-    return {
-        x: originalCenter.x + offsetValue,
-        y: originalCenter.y
-    };
+    return createPoint(originalCenter.x + offsetValue, originalCenter.y);
 }

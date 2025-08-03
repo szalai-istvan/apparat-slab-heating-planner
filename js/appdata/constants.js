@@ -120,5 +120,10 @@ const SLAB_HEATER_STOP_DRAWING_THRESHOLD_IN_METERS = 0.05;
 const SLAB_HEATER_COLORS = ['black', 'darkgrey', 'blue', 'red', 'green', 'orange', 'pink', 'teal', 'darkred'];
 let SLAB_HEATER_COLORS_AVAILABLE = [...SLAB_HEATER_COLORS];
 
+// Box constants
+const BOX_WIDTH_IN_METERS = 0.08;
+const BOX_LENGTH_IN_METERS = 0.35;
+const BOX_CORRECTION_OFFSET = 10;
+
 // translations
 const TRANSLATIONS = {};

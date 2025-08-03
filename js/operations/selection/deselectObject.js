@@ -15,6 +15,8 @@ function deselectObject() {
         successfulDeselect = deselectRoom();
     } else if (className === CLASS_SLAB_HEATER_GROUP) {
         successfulDeselect = deselectSlabHeaterGroup();
+    } else if (className === CLASS_BOX_GROUP) {
+        successfulDeselect = deselectBoxGroup();
     }
 
     if (successfulDeselect) {

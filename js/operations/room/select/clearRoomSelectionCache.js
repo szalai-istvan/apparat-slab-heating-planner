@@ -4,5 +4,5 @@
  * @returns {undefined}
  */
 function clearRoomSelectionCache() {
-    cachedSelectedRoom = null;
+    cachedSelectableRoom = null;
 }

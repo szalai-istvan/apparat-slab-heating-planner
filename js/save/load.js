@@ -26,7 +26,7 @@ function loadProject(text = undefined) {
     rooms.forEach((room) => elementStore.register(room));
 
     const slabHeaterGroups = projectState.slabHeaterGroups.slabHeaterGroups || [];
-    restoreGroupReferences(slabHeaterGroups);
+    restoreGroupReferencesOfSlabHeaterGroups(slabHeaterGroups);
 
     for (let slabHeaterGroup of slabHeaterGroups) {
         slabHeaterGroup.constructor = {name: CLASS_SLAB_HEATER_GROUP};
@@ -35,6 +35,18 @@ function loadProject(text = undefined) {
         const slabHeaters = slabHeaterGroup.slabHeaters;
         slabHeaters.forEach((slabHeater) => (slabHeater.constructor = { name: CLASS_SLAB_HEATER }));
         slabHeaters.forEach((slabHeater) => elementStore.register(slabHeater));
+    }
+
+    const boxGroups = projectState.boxGroups.boxGroups || [];
+    restoreGroupReferencesOfBoxGroups(boxGroups);
+
+    for (let boxGroup of boxGroups) {
+        boxGroup.constructor = {name: CLASS_BOX_GROUP};
+        elementStore.register(boxGroup);
+
+        const boxes = boxGroup.boxes;
+        boxes.forEach(b => b.constructor = {name: CLASS_BOX});
+        boxes.forEach(b => elementStore.register(b));
     }
 
     screenSumDrag = projectState.screen.sumDrag;

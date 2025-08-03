@@ -6,7 +6,6 @@ def createScriptTag(path):
     return SCRIPT_TAG_TEMPLATE.replace('$src', path)
 
 cwd = os.getcwd()
-print(cwd)
 
 jsFiles = []
 for root, subdirs, files in os.walk(cwd):
@@ -53,3 +52,5 @@ indexLines.append('</html>\n')
 
 with open('apparat.html', 'w') as apparat:
     apparat.write(''.join(indexLines))
+
+print('✅ scripts updated in apparat.html')

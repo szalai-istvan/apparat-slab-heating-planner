@@ -10,11 +10,11 @@ function updateSlabHeaterGroupMemberPosition(slabHeaterGroup) {
     const firstCenterPosition = slabHeaterGroup.isSelectedForDrag ? calculateSlabHeaterCenterPositionWithCorrection(first, slabHeaterGroup.width, slabHeaterGroup.length) : first.centerPosition;
 
     for (let index = 0; index < slabHeaters.length; index++) {
-        slabHeaters[index].centerPosition = offsetCenterPosition({
+        slabHeaters[index].centerPosition = offsetSlabHeaterCenterPosition({
             originalCenter: firstCenterPosition,
             width: slabHeaterGroup.width,
             alignment: slabHeaterGroup.alignment,
-            index: index - slabHeaterGroup.clickedMemberIndex
+            index: index - (slabHeaterGroup.clickedMemberIndex || 0)
         });
     }
 }

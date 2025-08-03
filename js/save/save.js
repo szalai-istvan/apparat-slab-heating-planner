@@ -29,6 +29,7 @@ function saveProjectToLocalStorage() {
 function getProjectState() {
     const rooms = elementStore.rooms.filter(room => roomIsConfigured(room));
     const slabHeaterGroups = elementStore.slabHeaterGroups.filter(shg => !shg.isSelected);
+    const boxGroups = elementStore.boxGroups.filter(bg => !bg.isSelected);
 
     let stateStr;
     let projectState = {};
@@ -52,12 +53,16 @@ function getProjectState() {
                 seed: gridSeed,
             },
             slabHeaterGroups: {
-                slabHeaterGroups: slabHeaterGroups.map(removeCyclicReferences)
+                slabHeaterGroups: slabHeaterGroups.map(removeCyclicReferencesOfSlabHeaterGroup)
+            },
+            boxGroups: {
+                boxGroups: boxGroups.map(removeCyclicReferencesOfBoxGroup)
             }
         };
     } finally {
         stateStr = JSON.stringify(projectState);
-        restoreGroupReferences(slabHeaterGroups);
+        restoreGroupReferencesOfSlabHeaterGroups(slabHeaterGroups);
+        restoreGroupReferencesOfBoxGroups(boxGroups);
     }
 
     return stateStr;
@@ -67,14 +72,25 @@ function getProjectStateSize() {
     return roundNumber(getProjectState().length / 1024 / 1024, 2) + " MB";
 }
 
-function removeCyclicReferences(slabHeaterGroup) {
+function removeCyclicReferencesOfSlabHeaterGroup(slabHeaterGroup) {
     slabHeaterGroup.slabHeaters.forEach(sh => sh.group = null);
     return slabHeaterGroup;
 }
 
-function restoreGroupReferences(slabHeaterGroups) {
+function restoreGroupReferencesOfSlabHeaterGroups(slabHeaterGroups) {
     for (let slabHeaterGroup of slabHeaterGroups) {
         slabHeaterGroup.slabHeaters.forEach(sh => sh.group = slabHeaterGroup);
+    }
+}
+
+function removeCyclicReferencesOfBoxGroup(boxGroup) {
+    boxGroup.boxes.forEach(b => b.group = null);
+    return boxGroup;
+}
+
+function restoreGroupReferencesOfBoxGroups(boxGroups) {
+    for (let boxGroup of boxGroups) {
+        boxGroup.boxes.forEach(b => b.group = boxGroup);
     }
 }
 

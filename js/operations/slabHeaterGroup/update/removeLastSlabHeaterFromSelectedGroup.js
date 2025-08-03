@@ -8,6 +8,11 @@ function removeLastSlabHeaterFromSelectedGroup() {
     if (!slabHeaterGroup) {
         return;
     }
+
+    if (slabHeaterGroup.slabHeaters.length < 2) {
+        return;
+    }
+
     const lastSlabHeater = slabHeaterGroup.slabHeaters[slabHeaterGroup.slabHeaters.length - 1];
     detachSlabHeaterFromGroup(lastSlabHeater);
     elementStore.remove(lastSlabHeater);

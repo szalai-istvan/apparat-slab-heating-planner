@@ -9,5 +9,5 @@ function renderAbsolutePositionObjects() {
     elementStore.menus.forEach(menu => drawMenuLine(menu));
     elementStore.optionsBars.forEach(opt => drawOptionsBar(opt));
 
-    drawDebugInfo();
+    drawCursorDebugInfo();
 }

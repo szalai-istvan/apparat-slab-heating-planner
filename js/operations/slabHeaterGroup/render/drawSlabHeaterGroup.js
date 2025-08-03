@@ -12,10 +12,7 @@ function drawSlabHeaterGroup(slabHeaterGroup) {
         updateSlabHeaterGroupMemberPosition(slabHeaterGroup);
     }
 
-    for (let i = 0; i < slabHeaters.length; i++) {
-        const slabHeater = slabHeaters[i];
-        drawSlabHeater(slabHeater);
-    }
+    slabHeaters.forEach(sh => drawSlabHeater(sh));
 
     const pipeDriver = slabHeaterGroup.pipeDriver;
     // const firstPoint = SlabHeaterGroupManager.calculatePipeDriverFirstPoint(slabHeaterGroup);

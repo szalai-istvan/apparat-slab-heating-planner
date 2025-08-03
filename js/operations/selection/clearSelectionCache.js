@@ -4,7 +4,10 @@
  * @returns {undefined}
  */
 function clearSelectionCache() {
-    cachedSelectedRoom = null;
-    cachedSelectedSlabHeaterGroup = null;
+    cachedSelectableRoom = null;
+    cachedSelectableSlabHeaterGroup = null;
+    cachedSelectableBoxGroup = null;
+
     elementStore.slabHeaterGroups.forEach(shg => clearSlabHeaterGroupSelectionCache(shg));
+    elementStore.boxGroups.forEach(bg => clearBoxGroupSelectionCache(bg));
 }

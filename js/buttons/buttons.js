@@ -96,11 +96,11 @@ function createButtons() {
     addSidePanelText('Födémáttörések', sidePanelButtonPosition(leftRibbonButtonSizes).y);
     leftRibbonButtonSizes.push({ x: 0, y: UI_TEXT_SIZE / 2 });
 
-    addSlabHeaterButton = new ButtonWrapper({
+    addBoxGroupButton = new ButtonWrapper({
         text: 'Hozzáadás',
         size: SMALL_BUTTON_SIZE,
         position: sidePanelButtonPosition(leftRibbonButtonSizes),
-        onClick: () => "TODO",
+        onClick: () => createBoxGroup(),
         shouldBeRendered: () => configuredRoomsExist()
     });
 
@@ -121,8 +121,8 @@ function createButtons() {
         text: '↶',
         size: HALF_WIDTH_BUTTON_SIZE,
         position: rotatePosition,
-        onClick: () => rotateSelectedSlabHeaterGroup(-1),
-        shouldBeRendered: () => selectedSlabHeaterGroup
+        onClick: () => rotateSelectedObject(-1),
+        shouldBeRendered: () => selectedSlabHeaterGroup || selectedBoxGroup
     });
 
     rotatePosition.x += HALF_WIDTH_BUTTON_SIZE.x;
@@ -130,27 +130,27 @@ function createButtons() {
         text: '↷',
         size: HALF_WIDTH_BUTTON_SIZE,
         position: rotatePosition,
-        onClick: () => rotateSelectedSlabHeaterGroup(1),
-        shouldBeRendered: () => selectedSlabHeaterGroup
+        onClick: () => rotateSelectedObject(1),
+        shouldBeRendered: () => selectedSlabHeaterGroup || selectedBoxGroup
     });
     leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);
 
     const groupManagerPosition = sidePanelButtonPosition(leftRibbonButtonSizes);
-    rotateLeftButton = new ButtonWrapper({
+    removeFromGroupButton = new ButtonWrapper({
         text: '-',
         size: HALF_WIDTH_BUTTON_SIZE,
         position: groupManagerPosition,
-        onClick: () => removeLastSlabHeaterFromSelectedGroup(),
-        shouldBeRendered: () => selectedSlabHeaterGroup
+        onClick: () => removeLastFromSelectedGroup(),
+        shouldBeRendered: () => selectedSlabHeaterGroup || selectedBoxGroup
     });
 
     groupManagerPosition.x += HALF_WIDTH_BUTTON_SIZE.x;
-    rotateRightButton = new ButtonWrapper({
+    addToGroupButton = new ButtonWrapper({
         text: '+',
         size: HALF_WIDTH_BUTTON_SIZE,
         position: groupManagerPosition,
-        onClick: () => addSlabHeaterToSelectedGroup(),
-        shouldBeRendered: () => selectedSlabHeaterGroup
+        onClick: () => addToSelectedGroup(),
+        shouldBeRendered: () => selectedSlabHeaterGroup || selectedBoxGroup
     });
     leftRibbonButtonSizes.push(HALF_WIDTH_BUTTON_SIZE);
 

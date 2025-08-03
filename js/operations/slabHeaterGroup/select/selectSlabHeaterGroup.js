@@ -1,5 +1,5 @@
 let selectedSlabHeaterGroup = null;
-let cachedSelectedSlabHeaterGroup = null;
+let cachedSelectableSlabHeaterGroup = null;
 
 /**
  * Megkeresi és kiválasztja a födémfűtő csoportot és visszaadja
@@ -34,16 +34,17 @@ function selectSlabHeaterGroup(slabHeaterGroup = undefined) {
 /**
  * Megkeresi a kiválasztható födémfűtő csoportot és visszaadja
  * 
- * @returns {SlabHeaterGroup} a kiválaszthatü födémfűtő csoport.
+ * @returns {SlabHeaterGroup} a kiválasztható födémfűtő csoport.
  */
 function checkForSelectableSlabHeaterGroup() {
-    if (cachedSelectedSlabHeaterGroup) {
-        return cachedSelectedSlabHeaterGroup;
+    if (cachedSelectableSlabHeaterGroup) {
+        return cachedSelectableSlabHeaterGroup;
     }
 
     const selection = elementStore.slabHeaterGroups.filter(shg => mouseCursorIsInsideMembersTextbox(shg));
     const slabHeaterGroup = selection[0];
     if (slabHeaterGroup) {
+        cachedSelectableSlabHeaterGroup = slabHeaterGroup;
         return slabHeaterGroup;
     }
     return undefined;

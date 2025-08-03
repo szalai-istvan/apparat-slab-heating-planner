@@ -1,5 +1,5 @@
 let selectedBoxGroup = null;
-let cachedSelectedBoxGroup = null;
+let cachedSelectableBoxGroup = null;
 
 /**
  * Megkeresi és kiválasztja a doboz csoportot és visszaadja
@@ -18,7 +18,7 @@ function selectBoxGroup(boxGroup = undefined) {
     if (boxGroup === selectedBoxGroup) {
         boxGroup.isSelected = true;
         boxGroup.isSelectedForDrag = true;
-        setSelectedBoxGroupIndex(slabHeaterGroup);
+        setSelectedBoxGroupIndex(boxGroup);
         return boxGroup;
     }
 
@@ -30,10 +30,27 @@ function selectBoxGroup(boxGroup = undefined) {
     return undefined;
 }
 
+/**
+ * Megkeresi a kiválasztható elosztódoboz csoportot és visszaadja
+ * 
+ * @returns {BoxGroup} a kiválasztható elosztódoboz csoport.
+ */
 function checkForSelectableBoxGroup() {
-    // TO BE CONTINUED
+    if (cachedSelectableBoxGroup) {
+        return cachedSelectableBoxGroup;
+    }
+
+    const selection = elementStore.boxGroups.filter(bg => mouseCursorIsInsideBoxGroupMember(bg));
+    const boxGroup = selection[0];
+    if (boxGroup) {
+        cachedSelectableBoxGroup = boxGroup;
+        return boxGroup;
+    }
+    return undefined;
 }
 
-function setSelectedBoxGroupIndex() {
-    // TO BE CONTINUED
+function setSelectedBoxGroupIndex(boxGroup) {
+    const clickedBox = boxGroup.boxes.filter(b => mouseCursorIsInsideBox(b))[0];
+    const index = boxGroup.boxes.indexOf(clickedBox);
+    boxGroup.clickedMemberIndex = index;
 }

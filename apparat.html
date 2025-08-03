@@ -93,6 +93,7 @@
     <script type="text/javascript" src="js/appdata/constants.js"></script>
     <script type="text/javascript" src="js/appdata/tooltips.js"></script>
 
+    <script type="text/javascript" src="js/buttons/addBoxGroupButton.js"></script>
     <script type="text/javascript" src="js/buttons/addRoomsButton.js"></script>
     <script type="text/javascript" src="js/buttons/addSlabHeaterMenu.js"></script>
     <script type="text/javascript" src="js/buttons/buttons.js"></script>
@@ -104,6 +105,7 @@
 
     <script type="text/javascript" src="js/contexts/SlabHeaterContext.js"></script>
 
+    <script type="text/javascript" src="js/helpers/boxHelpers.js"></script>
     <script type="text/javascript" src="js/helpers/helpers.js"></script>
     <script type="text/javascript" src="js/helpers/keystrokeRecorder.js"></script>
     <script type="text/javascript" src="js/helpers/setupHelpers.js"></script>
@@ -130,8 +132,18 @@
     <script type="text/javascript" src="js/operations/blueprint/create/createBlueprint.js"></script>
     <script type="text/javascript" src="js/operations/blueprint/delete/clearBlueprints.js"></script>
     <script type="text/javascript" src="js/operations/blueprint/render/drawBlueprint.js"></script>
+    <script type="text/javascript" src="js/operations/box/calc/calculateBoxCenterPositionWithCorrection.js"></script>
+    <script type="text/javascript" src="js/operations/box/calc/mouseCursorIsInsideBox.js"></script>
+    <script type="text/javascript" src="js/operations/box/render/drawBox.js"></script>
+    <script type="text/javascript" src="js/operations/boxgroup/calc/boxGroupIsHorizontal.js"></script>
+    <script type="text/javascript" src="js/operations/boxgroup/calc/mouseCursorIsInsideBoxGroupMember.js"></script>
     <script type="text/javascript" src="js/operations/boxgroup/create/createBoxGroup.js"></script>
+    <script type="text/javascript" src="js/operations/boxgroup/render/drawBoxGroup.js"></script>
+    <script type="text/javascript" src="js/operations/boxgroup/select/clearBoxGroupSelectionCache.js"></script>
+    <script type="text/javascript" src="js/operations/boxgroup/select/deselectBoxGroup.js"></script>
     <script type="text/javascript" src="js/operations/boxgroup/select/selectBoxGroup.js"></script>
+    <script type="text/javascript" src="js/operations/boxgroup/update/rotateSelectedBoxGroup.js"></script>
+    <script type="text/javascript" src="js/operations/boxgroup/update/updateBoxGroupMemberPosition.js"></script>
     <script type="text/javascript" src="js/operations/grid/calc/getClosestGridPointToPoint.js"></script>
     <script type="text/javascript" src="js/operations/grid/create/setGridSeed.js"></script>
     <script type="text/javascript" src="js/operations/grid/delete/removeGridSeed.js"></script>
@@ -142,10 +154,10 @@
     <script type="text/javascript" src="js/operations/room/calc/getRoomContainingPoint.js"></script>
     <script type="text/javascript" src="js/operations/room/calc/getRoomMiddlePoint.js"></script>
     <script type="text/javascript" src="js/operations/room/calc/getRoomNames.js"></script>
+    <script type="text/javascript" src="js/operations/room/calc/mouseCursorIsInsideRoomName.js"></script>
     <script type="text/javascript" src="js/operations/room/calc/pointIsInsideRoom.js"></script>
     <script type="text/javascript" src="js/operations/room/calc/roomIsConfigured.js"></script>
     <script type="text/javascript" src="js/operations/room/calc/selectedRoomIsConfiguredOrNoRoomIsSelected.js"></script>
-    <script type="text/javascript" src="js/operations/room/calc/x.js"></script>
     <script type="text/javascript" src="js/operations/room/create/addPointToSelectedRoom.js"></script>
     <script type="text/javascript" src="js/operations/room/create/createRoom.js"></script>
     <script type="text/javascript" src="js/operations/room/delete/clearRooms.js"></script>

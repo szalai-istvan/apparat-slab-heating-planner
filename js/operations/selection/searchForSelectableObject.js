@@ -15,4 +15,10 @@ function searchSelectableObject() {
         selectedObject = selectedSlabHeaterGroup;
         return selectedSlabHeaterGroup;
     }
+
+    const selectedBoxGroup = selectBoxGroup();
+    if (selectedBoxGroup) {
+        selectedObject = selectedBoxGroup;
+        return selectedBoxGroup;
+    }
 }
