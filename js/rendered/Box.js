@@ -1,9 +1,9 @@
 class Box {
     centerPosition;
-    alignment;
+    group;
 
-    constructor(centerPosition, alignment) {
+    constructor(centerPosition) {
         this.centerPosition = centerPosition;
-        this.alignment = alignment;
+        elementStore.register(this);
     }
 }

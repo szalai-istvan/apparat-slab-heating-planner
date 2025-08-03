@@ -16,6 +16,10 @@ function selectObject(obj) {
         if (selectSlabHeaterGroup(obj)) {
             selectedObject = obj;
         }
+    } else if (className === CLASS_BOX_GROUP) {
+        if (selectBoxGroup(obj)) {
+            selectedObject = obj;
+        }
     } else {
         throw new Error(`Unexpected class of selected object: ${className}`);
     }

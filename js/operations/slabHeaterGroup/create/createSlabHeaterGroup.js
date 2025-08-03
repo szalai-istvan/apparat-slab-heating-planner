@@ -1,3 +1,5 @@
+let cachedSlabHeaterGroupAlignment = 1;
+
 /**
  * Létrehoz és visszaad egy födém fűtő csoportot és visszaadja
  * 

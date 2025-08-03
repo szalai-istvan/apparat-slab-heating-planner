@@ -60,6 +60,7 @@ const CLASS_BUTTON_WRAPPER = 'ButtonWrapper';
 const CLASS_TOOLTIP = 'Tooltip';
 const CLASS_MENU_LINE = 'MenuLine';
 const CLASS_BOX = 'Box';
+const CLASS_BOX_GROUP = 'BoxGroup';
 const CLASS_OPTIONS_BAR = 'OptionsBar';
 const CLASS_PIPE_DRIVER = 'PipeDriver';
 const CLASS_NUMBER = 'number';

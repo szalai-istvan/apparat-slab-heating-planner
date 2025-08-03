@@ -31,6 +31,5 @@ class SlabHeaterGroup {
         this.pipeDriver = new PipeDriver(calculatePipeDriverFirstPoint(this));
 
         elementStore.register(this);
-        elementStore.register(this.pipeDriver);
     }
 }

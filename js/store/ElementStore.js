@@ -5,6 +5,7 @@ class ElementStore {
     slabHeaterGroups = [];
     pipeDrivers = [];
     boxes = [];
+    boxGroups = [];
 
     buttons = [];
     menus = [];
@@ -41,6 +42,8 @@ class ElementStore {
             this.optionsBars.push(obj);
         } else if (className === CLASS_SLAB_HEATER_GROUP) {
             this.slabHeaterGroups.push(obj);
+        } else if (className === CLASS_BOX_GROUP) {
+            this.boxGroups.push(obj);
         } else if (className === CLASS_PIPE_DRIVER) {
             this.pipeDrivers.push(obj);
         } else {
@@ -64,6 +67,8 @@ class ElementStore {
             this.boxes = this.boxes.filter((x) => x !== obj);
         } else if (className === CLASS_SLAB_HEATER_GROUP) {
             this.slabHeaterGroups = this.slabHeaterGroups.filter((x) => x !== obj);
+        } else if (className === CLASS_BOX_GROUP) {
+            this.boxGroups = this.boxGroups.filter((x) => x !== obj);
         } else {
             throw new Error(
                 `Deleting render object of type ${className} is unspecified.`

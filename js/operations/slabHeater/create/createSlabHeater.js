@@ -1,5 +1,3 @@
-let cachedSlabHeaterGroupAlignment = 1;
-
 /**
  * Létrehoz és visszaad egy födémfűtő panel objektumot
  * 
