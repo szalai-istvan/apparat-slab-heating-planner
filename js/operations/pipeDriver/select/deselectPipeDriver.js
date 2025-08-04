@@ -9,9 +9,14 @@ function deselectPipeDriver() {
         return true;
     }
 
+    if (!selectedPipeDriverIsFullyConfigured()) {
+        return false;
+    }
+
     pipeDriver.isSelected = false;
     pipeDriver.isSelectedForDrag = false;
     pipeDriver.selectedPointIndex = null;
+    selectedPipeDriver = null;
 
     return true;
 }

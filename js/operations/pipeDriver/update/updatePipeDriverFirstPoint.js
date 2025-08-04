@@ -11,11 +11,25 @@ function updatePipeDriverFirstPoint(pipeDriver, firstPoint) {
     if (!firstPoint) {
         return;
     }
-    
+
     const points = pipeDriver.points;
     if (points.length === 0) {
         points.push(firstPoint);
-    } else {
-        points[0] = firstPoint;
+        return;
     }
+
+    const originalFirstPoint = points[0];
+    const secondPoint = points[1];
+    points[0] = firstPoint;
+    if (!secondPoint) { 
+        return;
+    }
+    
+    const direction = getDirectionBetweenTwoPoints(originalFirstPoint, secondPoint);
+    if (direction === DIRECTION_X) {
+        secondPoint.y = firstPoint.y;
+    } else if (direction === DIRECTION_Y) {
+        secondPoint.x = firstPoint.x;
+    }
+
 }

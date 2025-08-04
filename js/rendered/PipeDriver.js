@@ -4,10 +4,14 @@ class PipeDriver {
     selectedPointIndex;
     selectedPointIndexCache = null;
     cursorIsInsidePointIndexCache = null;
+    slabHeaterGroupAlignment;
 
     points = [];
 
-    constructor(firstPoint) {
+    constructor(slabHeaterGroup) {
+        const firstPoint = calculatePipeDriverFirstPoint(slabHeaterGroup);
+        this.slabHeaterGroupAlignment = slabHeaterGroup.alignment;
+
         firstPoint && this.points.push(firstPoint);
 
         elementStore.register(this);

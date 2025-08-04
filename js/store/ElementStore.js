@@ -69,6 +69,8 @@ class ElementStore {
             this.slabHeaterGroups = this.slabHeaterGroups.filter((x) => x !== obj);
         } else if (className === CLASS_BOX_GROUP) {
             this.boxGroups = this.boxGroups.filter((x) => x !== obj);
+        } else if (className === CLASS_PIPE_DRIVER) {
+            this.pipeDrivers = this.pipeDrivers.filter((x) => x !== obj);
         } else {
             throw new Error(
                 `Deleting render object of type ${className} is unspecified.`

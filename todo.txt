@@ -1,6 +1,5 @@
 https://github.com/szalai-istvan/apparat-heating-planner
 
-- dobozok rajzolásának lehetősége (egy doboz 8 cm széles, 35 cm hosszú)
 - Lehessen csővezetőt rajzolni a födémfűtő csoporttól a dobozokig
 - Legyen validálva, hogy ugyanannyi doboz van a csoportban, mint a födémfűtő csoportban
     - Esetleg ki lehetne zölddel jelölni a választhatóakat
@@ -8,13 +7,11 @@ https://github.com/szalai-istvan/apparat-heating-planner
     - Csővezetőhöz cső nyomvonal rajzoló algoritmus készítése
     - Csőtáv 5 cm
     - Egy cső max hossza 20 m
-- A csövekre és dobozokra is legyen érvényes a grid
 - Födémfűtő label alatt legyen leírva fölfelé kerekítve fél méter hozzáadással a csőhossz
     - (L + 0.5) felfelé kerekítve félméterenkénti felbontássa
 - Excel szerkesztés
 - új tooltipek
 - save-load esetében az available slab heater color-okat is frissíteni kell
-- dobozokat és csöveket is menteni kell
 - ui protection scalerhez, szobához és pipedriverhez
 - 
 

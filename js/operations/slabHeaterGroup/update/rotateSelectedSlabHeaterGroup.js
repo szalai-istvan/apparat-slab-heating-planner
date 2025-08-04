@@ -18,7 +18,11 @@ function rotateSelectedSlabHeaterGroup(direction) {
     }
     cachedSlabHeaterGroupAlignment = selectedSlabHeaterGroup.alignment;
 
+    const pipeDriver = group.pipeDriver;
+    const firstPoint = calculatePipeDriverFirstPoint(group);
     updateSlabHeaterGroupMemberPosition(group);
+    updatePipeDriverFirstPoint(pipeDriver, firstPoint);
+    pipeDriver.slabHeaterGroupAlignment = group.alignment;
     const newPositionIsValid = group.isSelectedForDrag || validateSlabHeaterGroupPositionAndGetContainingRoom(group);
     if (!newPositionIsValid) {
         displayMessage('A forgatás hatására a csoport egy része szobán kívülre kerülne! Helyezze át mielőtt elforgatja!');

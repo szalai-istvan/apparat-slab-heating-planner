@@ -8,14 +8,18 @@ function drawSlabHeaterGroup(slabHeaterGroup) {
     checkClass(slabHeaterGroup, CLASS_SLAB_HEATER_GROUP);
 
     const slabHeaters = slabHeaterGroup.slabHeaters;
+    const pipeDriver = slabHeaterGroup.pipeDriver;
+    
     if (slabHeaterGroup.isSelectedForDrag) {
         updateSlabHeaterGroupMemberPosition(slabHeaterGroup);
+
+        if (pipeDriver) {
+            const firstPoint = calculatePipeDriverFirstPoint(slabHeaterGroup);
+            updatePipeDriverFirstPoint(pipeDriver, firstPoint);
+            pipeDriver.slabHeaterGroupAlignment = slabHeaterGroup.alignment;
+        }
     }
 
     slabHeaters.forEach(sh => drawSlabHeater(sh));
-
-    const pipeDriver = slabHeaterGroup.pipeDriver;
-    const firstPoint = calculatePipeDriverFirstPoint(slabHeaterGroup);
-    updatePipeDriverFirstPoint(pipeDriver, firstPoint);
     drawPipeDriver(pipeDriver);
 }

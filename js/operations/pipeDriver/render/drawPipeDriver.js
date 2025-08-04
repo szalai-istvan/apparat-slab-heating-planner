@@ -9,12 +9,12 @@ function drawPipeDriver(pipeDriver) {
 
     const ratio = pixelsPerMetersRatio;
 
+    const isSelected = pipeDriver.isSelected;
     const mouseCursorIsInsidePoint = mouseCursorIsInsidePipeDriversPoint(pipeDriver);
     const lineThickness = PIPE_DRIVER_PIPE_THICKNESS_IN_METERS * ratio;
     const diameter = PIPE_DRIVER_DIAMETER_IN_METERS * ratio * (1 + mouseCursorIsInsidePoint * 0.2);
     const ellipseThickness = PIPE_DRIVER_THICKNESS_IN_METERS * ratio;
-    const points = pipeDriver.points;
-    
+    const points = getPointsToDrawPipeDriver(pipeDriver);
 
     push();
 
@@ -38,4 +38,16 @@ function drawPipeDriver(pipeDriver) {
     }
 
     pop();
+}
+
+function getPointsToDrawPipeDriver(pipeDriver) {
+    const points = pipeDriver.points;
+
+    if (!pipeDriver.isSelected) {
+        return points;
+    }
+
+    const nextPoint = getNextPointToAddToPipeDriver(pipeDriver);
+
+    return [...points, nextPoint];
 }

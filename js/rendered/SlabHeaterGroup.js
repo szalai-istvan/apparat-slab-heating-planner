@@ -28,7 +28,7 @@ class SlabHeaterGroup {
         this.alignment = alignment ?? 1;
         updateSlabHeaterGroupType(this);
 
-        this.pipeDriver = new PipeDriver(calculatePipeDriverFirstPoint(this));
+        this.pipeDriver = new PipeDriver(this);
 
         elementStore.register(this);
     }

@@ -16,5 +16,7 @@ function removeSelectedObject() {
         removeSelectedSlabHeaterGroup();
     } else if (className === CLASS_BOX_GROUP) {
         removeSelectedBoxGroup();
+    } else if (className === CLASS_PIPE_DRIVER) {
+        resetSelectedPipeDriver();
     }
 }

@@ -22,6 +22,7 @@ function leftMouseButtonPressedFunc() {
 function rightMouseButtonPressedFunc() {
     addScalingReferencePoint();
     addPointToSelectedRoom();
+    addPointToSelectedPipeDriver();
 
     deselectObject();
 }
