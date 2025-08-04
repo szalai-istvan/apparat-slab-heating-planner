@@ -17,6 +17,8 @@ function deselectObject() {
         successfulDeselect = deselectSlabHeaterGroup();
     } else if (className === CLASS_BOX_GROUP) {
         successfulDeselect = deselectBoxGroup();
+    } else if (className === CLASS_PIPE_DRIVER) {
+        successfulDeselect = deselectPipeDriver();
     }
 
     if (successfulDeselect) {

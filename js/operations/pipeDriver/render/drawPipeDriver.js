@@ -9,11 +9,12 @@ function drawPipeDriver(pipeDriver) {
 
     const ratio = pixelsPerMetersRatio;
 
+    const mouseCursorIsInsidePoint = mouseCursorIsInsidePipeDriversPoint(pipeDriver);
     const lineThickness = PIPE_DRIVER_PIPE_THICKNESS_IN_METERS * ratio;
-    const diameter = PIPE_DRIVER_DIAMETER_IN_METERS * ratio;
+    const diameter = PIPE_DRIVER_DIAMETER_IN_METERS * ratio * (1 + mouseCursorIsInsidePoint * 0.2);
     const ellipseThickness = PIPE_DRIVER_THICKNESS_IN_METERS * ratio;
-
     const points = pipeDriver.points;
+    
 
     push();
 
@@ -26,8 +27,8 @@ function drawPipeDriver(pipeDriver) {
         line(p1.x, p1.y, p2.x, p2.y);
     }
 
-    fill(PIPE_DRIVER_DEFAULT_FILL_COLOR);
-    stroke(PIPE_DRIVER_OUTLINE_COLOR);
+    fill(mouseCursorIsInsidePoint ? PIPE_DRIVER_SELECTABLE_FILL_COLOR : PIPE_DRIVER_DEFAULT_FILL_COLOR);
+    stroke(mouseCursorIsInsidePoint ? RED : PIPE_DRIVER_OUTLINE_COLOR);
     strokeWeight(ellipseThickness);
     ellipseMode(CENTER);
 

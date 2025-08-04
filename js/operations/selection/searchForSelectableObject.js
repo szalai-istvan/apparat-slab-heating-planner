@@ -21,4 +21,10 @@ function searchSelectableObject() {
         selectedObject = selectedBoxGroup;
         return selectedBoxGroup;
     }
+
+    const selectedPipeDriver = selectPipeDriver();
+    if (selectedPipeDriver) {
+        selectedObject = selectedPipeDriver;
+        return selectedPipeDriver;
+    }
 }

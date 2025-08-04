@@ -7,14 +7,18 @@
 function mouseCursorIsInsideRoomName(room) {
     checkClass(room, CLASS_ROOM);
 
-    if (room.points.length < 2) {
-        return false;
+    if (room.cursorIsInsideCache === null) {
+        if (room.points.length < 2) {
+            room.cursorIsInsideCache = false;
+        }
+
+        room.cursorIsInsideCache = pointIsInside(
+            getMousePositionAbsolute(),
+            room.textCenterCoordinates,
+            textWidth(room.name),
+            room.textSize
+        );
     }
 
-    return pointIsInside(
-        getMousePositionAbsolute(),
-        room.textCenterCoordinates,
-        textWidth(room.name),
-        room.textSize
-    );
+    return room.cursorIsInsideCache;
 }

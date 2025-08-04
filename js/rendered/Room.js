@@ -7,6 +7,7 @@ class Room {
     textCenterCoordinates;
     lineWeight;
     slabHeaterColor;
+    cursorIsInsideCache = null;
 
     constructor(name) {
         this.name = name || '';

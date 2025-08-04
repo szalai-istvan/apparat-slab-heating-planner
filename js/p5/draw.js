@@ -9,6 +9,5 @@ function draw() {
     renderTranslatedObjects();
     pop();
 
-    //selectionContext.checkForSelection();
     renderAbsolutePositionObjects();
 }
