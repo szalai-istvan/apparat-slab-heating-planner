@@ -5,7 +5,7 @@ let cachedBoxGroupAlignment = 1;
  * 
  */
 function createBoxGroup() {
-    const box = new Box();
+    const box = createBox(false);
     const group = new BoxGroup({ box, alignment: cachedBoxGroupAlignment });
     selectObject(group);
     group.isSelectedForDrag = true;

@@ -1,3 +1,4 @@
+import projectSizeCalculator
 import os
 
 SCRIPT_TAG_TEMPLATE = '<script type="text/javascript" src="$src"></script>'
@@ -53,4 +54,5 @@ indexLines.append('</html>\n')
 with open('apparat.html', 'w') as apparat:
     apparat.write(''.join(indexLines))
 
-print('✅ scripts updated in apparat.html')
+print('✅ Scripts updated in apparat.html')
+projectSizeCalculator.calculateProjectSize()

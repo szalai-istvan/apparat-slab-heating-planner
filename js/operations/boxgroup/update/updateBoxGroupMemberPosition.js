@@ -9,9 +9,9 @@ function updateBoxGroupMemberPosition(boxGroup) {
 
     const boxes = boxGroup.boxes;
     const first = boxes[0];
-    const width = BOX_WIDTH_IN_METERS * pixelsPerMetersRatio;
+    const width = BOX_WIDTH_IN_METERS;
     const length = BOX_LENGTH_IN_METERS * pixelsPerMetersRatio;
-    const firstCenterPosition = boxGroup.isSelectedForDrag ? calculateBoxCenterPositionWithCorrection(first, width, length) : first.centerPosition;
+    const firstCenterPosition = boxGroup.isSelectedForDrag ? calculateBoxCenterPositionWithCorrection(first) : first.centerPosition;
 
     for (let index = 0; index < boxes.length; index++) {
         boxes[index].centerPosition = offsetBoxCenterPosition({

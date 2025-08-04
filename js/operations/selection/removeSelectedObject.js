@@ -14,5 +14,7 @@ function removeSelectedObject() {
         removeSelectedRoom();
     } else if (className === CLASS_SLAB_HEATER_GROUP) {
         removeSelectedSlabHeaterGroup();
+    } else if (className === CLASS_BOX_GROUP) {
+        removeSelectedBoxGroup();
     }
 }

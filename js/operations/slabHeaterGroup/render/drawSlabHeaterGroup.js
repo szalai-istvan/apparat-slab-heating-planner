@@ -1,5 +1,5 @@
 /**
- * Felrajzolja a rajzlapra a paraméterül kapott födémfűtő csoportor
+ * Felrajzolja a rajzlapra a paraméterül kapott födémfűtő csoportot
  * 
  * @param {SlabHeaterGroup} slabHeaterGroup födémfűtő csoport
  * @returns {undefined}
@@ -15,7 +15,7 @@ function drawSlabHeaterGroup(slabHeaterGroup) {
     slabHeaters.forEach(sh => drawSlabHeater(sh));
 
     const pipeDriver = slabHeaterGroup.pipeDriver;
-    // const firstPoint = SlabHeaterGroupManager.calculatePipeDriverFirstPoint(slabHeaterGroup);
-    // PipeDriverManager.updateFirstPoint(pipeDriver, firstPoint);
-    // PipeDriverRenderer.draw(pipeDriver);
+    const firstPoint = calculatePipeDriverFirstPoint(slabHeaterGroup);
+    updatePipeDriverFirstPoint(pipeDriver, firstPoint);
+    drawPipeDriver(pipeDriver);
 }

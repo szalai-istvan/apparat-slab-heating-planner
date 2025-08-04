@@ -1,5 +1,5 @@
 function offsetBoxCenterPosition({ originalCenter, width, alignment, index }) {
-    const verticalOffset = alignment % 2 === 0;
+    const verticalOffset = alignment % 2 === 1;
     const offsetValue = width * pixelsPerMetersRatio * index;
 
     if (verticalOffset) {

@@ -10,21 +10,22 @@ function calculateSlabHeaterCenterPositionWithCorrection(slabHeater, width, leng
     checkClass(slabHeater, CLASS_SLAB_HEATER);
 
     const ratio = pixelsPerMetersRatio;
+    const selectedIndex = slabHeater.group.clickedMemberIndex || 0;
     let x_;
     let y_;
 
     if (slabHeater.group.alignment % 2 === 1) {
-        x_ = width * ratio;
-        y_ = (length + TUBE_DISTANCE_IN_METER) * ratio;
+        x_ = (selectedIndex + 0.5) * width * ratio;
+        y_ = (length + TUBE_DISTANCE_IN_METER) * ratio / 2;
     } else {
-        x_ = (length + TUBE_DISTANCE_IN_METER) * ratio;
-        y_ = width * ratio;
+        x_ = (length + TUBE_DISTANCE_IN_METER) * ratio / 2;
+        y_ = (selectedIndex + 0.5) * width * ratio;
     }
 
     const mousePosition = getMousePosition();
     const mousePositionAbsolute = getMousePositionAbsolute();
-    const xCorrection = calculateCorrector(LEFT_RIBBON_WIDTH + (SLAB_HEATER_CORRECTION_OFFSET + x_ / 2) * screenZoom, mousePosition.x);
-    const yCorrection = calculateCorrector(TOP_RIBBON_HEIGHT + (SLAB_HEATER_CORRECTION_OFFSET + y_ / 2) * screenZoom, mousePosition.y);
+    const xCorrection = calculateCorrector(LEFT_RIBBON_WIDTH + (SLAB_HEATER_CORRECTION_OFFSET + x_) * screenZoom, mousePosition.x);
+    const yCorrection = calculateCorrector(TOP_RIBBON_HEIGHT + (SLAB_HEATER_CORRECTION_OFFSET + y_) * screenZoom, mousePosition.y);
 
     const x = mousePositionAbsolute.x + (xCorrection || 0);
     const y = mousePositionAbsolute.y + (yCorrection || 0);

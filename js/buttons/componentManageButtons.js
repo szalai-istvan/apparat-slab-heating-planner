@@ -21,11 +21,15 @@ function rotateSelectedObject(direction) {
 function addToSelectedGroup() {
     if (selectedSlabHeaterGroup) {
         addSlabHeaterToSelectedGroup();
+    } else if (selectedBoxGroup) {
+        addBoxToSelectedGroup();
     }
 }
 
 function removeLastFromSelectedGroup() {
     if (selectedSlabHeaterGroup) {
         removeLastSlabHeaterFromSelectedGroup();
+    } else if (selectBoxGroup) {
+        removeLastBoxFromSelectedGroup();
     }
 }

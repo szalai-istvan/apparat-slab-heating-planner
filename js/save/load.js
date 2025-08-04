@@ -30,6 +30,7 @@ function loadProject(text = undefined) {
 
     for (let slabHeaterGroup of slabHeaterGroups) {
         slabHeaterGroup.constructor = {name: CLASS_SLAB_HEATER_GROUP};
+        slabHeaterGroup.pipeDriver.constructor = {name: CLASS_PIPE_DRIVER};
         elementStore.register(slabHeaterGroup);
 
         const slabHeaters = slabHeaterGroup.slabHeaters;

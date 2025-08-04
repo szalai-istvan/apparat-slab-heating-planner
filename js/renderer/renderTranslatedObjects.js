@@ -7,7 +7,6 @@ function renderTranslatedObjects() {
     elementStore.blueprints.forEach(bluePrint => drawBlueprint(bluePrint));
     elementStore.rooms.forEach(room => drawRoom(room));
     drawScaler();
-    elementStore.buttons.forEach(button => drawButtonWrapper(button));
     elementStore.slabHeaterGroups.forEach(shg => drawSlabHeaterGroup(shg));
     elementStore.boxGroups.forEach(bg => drawBoxGroup(bg));
 

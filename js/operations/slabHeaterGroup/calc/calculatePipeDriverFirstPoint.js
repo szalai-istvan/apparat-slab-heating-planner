@@ -26,8 +26,10 @@ function calculatePipeDriverFirstPoint(slabHeaterGroup) {
     const lengthOffset = length / 2 + additionalOffset;
 
     if (slabHeaterGroup.alignment % 2 === 0) {
-        return createPoint(firstCenterPoint.x + lengthOffset, firstCenterPoint.y + widthOffset);
+        const factor = Math.sign(slabHeaterGroup.alignment - 1);
+        return createPoint(firstCenterPoint.x + factor * lengthOffset, firstCenterPoint.y + factor * widthOffset);
     } else {
-        return createPoint(firstCenterPoint.x + widthOffset, firstCenterPoint.y + lengthOffset);
+        const factor = Math.sign(slabHeaterGroup.alignment - 2);
+        return createPoint(firstCenterPoint.x + factor * widthOffset, firstCenterPoint.y + factor * lengthOffset);
     }
 }
