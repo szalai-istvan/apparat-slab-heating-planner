@@ -22,7 +22,7 @@ function addSlabHeaterToSelectedGroup() {
 
     const firstPoint = calculatePipeDriverFirstPoint(selectedGroup);
     updatePipeDriverFirstPoint(selectedGroup.pipeDriver, firstPoint);
-    pipeDriver.slabHeaterGroupAlignment = slabHeaterGroup.alignment;
+    resetPipeDriver(selectedGroup.pipeDriver);
 }
 
 function nextSlabHeaterPosition(group) {

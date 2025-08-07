@@ -18,4 +18,5 @@ function removeLastBoxFromSelectedGroup() {
     elementStore.remove(box);
 
     updateBoxGroupPipeDriverEndNodePosition(selectedGroup);
+    resetPipeDriver(selectedGroup.pipeDriver);
 }

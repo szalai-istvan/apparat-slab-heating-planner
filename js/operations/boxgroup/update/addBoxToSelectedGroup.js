@@ -14,6 +14,7 @@ function addBoxToSelectedGroup() {
     box.centerPosition = nextPosition;
 
     updateBoxGroupPipeDriverEndNodePosition(selectedGroup);
+    resetPipeDriver(selectedGroup.pipeDriver);
 }
 
 function nextBoxPosition(group) {
