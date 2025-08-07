@@ -10,5 +10,6 @@ function removeSelectedBoxGroup() {
         elementStore.remove(boxGroup);
         selectedBoxGroup = null;
         boxGroup.boxes.forEach(b => elementStore.remove(b));
+        resetPipeDriver(boxGroup.pipeDriver);
     }
 }

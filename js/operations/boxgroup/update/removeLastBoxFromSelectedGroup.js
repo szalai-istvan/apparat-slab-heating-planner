@@ -16,4 +16,6 @@ function removeLastBoxFromSelectedGroup() {
     const box = selectedGroup.boxes[selectedGroup.boxes.length - 1];
     detachBoxFromGroup(box);
     elementStore.remove(box);
+
+    updateBoxGroupPipeDriverEndNodePosition(selectedGroup);
 }

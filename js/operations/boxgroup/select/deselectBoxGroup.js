@@ -13,6 +13,7 @@ function deselectBoxGroup() {
 
     boxGroup.isSelected = false;
     boxGroup.isSelectedForDrag = false;
+    boxGroup.clickedMemberIndex = null;
 
     selectedBoxGroup = null;
     cachedSelectableBoxGroup = null;

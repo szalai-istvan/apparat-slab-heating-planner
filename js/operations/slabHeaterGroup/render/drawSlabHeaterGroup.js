@@ -16,7 +16,6 @@ function drawSlabHeaterGroup(slabHeaterGroup) {
         if (pipeDriver) {
             const firstPoint = calculatePipeDriverFirstPoint(slabHeaterGroup);
             updatePipeDriverFirstPoint(pipeDriver, firstPoint);
-            pipeDriver.slabHeaterGroupAlignment = slabHeaterGroup.alignment;
         }
     }
 

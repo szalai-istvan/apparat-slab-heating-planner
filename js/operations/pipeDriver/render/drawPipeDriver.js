@@ -47,6 +47,10 @@ function getPointsToDrawPipeDriver(pipeDriver) {
         return points;
     }
 
+    if (selectedPipeDriverIsFullyConfigured()) {
+        return points;
+    }
+
     const nextPoint = getNextPointToAddToPipeDriver(pipeDriver);
 
     return [...points, nextPoint];

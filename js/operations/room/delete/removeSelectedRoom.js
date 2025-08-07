@@ -13,6 +13,7 @@ function removeSelectedRoom() {
 
     removeSlabHeatersFromDeletedRoom(room);
 
+    deselectObject();
     if (elementStore.rooms.length === 0) {
         removeGridSeed();
     }

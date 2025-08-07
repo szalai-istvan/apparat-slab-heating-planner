@@ -18,6 +18,10 @@ function updatePipeDriverFirstPoint(pipeDriver, firstPoint) {
         return;
     }
 
+    if (points.some(p => calculateDistance(p, firstPoint) < GRID_RESOLUTION_METER * pixelsPerMetersRatio)) {
+        return;
+    }
+
     const originalFirstPoint = points[0];
     const secondPoint = points[1];
     points[0] = firstPoint;
@@ -31,5 +35,4 @@ function updatePipeDriverFirstPoint(pipeDriver, firstPoint) {
     } else if (direction === DIRECTION_Y) {
         secondPoint.x = firstPoint.x;
     }
-
 }

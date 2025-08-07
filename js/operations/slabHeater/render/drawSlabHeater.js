@@ -60,7 +60,7 @@ function drawSlabHeater(slabHeater) {
 
     textSize(textSizePixels * (1 + p * isSelected + p * (pointIsInsideRect * notDragging)));
     stroke(BLACK);
-    fill('white');
+    fill(WHITE);
     rectMode(CENTER);
     rect(0, 0, rectWidth, rectHeight);
 

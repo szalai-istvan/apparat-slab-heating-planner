@@ -21,6 +21,7 @@ function drawBox(box) {
     translate(center.x, center.y);
     rotate(alignment * 90);
     rectMode(CENTER);
+    fill(WHITE);
     rect(0, 0, width, length);
 
     pop();

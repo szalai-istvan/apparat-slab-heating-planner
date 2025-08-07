@@ -8,8 +8,25 @@ function drawBoxGroup(boxGroup) {
     checkClass(boxGroup, CLASS_BOX_GROUP);
 
     if (boxGroup.isSelectedForDrag) {
+        updateBoxGroupPipeDriverEndNodePosition(boxGroup);
         updateBoxGroupMemberPosition(boxGroup);
+        if (boxGroup.pipeDriver) {
+            adjustLastPointOfPipeDriver(boxGroup.pipeDriver, boxGroup);
+        }
     }
 
     boxGroup.boxes.forEach(b => drawBox(b));
+
+    const pipeDriverEndNode = boxGroup.pipeDriverEndNodeCoordinates;
+    if (!pipeDriverEndNode) {
+        return;
+    }
+    const diameter = PIPE_DRIVER_DIAMETER_IN_METERS * pixelsPerMetersRatio;
+
+    push();
+    ellipseMode(CENTER);
+    stroke(BLACK);
+    fill(WHITE);
+    ellipse(pipeDriverEndNode.x, pipeDriverEndNode.y, diameter, diameter);
+    pop();
 }

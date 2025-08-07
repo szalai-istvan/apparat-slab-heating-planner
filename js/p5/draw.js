@@ -1,4 +1,8 @@
 function draw() {
+    if (saveInProgress) {
+        return;
+    }
+
     setCursorType();
     clearSelectionCache();
 

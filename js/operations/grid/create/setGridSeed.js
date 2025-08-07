@@ -10,7 +10,7 @@ function setGridSeed(point) {
     checkClass(point, CLASS_POINT);
 
     if (gridSeed) {
-        throw new Error('Attempt to double set seed!');
+        return;
     }
 
     gridSeed = createPoint(point.x, point.y);

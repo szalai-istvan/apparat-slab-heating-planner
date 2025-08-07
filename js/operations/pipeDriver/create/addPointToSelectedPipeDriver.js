@@ -9,6 +9,10 @@ function addPointToSelectedPipeDriver() {
         return;
     }
 
+    if (selectedPipeDriverIsFullyConfigured()) {
+        return;
+    }
+
     const nextPoint = getNextPointToAddToPipeDriver(pipeDriver);
     pipeDriver.points.push(nextPoint);
 }

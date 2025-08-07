@@ -24,6 +24,9 @@ function loadProject(text = undefined) {
     const rooms = projectState.rooms.rooms;
     rooms.forEach((room) => (room.constructor = { name: CLASS_ROOM }));
     rooms.forEach((room) => elementStore.register(room));
+    SLAB_HEATER_COLORS_AVAILABLE = [...SLAB_HEATER_COLORS];
+    rooms.forEach(room => SLAB_HEATER_COLORS_AVAILABLE = SLAB_HEATER_COLORS_AVAILABLE.filter(a => a !== room.slabHeaterColor));
+
 
     const slabHeaterGroups = projectState.slabHeaterGroups.slabHeaterGroups || [];
     restoreGroupReferencesOfSlabHeaterGroups(slabHeaterGroups);
@@ -53,12 +56,22 @@ function loadProject(text = undefined) {
         boxes.forEach(b => elementStore.register(b));
     }
 
+    elementStore.slabHeaterGroups.forEach(shg => recalculatePipeDriverConfiguration(shg.pipeDriver));
+
     screenSumDrag = projectState.screen.sumDrag;
     screenZoom = projectState.screen.zoom;
 
     if (projectState.grid.seed) {
         projectState.grid.seed.constructor = {name: CLASS_POINT};
         setGridSeed(projectState.grid.seed);
+    }
+}
+
+function recalculatePipeDriverConfiguration(pipeDriver) {
+    const boxGroup = getBoxGroupWithEndNodeAtPipeDriversLastPoint(pipeDriver);
+    if (boxGroup) {
+        boxGroup.pipeDriver = pipeDriver;
+        pipeDriver.isFullyConfigured = true;
     }
 }
 

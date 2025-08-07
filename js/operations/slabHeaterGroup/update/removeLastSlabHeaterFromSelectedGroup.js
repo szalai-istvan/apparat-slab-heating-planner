@@ -16,4 +16,7 @@ function removeLastSlabHeaterFromSelectedGroup() {
     const lastSlabHeater = slabHeaterGroup.slabHeaters[slabHeaterGroup.slabHeaters.length - 1];
     detachSlabHeaterFromGroup(lastSlabHeater);
     elementStore.remove(lastSlabHeater);
+
+    const firstPoint = calculatePipeDriverFirstPoint(slabHeaterGroup);
+    updatePipeDriverFirstPoint(slabHeaterGroup.pipeDriver, firstPoint);
 }

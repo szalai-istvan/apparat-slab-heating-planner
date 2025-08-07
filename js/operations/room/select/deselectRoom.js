@@ -5,7 +5,12 @@
  */
 function deselectRoom() {
     const room = selectedRoom;
-    if (room && roomIsConfigured(room)) {
+    
+    if (!room) {
+        return true;
+    }
+    
+    if (roomIsConfigured(room)) {
         room.isSelected = false;
         selectedRoom = null;
 
@@ -13,5 +18,6 @@ function deselectRoom() {
             room.textCenterCoordinates = getMousePositionAbsolute();
         }
     }
+
     return true;
 }

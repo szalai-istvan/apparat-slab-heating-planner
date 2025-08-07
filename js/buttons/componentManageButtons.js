@@ -14,7 +14,7 @@ function rotateSelectedObject(direction) {
     if (selectedSlabHeaterGroup) {
         rotateSelectedSlabHeaterGroup(direction);
     } else if (selectedBoxGroup) {
-        rotateSelectedBoxGroup(direction);
+        rotateSelectedBoxGroup(-1 * direction);
     }
 }
 

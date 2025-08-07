@@ -16,4 +16,8 @@ function rotateSelectedBoxGroup(direction) {
     while (group.alignment < 0) {
         group.alignment += 4;
     }
+
+    updateBoxGroupPipeDriverEndNodePosition(group);
+    updateBoxGroupMemberPosition(group);
+    resetPipeDriver(group.pipeDriver);
 }

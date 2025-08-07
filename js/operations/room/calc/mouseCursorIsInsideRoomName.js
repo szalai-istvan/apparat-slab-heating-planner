@@ -7,6 +7,10 @@
 function mouseCursorIsInsideRoomName(room) {
     checkClass(room, CLASS_ROOM);
 
+    if (!roomIsConfigured(room)) {
+        return false;
+    }
+
     if (room.cursorIsInsideCache === null) {
         if (room.points.length < 2) {
             room.cursorIsInsideCache = false;

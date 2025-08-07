@@ -7,6 +7,9 @@ class BoxGroup {
     isSelected;
     isSelectedForDrag;
 
+    pipeDriver = null;
+    pipeDriverEndNodeCoordinates = null;
+
     constructor({box, alignment}) {
         checkClass(box, CLASS_BOX, true);
 

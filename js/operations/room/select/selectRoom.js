@@ -15,6 +15,10 @@ function selectRoom(room = undefined) {
         return undefined;
     }
 
+    if (!selectedRoomIsConfiguredOrNoRoomIsSelected()) {
+        return selectedRoom;
+    }
+
     if (deselectObject()) {
         room.isSelected = true;
         selectedRoom = room;

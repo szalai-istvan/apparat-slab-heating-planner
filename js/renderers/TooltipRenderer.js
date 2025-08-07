@@ -25,7 +25,7 @@ class TooltipRenderer____ {
         if (tooltip.cursorText) {
             textAlign(LEFT, TOP);
             textSize(16);
-            fill('white');
+            fill(WHITE);
 
             const width = tooltip.textWidth(tooltip.cursorText);
             rect(mouseX + 18, mouseY + 18, width + 4, 20 * (1 + tooltip.numberOfLineBreaks(tooltip.cursorText)));

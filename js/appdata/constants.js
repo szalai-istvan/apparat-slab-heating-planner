@@ -80,6 +80,7 @@ const BACKGROUND = 'background';
 const RED = 'red';
 const BLUE = 'blue';
 const BLACK = 'black';
+const WHITE = 'white';
 
 // OptionsBar constants
 const OPTIONS_BAR_TEXT_SIZE = 14;
@@ -94,7 +95,7 @@ const PIPE_DRIVER_DEFAULT_FILL_COLOR = 'white';
 const PIPE_DRIVER_SELECTABLE_FILL_COLOR = 'lightgray';
 const PIPE_DRIVER_SELECTED_COLOR = 'gray';
 const PIPE_DRIVER_OUTLINE_COLOR = 'black';
-const PIPE_DRIVER_DIAMETER_IN_METERS = 0.15;
+const PIPE_DRIVER_DIAMETER_IN_METERS = 0.1;
 const PIPE_DRIVER_THICKNESS_IN_METERS = 0.02;
 const DIRECTION_X = 'x';
 const DIRECTION_Y = 'y';

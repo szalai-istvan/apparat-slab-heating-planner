@@ -2,9 +2,10 @@
  * Elforgatja a kiválasztott födémfűtő csoportot a megadott irányba
  * 
  * @param {Number} direction a forgatás iránya (>0 jobbra, <0 balra)
- * @returns {undefined}
+ * @param {boolean} pipeDriverReset kell-e reset-elni a csővezetőt (opcionális)
+* @returns {undefined}
  */
-function rotateSelectedSlabHeaterGroup(direction) {
+function rotateSelectedSlabHeaterGroup(direction, pipeDriverReset = true) {
     checkClass(direction, CLASS_NUMBER);
 
     const group = selectedSlabHeaterGroup;
@@ -22,10 +23,11 @@ function rotateSelectedSlabHeaterGroup(direction) {
     const firstPoint = calculatePipeDriverFirstPoint(group);
     updateSlabHeaterGroupMemberPosition(group);
     updatePipeDriverFirstPoint(pipeDriver, firstPoint);
-    pipeDriver.slabHeaterGroupAlignment = group.alignment;
     const newPositionIsValid = group.isSelectedForDrag || validateSlabHeaterGroupPositionAndGetContainingRoom(group);
     if (!newPositionIsValid) {
         displayMessage('A forgatás hatására a csoport egy része szobán kívülre kerülne! Helyezze át mielőtt elforgatja!');
-        rotateSelectedSlabHeaterGroup(-1 * direction);
+        rotateSelectedSlabHeaterGroup(-1 * direction, false);
+    } else if (pipeDriverReset) {
+        resetPipeDriver(group.pipeDriver);
     }
 }

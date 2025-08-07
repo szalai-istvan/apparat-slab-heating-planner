@@ -17,7 +17,12 @@ function addSlabHeaterToSelectedGroup() {
     if (!newMemberIsValid) {
         displayMessage('A hozzáadni kívánt elem része vagy egésze szobán kívülre kerülne!');
         removeLastSlabHeaterFromSelectedGroup();
+        return;
     }
+
+    const firstPoint = calculatePipeDriverFirstPoint(selectedGroup);
+    updatePipeDriverFirstPoint(selectedGroup.pipeDriver, firstPoint);
+    pipeDriver.slabHeaterGroupAlignment = slabHeaterGroup.alignment;
 }
 
 function nextSlabHeaterPosition(group) {
