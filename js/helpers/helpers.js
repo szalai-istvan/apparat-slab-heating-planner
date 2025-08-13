@@ -17,3 +17,7 @@ function pointIsInside(point, middlePoint, areaWidth, areaHeight) {
 
     return x > minX && x < maxX && y > minY && y < maxY;
 }
+
+function createUniqueId() {
+    return Math.random().toString().substring(2) + Math.random().toString().substring(2);
+}

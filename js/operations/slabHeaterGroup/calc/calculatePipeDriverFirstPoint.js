@@ -7,7 +7,7 @@ function calculatePipeDriverFirstPoint(slabHeaterGroup) {
     checkClass(slabHeaterGroup, CLASS_SLAB_HEATER_GROUP);
 
     const ratio = pixelsPerMetersRatio;
-    const slabHeaters = slabHeaterGroup.slabHeaters;
+    const slabHeaters = getSlabHeatersByIdList(slabHeaterGroup.slabHeaterIds);
     const firstSlabHeater = slabHeaters[0];
     const firstCenterPoint = firstSlabHeater.centerPosition;
 

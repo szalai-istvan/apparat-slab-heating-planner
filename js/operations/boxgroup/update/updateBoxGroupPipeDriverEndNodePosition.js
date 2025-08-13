@@ -7,7 +7,7 @@ function updateBoxGroupPipeDriverEndNodePosition(boxGroup) {
     checkClass(boxGroup, CLASS_BOX_GROUP);
 
     const ratio = pixelsPerMetersRatio;
-    const boxes = boxGroup.boxes;
+    const boxes = getBoxesByIdList(boxGroup.boxIds);
     const firstBox = boxes[0];
     const firstCenterPoint = firstBox.centerPosition;
 

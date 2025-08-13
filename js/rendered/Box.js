@@ -1,10 +1,13 @@
 class Box {
+    id;
     centerPosition;
-    group;
     
+    groupId;
     cursorIsInsideCache = null;
 
     constructor(centerPosition) {
+        this.id = createUniqueId();
+
         this.centerPosition = centerPosition;
         elementStore.register(this);
     }

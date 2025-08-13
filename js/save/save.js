@@ -1,8 +1,8 @@
-let saveInProgress = false;
+let saveOrLoadInProgress = false;
 
 function downloadProjectState() {
     try {
-        saveInProgress = true;
+        saveOrLoadInProgress = true;
         const text = getProjectState();
         var element = document.createElement('a');
 
@@ -23,26 +23,25 @@ function downloadProjectState() {
         document.body.removeChild(element);
 
     } finally {
-        saveInProgress = false;
+        saveOrLoadInProgress = false;
     }
 }
 
 function saveProjectToLocalStorage() {
     try {
-        saveInProgress = true;
+        saveOrLoadInProgress = true;
         console.log('>>> Saving project to local storage');
         const stateStr = getProjectState();
         localStorage.setItem(LOCAL_STORAGE_DATA_KEY, stateStr);
     } finally {
         console.log('<<< Saving project to local storage');
-        saveInProgress = false;
+        saveOrLoadInProgress = false;
     }
 }
 
 function getProjectState() {
     const rooms = elementStore.rooms.filter(room => roomIsConfigured(room));
     const slabHeaterGroups = elementStore.slabHeaterGroups;
-    const boxGroups = elementStore.boxGroups;
 
     let stateStr;
     let projectState = {};
@@ -66,17 +65,25 @@ function getProjectState() {
                 seed: gridSeed,
             },
             slabHeaterGroups: {
-                slabHeaterGroups: slabHeaterGroups.map(shg => removeCyclicReferencesOfSlabHeaterGroup(shg))
+                slabHeaterGroups: elementStore.slabHeaterGroups
+            },
+            slabHeaters: {
+                slabHeaters: elementStore.slabHeaters
             },
             boxGroups: {
-                boxGroups: boxGroups.map(removeCyclicReferencesOfBoxGroup)
+                boxGroups: elementStore.boxGroups
+            },
+            boxes: {
+                boxes: elementStore.boxes
+            },
+            pipeDrivers: {
+                pipeDrivers: elementStore.pipeDrivers
             }
+
         };
     } finally {
         console.log(projectState);
         stateStr = JSON.stringify(projectState);
-        restoreGroupReferencesOfSlabHeaterGroups(slabHeaterGroups);
-        restoreGroupReferencesOfBoxGroups(boxGroups);
     }
 
     return stateStr;
@@ -84,32 +91,6 @@ function getProjectState() {
 
 function getProjectStateSize() {
     return roundNumber(getProjectState().length / 1024 / 1024, 2) + " MB";
-}
-
-function removeCyclicReferencesOfSlabHeaterGroup(slabHeaterGroup) {
-    slabHeaterGroup.slabHeaters.forEach(sh => sh.group = null);
-    slabHeaterGroup.pipeDriver.slabHeaterGroup = null;
-    return slabHeaterGroup;
-}
-
-function restoreGroupReferencesOfSlabHeaterGroups(slabHeaterGroups) {
-    for (let slabHeaterGroup of slabHeaterGroups) {
-        slabHeaterGroup.slabHeaters.forEach(sh => sh.group = slabHeaterGroup);
-        slabHeaterGroup.pipeDriver.slabHeaterGroup = slabHeaterGroup;
-        recalculatePipeDriverConfiguration(slabHeaterGroup.pipeDriver);
-    }
-}
-
-function removeCyclicReferencesOfBoxGroup(boxGroup) {
-    boxGroup.boxes.forEach(b => b.group = null);
-    boxGroup.pipeDriver = null;
-    return boxGroup;
-}
-
-function restoreGroupReferencesOfBoxGroups(boxGroups) {
-    for (let boxGroup of boxGroups) {
-        boxGroup.boxes.forEach(b => b.group = boxGroup);
-    }
 }
 
 if (SAVE_TO_LOCAL_STORAGE_ENABLED) {

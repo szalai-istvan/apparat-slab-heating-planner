@@ -15,7 +15,7 @@ function mouseCursorIsInsideBox(box) {
         const width = BOX_WIDTH_IN_METERS * pixelsPerMetersRatio;
         const length = BOX_LENGTH_IN_METERS * pixelsPerMetersRatio;
 
-        if (boxGroupIsHorizontal(box.group)) {
+        if (boxGroupIsHorizontal(getBoxGroupById(box.groupId))) {
             box.cursorIsInsideCache = pointIsInside(
                 getMousePositionAbsolute(),
                 centerPosition,

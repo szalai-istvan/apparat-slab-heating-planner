@@ -9,15 +9,17 @@ function removeLastSlabHeaterFromSelectedGroup() {
         return;
     }
 
-    if (slabHeaterGroup.slabHeaters.length < 2) {
+    const slabHeaters = getSlabHeatersByIdList(slabHeaterGroup.slabHeaterIds);
+    if (slabHeaters.length < 2) {
         return;
     }
 
-    const lastSlabHeater = slabHeaterGroup.slabHeaters[slabHeaterGroup.slabHeaters.length - 1];
+    const lastSlabHeater = slabHeaters[slabHeaters.length - 1];
     detachSlabHeaterFromGroup(lastSlabHeater);
     elementStore.remove(lastSlabHeater);
 
+    const pipeDriver = getPipeDriverById(slabHeaterGroup.pipeDriverId);
     const firstPoint = calculatePipeDriverFirstPoint(slabHeaterGroup);
-    updatePipeDriverFirstPoint(slabHeaterGroup.pipeDriver, firstPoint);
-    resetPipeDriver(slabHeaterGroup.pipeDriver);
+    updatePipeDriverFirstPoint(pipeDriver, firstPoint);
+    resetPipeDriver(pipeDriver);
 }

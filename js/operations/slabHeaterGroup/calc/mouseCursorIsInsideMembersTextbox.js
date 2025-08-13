@@ -6,7 +6,8 @@
  */
 function mouseCursorIsInsideMembersTextbox(slabHeaterGroup) {
     if (slabHeaterGroup.cursorIsInsideCache === null) {
-        const selectable = slabHeaterGroup.slabHeaters.filter(sh => mouseCursorIsInsideSlabHeatersTextbox(sh));
+        const slabHeaters = getSlabHeatersByIdList(slabHeaterGroup.slabHeaterIds);
+        const selectable = slabHeaters.filter(sh => mouseCursorIsInsideSlabHeatersTextbox(sh));
         slabHeaterGroup.cursorIsInsideCache = selectable.length > 0;
     }
 

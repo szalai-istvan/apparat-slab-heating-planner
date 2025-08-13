@@ -19,7 +19,7 @@ function rotateSelectedSlabHeaterGroup(direction, pipeDriverReset = true) {
     }
     cachedSlabHeaterGroupAlignment = selectedSlabHeaterGroup.alignment;
 
-    const pipeDriver = group.pipeDriver;
+    const pipeDriver = getPipeDriverById(group.pipeDriverId);
     const firstPoint = calculatePipeDriverFirstPoint(group);
     updateSlabHeaterGroupMemberPosition(group);
     updatePipeDriverFirstPoint(pipeDriver, firstPoint);

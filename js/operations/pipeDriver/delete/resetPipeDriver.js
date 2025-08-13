@@ -13,7 +13,7 @@ function resetPipeDriver(pipeDriver) {
 
     const endingBoxGroup = getBoxGroupWithEndNodeAtPipeDriversLastPoint(pipeDriver);
     if (endingBoxGroup) {
-        endingBoxGroup.pipeDriver = null;
+        endingBoxGroup.pipeDriverId = null;
     }
 
     forceDeselectPipeDriver(pipeDriver);

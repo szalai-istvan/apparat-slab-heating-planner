@@ -14,11 +14,12 @@ function addBoxToSelectedGroup() {
     box.centerPosition = nextPosition;
 
     updateBoxGroupPipeDriverEndNodePosition(selectedGroup);
-    resetPipeDriver(selectedGroup.pipeDriver);
+    resetPipeDriver(getPipeDriverById(selectedGroup.pipeDriverId));
 }
 
 function nextBoxPosition(group) {
-    const lastBox = group.boxes[group.boxes.length - 1];
+    const boxes = getBoxesByIdList(group.boxIds);
+    const lastBox = boxes[boxes.length - 1];
     const lastCenter = lastBox.centerPosition;
     const width = BOX_WIDTH_IN_METERS;
     const horizontal = boxGroupIsHorizontal(group);

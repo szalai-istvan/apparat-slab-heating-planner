@@ -50,7 +50,8 @@ function checkForSelectableBoxGroup() {
 }
 
 function setSelectedBoxGroupIndex(boxGroup) {
-    const clickedBox = boxGroup.boxes.filter(b => mouseCursorIsInsideBox(b))[0];
-    const index = boxGroup.boxes.indexOf(clickedBox);
+    const boxes = getBoxesByIdList(boxGroup.boxIds);
+    const clickedBox = boxes.filter(b => mouseCursorIsInsideBox(b))[0];
+    const index = boxes.indexOf(clickedBox);
     boxGroup.clickedMemberIndex = index;
 }

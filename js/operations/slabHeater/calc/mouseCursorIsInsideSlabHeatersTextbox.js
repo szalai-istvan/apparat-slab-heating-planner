@@ -9,12 +9,14 @@ function mouseCursorIsInsideSlabHeatersTextbox(slabHeater) {
         return false;
     }
 
-    if (!slabHeater.group) {
+    const group = getSlabHeaterGroupById(slabHeater.groupId);
+
+    if (!group) {
         return false;
     }
 
     if (slabHeater.cursorIsInsideCache === null) {
-        if (slabHeater.group.alignment % 2 === 1) {
+        if (group.alignment % 2 === 1) {
             slabHeater.cursorIsInsideCache = pointIsInside(
                 getMousePositionAbsolute(),
                 slabHeater.centerPosition,

@@ -5,15 +5,16 @@ class PipeDriver {
     selectedPointIndex;
     selectedPointIndexCache = null;
     cursorIsInsidePointIndexCache = null;
-    slabHeaterGroup;
+    slabHeaterGroupId;
 
     points = [];
     isFullyConfigured = false;
 
     constructor(slabHeaterGroup) {
-        this.id = Math.random().toString().substring(2);
+        this.id = createUniqueId();
+
         const firstPoint = calculatePipeDriverFirstPoint(slabHeaterGroup);
-        this.slabHeaterGroup = slabHeaterGroup;
+        this.slabHeaterGroupId = slabHeaterGroup.id;
 
         firstPoint && this.points.push(firstPoint);
 

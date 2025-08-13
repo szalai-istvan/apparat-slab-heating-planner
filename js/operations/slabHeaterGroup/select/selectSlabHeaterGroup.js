@@ -62,7 +62,8 @@ function setOptionBarValues(slabHeaterGroup) {
 }
 
 function setSelectedSlabHeaterGroupIndex(slabHeaterGroup) {
-    const clickedSlabHeater = slabHeaterGroup.slabHeaters.filter(sh => mouseCursorIsInsideSlabHeatersTextbox(sh))[0];
-    const index = slabHeaterGroup.slabHeaters.indexOf(clickedSlabHeater);
+    const slabHeaters = getSlabHeatersByIdList(slabHeaterGroup.slabHeaterIds);
+    const clickedSlabHeater = slabHeaters.filter(sh => mouseCursorIsInsideSlabHeatersTextbox(sh))[0];
+    const index = slabHeaters.indexOf(clickedSlabHeater);
     slabHeaterGroup.clickedMemberIndex = index;
 }

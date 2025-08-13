@@ -5,25 +5,27 @@
  * @returns {undefined}
  */
 function drawSlabHeater(slabHeater) {
+    const group = getSlabHeaterGroupById(slabHeater.groupId);
+
     const ratio = pixelsPerMetersRatio;
-    const color = slabHeater.group.color;
-    const width = slabHeater.group.width * ratio;
-    const length = slabHeater.group.length * ratio;
+    const color = group.color;
+    const width = group.width * ratio;
+    const length = group.length * ratio;
     const tubeDistance = roundNumber(TUBE_DISTANCE_IN_METER * ratio, 2);
-    const alignment = slabHeater.group.alignment;
+    const alignment = group.alignment;
     const centerPosition = slabHeater.centerPosition;
     const diameter = tubeDistance;
     const lineWeight = slabHeater.lineWeight;
-    const type = slabHeater.group.type;
+    const type = group.type;
     const textSizePixels = slabHeater.textSize;
     const rectWidth = slabHeater.rectWidth;
     const rectHeight = slabHeater.rectHeight;
-    const isSelected = slabHeater.group.isSelected;
+    const isSelected = group.isSelected;
     const lengthFrom = - length / 2;
     const lengthTo = length / 2;
     const p = SLAB_HEATER_TEXT_POP_FACTOR;
-    const pointIsInsideRect = mouseCursorIsInsideMembersTextbox(slabHeater.group);
-    const notDragging = !slabHeater.group.isSelectedForDrag;
+    const pointIsInsideRect = mouseCursorIsInsideMembersTextbox(group);
+    const notDragging = !group.isSelectedForDrag;
     const stopThreshold = SLAB_HEATER_STOP_DRAWING_THRESHOLD_IN_METERS * ratio;
 
     if (!centerPosition) {

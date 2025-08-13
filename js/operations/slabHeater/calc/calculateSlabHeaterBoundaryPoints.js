@@ -9,9 +9,10 @@ function calculateSlabHeaterBoundaryPoints(slabHeater) {
 
     const ratio = pixelsPerMetersRatio;
     const centerPoint = slabHeater.centerPosition;
-    const width = slabHeater.group.width * ratio;
-    const length = slabHeater.group.length * ratio;
-    const alignment = slabHeater.group.alignment;
+    const group = getSlabHeaterGroupById(slabHeater.groupId);
+    const width = group.width * ratio;
+    const length = group.length * ratio;
+    const alignment = group.alignment;
 
     let x_;
     let y_;

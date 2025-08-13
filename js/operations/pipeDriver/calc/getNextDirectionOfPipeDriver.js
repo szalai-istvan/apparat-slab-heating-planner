@@ -9,7 +9,8 @@ function getLastDirectionOfPipeDriver(pipeDriver) {
 
     const points = pipeDriver.points;
     if (points.length < 2) {
-        return pipeDriver.slabHeaterGroup.alignment % 2 === 0 ? DIRECTION_Y : DIRECTION_X;
+        const slabHeaterGroup = getSlabHeaterGroupById(pipeDriver.slabHeaterGroupId);
+        return slabHeaterGroup.alignment % 2 === 0 ? DIRECTION_Y : DIRECTION_X;
     }
 
     const lastPoint = points[points.length - 1];

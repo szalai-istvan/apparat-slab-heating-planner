@@ -9,14 +9,15 @@ function removeLastBoxFromSelectedGroup() {
         return;
     }
 
-    if (selectedGroup.boxes.length < 2) {
+    if (selectedGroup.boxIds.length < 2) {
         return;
     }
 
-    const box = selectedGroup.boxes[selectedGroup.boxes.length - 1];
+    const boxes = getBoxesByIdList(selectedGroup.boxIds);
+    const box = boxes[boxes.length - 1];
     detachBoxFromGroup(box);
     elementStore.remove(box);
 
     updateBoxGroupPipeDriverEndNodePosition(selectedGroup);
-    resetPipeDriver(selectedGroup.pipeDriver);
+    resetPipeDriver(getPipeDriverById(selectedGroup.pipeDriverId));
 }

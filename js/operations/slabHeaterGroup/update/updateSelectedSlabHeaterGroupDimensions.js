@@ -22,8 +22,9 @@ function updateSelectedSlabHeaterGroupDimensions() {
     selectedGroup.length = length;
     updateSlabHeaterGroupMemberPosition(selectedGroup);
 
+    const slabHeaters = getSlabHeatersByIdList(selectedGroup.slabHeaterIds);
     let newDimensionsArealid;
-    if (selectedGroup.isSelectedForDrag || !(selectedGroup.slabHeaters[0].centerPosition)) {
+    if (selectedGroup.isSelectedForDrag || !(slabHeaters[0].centerPosition)) {
         newDimensionsArealid = true;
     } else {
         newDimensionsArealid = validateSlabHeaterGroupPositionAndGetContainingRoom(selectedGroup);

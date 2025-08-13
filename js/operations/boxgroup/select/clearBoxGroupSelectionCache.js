@@ -7,5 +7,5 @@
 function clearBoxGroupSelectionCache(boxGroup) {
     checkClass(boxGroup, CLASS_BOX_GROUP);
     boxGroup.cursorIsInsideCache = null;
-    boxGroup.boxes.forEach(b => b.cursorIsInsideCache = null);
+    getBoxesByIdList(boxGroup.boxIds).forEach(b => b.cursorIsInsideCache = null);
 }

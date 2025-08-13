@@ -3,8 +3,9 @@
  * 
  * @returns {undefined}
  */
-function clearRooms() { // formerly: roomContext.clear()
+function clearRooms() {
     elementStore.rooms = [];
+    elementStore.roomsById = {};
     deselectRoom();
     clearSlabHeaterGroups();
 }

@@ -7,7 +7,9 @@
 function validateSlabHeaterGroupPositionAndGetContainingRoom(slabHeaterGroup) {
     const containingRooms = [];
 
-    for (let slabHeater of slabHeaterGroup.slabHeaters) {
+    for (let slabHeaterId of slabHeaterGroup.slabHeaterIds) {
+        const slabHeater = getSlabHeaterById(slabHeaterId);
+
         const boundaryPoints = calculateSlabHeaterBoundaryPoints(slabHeater);
         const p1 = boundaryPoints.p1;
         const p2 = boundaryPoints.p2;

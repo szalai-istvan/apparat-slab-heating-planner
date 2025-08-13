@@ -12,6 +12,6 @@ function attachToSelectedSlabHeaterGroup(slabHeater) {
         return;
     }
 
-    slabHeater.group = selectedGroup;
-    selectedGroup.slabHeaters.push(slabHeater);
+    slabHeater.groupId = selectedGroup.id;
+    selectedGroup.slabHeaterIds.push(slabHeater.id);
 }

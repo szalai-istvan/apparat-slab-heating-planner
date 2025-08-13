@@ -1,4 +1,6 @@
 class SlabHeaterGroup {
+    id;
+
     type;
     color;
     length;
@@ -7,16 +9,18 @@ class SlabHeaterGroup {
     isSelected;
     isSelectedForDrag;
     clickedMemberIndex;
-    room;
-
-    slabHeaters = [];
+    
+    roomId = null;
+    slabHeaterIds = [];
     cursorIsInsideCache = null;
-    pipeDriver;
+    pipeDriverId = null;
 
     constructor({ slabHeater, length, width, alignment }) {
+        this.id = createUniqueId();
+
         if (slabHeater) {
-            this.slabHeaters.push(slabHeater);
-            slabHeater.group = this;
+            this.slabHeaterIds.push(slabHeater.id);
+            slabHeater.groupId = this.id;
         }
 
         this.isSelected = false;
@@ -28,7 +32,7 @@ class SlabHeaterGroup {
         this.alignment = alignment ?? 1;
         updateSlabHeaterGroupType(this);
 
-        this.pipeDriver = new PipeDriver(this);
+        this.pipeDriverId = new PipeDriver(this).id;
 
         elementStore.register(this);
     }

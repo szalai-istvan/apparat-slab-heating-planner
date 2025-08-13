@@ -66,6 +66,7 @@ const CLASS_PIPE_DRIVER = 'PipeDriver';
 const CLASS_NUMBER = 'number';
 const CLASS_STRING = 'string';
 const CLASS_POINT = 'Point';
+const CLASS_ARRAY = 'Array';
 
 // components
 const MODALS = [messageDialog, fileUploadDialogConfirm, scalingDialogConfirm, scalingDialog, addRoomDialog, pdfUploadDialog, transportDialog];
@@ -124,7 +125,7 @@ const SLAB_HEATER_COLORS = ['black', 'darkgrey', 'blue', 'red', 'green', 'orange
 let SLAB_HEATER_COLORS_AVAILABLE = [...SLAB_HEATER_COLORS];
 
 // Box constants
-const BOX_WIDTH_IN_METERS = 0.08;
+const BOX_WIDTH_IN_METERS = 0.1;
 const BOX_LENGTH_IN_METERS = 0.35;
 const BOX_CORRECTION_OFFSET = 10;
 

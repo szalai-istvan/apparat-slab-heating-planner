@@ -5,8 +5,11 @@
  * @returns {boolean}
  */
 function mouseCursorIsInsideBoxGroupMember(boxGroup) {
+    checkClass(boxGroup, CLASS_BOX_GROUP);
+
     if (boxGroup.cursorIsInsideCache === null) {
-        const selectable = boxGroup.boxes.filter(b => mouseCursorIsInsideBox(b));
+        const boxes = getBoxesByIdList(boxGroup.boxIds);
+        const selectable = boxes.filter(b => mouseCursorIsInsideBox(b));
         boxGroup.cursorIsInsideCache = selectable.length > 0;
     }
 

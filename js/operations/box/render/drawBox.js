@@ -8,7 +8,7 @@ function drawBox(box) {
     checkClass(box, CLASS_BOX);
 
     const center = box.centerPosition;
-    const alignment = box.group.alignment;
+    const alignment = getBoxGroupById(box.groupId).alignment;
     const width = BOX_WIDTH_IN_METERS * pixelsPerMetersRatio;
     const length = BOX_LENGTH_IN_METERS * pixelsPerMetersRatio;
 

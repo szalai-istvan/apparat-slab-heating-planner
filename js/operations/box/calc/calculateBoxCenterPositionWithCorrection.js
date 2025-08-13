@@ -14,7 +14,8 @@ function calculateBoxCenterPositionWithCorrection(box) {
     let x_;
     let y_;
 
-    if (box.group.alignment % 2 === 0) {
+    const group = getBoxGroupById(box.groupId);
+    if (group.alignment % 2 === 0) {
         x_ = width * ratio;
         y_ = length * ratio;
     } else {

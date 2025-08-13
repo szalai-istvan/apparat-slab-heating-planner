@@ -20,13 +20,15 @@ function addSlabHeaterToSelectedGroup() {
         return;
     }
 
+    const pipeDriver = getPipeDriverById(selectedGroup.pipeDriverId);
     const firstPoint = calculatePipeDriverFirstPoint(selectedGroup);
-    updatePipeDriverFirstPoint(selectedGroup.pipeDriver, firstPoint);
-    resetPipeDriver(selectedGroup.pipeDriver);
+    updatePipeDriverFirstPoint(pipeDriver, firstPoint);
+    resetPipeDriver(pipeDriver);
 }
 
 function nextSlabHeaterPosition(group) {
-    const lastSlabHeater = group.slabHeaters[group.slabHeaters.length - 1];
+    const slabHeaters = getSlabHeatersByIdList(group.slabHeaterIds);
+    const lastSlabHeater = slabHeaters[slabHeaters.length - 1];
     const lastCenter = lastSlabHeater.centerPosition;
     const width = group.width;
     const horizontal = slabHeaterGroupIsHorizontal(group);

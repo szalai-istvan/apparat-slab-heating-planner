@@ -18,7 +18,7 @@ function selectedPipeDriverIsFullyConfigured() {
         const validResult = validateBoxGroupAndPipeDriver(pipeDriver, result);
         if (validResult) {
             pipeDriver.isFullyConfigured = true;
-            result.pipeDriver = pipeDriver;
+            result.pipeDriverId = pipeDriver.id;
             adjustLastPointOfPipeDriver(pipeDriver, result);
         } else {
             displayMessage('A kiválasztott födémfűtő csoport nem köthető ehhez a födémáttörés csoporthoz, mert az áttörések és a fűtőelemek száma eltér!');
@@ -30,9 +30,7 @@ function selectedPipeDriverIsFullyConfigured() {
 
 
 function validateBoxGroupAndPipeDriver(pipeDriver, boxGroup) {
-    const slabHeaterGroup = pipeDriver.slabHeaterGroup;
-    const slabHeaters = slabHeaterGroup.slabHeaters;
-    const boxes = boxGroup.boxes;
+    const slabHeaterGroup = getSlabHeaterGroupById(pipeDriver.slabHeaterGroupId);
 
-    return slabHeaters.length === boxes.length;
+    return slabHeaterGroup.slabHeaterIds.length === boxGroup.boxIds.length;
 }

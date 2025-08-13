@@ -1,4 +1,6 @@
 class Room {
+    id;
+
     name;
     points = [];
     isSelected = false;
@@ -10,6 +12,8 @@ class Room {
     cursorIsInsideCache = null;
 
     constructor(name) {
+        this.id = createUniqueId();
+
         this.name = name || '';
 
         const ratio = pixelsPerMetersRatio;

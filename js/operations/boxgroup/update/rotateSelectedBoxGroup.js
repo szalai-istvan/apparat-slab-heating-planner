@@ -19,5 +19,5 @@ function rotateSelectedBoxGroup(direction) {
 
     updateBoxGroupPipeDriverEndNodePosition(group);
     updateBoxGroupMemberPosition(group);
-    resetPipeDriver(group.pipeDriver);
+    resetPipeDriver(getPipeDriverById(group.pipeDriverId));
 }

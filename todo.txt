@@ -2,6 +2,8 @@ https://github.com/szalai-istvan/apparat-heating-planner
 
 - boxgroup és slabheatergroup lehelyezésekor nézze végig a pipedrivert, ha van két ugyanott lévő pont akkor egyiket törölni kell.
 - boxgroup és slabheatergroup selectfordrag esetén ha 2 pontból áll a pipedriver resettelje
+- pipedriverek ne legyenek bármi alatt
+- validátorok külön részben
 
 - Csővezetőhöz cső nyomvonal rajzoló algoritmus készítése
     - Csőtáv 5 cm

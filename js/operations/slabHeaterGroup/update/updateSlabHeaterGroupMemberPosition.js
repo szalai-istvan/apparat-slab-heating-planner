@@ -5,7 +5,7 @@
  * @returns {undefined}
  */
 function updateSlabHeaterGroupMemberPosition(slabHeaterGroup) {
-    const slabHeaters = slabHeaterGroup.slabHeaters;
+    const slabHeaters = getSlabHeatersByIdList(slabHeaterGroup.slabHeaterIds);
     const first = slabHeaters[0];
     const firstCenterPosition = slabHeaterGroup.isSelectedForDrag ? calculateSlabHeaterCenterPositionWithCorrection(first, slabHeaterGroup.width, slabHeaterGroup.length) : first.centerPosition;
 

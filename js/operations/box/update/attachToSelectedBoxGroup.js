@@ -12,6 +12,6 @@ function attachToSelectedBoxGroup(box) {
         return;
     }
 
-    box.group = selectedGroup;
-    selectedGroup.boxes.push(box);
+    box.groupId = selectedGroup.id;
+    selectedGroup.boxIds.push(box.id);
 }

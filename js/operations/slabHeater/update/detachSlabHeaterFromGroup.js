@@ -12,6 +12,6 @@ function detachSlabHeaterFromGroup(slabHeater) {
         return;
     }
 
-    slabHeaterGroup.slabHeaters = slabHeaterGroup.slabHeaters.filter(sh => sh !== slabHeater);
-    slabHeater.group = null;
+    slabHeaterGroup.slabHeaterIds = slabHeaterGroup.slabHeaterIds.filter(sh => sh !== slabHeater.id);
+    slabHeater.groupId = null;
 }

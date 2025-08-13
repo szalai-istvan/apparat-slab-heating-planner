@@ -7,7 +7,7 @@
 function updateBoxGroupMemberPosition(boxGroup) {
     checkClass(boxGroup, CLASS_BOX_GROUP);
 
-    const boxes = boxGroup.boxes;
+    const boxes = getBoxesByIdList(boxGroup.boxIds);
     const first = boxes[0];
     const width = BOX_WIDTH_IN_METERS;
     const length = BOX_LENGTH_IN_METERS * pixelsPerMetersRatio;

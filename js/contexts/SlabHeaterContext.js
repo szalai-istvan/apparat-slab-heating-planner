@@ -13,9 +13,11 @@ class SlabHeaterContext {
 
         const successfulDeselect = this.tryToDeselect();
         if (successfulDeselect) {
+            const group = getSlabHeaterGroupById(slabHeater.groupId);
+
             SlabHeaterSelector.select(slabHeater);
             this.selectedSlabHeater = slabHeater;
-            slabHeaterWidthOptionsBar.setValue(0, slabHeater.group.width.toString());
+            slabHeaterWidthOptionsBar.setValue(0, group.width.toString());
             const meter = Math.floor(slabHeater.group.length).toString();
             const cm = (Math.floor(roundNumber(slabHeater.group.length - Math.floor(slabHeater.group.length), 2) * 100)).toString();
             slabHeaterLengthOptionsBar.setValue(0, meter);

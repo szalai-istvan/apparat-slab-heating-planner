@@ -9,7 +9,7 @@ function removeSelectedBoxGroup() {
     if (boxGroup) {
         elementStore.remove(boxGroup);
         selectedBoxGroup = null;
-        boxGroup.boxes.forEach(b => elementStore.remove(b));
-        resetPipeDriver(boxGroup.pipeDriver);
+        getBoxesByIdList(boxGroup.boxIds).forEach(b => elementStore.remove(b));
+        resetPipeDriver(getPipeDriverById(boxGroup.pipeDriverId));
     }
 }

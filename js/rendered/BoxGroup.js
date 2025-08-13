@@ -1,21 +1,24 @@
 class BoxGroup {
-    boxes = [];
-    alignment;
+    id;
 
+    alignment;
     cursorIsInsideCache = null;
     clickedMemberIndex;
     isSelected;
     isSelectedForDrag;
-
-    pipeDriver = null;
     pipeDriverEndNodeCoordinates = null;
+    
+    boxIds = [];
+    pipeDriverId = null;
 
     constructor({box, alignment}) {
+        this.id = createUniqueId();
+
         checkClass(box, CLASS_BOX, true);
 
         if (box) {
-            this.boxes.push(box);
-            box.group = this;
+            this.boxIds.push(box.id);
+            box.groupId = this.id;
         }
         this.alignment = alignment;
 

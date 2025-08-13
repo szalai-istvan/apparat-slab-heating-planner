@@ -1,16 +1,18 @@
 class SlabHeater {
     id;
+
     centerPosition;
     lineWeight;
     textSize;
     padding;
     rectWidth;
     rectHeight;
-    group;
     cursorIsInsideCache;
     
+    groupId;
+
     constructor() {
-        this.id = Math.random().toString().substring(2);
+        this.id = createUniqueId();
 
         this.lineWeight = SLAB_HEATER_LINE_WEIGHT_IN_METER * pixelsPerMetersRatio;
         this.textSize = SLAB_HEATER_TEXT_SIZE_IN_METER * pixelsPerMetersRatio;

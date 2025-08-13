@@ -11,19 +11,16 @@ function deselectSlabHeaterGroup() {
     }
 
     const destinationRoom = validateSlabHeaterGroupPositionAndGetContainingRoom(slabHeaterGroup);
-    checkClass(destinationRoom, CLASS_ROOM, true);
-
     if (!destinationRoom) {
         return false;
     }
 
-    slabHeaterGroup.room = destinationRoom;
+    slabHeaterGroup.roomId = destinationRoom.id;
     slabHeaterGroup.color = destinationRoom.slabHeaterColor;
     
     slabHeaterGroup.isSelected = false;
     slabHeaterGroup.isSelectedForDrag = false;
     slabHeaterGroup.clickedMemberIndex = null;
-    slabHeaterGroup.room = destinationRoom;
     
     selectedSlabHeaterGroup = null;
     cachedSelectableSlabHeaterGroup = null;

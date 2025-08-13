@@ -10,12 +10,12 @@ function drawBoxGroup(boxGroup) {
     if (boxGroup.isSelectedForDrag) {
         updateBoxGroupPipeDriverEndNodePosition(boxGroup);
         updateBoxGroupMemberPosition(boxGroup);
-        if (boxGroup.pipeDriver) {
-            adjustLastPointOfPipeDriver(boxGroup.pipeDriver, boxGroup);
+        if (boxGroup.pipeDriverId) {
+            adjustLastPointOfPipeDriver(getPipeDriverById(boxGroup.pipeDriverId), boxGroup);
         }
     }
 
-    boxGroup.boxes.forEach(b => drawBox(b));
+    getBoxesByIdList(boxGroup.boxIds).forEach(b => drawBox(b));
 
     const pipeDriverEndNode = boxGroup.pipeDriverEndNodeCoordinates;
     if (!pipeDriverEndNode) {

@@ -7,8 +7,8 @@
 function drawSlabHeaterGroup(slabHeaterGroup) {
     checkClass(slabHeaterGroup, CLASS_SLAB_HEATER_GROUP);
 
-    const slabHeaters = slabHeaterGroup.slabHeaters;
-    const pipeDriver = slabHeaterGroup.pipeDriver;
+    const slabHeaters = getSlabHeatersByIdList(slabHeaterGroup.slabHeaterIds);
+    const pipeDriver = getPipeDriverById(slabHeaterGroup.pipeDriverId);
     
     if (slabHeaterGroup.isSelectedForDrag) {
         updateSlabHeaterGroupMemberPosition(slabHeaterGroup);
@@ -20,5 +20,5 @@ function drawSlabHeaterGroup(slabHeaterGroup) {
     }
 
     slabHeaters.forEach(sh => drawSlabHeater(sh));
-    drawPipeDriver(pipeDriver);
+    pipeDriver && drawPipeDriver(pipeDriver);
 }

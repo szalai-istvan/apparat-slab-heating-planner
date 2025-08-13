@@ -9,7 +9,7 @@ function getRoomContainingPoint(point) {
 
     const room = elementStore.rooms.filter(r => pointIsInsideRoom(r, point))[0];
     if (room) {
-        return room.name;
+        return room;
     }
     return null;
 }

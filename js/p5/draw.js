@@ -1,5 +1,5 @@
 function draw() {
-    if (saveInProgress) {
+    if (saveOrLoadInProgress) {
         return;
     }
 

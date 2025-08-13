@@ -13,6 +13,6 @@ function detachBoxFromGroup(box) {
         return;
     }
 
-    boxGroup.boxes = boxGroup.boxes.filter(b => b !== box);
-    boxGroup.group = null;
+    boxGroup.boxIds = boxGroup.boxIds.filter(b => b !== box.id);
+    box.groupId = null;
 }

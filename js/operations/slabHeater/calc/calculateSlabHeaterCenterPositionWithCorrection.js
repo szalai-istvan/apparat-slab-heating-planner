@@ -10,11 +10,12 @@ function calculateSlabHeaterCenterPositionWithCorrection(slabHeater, width, leng
     checkClass(slabHeater, CLASS_SLAB_HEATER);
 
     const ratio = pixelsPerMetersRatio;
-    const selectedIndex = slabHeater.group.clickedMemberIndex || 0;
+    const group = getSlabHeaterGroupById(slabHeater.groupId);
+    const selectedIndex = group.clickedMemberIndex || 0;
     let x_;
     let y_;
 
-    if (slabHeater.group.alignment % 2 === 1) {
+    if (group.alignment % 2 === 1) {
         x_ = (selectedIndex + 0.5) * width * ratio;
         y_ = (length + TUBE_DISTANCE_IN_METER) * ratio / 2;
     } else {
