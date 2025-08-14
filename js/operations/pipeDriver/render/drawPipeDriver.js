@@ -28,7 +28,7 @@ function drawPipeDriver(pipeDriver) {
     }
 
     fill(mouseCursorIsInsidePoint ? PIPE_DRIVER_SELECTABLE_FILL_COLOR : PIPE_DRIVER_DEFAULT_FILL_COLOR);
-    stroke(mouseCursorIsInsidePoint ? RED : PIPE_DRIVER_OUTLINE_COLOR);
+    stroke(mouseCursorIsInsidePoint || isSelected ? RED : PIPE_DRIVER_OUTLINE_COLOR);
     strokeWeight(ellipseThickness);
     ellipseMode(CENTER);
 

@@ -12,8 +12,8 @@ function getBoxById(id) {
 /**
  * Visszaadja a megadott azonosítójú dobozokat
  * 
- * @param {string} idList egyedi azonosítók listája
- * @returns {Array} a dobozokat tartalmazó array
+ * @param {string[]} idList egyedi azonosítók listája
+ * @returns {Box[]} a dobozokat tartalmazó array
  */
 function getBoxesByIdList(idList) {
     checkClass(idList, CLASS_ARRAY);

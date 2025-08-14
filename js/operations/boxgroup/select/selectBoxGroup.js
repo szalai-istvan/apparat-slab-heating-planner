@@ -19,6 +19,7 @@ function selectBoxGroup(boxGroup = undefined) {
         boxGroup.isSelected = true;
         boxGroup.isSelectedForDrag = true;
         setSelectedBoxGroupIndex(boxGroup);
+        resetPipeDriverIfOnlyHas2Points(getPipeDriverById(boxGroup.pipeDriverId));
         return boxGroup;
     }
 

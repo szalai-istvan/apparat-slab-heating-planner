@@ -2,7 +2,7 @@
  * Visszaadja a megadott szoba sarokpontjait
  * 
  * @param {*} room szoba
- * @returns {Array} a pontokat tartalmazó array
+ * @returns {Point[]} a pontokat tartalmazó array
  */
 function getPointsToDrawRoom(room) {
     const points = room.points;

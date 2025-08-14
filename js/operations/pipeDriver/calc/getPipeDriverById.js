@@ -12,8 +12,8 @@ function getPipeDriverById(id) {
 /**
  * Visszaadja a megadott azonosítójú csővezetőket
  * 
- * @param {string} idList egyedi azonosítók listája
- * @returns {Array} a csővezetőket tartalmazó array
+ * @param {string[]} idList egyedi azonosítók listája
+ * @returns {PipeDriver[]} a csővezetőket tartalmazó array
  */
 function getPipeDriversByIdList(idList) {
     checkClass(idList, CLASS_ARRAY);

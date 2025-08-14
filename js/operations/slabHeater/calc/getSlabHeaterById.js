@@ -11,8 +11,8 @@ function getSlabHeaterById(id) {
 /**
  * Visszaadja a megadott azonosítójú födémfűtők listáját
  * 
- * @param {Array} idList Egyedi azonosító lista
- * @returns {Array} a megadott azonosítójú födémfűtők listája
+ * @param {string[]} idList Egyedi azonosító lista
+ * @returns {SlabHeater[]} a megadott azonosítójú födémfűtők listája
  */
 function getSlabHeatersByIdList(idList) {
     return idList.map(id => elementStore.slabHeatersById[id]).filter(x => x);

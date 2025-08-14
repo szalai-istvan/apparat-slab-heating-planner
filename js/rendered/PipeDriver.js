@@ -5,10 +5,10 @@ class PipeDriver {
     selectedPointIndex;
     selectedPointIndexCache = null;
     cursorIsInsidePointIndexCache = null;
-    slabHeaterGroupId;
-
+    
     points = [];
     isFullyConfigured = false;
+    slabHeaterGroupId;
 
     constructor(slabHeaterGroup) {
         this.id = createUniqueId();

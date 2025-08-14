@@ -19,6 +19,7 @@ function selectSlabHeaterGroup(slabHeaterGroup = undefined) {
         slabHeaterGroup.isSelected = true;
         slabHeaterGroup.isSelectedForDrag = true;
         setSelectedSlabHeaterGroupIndex(slabHeaterGroup);
+        resetPipeDriverIfOnlyHas2Points(getPipeDriverById(slabHeaterGroup.pipeDriverId));
         return slabHeaterGroup;
     }
 

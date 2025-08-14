@@ -105,7 +105,7 @@ class ElementStore {
     }
 
     #addById(objectsById, objectToAdd) {
-        const existingObject = objectToAdd.id ? objectsById[objectToAdd.id] : undefined;
+        let existingObject = objectToAdd.id ? objectsById[objectToAdd.id] : undefined;
         while (existingObject) {
             objectToAdd.id = createUniqueId();
             existingObject = objectsById[objectToAdd.id];
