@@ -1,5 +1,5 @@
-let selectedSlabHeaterGroup = null;
-let cachedSelectableSlabHeaterGroup = null;
+/** @type {SlabHeaterGroup} */ let selectedSlabHeaterGroup = null;
+/** @type {SlabHeaterGroup} */ let cachedSelectableSlabHeaterGroup = null;
 
 /**
  * Megkeresi és kiválasztja a födémfűtő csoportot és visszaadja

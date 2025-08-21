@@ -23,7 +23,7 @@ scalingDialogCloseButton.addEventListener(CLICK, (event) => {
 scalingDialogConfirmButton.addEventListener(CLICK, () => {
     scalingDialogConfirm.close();
     toggleScreenControls();
-    scaleContext.clear();
+    clearScaling();
     startScaling();
 });
 

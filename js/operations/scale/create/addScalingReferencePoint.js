@@ -11,7 +11,7 @@ function addScalingReferencePoint() {
         return;
     }
 
-    const point = getMousePositionAbsolute();
+    const point = getCorrectedMousePositionAbsolute();
     if (!scalingFirstPoint) {
         scalingFirstPoint = point;
     } else if (!scalingSecondPoint) {

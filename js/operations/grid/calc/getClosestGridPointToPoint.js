@@ -25,3 +25,12 @@ function getClosestGridPoint(point) {
 function getClosestGridPointToCursor() {
     return getClosestGridPoint(getMousePositionAbsolute());
 }
+
+/**
+ * Visszaadja a kurzorhoz legközelebbi grid pontot, korrigálva, ha UI alatt van a kurzor
+ * 
+ * @returns {Point} A legközelebbi grid pont
+ */
+function getClosestGridPointToCursorsCorrectedPosition() {
+    return getClosestGridPoint(getMousePositionAbsolute());
+}

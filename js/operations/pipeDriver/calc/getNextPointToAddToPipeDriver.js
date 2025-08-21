@@ -10,7 +10,7 @@ function getNextPointToAddToPipeDriver(pipeDriver) {
     const points = pipeDriver.points;
     const direction = getLastDirectionOfPipeDriver(pipeDriver);
     const lastPoint = points[points.length - 1];
-    const nextPoint = getClosestGridPointToCursor();
+    const nextPoint = getClosestGridPointToCursorsCorrectedPosition();
 
     if (direction === DIRECTION_Y) {
         nextPoint.y = lastPoint.y;

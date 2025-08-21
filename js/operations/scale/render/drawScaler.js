@@ -13,7 +13,7 @@ function drawScaler() {
         return;
     }
 
-    const secondPoint = scalingSecondPoint || getMousePositionAbsolute();
+    const secondPoint = scalingSecondPoint || getCorrectedMousePositionAbsolute();
 
     push();
 

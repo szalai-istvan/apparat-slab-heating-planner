@@ -6,7 +6,7 @@ class PipeDriver {
     selectedPointIndexCache = null;
     cursorIsInsidePointIndexCache = null;
     
-    points = [];
+    /**@type {Point[]}*/ points = [];
     isFullyConfigured = false;
     slabHeaterGroupId;
 

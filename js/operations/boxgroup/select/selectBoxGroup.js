@@ -1,5 +1,5 @@
-let selectedBoxGroup = null;
-let cachedSelectableBoxGroup = null;
+/** @type {BoxGroup} */ let selectedBoxGroup = null;
+/** @type {BoxGroup} */ let cachedSelectableBoxGroup = null;
 
 /**
  * Megkeresi és kiválasztja a doboz csoportot és visszaadja

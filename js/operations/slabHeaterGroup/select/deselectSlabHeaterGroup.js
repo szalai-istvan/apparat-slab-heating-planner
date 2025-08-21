@@ -15,6 +15,11 @@ function deselectSlabHeaterGroup() {
         return false;
     }
 
+    const pipeDriver = getPipeDriverById(slabHeaterGroup.pipeDriverId);
+    if (pipeDriver) {
+        removeUnnecessaryPointsOfPipeDriver(pipeDriver);
+    }
+
     slabHeaterGroup.roomId = destinationRoom.id;
     slabHeaterGroup.color = destinationRoom.slabHeaterColor;
     

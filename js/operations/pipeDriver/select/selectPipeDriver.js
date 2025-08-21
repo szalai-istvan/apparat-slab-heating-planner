@@ -1,5 +1,5 @@
-let selectedPipeDriver = null;
-let cachedSelectablePipeDriver = null;
+/** @type {PipeDriver} */ let selectedPipeDriver = null;
+/** @type {PipeDriver} */ let cachedSelectablePipeDriver = null;
 
 /**
  * Megkeresi, kiválasztja és visszaadja a kiválasztható csővezetőt

@@ -9,6 +9,10 @@ function deselectBoxGroup() {
         return true;
     }
 
+    const pipeDriver = getPipeDriverById(boxGroup.pipeDriverId);
+    if (pipeDriver) {
+        removeUnnecessaryPointsOfPipeDriver(pipeDriver);
+    }
     // TODO validáció ...
 
     boxGroup.isSelected = false;

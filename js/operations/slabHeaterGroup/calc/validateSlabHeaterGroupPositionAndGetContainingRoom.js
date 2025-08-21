@@ -16,7 +16,7 @@ function validateSlabHeaterGroupPositionAndGetContainingRoom(slabHeaterGroup) {
 
         const room = elementStore.rooms.filter(r => pointIsInsideRoom(r, p1) && pointIsInsideRoom(r, p2))[0];
         if (!room) {
-             displayMessage('Az egyik kiválasztott födémfűtő elem része vagy egésze szobán kívül van!<br/>Helyezze el máshová!');
+             displayMessage('Az egyik kiválasztott födémfűtő elem része vagy egésze szobán kívülre kerül!<br/>Helyezze el máshová!');
              return undefined;
         }
         containingRooms.push(room);
@@ -24,7 +24,7 @@ function validateSlabHeaterGroupPositionAndGetContainingRoom(slabHeaterGroup) {
 
     const roomSet = new Set(containingRooms);
     if (roomSet.size > 1) {
-        displayMessage('Az egyik kiválasztott födémfűtő elem része vagy egésze szobán kívül van!<br/>Helyezze el máshová!');
+        displayMessage('Az egyik kiválasztott födémfűtő elem része vagy egésze szobán kívülre kerül!<br/>Helyezze el máshová!');
         return undefined;
     }
     return roomSet.values().next().value;
