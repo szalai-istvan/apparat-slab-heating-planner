@@ -8,6 +8,7 @@
 function updatePipeDriverFirstPoint(pipeDriver, firstPoint) {
     checkClass(pipeDriver, CLASS_PIPE_DRIVER);
     checkClass(firstPoint, CLASS_POINT, true);
+
     if (!firstPoint) {
         return;
     }
@@ -18,7 +19,7 @@ function updatePipeDriverFirstPoint(pipeDriver, firstPoint) {
         return;
     }
 
-    if (points.some(p => calculateDistance(p, firstPoint) < GRID_RESOLUTION_METER * pixelsPerMetersRatio)) {
+    if (points.some(p => calculateDistance(p, firstPoint) < 0.9 * GRID_RESOLUTION_METER * pixelsPerMetersRatio)) {
         return;
     }
 

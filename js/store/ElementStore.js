@@ -1,24 +1,37 @@
 class ElementStore {
+    /** @type {Blueprint[]} */
     blueprints = [];
+    /** @type {Room[]} */
     rooms = [];
+    /** @type {{[key:string]: Room}} */
     roomsById = {};
+    /** @type {SlabHeater[]} */
     slabHeaters = [];
+    /** @type {{[key:string]: SlabHeater}} */
     slabHeatersById = {};
+    /** @type {SlabHeaterGroup[]} */
     slabHeaterGroups = [];
+    /** @type {{[key:string]: SlabHeaterGroup}} */
     slabHeaterGroupsById = {};
+    /** @type {PipeDriver[]} */
     pipeDrivers = [];
+    /** @type {{[key:string]: PipeDriver}} */
     pipeDriversById = {};
+    /** @type {Box[]} */
     boxes = [];
+    /** @type {{[key:string]: Box}} */
     boxesById = {};
+    /** @type {BoxGroup[]} */
     boxGroups = [];
+    /** @type {{[key:string]: BoxGroup}} */
     boxGroupsById = {};
 
+    /** @type {ButtonWrapper[]} */
     buttons = [];
+    /** @type {MenuLine[]} */
     menus = [];
+    /** @type {OptionsBar[]} */
     optionsBars = [];
-
-    scaleContext = null;
-    tooltip = null;
 
     constructor() { }
 
@@ -39,12 +52,8 @@ class ElementStore {
         } else if (className === CLASS_ROOM) {
             this.rooms.push(obj);
             this.#addById(this.roomsById, obj);
-        } else if (className === CLASS_SCALE_CONTEXT) {
-            this.scaleContext = obj;
         } else if (className === CLASS_BUTTON_WRAPPER) {
             this.buttons.push(obj);
-        } else if (className === CLASS_TOOLTIP) {
-            this.tooltip = obj;
         } else if (className === CLASS_MENU_LINE) {
             this.menus.push(obj);
         } else if (className === CLASS_OPTIONS_BAR) {

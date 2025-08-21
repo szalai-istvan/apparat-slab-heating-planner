@@ -32,5 +32,5 @@ function getClosestGridPointToCursor() {
  * @returns {Point} A legközelebbi grid pont
  */
 function getClosestGridPointToCursorsCorrectedPosition() {
-    return getClosestGridPoint(getMousePositionAbsolute());
+    return getClosestGridPoint(getCorrectedMousePositionAbsolute());
 }

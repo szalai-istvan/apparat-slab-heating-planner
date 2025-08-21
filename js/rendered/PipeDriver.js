@@ -6,9 +6,11 @@ class PipeDriver {
     selectedPointIndexCache = null;
     cursorIsInsidePointIndexCache = null;
     
-    /**@type {Point[]}*/ points = [];
+    /** @type {Point[]} */ points = [];
     isFullyConfigured = false;
     slabHeaterGroupId;
+    /** @type {Point[][]} */
+    pipes = [];
 
     constructor(slabHeaterGroup) {
         this.id = createUniqueId();

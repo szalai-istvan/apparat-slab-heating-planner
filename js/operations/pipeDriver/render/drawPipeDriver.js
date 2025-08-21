@@ -15,6 +15,7 @@ function drawPipeDriver(pipeDriver) {
     const diameter = PIPE_DRIVER_DIAMETER_IN_METERS * ratio * (1 + mouseCursorIsInsidePoint * 0.2);
     const ellipseThickness = PIPE_DRIVER_THICKNESS_IN_METERS * ratio;
     const points = getPointsToDrawPipeDriver(pipeDriver);
+    const color = getSlabHeaterGroupById(pipeDriver.slabHeaterGroupId).color;
 
     push();
 
@@ -35,6 +36,15 @@ function drawPipeDriver(pipeDriver) {
     for (let i = 0; i < points.length; i++) {
         const p = points[i];
         ellipse(p.x, p.y, diameter, diameter);
+    }
+
+    for (let pointArray of pipeDriver.pipes) {
+        for (let i = 0; i < pointArray.length - 1; i++) {
+            stroke(color);
+            const p1 = pointArray[i];
+            const p2 = pointArray[i + 1];
+            line(p1.x, p1.y, p2.x, p2.y);
+        }
     }
 
     pop();

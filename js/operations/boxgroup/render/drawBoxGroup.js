@@ -27,6 +27,7 @@ function drawBoxGroup(boxGroup) {
     ellipseMode(CENTER);
     stroke(BLACK);
     fill(WHITE);
+    strokeWeight(PIPE_DRIVER_THICKNESS_IN_METERS * pixelsPerMetersRatio);
     ellipse(pipeDriverEndNode.x, pipeDriverEndNode.y, diameter, diameter);
     pop();
 }

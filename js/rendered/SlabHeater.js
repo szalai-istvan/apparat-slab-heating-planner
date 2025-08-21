@@ -1,6 +1,7 @@
 class SlabHeater {
     id;
 
+    /** @type {Point} */
     centerPosition;
     lineWeight;
     textSize;
