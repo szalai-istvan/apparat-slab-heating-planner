@@ -11,13 +11,11 @@ function resetPipeDriver(pipeDriver) {
         return;
     }
 
-    const endingBoxGroup = getBoxGroupWithEndNodeAtPipeDriversLastPoint(pipeDriver);
-    if (endingBoxGroup) {
-        endingBoxGroup.pipeDriverId = null;
-    }
+    elementStore.boxGroups.filter(bg => bg.pipeDriverId === pipeDriver.id).forEach(bg => bg.pipeDriverId = null);
 
     forceDeselectPipeDriver(pipeDriver);
     pipeDriver.points = [pipeDriver.points[0]];
+    pipeDriver.pipes = [];
     pipeDriver.isFullyConfigured = false;
 }
 

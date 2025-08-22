@@ -19,21 +19,36 @@ function updatePipeDriverFirstPoint(pipeDriver, firstPoint) {
         return;
     }
 
+    if (points.length === 1) {
+        points[0] = firstPoint;
+        return;
+    }
+
     if (points.some(p => calculateDistance(p, firstPoint) < 0.9 * GRID_RESOLUTION_METER * pixelsPerMetersRatio)) {
         return;
     }
 
-    const originalFirstPoint = points[0];
     const secondPoint = points[1];
-    points[0] = firstPoint;
     if (!secondPoint) { 
         return;
     }
+
+    const originalFirstPoint = createPoint(points[0].x, points[0].y);
+    const originalSecondPoint = createPoint(points[1].x, points[1].y);
+
     
-    const direction = getDirectionBetweenTwoPoints(originalFirstPoint, secondPoint);
-    if (direction === DIRECTION_X) {
+    const originalDirection = getDirectionBetweenTwoPoints(originalFirstPoint, secondPoint);
+    if (originalDirection === DIRECTION_X) {
+        points[0] = firstPoint;
         secondPoint.y = firstPoint.y;
-    } else if (direction === DIRECTION_Y) {
+    } else if (originalDirection === DIRECTION_Y) {
+        points[0] = firstPoint;
         secondPoint.x = firstPoint.x;
+    }
+
+    const direction = getDirectionBetweenTwoPoints(firstPoint, secondPoint);
+    if (direction !== originalDirection) {
+        points[0] = originalFirstPoint;
+        points[1] = originalSecondPoint;
     }
 }

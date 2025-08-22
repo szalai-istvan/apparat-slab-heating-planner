@@ -13,6 +13,7 @@ function deselectPipeDriver() {
         return false;
     }
 
+    removeUnnecessaryPointsOfPipeDriver(pipeDriver);
     pipeDriver.isSelected = false;
     pipeDriver.isSelectedForDrag = false;
     pipeDriver.selectedPointIndex = null;

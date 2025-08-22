@@ -123,7 +123,7 @@ const SLAB_HEATER_TYPES = {
     }
 };
 const SLAB_HEATER_STOP_DRAWING_THRESHOLD_IN_METERS = 0.05;
-const SLAB_HEATER_COLORS = ['black', 'darkgrey', 'blue', 'red', 'green', 'orange', 'pink', 'teal', 'darkred'];
+const SLAB_HEATER_COLORS = ['black', 'darkgrey', 'blue', 'darkgreen', 'teal', 'darkred', 'purple'];
 let SLAB_HEATER_COLORS_AVAILABLE = [...SLAB_HEATER_COLORS];
 
 // Box constants

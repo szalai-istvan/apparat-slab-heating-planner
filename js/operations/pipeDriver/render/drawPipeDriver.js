@@ -16,6 +16,7 @@ function drawPipeDriver(pipeDriver) {
     const ellipseThickness = PIPE_DRIVER_THICKNESS_IN_METERS * ratio;
     const points = getPointsToDrawPipeDriver(pipeDriver);
     const color = getSlabHeaterGroupById(pipeDriver.slabHeaterGroupId).color;
+    updateSelectedPointOfPipeDriver(pipeDriver);
 
     push();
 

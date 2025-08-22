@@ -14,5 +14,12 @@ function addPointToSelectedPipeDriver() {
     }
 
     const nextPoint = getNextPointToAddToPipeDriver(pipeDriver);
-    pipeDriver.points.push(nextPoint);
+    const validationResult = validateNextPointOfPipeDriver(pipeDriver, nextPoint);
+    if (validationResult === VALIDATION_OK) {
+        pipeDriver.points.push(nextPoint);
+    } else if (validationResult === VALIDATION_TOO_SHORT) {
+        displayMessage('Túl rövid nyomvonal szakasz! Kérem helyezze távolabb!');
+    } else if (validationResult === VALIDATION_BAD_LAYOUT) {
+        displayMessage('A megadott pont hozzáadása átfedést okozna a csövek között! Kérem helyezze máshová!');
+    }
 }

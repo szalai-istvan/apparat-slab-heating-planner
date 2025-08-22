@@ -13,7 +13,7 @@ function deselectBoxGroup() {
     if (pipeDriver) {
         removeUnnecessaryPointsOfPipeDriver(pipeDriver);
     }
-    // TODO validáció ...
+
 
     boxGroup.isSelected = false;
     boxGroup.isSelectedForDrag = false;

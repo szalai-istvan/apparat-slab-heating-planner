@@ -1,18 +1,13 @@
 https://github.com/szalai-istvan/apparat-heating-planner
 
-- pipedriverek ne legyenek bármi alatt
-- pipedriver ne indulhasson rossz irányba
+- boxgroup vagy slabheatergroup lehelyezésekor nézze meg rossz irányba indul-e a pipedriver és forgassa el ha szükséges
 - pipedriver pont mozgatás lehetősége
-
-- Csővezetőhöz cső nyomvonal rajzoló algoritmus készítése
-    - Csőtáv 5 cm
-    - Egy cső max hossza 20 m
+- Csövek ne lehessenek 20 m-nél hosszabbak!
 - Födémfűtő label alatt legyen leírva fölfelé kerekítve fél méter hozzáadással a csőhossz
     - (L + 0.5) felfelé kerekítve félméterenkénti felbontássa
-
+- dobozcsoport lehelyezésekor legyen validálva, hogy szobában van.
 - Excel szerkesztés
 - új tooltipek
-- Legyenek a konstansok és a field-ek típus annotálva!
 
 optional:
 - Panelkák mindig nézzenek a legközelebbi gyüjtő felé
@@ -20,3 +15,4 @@ optional:
     - Szoba hozzáadása gombon radio button hogyha körbe rajzolni akarod
 - AUTOROUTE
 - Szoba overlap validációt megcsinálni JÓRA.
+- Legyenek a konstansok és a field-ek típus annotálva!
